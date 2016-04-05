@@ -92,7 +92,7 @@ var XYGBoy;
             this.gameMap.dispatchEvent(new XYGBoy.ControllerEvent(XYGBoy.ControllerEvent.RIGHT));
         };
         return DotControllerPanel;
-    })(egret.DisplayObjectContainer);
+    }(egret.DisplayObjectContainer));
     XYGBoy.DotControllerPanel = DotControllerPanel;
     egret.registerClass(DotControllerPanel,'XYGBoy.DotControllerPanel');
 })(XYGBoy || (XYGBoy = {}));

@@ -20,7 +20,7 @@ var XYGBoy;
         ControllerEvent.A = "a";
         ControllerEvent.B = "b";
         return ControllerEvent;
-    })(egret.Event);
+    }(egret.Event));
     XYGBoy.ControllerEvent = ControllerEvent;
     egret.registerClass(ControllerEvent,'XYGBoy.ControllerEvent');
 })(XYGBoy || (XYGBoy = {}));

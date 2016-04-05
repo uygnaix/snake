@@ -159,7 +159,7 @@ var XYGBoy;
             this.timer.delay = this.delay / this.speed;
         };
         return DotSnakePanel;
-    })(egret.DisplayObjectContainer);
+    }(egret.DisplayObjectContainer));
     XYGBoy.DotSnakePanel = DotSnakePanel;
     egret.registerClass(DotSnakePanel,'XYGBoy.DotSnakePanel');
 })(XYGBoy || (XYGBoy = {}));

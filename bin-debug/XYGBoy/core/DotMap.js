@@ -100,8 +100,9 @@ var XYGBoy;
             this.getDotAt(row, col).turnOn();
         };
         p.turnOnDotAtGroup = function (group) {
-            for (var i in group.points) {
-                this.turnOnDotAtPointer(group.getAt(i));
+            for (var _i = 0, _a = group.points; _i < _a.length; _i++) {
+                var j = _a[_i];
+                this.turnOnDotAtPointer(j);
             }
         };
         p.turnOnDotAtPointer = function (pointer) {
@@ -112,8 +113,9 @@ var XYGBoy;
             this.turnOffDotAt(this.cursor.row, this.cursor.column);
         };
         p.turnOffDotAtGroup = function (group) {
-            for (var i in group.points) {
-                this.turnOffDotAtPointer(group.getAt(i));
+            for (var _i = 0, _a = group.points; _i < _a.length; _i++) {
+                var i = _a[_i];
+                this.turnOffDotAtPointer(i);
             }
         };
         p.turnOffDotAtPointer = function (pointer) {
@@ -138,7 +140,7 @@ var XYGBoy;
             this.getDotAtCursor().flicker();
         };
         return DotMap;
-    })(egret.DisplayObjectContainer);
+    }(egret.DisplayObjectContainer));
     XYGBoy.DotMap = DotMap;
     egret.registerClass(DotMap,'XYGBoy.DotMap');
     var DotMapPointer = (function () {
@@ -160,7 +162,7 @@ var XYGBoy;
             this.column = pointer.column;
         };
         return DotMapPointer;
-    })();
+    }());
     XYGBoy.DotMapPointer = DotMapPointer;
     egret.registerClass(DotMapPointer,'XYGBoy.DotMapPointer');
     var DotMapPointerGroup = (function () {
@@ -184,7 +186,7 @@ var XYGBoy;
             return this.points.length;
         };
         return DotMapPointerGroup;
-    })();
+    }());
     XYGBoy.DotMapPointerGroup = DotMapPointerGroup;
     egret.registerClass(DotMapPointerGroup,'XYGBoy.DotMapPointerGroup');
     var DotMapDirector = (function () {
@@ -224,7 +226,7 @@ var XYGBoy;
             this.status = DotMapDirection.RIGHT;
         };
         return DotMapDirector;
-    })();
+    }());
     XYGBoy.DotMapDirector = DotMapDirector;
     egret.registerClass(DotMapDirector,'XYGBoy.DotMapDirector');
     (function (DotMapDirection) {

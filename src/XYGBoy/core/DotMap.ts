@@ -107,8 +107,8 @@ module XYGBoy {
             this.getDotAt(row,col).turnOn();
         }
         public turnOnDotAtGroup(group:DotMapPointerGroup) {
-            for(var i in group.points) {
-                this.turnOnDotAtPointer(group.getAt(i));
+            for(var j of group.points) {
+                this.turnOnDotAtPointer(j);
             }
         }
         public turnOnDotAtPointer(pointer:DotMapPointer) {
@@ -119,8 +119,8 @@ module XYGBoy {
             this.turnOffDotAt(this.cursor.row,this.cursor.column);
         }
         public turnOffDotAtGroup(group: DotMapPointerGroup) {
-            for(var i in group.points) {
-                this.turnOffDotAtPointer(group.getAt(i));
+            for(var i of group.points) {
+                this.turnOffDotAtPointer(i);
             }
         }
         public turnOffDotAtPointer(pointer:DotMapPointer) {

@@ -13,7 +13,7 @@ var XYGBoy;
         }
         var d = __define,c=MatrixPointer,p=c.prototype;
         return MatrixPointer;
-    })();
+    }());
     XYGBoy.MatrixPointer = MatrixPointer;
     egret.registerClass(MatrixPointer,'XYGBoy.MatrixPointer');
 })(XYGBoy || (XYGBoy = {}));

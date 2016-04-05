@@ -16,7 +16,7 @@ var XYGBoy;
         GameSceneEvent.GAMEOVER = 'game_over';
         GameSceneEvent.WIN = 'win';
         return GameSceneEvent;
-    })(egret.Event);
+    }(egret.Event));
     XYGBoy.GameSceneEvent = GameSceneEvent;
     egret.registerClass(GameSceneEvent,'XYGBoy.GameSceneEvent');
 })(XYGBoy || (XYGBoy = {}));

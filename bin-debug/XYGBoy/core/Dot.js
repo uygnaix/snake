@@ -74,7 +74,7 @@ var XYGBoy;
             return new Dot(this.size, this.status);
         };
         return Dot;
-    })(egret.Bitmap);
+    }(egret.Bitmap));
     XYGBoy.Dot = Dot;
     egret.registerClass(Dot,'XYGBoy.Dot');
     (function (DotStatus) {
@@ -99,6 +99,6 @@ var XYGBoy;
             return DotTextures.instance;
         };
         return DotTextures;
-    })();
+    }());
     egret.registerClass(DotTextures,'DotTextures');
 })(XYGBoy || (XYGBoy = {}));

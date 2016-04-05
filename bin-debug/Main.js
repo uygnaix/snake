@@ -154,5 +154,5 @@ var Main = (function (_super) {
         return false;
     };
     return Main;
-})(egret.DisplayObjectContainer);
+}(egret.DisplayObjectContainer));
 egret.registerClass(Main,'Main');

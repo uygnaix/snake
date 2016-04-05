@@ -33,7 +33,7 @@ var XYGBoy;
             return this.column;
         };
         return Matrix;
-    })();
+    }());
     XYGBoy.Matrix = Matrix;
     egret.registerClass(Matrix,'XYGBoy.Matrix');
 })(XYGBoy || (XYGBoy = {}));

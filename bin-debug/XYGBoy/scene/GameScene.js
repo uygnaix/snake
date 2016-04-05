@@ -31,7 +31,7 @@ var XYGBoy;
             this.addChild(this.gameController);
         };
         return GameScene;
-    })(egret.DisplayObjectContainer);
+    }(egret.DisplayObjectContainer));
     XYGBoy.GameScene = GameScene;
     egret.registerClass(GameScene,'XYGBoy.GameScene');
 })(XYGBoy || (XYGBoy = {}));
