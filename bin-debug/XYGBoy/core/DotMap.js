@@ -18,12 +18,9 @@ var XYGBoy;
             this.initDotMap(row, col);
             this.cursor = this.getCursor();
         }
-
-        var d = __define, c = DotMap, p = c.prototype;
+        var d = __define,c=DotMap,p=c.prototype;
         p.initDotMap = function (row, col, templateDot) {
-            if (templateDot === void 0) {
-                templateDot = null;
-            }
+            if (templateDot === void 0) { templateDot = null; }
             this.dotMap = new Array();
             for (var i = 0; i < row; i++) {
                 this.dotMap[i] = new Array();
@@ -64,10 +61,18 @@ var XYGBoy;
          * @returns true表示未越界，设置游标成功
          */
         p.setCursor = function (row, col) {
-            if (row === void 0) {
+            if (row === void 0) { row = 0; }
+            if (col === void 0) { col = 0; }
+            if (row >= this.row) {
+                row = this.row - 1;
+            }
+            if (row < 0) {
                 row = 0;
             }
-            if (col === void 0) {
+            if (col >= this.column) {
+                col = this.column - 1;
+            }
+            if (col < 0) {
                 col = 0;
             }
             this.cursor.row = row;
@@ -75,15 +80,11 @@ var XYGBoy;
             return true;
         };
         p.setCursorRow = function (row) {
-            if (row === void 0) {
-                row = 0;
-            }
+            if (row === void 0) { row = 0; }
             this.cursor.row = row;
         };
         p.setCursorColumn = function (col) {
-            if (col === void 0) {
-                col = 0;
-            }
+            if (col === void 0) { col = 0; }
             this.cursor.column = col;
         };
         p.getDotAtCursor = function () {
@@ -129,33 +130,44 @@ var XYGBoy;
                 }
             }
         };
+        p.flickerDotAtPointer = function (pointer) {
+            this.setCursorByPointer(pointer);
+            this.flickerDotAtCursor();
+        };
+        p.flickerDotAtCursor = function () {
+            this.getDotAtCursor().flicker();
+        };
         return DotMap;
     })(egret.DisplayObjectContainer);
     XYGBoy.DotMap = DotMap;
-    egret.registerClass(DotMap, 'XYGBoy.DotMap');
+    egret.registerClass(DotMap,'XYGBoy.DotMap');
     var DotMapPointer = (function () {
         function DotMapPointer(row, col) {
-            if (row === void 0) {
-                row = 0;
-            }
-            if (col === void 0) {
-                col = 0;
-            }
+            if (row === void 0) { row = 0; }
+            if (col === void 0) { col = 0; }
             this.row = row;
             this.column = col;
         }
-
-        var d = __define, c = DotMapPointer, p = c.prototype;
+        var d = __define,c=DotMapPointer,p=c.prototype;
+        p.equals = function (pointer) {
+            return pointer && this.row == pointer.row && this.column == pointer.column;
+        };
+        p.clone = function () {
+            return new DotMapPointer(this.row, this.column);
+        };
+        p.set = function (pointer) {
+            this.row = pointer.row;
+            this.column = pointer.column;
+        };
         return DotMapPointer;
     })();
     XYGBoy.DotMapPointer = DotMapPointer;
-    egret.registerClass(DotMapPointer, 'XYGBoy.DotMapPointer');
+    egret.registerClass(DotMapPointer,'XYGBoy.DotMapPointer');
     var DotMapPointerGroup = (function () {
         function DotMapPointerGroup() {
             this.points = new Array();
         }
-
-        var d = __define, c = DotMapPointerGroup, p = c.prototype;
+        var d = __define,c=DotMapPointerGroup,p=c.prototype;
         p.getAt = function (i) {
             return this.points[i];
         };
@@ -166,43 +178,61 @@ var XYGBoy;
             return this.points[0];
         };
         p.last = function () {
-            return this.points[-1];
+            return this.points[this.points.length - 1];
+        };
+        p.size = function () {
+            return this.points.length;
         };
         return DotMapPointerGroup;
     })();
     XYGBoy.DotMapPointerGroup = DotMapPointerGroup;
-    egret.registerClass(DotMapPointerGroup, 'XYGBoy.DotMapPointerGroup');
-    var DotMapDirection = (function () {
-        function DotMapDirection(row, col) {
-            if (row === void 0) {
-                row = 0;
-            }
-            if (col === void 0) {
-                col = 0;
-            }
+    egret.registerClass(DotMapPointerGroup,'XYGBoy.DotMapPointerGroup');
+    var DotMapDirector = (function () {
+        function DotMapDirector(row, col) {
+            if (row === void 0) { row = 0; }
+            if (col === void 0) { col = 0; }
             this.row = row;
             this.column = col;
         }
-
-        var d = __define, c = DotMapDirection, p = c.prototype;
+        var d = __define,c=DotMapDirector,p=c.prototype;
+        p.getStatus = function () {
+            return this.status;
+        };
+        p.stop = function () {
+            this.row = 0;
+            this.column = 0;
+            this.status = DotMapDirection.STAND;
+        };
         p.up = function () {
             this.row = -1;
             this.column = 0;
+            this.status = DotMapDirection.UP;
         };
         p.down = function () {
             this.row = 1;
             this.column = 0;
+            this.status = DotMapDirection.DOWN;
         };
         p.left = function () {
             this.row = 0;
             this.column = -1;
+            this.status = DotMapDirection.LEFT;
         };
         p.right = function () {
             this.row = 0;
             this.column = 1;
+            this.status = DotMapDirection.RIGHT;
         };
-        return DotMapDirection;
+        return DotMapDirector;
     })();
-    XYGBoy.DotMapDirection = DotMapDirection;
-    egret.registerClass(DotMapDirection, 'XYGBoy.DotMapDirection');
+    XYGBoy.DotMapDirector = DotMapDirector;
+    egret.registerClass(DotMapDirector,'XYGBoy.DotMapDirector');
+    (function (DotMapDirection) {
+        DotMapDirection[DotMapDirection["STAND"] = 0] = "STAND";
+        DotMapDirection[DotMapDirection["UP"] = 1] = "UP";
+        DotMapDirection[DotMapDirection["DOWN"] = 2] = "DOWN";
+        DotMapDirection[DotMapDirection["LEFT"] = 3] = "LEFT";
+        DotMapDirection[DotMapDirection["RIGHT"] = 4] = "RIGHT";
+    })(XYGBoy.DotMapDirection || (XYGBoy.DotMapDirection = {}));
+    var DotMapDirection = XYGBoy.DotMapDirection;
 })(XYGBoy || (XYGBoy = {}));

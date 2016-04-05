@@ -12,17 +12,26 @@ var XYGBoy;
             this.dotSize = 25;
             this.width = width;
             this.height = height;
-            this.gamePanel = new XYGBoy.DotSnakePanel(20, 10, this.dotSize);
-            //调整gampanel的位置
-            this.gamePanel.x = (width - this.gamePanel.width) / 2;
-            this.addChildAt(this.gamePanel, 10);
-            this.gameController = new XYGBoy.DotControllerPanel(this.gamePanel, width, height);
-            this.addChild(this.gameController);
+            this.snake();
         }
-
-        var d = __define, c = GameScene, p = c.prototype;
+        var d = __define,c=GameScene,p=c.prototype;
+        p.showGameOver = function () {
+            alert('game over');
+            this.snake();
+        };
+        p.snake = function () {
+            this.gamePanel = new XYGBoy.DotSnakePanel(20, 10, this.dotSize);
+            //游戏进程控制
+            this.gamePanel.gameScene = this;
+            this.addEventListener(XYGBoy.GameSceneEvent.GAMEOVER, this.showGameOver, this);
+            //调整gampanel的位置
+            this.gamePanel.x = (this.width - this.gamePanel.width) / 2;
+            this.addChildAt(this.gamePanel, 10);
+            this.gameController = new XYGBoy.DotControllerPanel(this.gamePanel, this.width, this.height);
+            this.addChild(this.gameController);
+        };
         return GameScene;
     })(egret.DisplayObjectContainer);
     XYGBoy.GameScene = GameScene;
-    egret.registerClass(GameScene, 'XYGBoy.GameScene');
+    egret.registerClass(GameScene,'XYGBoy.GameScene');
 })(XYGBoy || (XYGBoy = {}));

@@ -39,8 +39,7 @@ var egret;
                 _super.call(this);
                 this.urlData = {};
             }
-
-            var d = __define, c = NativeNetContext, p = c.prototype;
+            var d = __define,c=NativeNetContext,p=c.prototype;
             /**
              * @method egret.HTML5NetContext#proceed
              * @param loader {URLLoader}
@@ -85,12 +84,10 @@ var egret;
                 function onPostProgress(event) {
                     loader.dispatchEvent(event);
                 }
-
                 function onError(event) {
                     removeListeners();
                     loader.dispatchEvent(event);
                 }
-
                 function onLoadComplete(e) {
                     removeListeners();
                     loader.data = sound;
@@ -104,7 +101,6 @@ var egret;
                         egret.$callAsync(loadedFunc, self);
                     }
                 }
-
                 function removeListeners() {
                     sound.removeEventListener(egret.Event.COMPLETE, onLoadComplete, self);
                     sound.removeEventListener(egret.IOErrorEvent.IO_ERROR, onError, self);
@@ -123,12 +119,10 @@ var egret;
                 function onPostProgress(event) {
                     loader.dispatchEvent(event);
                 }
-
                 function onError(event) {
                     removeListeners();
                     loader.dispatchEvent(event);
                 }
-
                 function onLoadComplete(e) {
                     removeListeners();
                     var bitmapData = imageLoader.data;
@@ -146,7 +140,6 @@ var egret;
                         egret.$callAsync(loadedFunc, self);
                     }
                 }
-
                 function removeListeners() {
                     imageLoader.removeEventListener(egret.Event.COMPLETE, onLoadComplete, self);
                     imageLoader.removeEventListener(egret.IOErrorEvent.IO_ERROR, onError, self);
@@ -179,7 +172,7 @@ var egret;
             return NativeNetContext;
         })(egret.HashObject);
         native.NativeNetContext = NativeNetContext;
-        egret.registerClass(NativeNetContext, 'egret.native.NativeNetContext', ["egret.NetContext"]);
+        egret.registerClass(NativeNetContext,'egret.native.NativeNetContext',["egret.NetContext"]);
         egret.NetContext = NativeNetContext;
     })(native = egret.native || (egret.native = {}));
 })(egret || (egret = {}));

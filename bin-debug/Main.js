@@ -33,8 +33,7 @@ var Main = (function (_super) {
         this.boxSize = 25;
         this.addEventListener(egret.Event.ADDED_TO_STAGE, this.onAddToStage, this);
     }
-
-    var d = __define, c = Main, p = c.prototype;
+    var d = __define,c=Main,p=c.prototype;
     p.onAddToStage = function (event) {
         //设置加载进度界面
         //Config to load process interface
@@ -156,4 +155,4 @@ var Main = (function (_super) {
     };
     return Main;
 })(egret.DisplayObjectContainer);
-egret.registerClass(Main, 'Main');
+egret.registerClass(Main,'Main');

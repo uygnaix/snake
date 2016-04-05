@@ -1,56 +1,54 @@
 {
-  "close": false,
-  "resourcePlugin": {
-    "configs": [
-      {
-        "configPath": "resource/default.res.json",
-        "relativePath": "resource/"
-      }
-    ],
-    "id": "org.egret-labs.resource",
-    "library": {
-      "children": [
-        {
-          "isFolder": false,
-          "key": "bgImage",
-          "name": "bgImage"
-        },
-        {
-          "isFolder": false,
-          "key": "egretIcon",
-          "name": "egretIcon"
-        },
-        {
-          "isFolder": false,
-          "key": "off-l-b_png",
-          "name": "off-l-b_png"
-        },
-        {
-          "isFolder": false,
-          "key": "off-l_png",
-          "name": "off-l_png"
-        },
-        {
-          "isFolder": false,
-          "key": "off_png",
-          "name": "off_png"
-        },
-        {
-          "isFolder": false,
-          "key": "on-l-b_png",
-          "name": "on-l-b_png"
-        },
-        {
-          "isFolder": false,
-          "key": "on-l_png",
-          "name": "on-l_png"
-        },
-        {
-          "isFolder": false,
-          "key": "on_png",
-          "name": "on_png"
-        }
-      ]
-    }
-  }
+	"close":false,
+	"resourcePlugin":{
+		"configs":[{
+				"configPath":"resource/default.res.json",
+				"relativePath":"resource/"
+			}],
+		"id":"org.egret-labs.resource",
+		"library":{
+			"children":[
+				{
+					"isFolder":false,
+					"key":"bgImage",
+					"name":"bgImage"
+				},
+				{
+					"isFolder":false,
+					"key":"egretIcon",
+					"name":"egretIcon"
+				},
+				{
+					"isFolder":false,
+					"key":"off-l-b_png",
+					"name":"off-l-b_png"
+				},
+				{
+					"isFolder":false,
+					"key":"off-l_png",
+					"name":"off-l_png"
+				},
+				{
+					"isFolder":false,
+					"key":"off_png",
+					"name":"off_png"
+				},
+				{
+					"isFolder":false,
+					"key":"on-l-b_png",
+					"name":"on-l-b_png"
+				},
+				{
+					"isFolder":false,
+					"key":"on-l_png",
+					"name":"on-l_png"
+				},
+				{
+					"isFolder":false,
+					"key":"on_png",
+					"name":"on_png"
+				}
+			]
+		}
+	}
 }

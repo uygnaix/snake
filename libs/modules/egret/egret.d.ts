@@ -1,15 +1,11 @@
-declare var DEBUG:boolean;
-declare var RELEASE:boolean;
+declare var DEBUG: boolean;
+declare var RELEASE: boolean;
 declare module egret {
-    function $error(code:number, ...params:any[]):void;
-
-    function $warn(code:number, ...params:any[]):void;
-
-    function getString(code:number, ...params:any[]):string;
-
-    function $markReadOnly(instance:any, property:string, isProperty?:boolean):void;
-
-    function $markCannotUse(instance:any, property:string, defaultVale:any):void;
+    function $error(code: number, ...params: any[]): void;
+    function $warn(code: number, ...params: any[]): void;
+    function getString(code: number, ...params: any[]): string;
+    function $markReadOnly(instance: any, property: string, isProperty?: boolean): void;
+    function $markCannotUse(instance: any, property: string, defaultVale: any): void;
 }
 declare module egret {
     /**
@@ -55,10 +51,10 @@ declare module egret {
      * @version Egret 2.4
      * @platform Web,Native
      */
-    function registerClass(classDefinition:any, className:string, interfaceNames?:string[]):void;
+    function registerClass(classDefinition: any, className: string, interfaceNames?: string[]): void;
 }
-declare function __extends(d:any, b:any):void;
-declare var __define:any;
+declare function __extends(d: any, b: any): void;
+declare var __define: any;
 declare module egret {
     /**
      * @language en_US
@@ -94,7 +90,7 @@ declare module egret {
      * @private
      * 哈希计数
      */
-    var $hashCount:number;
+    var $hashCount: number;
     /**
      * @language en_US
      * The HashObject class is the base class for all objects in the Egret framework.The HashObject
@@ -122,11 +118,10 @@ declare module egret {
          * @platform Web,Native
          */
         constructor();
-
         /**
          * @private
          */
-        $hashCode:number;
+        $hashCode: number;
         /**
          * @language en_US
          * a unique identification number assigned to this instance.
@@ -139,14 +134,14 @@ declare module egret {
          * @version Egret 2.4
          * @platform Web,Native
          */
-        hashCode:number;
+        hashCode: number;
     }
     /**
      * @private
      */
     interface AsyncCallback {
-        onSuccess: (data:any) => any;
-        onFail: (error:number, data:any) => any;
+        onSuccess: (data: any) => any;
+        onFail: (error: number, data: any) => any;
     }
 }
 declare module egret {
@@ -203,76 +198,63 @@ declare module egret {
          * @version Egret 2.4
          * @platform Web,Native
          */
-        constructor(target?:IEventDispatcher);
-
+        constructor(target?: IEventDispatcher);
         /**
          * @private
          */
-        $EventDispatcher:Object;
-
+        $EventDispatcher: Object;
         /**
          * @private
          *
          * @param useCapture
          */
-        $getEventMap(useCapture?:boolean):any;
-
+        $getEventMap(useCapture?: boolean): any;
         /**
          * @inheritDoc
          * @version Egret 2.4
          * @platform Web,Native
          */
-        addEventListener(type:string, listener:Function, thisObject:any, useCapture?:boolean, priority?:number):void;
-
+        addEventListener(type: string, listener: Function, thisObject: any, useCapture?: boolean, priority?: number): void;
         /**
          * @inheritDoc
          * @version Egret 2.4
          * @platform Web,Native
          */
-        once(type:string, listener:Function, thisObject:any, useCapture?:boolean, priority?:number):void;
-
+        once(type: string, listener: Function, thisObject: any, useCapture?: boolean, priority?: number): void;
         /**
          * @private
          */
-        $addListener(type:string, listener:Function, thisObject:any, useCapture?:boolean, priority?:number, dispatchOnce?:boolean):void;
-
-        $insertEventBin(list:Array<any>, type:string, listener:Function, thisObject:any, useCapture?:boolean, priority?:number, dispatchOnce?:boolean):boolean;
-
+        $addListener(type: string, listener: Function, thisObject: any, useCapture?: boolean, priority?: number, dispatchOnce?: boolean): void;
+        $insertEventBin(list: Array<any>, type: string, listener: Function, thisObject: any, useCapture?: boolean, priority?: number, dispatchOnce?: boolean): boolean;
         /**
          * @inheritDoc
          * @version Egret 2.4
          * @platform Web,Native
          */
-        removeEventListener(type:string, listener:Function, thisObject:any, useCapture?:boolean):void;
-
-        $removeEventBin(list:Array<any>, listener:Function, thisObject:any):boolean;
-
+        removeEventListener(type: string, listener: Function, thisObject: any, useCapture?: boolean): void;
+        $removeEventBin(list: Array<any>, listener: Function, thisObject: any): boolean;
         /**
          * @inheritDoc
          * @version Egret 2.4
          * @platform Web,Native
          */
-        hasEventListener(type:string):boolean;
-
+        hasEventListener(type: string): boolean;
         /**
          * @inheritDoc
          * @version Egret 2.4
          * @platform Web,Native
          */
-        willTrigger(type:string):boolean;
-
+        willTrigger(type: string): boolean;
         /**
          * @inheritDoc
          * @version Egret 2.4
          * @platform Web,Native
          */
-        dispatchEvent(event:Event):boolean;
-
+        dispatchEvent(event: Event): boolean;
         /**
          * @private
          */
-        $notifyListener(event:Event, capturePhase:boolean):boolean;
-
+        $notifyListener(event: Event, capturePhase: boolean): boolean;
         /**
          * @language en_US
          * Distribute a specified event parameters.
@@ -292,7 +274,7 @@ declare module egret {
          * @version Egret 2.4
          * @platform Web,Native
          */
-        dispatchEventWith(type:string, bubbles?:boolean, data?:any):boolean;
+        dispatchEventWith(type: string, bubbles?: boolean, data?: any): boolean;
     }
 }
 declare module egret.sys {
@@ -461,75 +443,64 @@ declare module egret {
          * @platform Web,Native
          */
         constructor();
-
         /**
          * @private
          */
-        $DisplayObject:Object;
+        $DisplayObject: Object;
         /**
          * @private
          */
-        $displayFlags:number;
-
+        $displayFlags: number;
         /**
          * @private
          * 添加一个标志量
          */
-        $setFlags(flags:number):void;
-
+        $setFlags(flags: number): void;
         /**
          * @private
          * 移除一个标志量
          */
-        $removeFlags(flags:number):void;
-
+        $removeFlags(flags: number): void;
         /**
          * @private
          * 沿着显示列表向上移除标志量，如果标志量没被设置过就停止移除。
          */
-        $removeFlagsUp(flags:number):void;
-
+        $removeFlagsUp(flags: number): void;
         /**
          * @private
          * 是否含有指定的所有标志量
          */
-        $hasFlags(flags:number):boolean;
-
+        $hasFlags(flags: number): boolean;
         /**
          * @private
          * 沿着显示列表向上传递标志量，如果标志量已经被设置过就停止传递。
          */
-        $propagateFlagsUp(flags:number):void;
-
+        $propagateFlagsUp(flags: number): void;
         /**
          * @private
          * 沿着显示列表向下传递标志量，非容器直接设置自身的flag，此方法会在 DisplayObjectContainer 中被覆盖。
          */
-        $propagateFlagsDown(flags:number):void;
-
+        $propagateFlagsDown(flags: number): void;
         /**
          * @private
          * 是否含有多个标志量其中之一。
          */
-        $hasAnyFlags(flags:number):boolean;
-
+        $hasAnyFlags(flags: number): boolean;
         /**
          * @private
          * 标记矩阵失效
          */
         private invalidateMatrix();
-
         /**
          * @private
          * 标记这个显示对象在父级容器的位置发生了改变。
          */
         private invalidatePosition();
-
         /**
          * @private
          * 能够含有子项的类将子项列表存储在这个属性里。
          */
-        $children:DisplayObject[];
+        $children: DisplayObject[];
         /**
          * @language en_US
          * Indicates the instance name of the DisplayObject. The object can be identified in the child list of its parent
@@ -544,11 +515,11 @@ declare module egret {
          * @version Egret 2.4
          * @platform Web,Native
          */
-        name:string;
+        name: string;
         /**
          * @private
          */
-        $parent:DisplayObjectContainer;
+        $parent: DisplayObjectContainer;
         /**
          * @language en_US
          * Indicates the DisplayObjectContainer object that contains this display object. Use the parent property to specify
@@ -563,35 +534,31 @@ declare module egret {
          * @version Egret 2.4
          * @platform Web,Native
          */
-        parent:DisplayObjectContainer;
-
+        parent: DisplayObjectContainer;
         /**
          * @private
          * 设置父级显示对象
          */
-        $setParent(parent:DisplayObjectContainer):boolean;
-
+        $setParent(parent: DisplayObjectContainer): boolean;
         /**
          * @private
          * 显示对象添加到舞台
          */
-        $onAddToStage(stage:Stage, nestLevel:number):void;
-
+        $onAddToStage(stage: Stage, nestLevel: number): void;
         /**
          * @private
          * 显示对象从舞台移除
          */
-        $onRemoveFromStage():void;
-
+        $onRemoveFromStage(): void;
         /**
          * @private
          */
-        $stage:Stage;
+        $stage: Stage;
         /**
          * @private
          * 这个对象在显示列表中的嵌套深度，舞台为1，它的子项为2，子项的子项为3，以此类推。当对象不在显示列表中时此属性值为0.
          */
-        $nestLevel:number;
+        $nestLevel: number;
         /**
          * @language en_US
          * The Stage of the display object. you can create and load multiple display objects into the display list, and
@@ -608,7 +575,7 @@ declare module egret {
          * @version Egret 2.4
          * @platform Web,Native
          */
-        stage:Stage;
+        stage: Stage;
         /**
          * @language en_US
          * A Matrix object containing values that alter the scaling, rotation, and translation of the display object.<br/>
@@ -636,32 +603,27 @@ declare module egret {
          * @version Egret 2.4
          * @platform Web,Native
          */
-        matrix:Matrix;
-
+        matrix: Matrix;
         /**
          * @private
          * 获取矩阵
          */
-        $getMatrix():Matrix;
-
+        $getMatrix(): Matrix;
         /**
          * @private
          * 设置矩阵
          */
-        $setMatrix(matrix:Matrix, useProperties?:boolean):boolean;
-
+        $setMatrix(matrix: Matrix, useProperties?: boolean): boolean;
         /**
          * @private
          * 获得这个显示对象以及它所有父级对象的连接矩阵。
          */
-        $getConcatenatedMatrix():Matrix;
-
+        $getConcatenatedMatrix(): Matrix;
         /**
          * @private
          * 获取链接矩阵
          */
-        $getInvertedConcatenatedMatrix():Matrix;
-
+        $getInvertedConcatenatedMatrix(): Matrix;
         /**
          * @language en_US
          * Indicates the x coordinate of the DisplayObject instance relative to the local coordinates of the parent
@@ -683,20 +645,17 @@ declare module egret {
          * @version Egret 2.4
          * @platform Web,Native
          */
-        x:number;
-
+        x: number;
         /**
          * @private
          * 获取x坐标
          */
-        $getX():number;
-
+        $getX(): number;
         /**
          * @private
          * 设置x坐标
          */
-        $setX(value:number):boolean;
-
+        $setX(value: number): boolean;
         /**
          * @language en_US
          * Indicates the y coordinate of the DisplayObject instance relative to the local coordinates of the parent
@@ -718,20 +677,17 @@ declare module egret {
          * @version Egret 2.4
          * @platform Web,Native
          */
-        y:number;
-
+        y: number;
         /**
          * @private
          * 获取y坐标
          */
-        $getY():number;
-
+        $getY(): number;
         /**
          * @private
          * 设置y坐标
          */
-        $setY(value:number):boolean;
-
+        $setY(value: number): boolean;
         /**
          * @language en_US
          * Indicates the horizontal scale (percentage) of the object as applied from the registration point. <br/>
@@ -748,21 +704,18 @@ declare module egret {
          * @version Egret 2.4
          * @platform Web,Native
          */
-        scaleX:number;
-
+        scaleX: number;
         /**
          * @private
          *
          * @returns
          */
-        $getScaleX():number;
-
+        $getScaleX(): number;
         /**
          * @private
          * 设置水平缩放值
          */
-        $setScaleX(value:number):boolean;
-
+        $setScaleX(value: number): boolean;
         /**
          * @language en_US
          * Indicates the vertical scale (percentage) of an object as applied from the registration point of the object.
@@ -778,21 +731,18 @@ declare module egret {
          * @version Egret 2.4
          * @platform Web,Native
          */
-        scaleY:number;
-
+        scaleY: number;
         /**
          * @private
          *
          * @returns
          */
-        $getScaleY():number;
-
+        $getScaleY(): number;
         /**
          * @private
          * 设置垂直缩放值
          */
-        $setScaleY(value:number):boolean;
-
+        $setScaleY(value: number): boolean;
         /**
          * @language en_US
          * Indicates the rotation of the DisplayObject instance, in degrees, from its original orientation. Values from
@@ -812,17 +762,14 @@ declare module egret {
          * @version Egret 2.4
          * @platform Web,Native
          */
-        rotation:number;
-
+        rotation: number;
         /**
          * @private
          *
          * @returns
          */
-        $getRotation():number;
-
-        $setRotation(value:number):boolean;
-
+        $getRotation(): number;
+        $setRotation(value: number): boolean;
         /**
          * 表示DisplayObject的x方向斜切
          * @member {number} egret.DisplayObject#skewX
@@ -830,15 +777,13 @@ declare module egret {
          * @version Egret 2.4
          * @platform Web,Native
          */
-        skewX:number;
-
+        skewX: number;
         /**
          * @private
          *
          * @param value
          */
-        $setSkewX(value:number):boolean;
-
+        $setSkewX(value: number): boolean;
         /**
          * 表示DisplayObject的y方向斜切
          * @member {number} egret.DisplayObject#skewY
@@ -846,15 +791,13 @@ declare module egret {
          * @version Egret 2.4
          * @platform Web,Native
          */
-        skewY:number;
-
+        skewY: number;
         /**
          * @private
          *
          * @param value
          */
-        $setSkewY(value:number):boolean;
-
+        $setSkewY(value: number): boolean;
         /**
          * @language en_US
          * Indicates the width of the display object, in pixels. The width is calculated based on the bounds of the content
@@ -868,27 +811,23 @@ declare module egret {
          * @version Egret 2.4
          * @platform Web,Native
          */
-        width:number;
-
+        width: number;
         /**
          * @private
          * 获取显示宽度
          */
-        $getWidth():number;
-
+        $getWidth(): number;
         /**
          * @private
          *
          * @returns
          */
-        $getExplicitWidth():number;
-
+        $getExplicitWidth(): number;
         /**
          * @private
          * 设置显示宽度
          */
-        $setWidth(value:number):boolean;
-
+        $setWidth(value: number): boolean;
         /**
          * @language en_US
          * Indicates the height of the display object, in pixels. The height is calculated based on the bounds of the
@@ -902,27 +841,23 @@ declare module egret {
          * @version Egret 2.4
          * @platform Web,Native
          */
-        height:number;
-
+        height: number;
         /**
          * @private
          * 获取显示高度
          */
-        $getHeight():number;
-
+        $getHeight(): number;
         /**
          * @private
          *
          * @returns
          */
-        $getExplicitHeight():number;
-
+        $getExplicitHeight(): number;
         /**
          * @private
          * 设置显示高度
          */
-        $setHeight(value:number):boolean;
-
+        $setHeight(value: number): boolean;
         /**
          * 测量宽度
          * @returns {number}
@@ -930,7 +865,7 @@ declare module egret {
          * @version Egret 2.4
          * @platform Web,Native
          */
-        measuredWidth:number;
+        measuredWidth: number;
         /**
          * 测量高度
          * @returns {number}
@@ -938,7 +873,7 @@ declare module egret {
          * @version Egret 2.4
          * @platform Web,Native
          */
-        measuredHeight:number;
+        measuredHeight: number;
         /**
          * @language en_US
          * X represents the object of which is the anchor.
@@ -953,16 +888,14 @@ declare module egret {
          * @version Egret 2.4
          * @platform Web,Native
          */
-        anchorOffsetX:number;
-
+        anchorOffsetX: number;
         /**
          * @private
          *
          * @param value
          * @returns
          */
-        $setAnchorOffsetX(value:number):boolean;
-
+        $setAnchorOffsetX(value: number): boolean;
         /**
          * @language en_US
          * Y represents the object of which is the anchor.
@@ -977,20 +910,18 @@ declare module egret {
          * @version Egret 2.4
          * @platform Web,Native
          */
-        anchorOffsetY:number;
-
+        anchorOffsetY: number;
         /**
          * @private
          *
          * @param value
          * @returns
          */
-        $setAnchorOffsetY(value:number):boolean;
-
+        $setAnchorOffsetY(value: number): boolean;
         /**
          * @private
          */
-        $visible:boolean;
+        $visible: boolean;
         /**
          * @language en_US
          * Whether or not the display object is visible. Display objects that are not visible are disabled. For example,
@@ -1006,15 +937,13 @@ declare module egret {
          * @version Egret 2.4
          * @platform Web,Native
          */
-        visible:boolean;
-
-        $setVisible(value:boolean):boolean;
-
+        visible: boolean;
+        $setVisible(value: boolean): boolean;
         /**
          * @private
          * cacheAsBitmap创建的缓存位图节点。
          */
-        $displayList:egret.sys.DisplayList;
+        $displayList: egret.sys.DisplayList;
         /**
          * @language en_US
          * If set to true, Egret runtime caches an internal bitmap representation of the display object. This caching can
@@ -1037,18 +966,16 @@ declare module egret {
          * @version Egret 2.4
          * @platform Web,Native
          */
-        cacheAsBitmap:boolean;
-
+        cacheAsBitmap: boolean;
         /**
          * @private
          * cacheAsBitmap属性改变
          */
-        $cacheAsBitmapChanged():void;
-
+        $cacheAsBitmapChanged(): void;
         /**
          * @private
          */
-        $alpha:number;
+        $alpha: number;
         /**
          * @language en_US
          * Indicates the alpha transparency value of the object specified. Valid values are 0 (fully transparent) to 1 (fully opaque).
@@ -1065,21 +992,18 @@ declare module egret {
          * @version Egret 2.4
          * @platform Web,Native
          */
-        alpha:number;
-
+        alpha: number;
         /**
          * @private
          *
          * @param value
          */
-        $setAlpha(value:number):boolean;
-
+        $setAlpha(value: number): boolean;
         /**
          * @private
          * 获取这个显示对象跟它所有父级透明度的乘积
          */
-        $getConcatenatedAlpha():number;
-
+        $getConcatenatedAlpha(): number;
         /**
          * @private
          * @language en_US
@@ -1096,8 +1020,8 @@ declare module egret {
          * @version Egret 2.5
          * @platform Web,Native
          */
-        static defaultTouchEnabled:boolean;
-        $touchEnabled:boolean;
+        static defaultTouchEnabled: boolean;
+        $touchEnabled: boolean;
         /**
          * @language en_US
          * Specifies whether this object receives touch or other user input. The default value is false, which means that
@@ -1120,24 +1044,21 @@ declare module egret {
          * @version Egret 2.4
          * @platform Web,Native
          */
-        touchEnabled:boolean;
-
+        touchEnabled: boolean;
         /**
          * @private
          *
          * @returns
          */
-        $getTouchEnabled():boolean;
-
+        $getTouchEnabled(): boolean;
         /**
          * @private
          */
-        $setTouchEnabled(value:boolean):boolean;
-
+        $setTouchEnabled(value: boolean): boolean;
         /**
          * @private
          */
-        $scrollRect:Rectangle;
+        $scrollRect: Rectangle;
         /**
          * @language en_US
          * The scroll rectangle bounds of the display object. The display object is cropped to the size defined by the rectangle,
@@ -1174,19 +1095,17 @@ declare module egret {
          * @version Egret 2.4
          * @platform Web,Native
          */
-        scrollRect:Rectangle;
-
+        scrollRect: Rectangle;
         /**
          * @private
          *
          * @param value
          */
-        $setScrollRect(value:Rectangle):boolean;
-
+        $setScrollRect(value: Rectangle): boolean;
         /**
          * @private
          */
-        $blendMode:number;
+        $blendMode: number;
         /**
          * @language en_US
          * A value from the BlendMode class that specifies which blend mode to use. Determine how a source image (new one)
@@ -1206,20 +1125,20 @@ declare module egret {
          * @version Egret 2.4
          * @platform Web,Native
          */
-        blendMode:string;
+        blendMode: string;
         /**
          * @private
          * 被遮罩的对象
          */
-        $maskedObject:DisplayObject;
+        $maskedObject: DisplayObject;
         /**
          * @private
          */
-        $mask:DisplayObject;
+        $mask: DisplayObject;
         /**
          * @private
          */
-        $maskRect:Rectangle;
+        $maskRect: Rectangle;
         /**
          * @language en_US
          * The calling display object is masked by the specified mask object. To ensure that masking works when the Stage
@@ -1249,10 +1168,8 @@ declare module egret {
          * @version Egret 2.4
          * @platform Web,Native
          */
-        mask:DisplayObject | Rectangle;
-
-        $setMaskRect(value:Rectangle):boolean;
-
+        mask: DisplayObject | Rectangle;
+        $setMaskRect(value: Rectangle): boolean;
         /**
          * @language en_US
          * Returns a rectangle that defines the area of the display object relative to the coordinate system of the targetCoordinateSpace object.
@@ -1272,8 +1189,7 @@ declare module egret {
          * @version Egret 2.4
          * @platform Web,Native
          */
-        getTransformedBounds(targetCoordinateSpace:DisplayObject, resultRect?:Rectangle):Rectangle;
-
+        getTransformedBounds(targetCoordinateSpace: DisplayObject, resultRect?: Rectangle): Rectangle;
         /**
          * @language en_US
          * Obtain measurement boundary of display object
@@ -1292,13 +1208,11 @@ declare module egret {
          * @version Egret 2.4
          * @platform Web,Native
          */
-        getBounds(resultRect?:Rectangle, calculateAnchor?:boolean):egret.Rectangle;
-
+        getBounds(resultRect?: Rectangle, calculateAnchor?: boolean): egret.Rectangle;
         /**
          * @private
          */
-        $getTransformedBounds(targetCoordinateSpace:DisplayObject, resultRect?:Rectangle):Rectangle;
-
+        $getTransformedBounds(targetCoordinateSpace: DisplayObject, resultRect?: Rectangle): Rectangle;
         /**
          * @language en_US
          * Converts the point object from the Stage (global) coordinates to the display object's (local) coordinates.
@@ -1320,8 +1234,7 @@ declare module egret {
          * @version Egret 2.4
          * @platform Web,Native
          */
-        globalToLocal(stageX?:number, stageY?:number, resultPoint?:Point):Point;
-
+        globalToLocal(stageX?: number, stageY?: number, resultPoint?: Point): Point;
         /**
          * @language en_US
          * Converts the point object from the display object's (local) coordinates to the Stage (global) coordinates.
@@ -1343,104 +1256,90 @@ declare module egret {
          * @version Egret 2.4
          * @platform Web,Native
          */
-        localToGlobal(localX?:number, localY?:number, resultPoint?:Point):Point;
-
+        localToGlobal(localX?: number, localY?: number, resultPoint?: Point): Point;
         /**
          * @private
          * 标记自身的测量尺寸失效
          */
-        $invalidateContentBounds():void;
-
+        $invalidateContentBounds(): void;
         /**
          * @private
          * 获取显示对象占用的矩形区域集合，通常包括自身绘制的测量区域，如果是容器，还包括所有子项占据的区域。
          */
-        $getOriginalBounds():Rectangle;
-
+        $getOriginalBounds(): Rectangle;
         /**
          * @private
          * 测量子项占用的矩形区域
          * @param bounds 测量结果存储在这个矩形对象内
          */
-        $measureChildBounds(bounds:Rectangle):void;
-
+        $measureChildBounds(bounds: Rectangle): void;
         /**
          * @private
          */
-        $getContentBounds():Rectangle;
-
+        $getContentBounds(): Rectangle;
         /**
          * @private
          * 测量自身占用的矩形区域，注意：此测量结果并不包括子项占据的区域。
          * @param bounds 测量结果存储在这个矩形对象内
          */
-        $measureContentBounds(bounds:Rectangle):void;
-
+        $measureContentBounds(bounds: Rectangle): void;
         /**
          * @private
          */
-        $parentDisplayList:egret.sys.DisplayList;
-
+        $parentDisplayList: egret.sys.DisplayList;
         /**
          * @private
          * 标记此显示对象需要重绘。此方法会触发自身的cacheAsBitmap重绘。如果只是矩阵改变，自身显示内容并不改变，应该调用$invalidateTransform().
          * @param notiryChildren 是否标记子项也需要重绘。传入false或不传入，将只标记自身需要重绘。注意:当子项cache时不会继续向下标记
          */
-        $invalidate(notifyChildren?:boolean):void;
-
+        $invalidate(notifyChildren?: boolean): void;
         /**
          * @private
          * 标记自身以及所有子项在父级中变换叠加的显示内容失效。此方法不会触发自身的cacheAsBitmap重绘。
          * 通常用于矩阵改变或从显示列表添加和移除时。若自身的显示内容已经改变需要重绘，应该调用$invalidate()。
          */
-        $invalidateTransform():void;
-
+        $invalidateTransform(): void;
         /**
          * @private
          * 是否需要重绘的标志，此属性在渲染时会被访问，所以单独声明一个直接的变量。
          */
-        $isDirty:boolean;
+        $isDirty: boolean;
         /**
          * @private
          * 这个对象在舞台上的整体透明度
          */
-        $renderAlpha:number;
+        $renderAlpha: number;
         /**
          * @private
          * 相对于显示列表根节点或位图缓存根节点上的矩阵对象
          */
-        $renderMatrix:Matrix;
+        $renderMatrix: Matrix;
         /**
          * @private
          * 此显示对象自身（不包括子项）在显示列表根节点或位图缓存根节点上的显示尺寸。
          */
-        $renderRegion:sys.Region;
-
+        $renderRegion: sys.Region;
         /**
          * @private
          * 更新对象在舞台上的显示区域和透明度,返回显示区域是否发生改变。
          */
-        $update(bounds?:Rectangle):boolean;
-
+        $update(bounds?: Rectangle): boolean;
         /**
          * @private
          * 获取相对于指定根节点的连接矩阵。
          * @param root 根节点显示对象
          * @param matrix 目标显示对象相对于舞台的完整连接矩阵。
          */
-        $getConcatenatedMatrixAt(root:DisplayObject, matrix:Matrix):void;
-
+        $getConcatenatedMatrixAt(root: DisplayObject, matrix: Matrix): void;
         /**
          * @private
          * 执行渲染,绘制自身到屏幕
          */
-        $render(context:sys.RenderContext):void;
-
+        $render(context: sys.RenderContext): void;
         /**
          * @private
          */
-        $hitTest(stageX:number, stageY:number):DisplayObject;
-
+        $hitTest(stageX: number, stageY: number): DisplayObject;
         /**
          * @language en_US
          * Calculate the display object to determine whether it overlaps or crosses with the points specified by the x and y parameters. The x and y parameters specify the points in the coordinates of the stage, rather than the points in the display object container that contains display objects (except the situation where the display object container is a stage).
@@ -1463,36 +1362,31 @@ declare module egret {
          * @version Egret 2.4
          * @platform Web,Native
          */
-        hitTestPoint(x:number, y:number, shapeFlag?:boolean):boolean;
-
+        hitTestPoint(x: number, y: number, shapeFlag?: boolean): boolean;
         /**
          * @private
          */
-        static $enterFrameCallBackList:DisplayObject[];
+        static $enterFrameCallBackList: DisplayObject[];
         /**
          * @private
          */
-        static $renderCallBackList:DisplayObject[];
-
+        static $renderCallBackList: DisplayObject[];
         /**
          * @private
          */
-        $addListener(type:string, listener:Function, thisObject:any, useCapture?:boolean, priority?:number, dispatchOnce?:boolean):void;
-
+        $addListener(type: string, listener: Function, thisObject: any, useCapture?: boolean, priority?: number, dispatchOnce?: boolean): void;
         /**
          * @inheritDoc
          * @version Egret 2.4
          * @platform Web,Native
          */
-        removeEventListener(type:string, listener:Function, thisObject:any, useCapture?:boolean):void;
-
+        removeEventListener(type: string, listener: Function, thisObject: any, useCapture?: boolean): void;
         /**
          * @inheritDoc
          * @version Egret 2.4
          * @platform Web,Native
          */
-        dispatchEvent(event:Event):boolean;
-
+        dispatchEvent(event: Event): boolean;
         /**
          * @private
          * 获取事件流列表。注意：Egret框架的事件流与Flash实现并不一致。
@@ -1507,19 +1401,17 @@ declare module egret {
          *
          * Egret最终采用了HTML里目标节点触发两次的事件流方式。
          */
-        $getPropagationList(target:DisplayObject):DisplayObject[];
-
+        $getPropagationList(target: DisplayObject): DisplayObject[];
         /**
          * @private
          */
-        $dispatchPropagationEvent(event:Event, list:DisplayObject[], targetIndex:number):void;
-
+        $dispatchPropagationEvent(event: Event, list: DisplayObject[], targetIndex: number): void;
         /**
          * @inheritDoc
          * @version Egret 2.4
          * @platform Web,Native
          */
-        willTrigger(type:string):boolean;
+        willTrigger(type: string): boolean;
     }
 }
 declare module egret.sys {
@@ -1587,25 +1479,21 @@ declare module egret {
          * @version Egret 2.4
          * @platform Web,Native
          */
-        constructor(value?:BitmapData | Texture);
-
+        constructor(value?: BitmapData | Texture);
         /**
          * @private
          */
-        $Bitmap:Object;
-
+        $Bitmap: Object;
         /**
          * @private
          * 显示对象添加到舞台
          */
-        $onAddToStage(stage:Stage, nestLevel:number):void;
-
+        $onAddToStage(stage: Stage, nestLevel: number): void;
         /**
          * @private
          * 显示对象从舞台移除
          */
-        $onRemoveFromStage():void;
-
+        $onRemoveFromStage(): void;
         /**
          * @language en_US
          * The BitmapData object being referenced.
@@ -1620,7 +1508,7 @@ declare module egret {
          * @version Egret 2.4
          * @platform Web,Native
          */
-        bitmapData:BitmapData;
+        bitmapData: BitmapData;
         /**
          * @language en_US
          * The Texture object being referenced.
@@ -1635,27 +1523,23 @@ declare module egret {
          * @version Egret 2.4
          * @platform Web,Native
          */
-        texture:Texture;
-
+        texture: Texture;
         /**
          * @private
          */
-        $setBitmapData(value:BitmapData | Texture):boolean;
-
+        $setBitmapData(value: BitmapData | Texture): boolean;
         /**
          * @private
          */
-        $refreshImageData():void;
-
+        $refreshImageData(): void;
         /**
          * @private
          */
         private setImageData(image, clipX, clipY, clipWidth, clipHeight, offsetX, offsetY, width, height);
-
         /**
          * @private
          */
-        $scale9Grid:egret.Rectangle;
+        $scale9Grid: egret.Rectangle;
         /**
          * @language en_US
          * Represent a Rectangle Area that the 9 scale area of Image.
@@ -1673,11 +1557,11 @@ declare module egret {
          * @version Egret 2.4
          * @platform Web,Native
          */
-        scale9Grid:egret.Rectangle;
+        scale9Grid: egret.Rectangle;
         /**
          * @private
          */
-        $fillMode:string;
+        $fillMode: string;
         /**
          * @language en_US
          * Determines how the bitmap fills in the dimensions.
@@ -1704,10 +1588,8 @@ declare module egret {
          * @version eui 1.0
          * @platform Web
          */
-        fillMode:string;
-
-        $setFillMode(value:string):boolean;
-
+        fillMode: string;
+        $setFillMode(value: string): boolean;
         /**
          * @language en_US
          * The default value of whether or not is smoothed when scaled.
@@ -1724,7 +1606,7 @@ declare module egret {
          * @version Egret 3.0
          * @platform Web
          */
-        static defaultSmoothing:boolean;
+        static defaultSmoothing: boolean;
         /**
          * @language en_US
          * Whether or not the bitmap is smoothed when scaled.
@@ -1737,44 +1619,37 @@ declare module egret {
          * @version Egret 2.4
          * @platform Web
          */
-        smoothing:boolean;
-
+        smoothing: boolean;
         /**
          * @private
          *
          * @param value
          */
-        $setWidth(value:number):boolean;
-
+        $setWidth(value: number): boolean;
         /**
          * @private
          *
          * @param value
          */
-        $setHeight(value:number):boolean;
-
+        $setHeight(value: number): boolean;
         /**
          * @private
          * 获取显示宽度
          */
-        $getWidth():number;
-
+        $getWidth(): number;
         /**
          * @private
          * 获取显示宽度
          */
-        $getHeight():number;
-
+        $getHeight(): number;
         /**
          * @private
          */
-        $measureContentBounds(bounds:Rectangle):void;
-
+        $measureContentBounds(bounds: Rectangle): void;
         /**
          * @private
          */
-        $render(context:sys.RenderContext):void;
-
+        $render(context: sys.RenderContext): void;
         private _pixelHitTest;
         /**
          * @language en_US
@@ -1794,15 +1669,12 @@ declare module egret {
          * @version Egret 2.4
          * @platform Web,Native
          */
-        pixelHitTest:boolean;
-
-        $hitTest(stageX:number, stageY:number):DisplayObject;
-
+        pixelHitTest: boolean;
+        $hitTest(stageX: number, stageY: number): DisplayObject;
         /**
          * @private
          */
         private hitTestPixel(stageX, stageY);
-
         /**
          * @private
          *
@@ -1814,8 +1686,7 @@ declare module egret {
          * @param fillMode
          * @param smoothing
          */
-        static $drawImage(context:sys.RenderContext, image:any, clipX:number, clipY:number, clipWidth:number, clipHeight:number, offsetX:number, offsetY:number, textureWidth:number, textureHeight:number, destW:number, destH:number, scale9Grid:egret.Rectangle, fillMode:string, smoothing:boolean):void;
-
+        static $drawImage(context: sys.RenderContext, image: any, clipX: number, clipY: number, clipWidth: number, clipHeight: number, offsetX: number, offsetY: number, textureWidth: number, textureHeight: number, destW: number, destH: number, scale9Grid: egret.Rectangle, fillMode: string, smoothing: boolean): void;
         /**
          * @private
          * 绘制九宫格位图
@@ -1911,7 +1782,7 @@ declare module egret {
          * @version Egret 2.4
          * @platform Web
          */
-        static REPEAT:string;
+        static REPEAT: string;
         /**
          * @language en_US
          * Scale bitmap fill to fill area.
@@ -1924,7 +1795,7 @@ declare module egret {
          * @version Egret 2.4
          * @platform Web,Native
          */
-        static SCALE:string;
+        static SCALE: string;
         /**
          * @language en_US
          * The bitmap ends at the edge of the region.
@@ -1937,7 +1808,7 @@ declare module egret {
          * @version Egret 2.4
          * @platform Web,Native
          */
-        static CLIP:string;
+        static CLIP: string;
     }
 }
 declare module egret {
@@ -1972,7 +1843,7 @@ declare module egret {
          * @version Egret 2.4
          * @platform Web,Native
          */
-        static NORMAL:string;
+        static NORMAL: string;
         /**
          * @language en_US
          * Adds the values of the constituent colors of the display object to the colors of its background, applying a
@@ -1991,7 +1862,7 @@ declare module egret {
          * @version Egret 2.4
          * @platform Web,Native
          */
-        static ADD:string;
+        static ADD: string;
         /**
          * @language en_US
          * Erases the background based on the alpha value of the display object.
@@ -2004,7 +1875,7 @@ declare module egret {
          * @version Egret 2.4
          * @platform Web,Native
          */
-        static ERASE:string;
+        static ERASE: string;
     }
 }
 declare module egret.sys {
@@ -2012,13 +1883,12 @@ declare module egret.sys {
      * @private
      * 转换 blendMode 字符串为数字。
      */
-    function blendModeToNumber(blendMode:string):number;
-
+    function blendModeToNumber(blendMode: string): number;
     /**
      * @private
      * 转换数字为 blendMode 字符串。
      */
-    function numberToBlendMode(blendMode:number):string;
+    function numberToBlendMode(blendMode: number): string;
 }
 declare module egret {
     /**
@@ -2039,11 +1909,11 @@ declare module egret {
         /**
          * @private
          */
-        static $EVENT_ADD_TO_STAGE_LIST:DisplayObject[];
+        static $EVENT_ADD_TO_STAGE_LIST: DisplayObject[];
         /**
          * @private
          */
-        static $EVENT_REMOVE_FROM_STAGE_LIST:DisplayObject[];
+        static $EVENT_REMOVE_FROM_STAGE_LIST: DisplayObject[];
         /**
          * @language en_US
          * Creates a new DisplayObjectContainer instance.
@@ -2057,12 +1927,10 @@ declare module egret {
          * @platform Web,Native
          */
         constructor();
-
         /**
          * @private
          */
-        $propagateFlagsDown(flags:sys.DisplayObjectFlags):void;
-
+        $propagateFlagsDown(flags: sys.DisplayObjectFlags): void;
         /**
          * @language en_US
          * Returns the number of children of this object.
@@ -2075,7 +1943,7 @@ declare module egret {
          * @version Egret 2.4
          * @platform Web,Native
          */
-        numChildren:number;
+        numChildren: number;
         /**
          * @language en_US
          * Adds a child DisplayObject instance to this DisplayObjectContainer instance. The child is added to the front
@@ -2098,8 +1966,7 @@ declare module egret {
          * @version Egret 2.4
          * @platform Web,Native
          */
-        addChild(child:DisplayObject):DisplayObject;
-
+        addChild(child: DisplayObject): DisplayObject;
         /**
          * @language en_US
          * Adds a child DisplayObject instance to this DisplayObjectContainer instance. The child is added at the index position
@@ -2125,13 +1992,11 @@ declare module egret {
          * @version Egret 2.4
          * @platform Web,Native
          */
-        addChildAt(child:DisplayObject, index:number):DisplayObject;
-
+        addChildAt(child: DisplayObject, index: number): DisplayObject;
         /**
          * @private
          */
-        $doAddChild(child:DisplayObject, index:number, notifyListeners?:boolean):DisplayObject;
-
+        $doAddChild(child: DisplayObject, index: number, notifyListeners?: boolean): DisplayObject;
         /**
          * @language en_US
          * Determines whether the specified display object is a child of the DisplayObjectContainer instance or the instance
@@ -2151,8 +2016,7 @@ declare module egret {
          * @version Egret 2.4
          * @platform Web,Native
          */
-        contains(child:DisplayObject):boolean;
-
+        contains(child: DisplayObject): boolean;
         /**
          * @language en_US
          * Returns the child display object instance that exists at the specified index.
@@ -2171,8 +2035,7 @@ declare module egret {
          * @version Egret 2.4
          * @platform Web,Native
          */
-        getChildAt(index:number):DisplayObject;
-
+        getChildAt(index: number): DisplayObject;
         /**
          * @language en_US
          * Returns the index position of a child DisplayObject instance.
@@ -2189,8 +2052,7 @@ declare module egret {
          * @version Egret 2.4
          * @platform Web,Native
          */
-        getChildIndex(child:egret.DisplayObject):number;
-
+        getChildIndex(child: egret.DisplayObject): number;
         /**
          * @language en_US
          * Returns the child display object that exists with the specified name. If more that one child display object has
@@ -2215,8 +2077,7 @@ declare module egret {
          * @version Egret 2.4
          * @platform Web,Native
          */
-        getChildByName(name:string):DisplayObject;
-
+        getChildByName(name: string): DisplayObject;
         /**
          * @language en_US
          * Removes the specified child DisplayObject instance from the child list of the DisplayObjectContainer instance.
@@ -2239,8 +2100,7 @@ declare module egret {
          * @version Egret 2.4
          * @platform Web,Native
          */
-        removeChild(child:DisplayObject):DisplayObject;
-
+        removeChild(child: DisplayObject): DisplayObject;
         /**
          * @language en_US
          * Removes a child DisplayObject from the specified index position in the child list of the DisplayObjectContainer.
@@ -2262,13 +2122,11 @@ declare module egret {
          * @version Egret 2.4
          * @platform Web,Native
          */
-        removeChildAt(index:number):DisplayObject;
-
+        removeChildAt(index: number): DisplayObject;
         /**
          * @private
          */
-        $doRemoveChild(index:number, notifyListeners?:boolean):DisplayObject;
-
+        $doRemoveChild(index: number, notifyListeners?: boolean): DisplayObject;
         /**
          * @language en_US
          * Changes the position of an existing child in the display object container. This affects the layering of child objects.
@@ -2289,13 +2147,11 @@ declare module egret {
          * @version Egret 2.4
          * @platform Web,Native
          */
-        setChildIndex(child:DisplayObject, index:number):void;
-
+        setChildIndex(child: DisplayObject, index: number): void;
         /**
          * @private
          */
         private doSetChildIndex(child, index);
-
         /**
          * @language en_US
          * Swaps the z-order (front-to-back order) of the child objects at the two specified index positions in the child
@@ -2315,8 +2171,7 @@ declare module egret {
          * @version Egret 2.4
          * @platform Web,Native
          */
-        swapChildrenAt(index1:number, index2:number):void;
-
+        swapChildrenAt(index1: number, index2: number): void;
         /**
          * @language en_US
          * Swaps the z-order (front-to-back order) of the two specified child objects. All other child objects in the
@@ -2336,13 +2191,11 @@ declare module egret {
          * @version Egret 2.4
          * @platform Web,Native
          */
-        swapChildren(child1:DisplayObject, child2:DisplayObject):void;
-
+        swapChildren(child1: DisplayObject, child2: DisplayObject): void;
         /**
          * @private
          */
         private doSwapChildrenAt(index1, index2);
-
         /**
          * @language en_US
          * Removes all child DisplayObject instances from the child list of the DisplayObjectContainer instance. The parent
@@ -2360,39 +2213,33 @@ declare module egret {
          * @version Egret 2.4
          * @platform Web,Native
          */
-        removeChildren():void;
-
+        removeChildren(): void;
         /**
          * @private
          * 一个子项被添加到容器内，此方法不仅在操作addChild()时会被回调，在操作setChildIndex()或swapChildren时也会回调。
          * 当子项索引发生改变时，会先触发$childRemoved()方法，然后触发$childAdded()方法。
          */
-        $childAdded(child:DisplayObject, index:number):void;
-
+        $childAdded(child: DisplayObject, index: number): void;
         /**
          * @private
          * 一个子项从容器内移除，此方法不仅在操作removeChild()时会被回调，在操作setChildIndex()或swapChildren时也会回调。
          * 当子项索引发生改变时，会先触发$childRemoved()方法，然后触发$childAdded()方法。
          */
-        $childRemoved(child:DisplayObject, index:number):void;
-
+        $childRemoved(child: DisplayObject, index: number): void;
         /**
          * @private
          */
-        $onAddToStage(stage:Stage, nestLevel:number):void;
-
+        $onAddToStage(stage: Stage, nestLevel: number): void;
         /**
          * @private
          *
          */
-        $onRemoveFromStage():void;
-
+        $onRemoveFromStage(): void;
         /**
          * @private
          */
-        $measureChildBounds(bounds:Rectangle):void;
-
-        $touchChildren:boolean;
+        $measureChildBounds(bounds: Rectangle): void;
+        $touchChildren: boolean;
         /**
          * @language en_US
          * Determines whether or not the children of the object are touch, or user input device, enabled. If an object is
@@ -2408,60 +2255,50 @@ declare module egret {
          * @version Egret 2.4
          * @platform Web,Native
          */
-        touchChildren:boolean;
-
+        touchChildren: boolean;
         /**
          * @private
          *
          * @returns
          */
-        $getTouchChildren():boolean;
-
+        $getTouchChildren(): boolean;
         /**
          * @private
          */
-        $setTouchChildren(value:boolean):boolean;
-
+        $setTouchChildren(value: boolean): boolean;
         /**
          * @private
          * 标记此显示对象需要重绘。此方法会触发自身的cacheAsBitmap重绘。如果只是矩阵改变，自身显示内容并不改变，应该调用$invalidateTransform().
          * @param notiryChildren 是否标记子项也需要重绘。传入false或不传入，将只标记自身需要重绘。通常只有alpha属性改变会需要通知子项重绘。
          */
-        $invalidate(notifyChildren?:boolean):void;
-
+        $invalidate(notifyChildren?: boolean): void;
         /**
          * @private
          * 标记自身以及所有子项在父级中变换叠加的显示内容失效。此方法不会触发自身的cacheAsBitmap重绘。
          * 通常用于矩阵改变或从显示列表添加和移除时。若自身的显示内容已经改变需要重绘，应该调用$invalidate()。
          */
-        $invalidateTransform():void;
-
+        $invalidateTransform(): void;
         /**
          * @private
          */
         private markChildDirty(child, parentCache);
-
         /**
          * @private
          */
-        $cacheAsBitmapChanged():void;
-
+        $cacheAsBitmapChanged(): void;
         /**
          * @private
          */
         private assignParentDisplayList(child, parentCache, newParent);
-
         /**
          * @private
          */
-        $hitTest(stageX:number, stageY:number):DisplayObject;
-
+        $hitTest(stageX: number, stageY: number): DisplayObject;
         /**
          * @private
          * 子项有可能会被cache而导致标记失效。重写此方法,以便在赋值时对子项深度遍历标记脏区域
          */
-        $setAlpha(value:number):boolean;
-
+        $setAlpha(value: number): boolean;
         private $invalidateAllChildren();
     }
 }
@@ -2471,12 +2308,12 @@ declare module egret {
          * 用于指定线性渐变填充的值
          * @method egret.GradientType.LINEAR
          */
-        static LINEAR:string;
+        static LINEAR: string;
         /**
          * 用于指定放射状渐变填充的值
          * @method egret.GradientType.RADIAL
          */
-        static RADIAL:string;
+        static RADIAL: string;
     }
 }
 declare module egret {
@@ -2502,7 +2339,7 @@ declare module egret {
         /**
          * @private
          */
-        $renderContext:GraphicsRenderContext;
+        $renderContext: GraphicsRenderContext;
         /**
          * @private
          */
@@ -2514,7 +2351,7 @@ declare module egret {
         /**
          * @private
          */
-        _dirty:boolean;
+        _dirty: boolean;
         /**
          * @private
          */
@@ -2526,29 +2363,24 @@ declare module egret {
         /**
          * @private
          */
-        graphicsRenderContext:GraphicsRenderContext;
-
+        graphicsRenderContext: GraphicsRenderContext;
         /**
          * @version Egret 2.4
          * @platform Web,Native
          */
         constructor();
-
         /**
          * @private
          */
-        $hitTest(stageX:number, stageY:number):DisplayObject;
-
+        $hitTest(stageX: number, stageY: number): DisplayObject;
         /**
          * @private
          */
-        $measureContentBounds(bounds:Rectangle):void;
-
+        $measureContentBounds(bounds: Rectangle): void;
         /**
          * @private
          */
-        $render(context:sys.RenderContext):void;
-
+        $render(context: sys.RenderContext): void;
         /**
          * @language en_US
          * Specify a simple single color fill that will be used for subsequent calls to other Graphics methods (for example, lineTo() and drawCircle()) when drawing.
@@ -2567,8 +2399,7 @@ declare module egret {
          * @version Egret 2.4
          * @platform Web,Native
          */
-        beginFill(color:number, alpha?:number):void;
-
+        beginFill(color: number, alpha?: number): void;
         /**
          * @private
          *
@@ -2576,15 +2407,13 @@ declare module egret {
          * @param alpha
          * @returns
          */
-        _parseColor(color:number, alpha:number):string;
-
+        _parseColor(color: number, alpha: number): string;
         /**
          * @private
          *
          * @param colorStr
          */
         private _setStyle(colorStr);
-
         /**
          * @language en_US
          * Specifies a gradient fill used by subsequent calls to other Graphics methods (such as lineTo() or drawCircle()) for the object.
@@ -2611,10 +2440,8 @@ declare module egret {
          * @platform Web
          * @version Egret 2.4
          */
-        beginGradientFill(type:string, colors:Array<number>, alphas:Array<number>, ratios:Array<number>, matrix?:egret.Matrix):void;
-
+        beginGradientFill(type: string, colors: Array<number>, alphas: Array<number>, ratios: Array<number>, matrix?: egret.Matrix): void;
         private getGradient(type, colors, alphas, ratios, matrix);
-
         /**
          * @language en_US
          * Draw a rectangle
@@ -2635,8 +2462,7 @@ declare module egret {
          * @version Egret 2.4
          * @platform Web,Native
          */
-        drawRect(x:number, y:number, width:number, height:number):void;
-
+        drawRect(x: number, y: number, width: number, height: number): void;
         /**
          * @language en_US
          * Draw a circle.
@@ -2655,8 +2481,7 @@ declare module egret {
          * @version Egret 2.4
          * @platform Web,Native
          */
-        drawCircle(x:number, y:number, r:number):void;
-
+        drawCircle(x: number, y: number, r: number): void;
         /**
          * @language en_US
          * Draw a rectangle with rounded corners.
@@ -2681,8 +2506,7 @@ declare module egret {
          * @version Egret 2.4
          * @platform Web,Native
          */
-        drawRoundRect(x:number, y:number, width:number, height:number, ellipseWidth:number, ellipseHeight?:number):void;
-
+        drawRoundRect(x: number, y: number, width: number, height: number, ellipseWidth: number, ellipseHeight?: number): void;
         /**
          * @language en_US
          * Draw an ellipse.
@@ -2703,8 +2527,7 @@ declare module egret {
          * @version Egret 2.4
          * @platform Web,Native
          */
-        drawEllipse(x:number, y:number, width:number, height:number):void;
-
+        drawEllipse(x: number, y: number, width: number, height: number): void;
         /**
          * @language en_US
          * Specify a line style that will be used for subsequent calls to Graphics methods such as lineTo() and drawCircle().
@@ -2733,8 +2556,7 @@ declare module egret {
          * @version Egret 2.4
          * @platform Web,Native
          */
-        lineStyle(thickness?:number, color?:number, alpha?:number, pixelHinting?:boolean, scaleMode?:string, caps?:string, joints?:string, miterLimit?:number):void;
-
+        lineStyle(thickness?: number, color?: number, alpha?: number, pixelHinting?: boolean, scaleMode?: string, caps?: string, joints?: string, miterLimit?: number): void;
         /**
          * @language en_US
          * Draw a straight line from the current drawing position to (x, y) using the current line style; the current drawing position is then set to (x, y).
@@ -2751,8 +2573,7 @@ declare module egret {
          * @version Egret 2.4
          * @platform Web,Native
          */
-        lineTo(x:number, y:number):void;
-
+        lineTo(x: number, y: number): void;
         /**
          * @language en_US
          * Draw a quadratic Bezier curve from the current drawing position to (anchorX, anchorY) using the current line style according to the control points specified by (controlX, controlY). The current drawing position is then set to (anchorX, anchorY).
@@ -2777,8 +2598,7 @@ declare module egret {
          * @version Egret 2.4
          * @platform Web,Native
          */
-        curveTo(controlX:number, controlY:number, anchorX:number, anchorY:number):void;
-
+        curveTo(controlX: number, controlY: number, anchorX: number, anchorY: number): void;
         /**
          * @language en_US
          * adds an arc to the path which is centered at (x, y) position with radius r starting at startAngle and ending
@@ -2804,8 +2624,7 @@ declare module egret {
          * @version Egret 2.4
          * @platform Web,Native
          */
-        drawArc(x:number, y:number, radius:number, startAngle:number, endAngle:number, anticlockwise?:boolean):void;
-
+        drawArc(x: number, y: number, radius: number, startAngle: number, endAngle: number, anticlockwise?: boolean): void;
         /**
          * @language en_US
          * Draws a cubic Bezier curve from the current drawing position to the specified anchor. Cubic Bezier curves consist of two anchor points and two control points. The curve interpolates the two anchor points and two control points to the curve.
@@ -2830,8 +2649,7 @@ declare module egret {
          * @version Egret 2.4
          * @platform Web,Native
          */
-        cubicCurveTo(controlX1:number, controlY1:number, controlX2:number, controlY2:number, anchorX:number, anchorY:number):void;
-
+        cubicCurveTo(controlX1: number, controlY1: number, controlX2: number, controlY2: number, anchorX: number, anchorY: number): void;
         /**
          * @language en_US
          * Move the current drawing position to (x, y). If any of these parameters is missed, calling this method will fail and the current drawing position keeps unchanged.
@@ -2848,8 +2666,7 @@ declare module egret {
          * @version Egret 2.4
          * @platform Web,Native
          */
-        moveTo(x:number, y:number):void;
-
+        moveTo(x: number, y: number): void;
         /**
          * @language en_US
          * Clear graphics that are drawn to this Graphics object, and reset fill and line style settings.
@@ -2862,8 +2679,7 @@ declare module egret {
          * @version Egret 2.4
          * @platform Web,Native
          */
-        clear():void;
-
+        clear(): void;
         /**
          * @language en_US
          * Apply fill to the lines and curves added after the previous calling to the beginFill() method.
@@ -2876,26 +2692,22 @@ declare module egret {
          * @version Egret 2.4
          * @platform Web,Native
          */
-        endFill():void;
-
+        endFill(): void;
         /**
          * @private
          *
          */
         private _createEndFillCommand();
-
         /**
          * @private
          *
          */
         private _fill();
-
         /**
          * @private
          *
          */
         private _createEndLineCommand();
-
         /**
          * @private
          */
@@ -2958,7 +2770,7 @@ declare module egret {
          * @version Egret 2.4
          * @platform Web,Native
          */
-        addColorStop(offset:number, color:string): void;
+        addColorStop(offset: number, color: string): void;
     }
 }
 declare module egret {
@@ -3028,8 +2840,7 @@ declare module egret {
          * @version Egret 2.4
          * @platform Web,Native
          */
-        static createRadialGradient(x0:number, y0:number, r0:number, x1:number, y1:number, r1:number):GraphicsGradient;
-
+        static createRadialGradient(x0: number, y0: number, r0: number, x1: number, y1: number, r1: number): GraphicsGradient;
         /**
          * @language en_US
          * reates a gradient along the line given by the coordinates represented by the parameters.This method returns a linear GraphicsGradient.
@@ -3052,8 +2863,7 @@ declare module egret {
          * @version Egret 2.4
          * @platform Web,Native
          */
-        static createLinearGradient(x0:number, y0:number, x1:number, y1:number):GraphicsGradient;
-
+        static createLinearGradient(x0: number, y0: number, x1: number, y1: number): GraphicsGradient;
         /**
          * @language en_US
          * creates a pattern using the specified image (BitmapData). It repeats the source in the directions specified by
@@ -3078,15 +2888,13 @@ declare module egret {
          * @version Egret 2.4
          * @platform Web,Native
          */
-        static createPattern(bitmapData:BitmapData, repetition:string):GraphicsPattern;
-
+        static createPattern(bitmapData: BitmapData, repetition: string): GraphicsPattern;
         /**
          * @private
          * @version Egret 2.4
          * @platform Web,Native
          */
         constructor();
-
         /**
          * @private
          */
@@ -3105,7 +2913,7 @@ declare module egret {
          * @version Egret 2.4
          * @platform Web,Native
          */
-        fillStyle:any;
+        fillStyle: any;
         /**
          * @private
          */
@@ -3129,7 +2937,7 @@ declare module egret {
          * @version Egret 2.4
          * @platform Web,Native
          */
-        lineWidth:number;
+        lineWidth: number;
         /**
          * @private
          */
@@ -3158,7 +2966,7 @@ declare module egret {
          * @version Egret 2.4
          * @platform Web,Native
          */
-        lineCap:string;
+        lineCap: string;
         /**
          * @private
          */
@@ -3177,7 +2985,7 @@ declare module egret {
          * @version Egret 2.4
          * @platform Web,Native
          */
-        strokeStyle:any;
+        strokeStyle: any;
         /**
          * @private
          */
@@ -3209,7 +3017,7 @@ declare module egret {
          * @version Egret 2.4
          * @platform Web,Native
          */
-        lineJoin:string;
+        lineJoin: string;
         /**
          * @private
          */
@@ -3228,8 +3036,7 @@ declare module egret {
          * @version Egret 2.4
          * @platform Web,Native
          */
-        miterLimit:number;
-
+        miterLimit: number;
         /**
          *
          * @param x0
@@ -3237,8 +3044,7 @@ declare module egret {
          * @version Egret 2.4
          * @platform Web,Native
          */
-        scale(x0:number, y0:number):void;
-
+        scale(x0: number, y0: number): void;
         /**
          * @language en_US
          * adds an arc to the path which is centered at (x, y) position with radius r starting at startAngle and ending
@@ -3264,14 +3070,12 @@ declare module egret {
          * @version Egret 2.4
          * @platform Web,Native
          */
-        arc(x:number, y:number, radius:number, startAngle:number, endAngle:number, anticlockwise?:boolean):void;
-
+        arc(x: number, y: number, radius: number, startAngle: number, endAngle: number, anticlockwise?: boolean): void;
         /**
          * @private
          * 测量圆弧的矩形大小
          */
         private arcBounds(x, y, radius, startAngle, endAngle);
-
         /**
          * @language en_US
          * adds a quadratic Bézier curve to the path. It requires two points. The first point is a control point and the
@@ -3294,8 +3098,7 @@ declare module egret {
          * @version Egret 2.4
          * @platform Web,Native
          */
-        quadraticCurveTo(cpx:number, cpy:number, x:number, y:number):void;
-
+        quadraticCurveTo(cpx: number, cpy: number, x: number, y: number): void;
         /**
          * @language en_US
          * adds a cubic Bézier curve to the path. It requires three points. The first two points are control points and
@@ -3323,8 +3126,7 @@ declare module egret {
          * @version Egret 2.4
          * @platform Web,Native
          */
-        bezierCurveTo(cp1x:number, cp1y:number, cp2x:number, cp2y:number, x:number, y:number):void;
-
+        bezierCurveTo(cp1x: number, cp1y: number, cp2x: number, cp2y: number, x: number, y: number): void;
         /**
          * @language en_US
          * connects the last point in the sub-path to the x, y coordinates with a straight line
@@ -3341,8 +3143,7 @@ declare module egret {
          * @version Egret 2.4
          * @platform Web,Native
          */
-        lineTo(x:number, y:number):void;
-
+        lineTo(x: number, y: number): void;
         /**
          * @language en_US
          * fills the current or given path with the current fill style using the non-zero or even-odd winding rule.
@@ -3361,8 +3162,7 @@ declare module egret {
          * @version Egret 2.4
          * @platform Web,Native
          */
-        fill(fillRule?:string):void;
-
+        fill(fillRule?: string): void;
         /**
          * @language en_US
          * causes the point of the pen to move back to the start of the current sub-path. It tries to add a straight line
@@ -3377,8 +3177,7 @@ declare module egret {
          * @version Egret 2.4
          * @platform Web,Native
          */
-        closePath():void;
-
+        closePath(): void;
         /**
          * @language en_US
          * creates a path for a rectangle at position (x, y) with a size that is determined by width and height. Those
@@ -3400,8 +3199,7 @@ declare module egret {
          * @version Egret 2.4
          * @platform Web,Native
          */
-        rect(x:number, y:number, width:number, height:number):void;
-
+        rect(x: number, y: number, width: number, height: number): void;
         /**
          * @language en_US
          * moves the starting point of a new sub-path to the (x, y) coordinates.
@@ -3418,8 +3216,7 @@ declare module egret {
          * @version Egret 2.4
          * @platform Web,Native
          */
-        moveTo(x:number, y:number):void;
-
+        moveTo(x: number, y: number): void;
         /**
          * @language en_US
          * draws a filled rectangle at (x, y) position whose size is determined by width and height and whose style is
@@ -3441,8 +3238,7 @@ declare module egret {
          * @version Egret 2.4
          * @platform Web,Native
          */
-        fillRect(x:number, y:number, width:number, height:number):void;
-
+        fillRect(x: number, y: number, width: number, height: number): void;
         /**
          * @language en_US
          * strokes the current or given path with the current stroke style.
@@ -3455,8 +3251,7 @@ declare module egret {
          * @version Egret 2.4
          * @platform Web,Native
          */
-        stroke():void;
-
+        stroke(): void;
         /**
          * @language en_US
          * paints a rectangle which has a starting point at (x, y) and has a w width and an h height onto the surface,
@@ -3478,8 +3273,7 @@ declare module egret {
          * @version Egret 2.4
          * @platform Web,Native
          */
-        strokeRect(x:number, y:number, width:number, height:number):void;
-
+        strokeRect(x: number, y: number, width: number, height: number): void;
         /**
          * @language en_US
          * starts a new path by emptying the list of sub-paths. Call this method when you want to create a new path.
@@ -3492,8 +3286,7 @@ declare module egret {
          * @version Egret 2.4
          * @platform Web,Native
          */
-        beginPath():void;
-
+        beginPath(): void;
         /**
          * @language en_US
          * adds an arc to the path with the given control points and radius, connected to the previous point by a straight line.
@@ -3516,8 +3309,7 @@ declare module egret {
          * @version Egret 2.4
          * @platform Web,Native
          */
-        arcTo(x1:number, y1:number, x2:number, y2:number, radius:number):void;
-
+        arcTo(x1: number, y1: number, x2: number, y2: number, radius: number): void;
         /**
          * @language en_US
          * Clears the graphics that were drawn to this Graphics object, and resets fill and line style settings.
@@ -3530,8 +3322,7 @@ declare module egret {
          * @version Egret 2.4
          * @platform Web,Native
          */
-        clear():void;
-
+        clear(): void;
         /**
          * @private
          */
@@ -3572,48 +3363,41 @@ declare module egret {
          * @private
          */
         private hasFill;
-
         /**
          * @private
          *
          */
         private reset();
-
         /**
          * @private
          * 目标显示对象
          */
-        $targetDisplay:DisplayObject;
+        $targetDisplay: DisplayObject;
         /**
          * @private
          * 绘图命令列表
          */
-        $commands:sys.GraphicsCommand[];
-
+        $commands: sys.GraphicsCommand[];
         /**
          * @private
          */
         private pushCommand(graphicsType, args);
-
         /**
          * @private
          */
         private checkMoveTo();
-
         /**
          * @private
          */
         private extendByPoint(x, y);
-
         /**
          * @private
          */
-        $measureContentBounds(bounds:Rectangle):void;
-
+        $measureContentBounds(bounds: Rectangle): void;
         /**
          * @private
          */
-        $render(context:sys.RenderContext, forHitTest?:boolean):void;
+        $render(context: sys.RenderContext, forHitTest?: boolean): void;
     }
 }
 declare module egret.sys {
@@ -3624,7 +3408,7 @@ declare module egret.sys {
         /**
          * @private
          */
-            type: number;
+        type: number;
         /**
          * @private
          */
@@ -3717,7 +3501,7 @@ declare module egret.sys {
     }
 }
 declare module egret {
-    var $TextureScaleFactor:number;
+    var $TextureScaleFactor: number;
     /**
      * @language en_US
      * The Texture class encapsulates different image resources on different platforms.
@@ -3756,37 +3540,36 @@ declare module egret {
          * @platform Web,Native
          */
         constructor();
-
         /**
          * @private
          * 表示这个纹理在 bitmapData 上的 x 起始位置
          */
-        _bitmapX:number;
+        _bitmapX: number;
         /**
          * @private
          * 表示这个纹理在 bitmapData 上的 y 起始位置
          */
-        _bitmapY:number;
+        _bitmapY: number;
         /**
          * @private
          * 表示这个纹理在 bitmapData 上的宽度
          */
-        _bitmapWidth:number;
+        _bitmapWidth: number;
         /**
          * @private
          * 表示这个纹理在 bitmapData 上的高度
          */
-        _bitmapHeight:number;
+        _bitmapHeight: number;
         /**
          * @private
          * 表示这个纹理显示了之后在 x 方向的渲染偏移量
          */
-        _offsetX:number;
+        _offsetX: number;
         /**
          * @private
          * 表示这个纹理显示了之后在 y 方向的渲染偏移量
          */
-        _offsetY:number;
+        _offsetY: number;
         /**
          * @private
          * 纹理宽度
@@ -3804,10 +3587,8 @@ declare module egret {
          * @version Egret 2.4
          * @platform Web,Native
          */
-        textureWidth:number;
-
-        $getTextureWidth():number;
-
+        textureWidth: number;
+        $getTextureWidth(): number;
         /**
          * @private
          * 纹理高度
@@ -3825,28 +3606,24 @@ declare module egret {
          * @version Egret 2.4
          * @platform Web,Native
          */
-        textureHeight:number;
-
-        $getTextureHeight():number;
-
-        $getScaleBitmapWidth():number;
-
-        $getScaleBitmapHeight():number;
-
+        textureHeight: number;
+        $getTextureHeight(): number;
+        $getScaleBitmapWidth(): number;
+        $getScaleBitmapHeight(): number;
         /**
          * @private
          * 表示bitmapData.width
          */
-        _sourceWidth:number;
+        _sourceWidth: number;
         /**
          * @private
          * 表示bitmapData.height
          */
-        _sourceHeight:number;
+        _sourceHeight: number;
         /**
          * @private
          */
-        _bitmapData:any;
+        _bitmapData: any;
         /**
          * @language en_US
          * The BitmapData object being referenced.
@@ -3859,15 +3636,13 @@ declare module egret {
          * @version Egret 2.4
          * @platform Web,Native
          */
-        bitmapData:BitmapData;
-
+        bitmapData: BitmapData;
         /**
          * @private
          *
          * @param value
          */
-        _setBitmapData(value:any):void;
-
+        _setBitmapData(value: any): void;
         /**
          * @private
          * 设置Texture数据
@@ -3882,8 +3657,7 @@ declare module egret {
          * @param sourceWidth
          * @param sourceHeight
          */
-        $initData(bitmapX:number, bitmapY:number, bitmapWidth:number, bitmapHeight:number, offsetX:number, offsetY:number, textureWidth:number, textureHeight:number, sourceWidth:number, sourceHeight:number):void;
-
+        $initData(bitmapX: number, bitmapY: number, bitmapWidth: number, bitmapHeight: number, offsetX: number, offsetY: number, textureWidth: number, textureHeight: number, sourceWidth: number, sourceHeight: number): void;
         /**
          * @language en_US
          * Obtain the color value of a pixel point
@@ -3902,8 +3676,7 @@ declare module egret {
          * @version Egret 2.4
          * @platform Web
          */
-        getPixel32(x:number, y:number):number[];
-
+        getPixel32(x: number, y: number): number[];
         /**
          * @language en_US
          * Convert base64 string, if the picture (or pictures included) cross-border or null
@@ -3921,8 +3694,7 @@ declare module egret {
          * @returns {any} base64字符串
          * @version Egret 2.4
          */
-        toDataURL(type:string, rect?:egret.Rectangle):string;
-
+        toDataURL(type: string, rect?: egret.Rectangle): string;
         /**
          * @language en_US
          * Crop designated area and save it as image.
@@ -3943,8 +3715,7 @@ declare module egret {
          * @version Egret 2.4
          * @platform Native
          */
-        saveToFile(type:string, filePath:string, rect?:egret.Rectangle):void;
-
+        saveToFile(type: string, filePath: string, rect?: egret.Rectangle): void;
         /**
          * @language en_US
          * dispose texture
@@ -3957,17 +3728,12 @@ declare module egret {
          * @version Egret 2.4
          * @platform Web,Native
          */
-        dispose():void;
-
+        dispose(): void;
         private static _displayList;
-
-        static $addDisplayObject(displayObject:DisplayObject, bitmapData:BitmapData | Texture):void;
-
-        static $removeDisplayObject(displayObject:DisplayObject, bitmapData:BitmapData | Texture):void;
-
-        static $invalidate(bitmapData:BitmapData | Texture):void;
-
-        static $dispose(bitmapData:BitmapData | Texture):void;
+        static $addDisplayObject(displayObject: DisplayObject, bitmapData: BitmapData | Texture): void;
+        static $removeDisplayObject(displayObject: DisplayObject, bitmapData: BitmapData | Texture): void;
+        static $invalidate(bitmapData: BitmapData | Texture): void;
+        static $dispose(bitmapData: BitmapData | Texture): void;
     }
 }
 declare module egret {
@@ -3988,7 +3754,7 @@ declare module egret {
      * @includeExample egret/display/RenderTexture.ts
      */
     class RenderTexture extends egret.Texture {
-        protected context:sys.RenderContext;
+        protected context: sys.RenderContext;
         private rootDisplayList;
         /**
          * @language en_US
@@ -4003,7 +3769,6 @@ declare module egret {
          * @platform Web,Native
          */
         constructor();
-
         /**
          * @language en_US
          * The specified display object is drawn as a texture
@@ -4022,30 +3787,21 @@ declare module egret {
          * @version Egret 2.4
          * @platform Web,Native
          */
-        drawToTexture(displayObject:egret.DisplayObject, clipBounds?:Rectangle, scale?:number):boolean;
-
+        drawToTexture(displayObject: egret.DisplayObject, clipBounds?: Rectangle, scale?: number): boolean;
         private $displayListMap;
-
         private $saveParentDisplayList(displayObject);
-
         private $update(displayObject);
-
         private $reset(displayObject);
-
-        protected drawDisplayObject(displayObject:DisplayObject, context:sys.RenderContext, rootMatrix:Matrix):number;
-
+        protected drawDisplayObject(displayObject: DisplayObject, context: sys.RenderContext, rootMatrix: Matrix): number;
         private drawWithClip(displayObject, context, rootMatrix);
-
         private drawWithScrollRect(displayObject, context, rootMatrix);
-
-        protected createRenderContext(width:number, height:number):sys.RenderContext;
-
+        protected createRenderContext(width: number, height: number): sys.RenderContext;
         /**
          * @inheritDoc
          * @version Egret 2.4
          * @platform Web,Native
          */
-        dispose():void;
+        dispose(): void;
     }
 }
 declare module egret {
@@ -4080,11 +3836,10 @@ declare module egret {
          * @platform Web,Native
          */
         constructor();
-
         /**
          * @private
          */
-        $graphics:Graphics;
+        $graphics: Graphics;
         /**
          * @language en_US
          * Specifies the Graphics object belonging to this Shape object, where vector drawing commands can occur.
@@ -4097,19 +3852,16 @@ declare module egret {
          * @version Egret 2.4
          * @platform Web,Native
          */
-        graphics:Graphics;
-
+        graphics: Graphics;
         /**
          * @private
          */
-        $measureContentBounds(bounds:Rectangle):void;
-
-        $hitTest(stageX:number, stageY:number):DisplayObject;
-
+        $measureContentBounds(bounds: Rectangle): void;
+        $hitTest(stageX: number, stageY: number): DisplayObject;
         /**
          * @private
          */
-        $render(context:sys.RenderContext):void;
+        $render(context: sys.RenderContext): void;
     }
 }
 declare module egret {
@@ -4141,11 +3893,10 @@ declare module egret {
          * @platform Web,Native
          */
         constructor();
-
         /**
          * @private
          */
-        $graphics:Graphics;
+        $graphics: Graphics;
         /**
          * @language en_US
          * Specifies the Graphics object belonging to this Shape object, where vector drawing commands can occur.
@@ -4158,19 +3909,16 @@ declare module egret {
          * @version Egret 2.4
          * @platform Web,Native
          */
-        graphics:Graphics;
-
-        $hitTest(stageX:number, stageY:number):DisplayObject;
-
+        graphics: Graphics;
+        $hitTest(stageX: number, stageY: number): DisplayObject;
         /**
          * @private
          */
-        $measureContentBounds(bounds:Rectangle):void;
-
+        $measureContentBounds(bounds: Rectangle): void;
         /**
          * @private
          */
-        $render(context:sys.RenderContext):void;
+        $render(context: sys.RenderContext): void;
     }
 }
 declare module egret {
@@ -4213,8 +3961,7 @@ declare module egret {
          * @version Egret 2.4
          * @platform Web,Native
          */
-        constructor(texture:Texture);
-
+        constructor(texture: Texture);
         /**
          * @private
          * 表示这个SpriteSheet的位图区域在bitmapData上的起始位置x。
@@ -4234,7 +3981,7 @@ declare module egret {
          * @private
          * 纹理缓存字典
          */
-        _textureMap:Object;
+        _textureMap: Object;
         /**
          * @language en_US
          * Obtain a cached Texture object according to the specified texture name
@@ -4251,8 +3998,7 @@ declare module egret {
          * @version Egret 2.4
          * @platform Web,Native
          */
-        getTexture(name:string):Texture;
-
+        getTexture(name: string): Texture;
         /**
          * @language en_US
          * Create a new Texture object for the specified area on SpriteSheet and cache it
@@ -4285,8 +4031,7 @@ declare module egret {
          * @version Egret 2.4
          * @platform Web,Native
          */
-        createTexture(name:string, bitmapX:number, bitmapY:number, bitmapWidth:number, bitmapHeight:number, offsetX?:number, offsetY?:number, textureWidth?:number, textureHeight?:number):Texture;
-
+        createTexture(name: string, bitmapX: number, bitmapY: number, bitmapWidth: number, bitmapHeight: number, offsetX?: number, offsetY?: number, textureWidth?: number, textureHeight?: number): Texture;
         /**
          * @language en_US
          * dispose texture
@@ -4299,7 +4044,7 @@ declare module egret {
          * @version Egret 2.4
          * @platform Web,Native
          */
-        dispose():void;
+        dispose(): void;
     }
 }
 declare module egret {
@@ -4336,7 +4081,6 @@ declare module egret {
          * @platform Web,Native
          */
         constructor();
-
         /**
          * @language en_US
          * Gets and sets the frame rate of the stage. The frame rate is defined as frames per second. Valid range for the
@@ -4354,11 +4098,11 @@ declare module egret {
          * @version Egret 2.4
          * @platform Web,Native
          */
-        frameRate:number;
+        frameRate: number;
         /**
          * @private
          */
-        $stageWidth:number;
+        $stageWidth: number;
         /**
          * @language en_US
          * Indicates the width of the stage, in pixels.
@@ -4371,11 +4115,11 @@ declare module egret {
          * @version Egret 2.4
          * @platform Web,Native
          */
-        stageWidth:number;
+        stageWidth: number;
         /**
          * @private
          */
-        $stageHeight:number;
+        $stageHeight: number;
         /**
          * @language en_US
          * Indicates the height of the stage, in pixels.
@@ -4388,7 +4132,7 @@ declare module egret {
          * @version Egret 2.4
          * @platform Web,Native
          */
-        stageHeight:number;
+        stageHeight: number;
         /**
          * @language en_US
          * After you call the invalidate() method, when the display list is next rendered, the Egret runtime sends a render
@@ -4404,8 +4148,7 @@ declare module egret {
          * @version Egret 2.4
          * @platform Web,Native
          */
-        invalidate():void;
-
+        invalidate(): void;
         /**
          * @private
          */
@@ -4426,8 +4169,7 @@ declare module egret {
          * @version Egret 2.4
          * @platform Web,Native
          */
-        registerImplementation(interfaceName:string, instance:any):void;
-
+        registerImplementation(interfaceName: string, instance: any): void;
         /**
          * @language en_US
          * Returns the singleton instance of the implementation class that was registered for the specified interface.
@@ -4445,14 +4187,13 @@ declare module egret {
          * @version Egret 2.4
          * @platform Web,Native
          */
-        getImplementation(interfaceName:string):any;
-
+        getImplementation(interfaceName: string): any;
         /**
          * @private
          * 设备屏幕引用
          */
-        $screen:egret.sys.Screen;
-        $scaleMode:string;
+        $screen: egret.sys.Screen;
+        $scaleMode: string;
         /**
          * @language en_US
          * A StageScaleMode class that specifies which scale mode to use. The following are valid values:<br/>
@@ -4479,8 +4220,8 @@ declare module egret {
          * </ul>
          * @default egret.StageScaleMode.SHOW_ALL
          */
-        scaleMode:string;
-        $orientation:string;
+        scaleMode: string;
+        $orientation: string;
         /**
          * @language en_US
          * Horizontal and vertical screen display screen, can only be set under the current Native in the configuration file. A egret.OrientationMode class that specifies which display mode to use. The following are valid values:<br/>
@@ -4505,7 +4246,7 @@ declare module egret {
          * @platform Web
          * @version 2.4
          */
-        orientation:string;
+        orientation: string;
         /**
          * @language en_US
          * Draw texture zoom ratio
@@ -4516,8 +4257,8 @@ declare module egret {
          * 绘制纹理的缩放比率，默认值为1
          * @default 1
          */
-        textureScaleFactor:number;
-        $maxTouches:number;
+        textureScaleFactor: number;
+        $maxTouches: number;
         /**
          * @language en_US
          * Set the number of screens can simultaneously touch. Above this amount will not be triggered in response.
@@ -4528,7 +4269,7 @@ declare module egret {
          * 设置屏幕同时可以触摸的数量。高于这个数量将不会被触发响应。
          * @default 99
          */
-        maxTouches:number;
+        maxTouches: number;
         private $dirtyRegionPolicy;
         /**
          * @language en_US
@@ -4544,7 +4285,7 @@ declare module egret {
          * @version Egret 2.5.5
          * @platform Web,Native
          */
-        dirtyRegionPolicy:string;
+        dirtyRegionPolicy: string;
         /**
          * @language en_US
          * Set resolution size
@@ -4561,7 +4302,7 @@ declare module egret {
          * @version Egret 2.5.5
          * @platform Web,Native
          */
-        setContentSize(width:number, height:number):void;
+        setContentSize(width: number, height: number): void;
     }
 }
 declare module egret {
@@ -4611,7 +4352,7 @@ declare module egret {
          * @version Egret 2.4
          * @platform Web,Native
          */
-        static ADDED_TO_STAGE:string;
+        static ADDED_TO_STAGE: string;
         /**
          * @language en_US
          * Dispatched when a display object is about to be removed from the display list, either directly or through the removal
@@ -4625,7 +4366,7 @@ declare module egret {
          * @version Egret 2.4
          * @platform Web,Native
          */
-        static REMOVED_FROM_STAGE:string;
+        static REMOVED_FROM_STAGE: string;
         /**
          * @language en_US
          * Dispatched when a display object is added to the display list.
@@ -4638,7 +4379,7 @@ declare module egret {
          * @version Egret 2.4
          * @platform Web,Native
          */
-        static ADDED:string;
+        static ADDED: string;
         /**
          * @language en_US
          * Dispatched when a display object is about to be removed from the display list.
@@ -4651,7 +4392,7 @@ declare module egret {
          * @version Egret 2.4
          * @platform Web,Native
          */
-        static REMOVED:string;
+        static REMOVED: string;
         /**
          * @language en_US
          * [broadcast event] Dispatched when the playhead is entering a new frame.
@@ -4664,7 +4405,7 @@ declare module egret {
          * @version Egret 2.4
          * @platform Web,Native
          */
-        static ENTER_FRAME:string;
+        static ENTER_FRAME: string;
         /**
          * @language en_US
          * Dispatched when the display list is about to be updated and rendered.
@@ -4680,7 +4421,7 @@ declare module egret {
          * @version Egret 2.4
          * @platform Web,Native
          */
-        static RENDER:string;
+        static RENDER: string;
         /**
          * @language en_US
          * Dispatched when the size of stage or UIComponent is changed.
@@ -4693,7 +4434,7 @@ declare module egret {
          * @version Egret 2.4
          * @platform Web,Native
          */
-        static RESIZE:string;
+        static RESIZE: string;
         /**
          * @language en_US
          * Dispatched when the value or selection of a property is chaned.
@@ -4706,7 +4447,7 @@ declare module egret {
          * @version Egret 2.4
          * @platform Web,Native
          */
-        static CHANGE:string;
+        static CHANGE: string;
         /**
          * @language en_US
          * Dispatched when the value or selection of a property is going to change.you can cancel this by calling the
@@ -4720,7 +4461,7 @@ declare module egret {
          * @version Egret 2.4
          * @platform Web,Native
          */
-        static CHANGING:string;
+        static CHANGING: string;
         /**
          * @language en_US
          * Dispatched when the net request is complete.
@@ -4733,7 +4474,7 @@ declare module egret {
          * @version Egret 2.4
          * @platform Web,Native
          */
-        static COMPLETE:string;
+        static COMPLETE: string;
         /**
          * @language en_US
          * Dispatched when loop completed.
@@ -4746,7 +4487,7 @@ declare module egret {
          * @version Egret 2.4
          * @platform Web,Native
          */
-        static LOOP_COMPLETE:string;
+        static LOOP_COMPLETE: string;
         /**
          * @language en_US
          * Dispatched when the TextInput instance gets focus.
@@ -4759,7 +4500,7 @@ declare module egret {
          * @version Egret 2.4
          * @platform Web,Native
          */
-        static FOCUS_IN:string;
+        static FOCUS_IN: string;
         /**
          * @language en_US
          * Dispatched when the TextInput instance loses focus.
@@ -4772,7 +4513,7 @@ declare module egret {
          * @version Egret 2.4
          * @platform Web,Native
          */
-        static FOCUS_OUT:string;
+        static FOCUS_OUT: string;
         /**
          * @language en_US
          * Dispatched when the playback is ended.
@@ -4785,43 +4526,43 @@ declare module egret {
          * @version Egret 2.4
          * @platform Web,Native
          */
-        static ENDED:string;
+        static ENDED: string;
         /**
          * 游戏激活
          * @version Egret 2.4
          * @platform Web,Native
          */
-        static ACTIVATE:string;
+        static ACTIVATE: string;
         /**
          * 取消激活
          * @version Egret 2.4
          * @platform Web,Native
          */
-        static DEACTIVATE:string;
+        static DEACTIVATE: string;
         /**
          * Event.CLOSE 常量定义 close 事件对象的 type 属性的值。
          * @version Egret 2.4
          * @platform Web,Native
          */
-        static CLOSE:string;
+        static CLOSE: string;
         /**
          * Event.CONNECT 常量定义 connect 事件对象的 type 属性的值。
          * @version Egret 2.4
          * @platform Web,Native
          */
-        static CONNECT:string;
+        static CONNECT: string;
         /**
          * Event.LEAVE_STAGE 常量定义 leaveStage 事件对象的 type 属性的值。
          * @version Egret 2.4
          * @platform Web,Native
          */
-        static LEAVE_STAGE:string;
+        static LEAVE_STAGE: string;
         /**
          * Event.SOUND_COMPLETE 常量定义 在声音完成播放后调度。
          * @version Egret 2.4
          * @platform Web,Native
          */
-        static SOUND_COMPLETE:string;
+        static SOUND_COMPLETE: string;
         /**
          * @language en_US
          * Creates an Event object to pass as a parameter to event listeners.
@@ -4842,8 +4583,7 @@ declare module egret {
          * @version Egret 2.4
          * @platform Web,Native
          */
-        constructor(type:string, bubbles?:boolean, cancelable?:boolean, data?:any);
-
+        constructor(type: string, bubbles?: boolean, cancelable?: boolean, data?: any);
         /**
          * @language en_US
          * the optional data associated with this event
@@ -4856,11 +4596,11 @@ declare module egret {
          * @version Egret 2.4
          * @platform Web,Native
          */
-        data:any;
+        data: any;
         /**
          * @private
          */
-        $type:string;
+        $type: string;
         /**
          * @language en_US
          * The type of event. The type is case-sensitive.
@@ -4873,11 +4613,11 @@ declare module egret {
          * @version Egret 2.4
          * @platform Web,Native
          */
-        type:string;
+        type: string;
         /**
          * @private
          */
-        $bubbles:boolean;
+        $bubbles: boolean;
         /**
          * @language en_US
          * Indicates whether an event is a bubbling event.
@@ -4890,11 +4630,11 @@ declare module egret {
          * @version Egret 2.4
          * @platform Web,Native
          */
-        bubbles:boolean;
+        bubbles: boolean;
         /**
          * @private
          */
-        $cancelable:boolean;
+        $cancelable: boolean;
         /**
          * @language en_US
          * Indicates whether the behavior associated with the event can be prevented. If the behavior can be
@@ -4910,11 +4650,11 @@ declare module egret {
          * @version Egret 2.4
          * @platform Web,Native
          */
-        cancelable:boolean;
+        cancelable: boolean;
         /**
          * @private
          */
-        $eventPhase:number;
+        $eventPhase: number;
         /**
          * @language en_US
          * The current phase in the event flow. This property can contain the following numeric values:
@@ -4935,11 +4675,11 @@ declare module egret {
          * @version Egret 2.4
          * @platform Web,Native
          */
-        eventPhase:number;
+        eventPhase: number;
         /**
          * @private
          */
-        $currentTarget:any;
+        $currentTarget: any;
         /**
          * @language en_US
          * The object that is actively processing the Event object with an event listener. For example, if a
@@ -4955,11 +4695,11 @@ declare module egret {
          * @version Egret 2.4
          * @platform Web,Native
          */
-        currentTarget:any;
+        currentTarget: any;
         /**
          * @private
          */
-        $target:any;
+        $target: any;
         /**
          * @language en_US
          * The event target. This property contains the target node. For example, if a user clicks an OK button,
@@ -4973,14 +4713,12 @@ declare module egret {
          * @version Egret 2.4
          * @platform Web,Native
          */
-        target:any;
-
-        $setTarget(target:any):boolean;
-
+        target: any;
+        $setTarget(target: any): boolean;
         /**
          * @private
          */
-        $isDefaultPrevented:boolean;
+        $isDefaultPrevented: boolean;
         /**
          * @language en_US
          * Checks whether the preventDefault() method has been called on the event. If the preventDefault() method has been
@@ -4998,8 +4736,7 @@ declare module egret {
          * @version Egret 2.4
          * @platform Web,Native
          */
-        isDefaultPrevented():boolean;
-
+        isDefaultPrevented(): boolean;
         /**
          * @language en_US
          * Cancels an event's default behavior if that behavior can be canceled.Many events have associated behaviors that
@@ -5026,12 +4763,11 @@ declare module egret {
          * @version Egret 2.4
          * @platform Web,Native
          */
-        preventDefault():void;
-
+        preventDefault(): void;
         /**
          * @private
          */
-        $isPropagationStopped:boolean;
+        $isPropagationStopped: boolean;
         /**
          * @language en_US
          * Prevents processing of any event listeners in nodes subsequent to the current node in the event flow. This method
@@ -5055,12 +4791,11 @@ declare module egret {
          * @version Egret 2.4
          * @platform Web,Native
          */
-        stopPropagation():void;
-
+        stopPropagation(): void;
         /**
          * @private
          */
-        $isPropagationImmediateStopped:boolean;
+        $isPropagationImmediateStopped: boolean;
         /**
          * @language en_US
          * Prevents processing of any event listeners in the current node and any subsequent nodes in the event flow.
@@ -5082,8 +4817,7 @@ declare module egret {
          * @version Egret 2.4
          * @platform Web,Native
          */
-        stopImmediatePropagation():void;
-
+        stopImmediatePropagation(): void;
         /**
          * @language en_US
          * This method will be called automatically when you pass the event object as the parameters to the Event.release() method.
@@ -5103,8 +4837,7 @@ declare module egret {
          * @version Egret 2.4
          * @platform Web,Native
          */
-        protected clean():void;
-
+        protected clean(): void;
         /**
          * @language en_US
          * EventDispatcher object using the specified event object thrown Event. Objects thrown objects will be cached in the pool for the next round robin.
@@ -5128,16 +4861,14 @@ declare module egret {
          * @version Egret 2.4
          * @platform Web,Native
          */
-        static dispatchEvent(target:IEventDispatcher, type:string, bubbles?:boolean, data?:any):boolean;
-
+        static dispatchEvent(target: IEventDispatcher, type: string, bubbles?: boolean, data?: any): boolean;
         /**
          * @private
          *
          * @param EventClass
          * @returns
          */
-        static _getPropertyData(EventClass:any):any;
-
+        static _getPropertyData(EventClass: any): any;
         /**
          * @language en_US
          * Gets one event instance from the object pool or create a new one. We highly recommend using the Event.create()
@@ -5179,11 +4910,10 @@ declare module egret {
          * @version Egret 2.4
          * @platform Web,Native
          */
-        static create<T extends Event>(EventClass:{
-            new (type:string, bubbles?:boolean, cancelable?:boolean): T;
+        static create<T extends Event>(EventClass: {
+            new (type: string, bubbles?: boolean, cancelable?: boolean): T;
             eventPool?: Event[];
-        }, type:string, bubbles?:boolean, cancelable?:boolean):T;
-
+        }, type: string, bubbles?: boolean, cancelable?: boolean): T;
         /**
          * @language en_US
          * Releases an event object and cache it into the object pool.We highly recommend using the Event.create()
@@ -5218,7 +4948,7 @@ declare module egret {
          * @version Egret 2.4
          * @platform Web,Native
          */
-        static release(event:Event):void;
+        static release(event: Event): void;
     }
 }
 declare module egret {
@@ -5306,7 +5036,7 @@ declare module egret {
          * @version Egret 2.4
          * @platform Web,Native
          */
-        static FOCUS_IN:string;
+        static FOCUS_IN: string;
         /**
          * @language en_US
          * Loses focus
@@ -5319,7 +5049,7 @@ declare module egret {
          * @version Egret 2.4
          * @platform Web,Native
          */
-        static FOCUS_OUT:string;
+        static FOCUS_OUT: string;
         /**
          * @language en_US
          * Create a egret.FocusEvent objects
@@ -5338,7 +5068,7 @@ declare module egret {
          * @version Egret 2.4
          * @platform Web,Native
          */
-        constructor(type:string, bubbles?:boolean, cancelable?:boolean);
+        constructor(type: string, bubbles?: boolean, cancelable?: boolean);
     }
 }
 declare module egret {
@@ -5370,7 +5100,7 @@ declare module egret {
          * @version Egret 2.4
          * @platform Web,Native
          */
-        static PERMISSION_DENIED:string;
+        static PERMISSION_DENIED: string;
         /**
          * @language en_US
          * The acquisition of the location failed because at least one internal source of position returned an internal error.
@@ -5383,7 +5113,7 @@ declare module egret {
          * @version Egret 2.4
          * @platform Web,Native
          */
-        static UNAVAILABLE:string;
+        static UNAVAILABLE: string;
         /**
          * @language en_US
          * The position's longitude in decimal degrees.
@@ -5396,7 +5126,7 @@ declare module egret {
          * @version Egret 2.4
          * @platform Web,Native
          */
-        longitude:number;
+        longitude: number;
         /**
          * @language en_US
          * The position's latitude in decimal degrees.
@@ -5409,7 +5139,7 @@ declare module egret {
          * @version Egret 2.4
          * @platform Web,Native
          */
-        latitude:number;
+        latitude: number;
         /**
          * @language en_US
          * The velocity of the device in meters per second. This value can be null.
@@ -5422,7 +5152,7 @@ declare module egret {
          * @version Egret 2.4
          * @platform Web,Native
          */
-        speed:number;
+        speed: number;
         /**
          * @language en_US
          * The direction in which the device is traveling. This value, specified in degrees,
@@ -5440,7 +5170,7 @@ declare module egret {
          * @version Egret 2.4
          * @platform Web,Native
          */
-        heading:number;
+        heading: number;
         /**
          * @language en_US
          * The position's altitude in metres, relative to sea level.
@@ -5454,7 +5184,7 @@ declare module egret {
          * @version Egret 2.4
          * @platform Web,Native
          */
-        altitude:number;
+        altitude: number;
         /**
          * @language en_US
          * The accuracy of the latitude and longitude properties, expressed in meters.
@@ -5467,7 +5197,7 @@ declare module egret {
          * @version Egret 2.4
          * @platform Web,Native
          */
-        accuracy:number;
+        accuracy: number;
         /**
          * @language en_US
          * The accuracy of the altitude expressed in meters. This value can be null.
@@ -5480,7 +5210,7 @@ declare module egret {
          * @version Egret 2.4
          * @platform Web,Native
          */
-        altitudeAccuracy:number;
+        altitudeAccuracy: number;
         /**
          * @language en_US
          * The type of error occurred while get the location of the device. The value could be:
@@ -5499,7 +5229,7 @@ declare module egret {
          * @version Egret 2.4
          * @platform Web,Native
          */
-        errorType:string;
+        errorType: string;
         /**
          * @language en_US
          * The error message occurred while get the location of the device.
@@ -5512,7 +5242,7 @@ declare module egret {
          * @version Egret 2.4
          * @platform Web,Native
          */
-        errorMessage:string;
+        errorMessage: string;
     }
 }
 declare module egret {
@@ -5543,7 +5273,7 @@ declare module egret {
          * @version Egret 2.4
          * @platform Web,Native
          */
-        static HTTP_STATUS:string;
+        static HTTP_STATUS: string;
         /**
          * @language en_US
          * Create a egret.HTTPStatusEvent objects
@@ -5562,8 +5292,7 @@ declare module egret {
          * @version Egret 2.4
          * @platform Web,Native
          */
-        constructor(type:string, bubbles?:boolean, cancelable?:boolean);
-
+        constructor(type: string, bubbles?: boolean, cancelable?: boolean);
         /**
          * @private
          */
@@ -5580,7 +5309,7 @@ declare module egret {
          * @version Egret 2.4
          * @platform Web,Native
          */
-        status:number;
+        status: number;
         /**
          * @language en_US
          * EventDispatcher object using the specified event object thrown Event. The objects will be thrown in the object cache pool for the next round robin.
@@ -5597,7 +5326,7 @@ declare module egret {
          * @version Egret 2.4
          * @platform Web,Native
          */
-        static dispatchHTTPStatusEvent(target:IEventDispatcher, status:number):boolean;
+        static dispatchHTTPStatusEvent(target: IEventDispatcher, status: number): boolean;
     }
 }
 declare module egret {
@@ -5695,7 +5424,7 @@ declare module egret {
          * @version Egret 2.4
          * @platform Web,Native
          */
-        addEventListener(type:string, listener:Function, thisObject:any, useCapture?:boolean, priority?:number): void;
+        addEventListener(type: string, listener: Function, thisObject: any, useCapture?: boolean, priority?: number): void;
         /**
          * @language en_US
          * Registers an event listener object with an EventDispatcher object so that the listener receives notification of an
@@ -5736,7 +5465,7 @@ declare module egret {
          * @version Egret 2.4
          * @platform Web,Native
          */
-        once(type:string, listener:Function, thisObject:any, useCapture?:boolean, priority?:number): void;
+        once(type: string, listener: Function, thisObject: any, useCapture?: boolean, priority?: number): void;
         /**
          * @language en_US
          * Removes a listener from the EventDispatcher object. If there is no matching listener registered with the
@@ -5761,7 +5490,7 @@ declare module egret {
          * @version Egret 2.4
          * @platform Web,Native
          */
-        removeEventListener(type:string, listener:Function, thisObject:any, useCapture?:boolean): void;
+        removeEventListener(type: string, listener: Function, thisObject: any, useCapture?: boolean): void;
         /**
          * @language en_US
          * Checks whether the EventDispatcher object has any listeners registered for a specific type of event. This allows
@@ -5786,7 +5515,7 @@ declare module egret {
          * @version Egret 2.4
          * @platform Web,Native
          */
-        hasEventListener(type:string): boolean;
+        hasEventListener(type: string): boolean;
         /**
          * @language en_US
          * Dispatches an event into the event flow. The event target is the EventDispatcher object upon which dispatchEvent() is called.
@@ -5803,7 +5532,7 @@ declare module egret {
          * @version Egret 2.4
          * @platform Web,Native
          */
-        dispatchEvent(event:Event): boolean;
+        dispatchEvent(event: Event): boolean;
         /**
          * @language en_US
          * Checks whether an event listener is registered with this EventDispatcher object or any of its ancestors for the
@@ -5827,7 +5556,7 @@ declare module egret {
          * @version Egret 2.4
          * @platform Web,Native
          */
-        willTrigger(type:string): boolean;
+        willTrigger(type: string): boolean;
     }
 }
 declare module egret {
@@ -5858,7 +5587,7 @@ declare module egret {
          * @version Egret 2.4
          * @platform Web,Native
          */
-        static IO_ERROR:string;
+        static IO_ERROR: string;
         /**
          * @language en_US
          * Create a egret.IOErrorEvent objects
@@ -5877,8 +5606,7 @@ declare module egret {
          * @version Egret 2.4
          * @platform Web,Native
          */
-        constructor(type:string, bubbles?:boolean, cancelable?:boolean);
-
+        constructor(type: string, bubbles?: boolean, cancelable?: boolean);
         /**
          * @language en_US
          * EventDispatcher object using the specified event object thrown Event. The objects will be thrown in the object cache pool for the next round robin.
@@ -5893,7 +5621,7 @@ declare module egret {
          * @version Egret 2.4
          * @platform Web,Native
          */
-        static dispatchIOErrorEvent(target:IEventDispatcher):boolean;
+        static dispatchIOErrorEvent(target: IEventDispatcher): boolean;
     }
 }
 declare module egret {
@@ -5928,7 +5656,7 @@ declare module egret {
          * @version Egret 2.4
          * @platform Web,Native
          */
-        acceleration:DeviceAcceleration;
+        acceleration: DeviceAcceleration;
         /**
          * @language en_US
          * An object giving the acceleration of the device on the three axis X, Y and Z with the effect of gravity. Acceleration is expressed in m/s2.
@@ -5941,7 +5669,7 @@ declare module egret {
          * @version Egret 2.4
          * @platform Web,Native
          */
-        accelerationIncludingGravity:DeviceAcceleration;
+        accelerationIncludingGravity: DeviceAcceleration;
         /**
          * @language en_US
          * An object giving the rate of change of the device's orientation on the three orientation axis alpha, beta and gamma. Rotation rate is express in degrees per seconds.
@@ -5954,7 +5682,7 @@ declare module egret {
          * @version Egret 2.4
          * @platform Web,Native
          */
-        rotationRate:DeviceRotationRate;
+        rotationRate: DeviceRotationRate;
     }
 }
 declare module egret {
@@ -5990,7 +5718,7 @@ declare module egret {
          * @version Egret 2.4
          * @platform Web,Native
          */
-        alpha:number;
+        alpha: number;
         /**
          * @language en_US
          * A number representing the motion of the device around the x axis,
@@ -6006,7 +5734,7 @@ declare module egret {
          * @version Egret 2.4
          * @platform Web,Native
          */
-        beta:number;
+        beta: number;
         /**
          * @language en_US
          * A number representing the motion of the device around the y axis,
@@ -6022,7 +5750,7 @@ declare module egret {
          * @version Egret 2.4
          * @platform Web,Native
          */
-        gamma:number;
+        gamma: number;
     }
 }
 declare module egret {
@@ -6053,7 +5781,7 @@ declare module egret {
          * @version Egret 2.4
          * @platform Web,Native
          */
-        static PROGRESS:string;
+        static PROGRESS: string;
         /**
          * @language en_US
          * Get the data
@@ -6066,7 +5794,7 @@ declare module egret {
          * @version Egret 2.4
          * @platform Web,Native
          */
-        static SOCKET_DATA:string;
+        static SOCKET_DATA: string;
         /**
          * @language en_US
          * Number of items or bytes when the listener processes the event。
@@ -6079,7 +5807,7 @@ declare module egret {
          * @version Egret 2.4
          * @platform Web,Native
          */
-        bytesLoaded:number;
+        bytesLoaded: number;
         /**
          * @language en_US
          * If the loading process succeeds, the total number or the total number of bytes that will be loaded term.
@@ -6092,7 +5820,7 @@ declare module egret {
          * @version Egret 2.4
          * @platform Web,Native
          */
-        bytesTotal:number;
+        bytesTotal: number;
         /**
          * @language en_US
          * 创建一个 egret.ProgressEvent 对象
@@ -6115,8 +5843,7 @@ declare module egret {
          * @version Egret 2.4
          * @platform Web,Native
          */
-        constructor(type:string, bubbles?:boolean, cancelable?:boolean, bytesLoaded?:number, bytesTotal?:number);
-
+        constructor(type: string, bubbles?: boolean, cancelable?: boolean, bytesLoaded?: number, bytesTotal?: number);
         /**
          * @language en_US
          * EventDispatcher object using the specified event object thrown Event. The objects will be thrown in the object cache pool for the next round robin.
@@ -6137,7 +5864,7 @@ declare module egret {
          * @version Egret 2.4
          * @platform Web,Native
          */
-        static dispatchProgressEvent(target:IEventDispatcher, type:string, bytesLoaded?:number, bytesTotal?:number):boolean;
+        static dispatchProgressEvent(target: IEventDispatcher, type: string, bytesLoaded?: number, bytesTotal?: number): boolean;
     }
 }
 declare module egret {
@@ -6168,7 +5895,7 @@ declare module egret {
          * @version Egret 2.4
          * @platform Web,Native
          */
-        static ORIENTATION_CHANGE:string;
+        static ORIENTATION_CHANGE: string;
         /**
          * @language en_US
          * Creating contains specific information related to the event and the stage direction of StageOrientationEvent object.
@@ -6187,8 +5914,7 @@ declare module egret {
          * @version Egret 2.4
          * @platform Web,Native
          */
-        constructor(type:string, bubbles?:boolean, cancelable?:boolean);
-
+        constructor(type: string, bubbles?: boolean, cancelable?: boolean);
         /**
          * @language en_US
          * 派发一个屏幕旋转的事件。
@@ -6205,7 +5931,7 @@ declare module egret {
          * @version Egret 2.4
          * @platform Web,Native
          */
-        static dispatchStageOrientationEvent(target:IEventDispatcher, type:string):boolean;
+        static dispatchStageOrientationEvent(target: IEventDispatcher, type: string): boolean;
     }
 }
 declare module egret {
@@ -6244,8 +5970,7 @@ declare module egret {
          * @version Egret 2.4
          * @platform Web,Native
          */
-        constructor(type:string, bubbles?:boolean, cancelable?:boolean, text?:string);
-
+        constructor(type: string, bubbles?: boolean, cancelable?: boolean, text?: string);
         /**
          * @language en_US
          * It defines the value of the type property of a link event object.
@@ -6258,7 +5983,7 @@ declare module egret {
          * @version Egret 2.4
          * @platform Web,Native
          */
-        static LINK:string;
+        static LINK: string;
         /**
          * @language en_US
          * In TextEvent.LINK event, event corresponding string.
@@ -6271,7 +5996,7 @@ declare module egret {
          * @version Egret 2.4
          * @platform Web,Native
          */
-        text:string;
+        text: string;
         /**
          * @language en_US
          * EventDispatcher object using the specified event object thrown TextEvent. The objects will be thrown in the object cache pool for the next round robin.
@@ -6290,7 +6015,7 @@ declare module egret {
          * @version Egret 2.4
          * @platform Web,Native
          */
-        static dispatchTextEvent(target:IEventDispatcher, type:string, text:string):boolean;
+        static dispatchTextEvent(target: IEventDispatcher, type: string, text: string): boolean;
     }
 }
 declare module egret {
@@ -6323,7 +6048,7 @@ declare module egret {
          * @version Egret 2.4
          * @platform Web,Native
          */
-        static TIMER:string;
+        static TIMER: string;
         /**
          * @language en_US
          * Dispatched whenever it has completed the number of requests set by Timer.repeatCount.
@@ -6336,7 +6061,7 @@ declare module egret {
          * @version Egret 2.4
          * @platform Web,Native
          */
-        static TIMER_COMPLETE:string;
+        static TIMER_COMPLETE: string;
         /**
          * @language en_US
          * Creates an Event object with specific information relevant to timer events.
@@ -6357,8 +6082,7 @@ declare module egret {
          * @version Egret 2.4
          * @platform Web,Native
          */
-        constructor(type:string, bubbles?:boolean, cancelable?:boolean);
-
+        constructor(type: string, bubbles?: boolean, cancelable?: boolean);
         /**
          * @language en_US
          * Instructs Egret runtime to render after processing of this event completes, if the display list has been modified.
@@ -6401,8 +6125,7 @@ declare module egret {
          * @version Egret 2.4
          * @platform Web,Native
          */
-        updateAfterEvent():void;
-
+        updateAfterEvent(): void;
         /**
          * @language en_US
          * uses a specified target to dispatchEvent an event. Using this method can reduce the number of
@@ -6430,7 +6153,7 @@ declare module egret {
          * @version Egret 2.4
          * @platform Web,Native
          */
-        static dispatchTimerEvent(target:IEventDispatcher, type:string, bubbles?:boolean, cancelable?:boolean):boolean;
+        static dispatchTimerEvent(target: IEventDispatcher, type: string, bubbles?: boolean, cancelable?: boolean): boolean;
     }
 }
 declare module egret {
@@ -6462,8 +6185,7 @@ declare module egret {
          * @version Egret 2.4
          * @platform Web,Native
          */
-        static release(point:Point):void;
-
+        static release(point: Point): void;
         /**
          * @language en_US
          * get a point instance from the object pool or create a new one.
@@ -6480,8 +6202,7 @@ declare module egret {
          * @version Egret 2.4
          * @platform Web,Native
          */
-        static create(x:number, y:number):Point;
-
+        static create(x: number, y: number): Point;
         /**
          * @language en_US
          * Creates a new point. If you pass no parameters to this method, a point is created at (0,0).
@@ -6498,8 +6219,7 @@ declare module egret {
          * @version Egret 2.4
          * @platform Web,Native
          */
-        constructor(x?:number, y?:number);
-
+        constructor(x?: number, y?: number);
         /**
          * @language en_US
          * The horizontal coordinate.
@@ -6514,7 +6234,7 @@ declare module egret {
          * @version Egret 2.4
          * @platform Web,Native
          */
-        x:number;
+        x: number;
         /**
          * @language en_US
          * The vertical coordinate.
@@ -6529,7 +6249,7 @@ declare module egret {
          * @version Egret 2.4
          * @platform Web,Native
          */
-        y:number;
+        y: number;
         /**
          * @language en_US
          * The length of the line segment from (0,0) to this point.
@@ -6542,7 +6262,7 @@ declare module egret {
          * @version Egret 2.4
          * @platform Web,Native
          */
-        length:number;
+        length: number;
         /**
          * @language en_US
          * Sets the members of Point to the specified values
@@ -6559,8 +6279,7 @@ declare module egret {
          * @version Egret 2.4
          * @platform Web,Native
          */
-        setTo(x:number, y:number):Point;
-
+        setTo(x: number, y: number): Point;
         /**
          * @language en_US
          * Creates a copy of this Point object.
@@ -6573,8 +6292,7 @@ declare module egret {
          * @version Egret 2.4
          * @platform Web,Native
          */
-        clone():Point;
-
+        clone(): Point;
         /**
          * @language en_US
          * Determines whether two points are equal. Two points are equal if they have the same x and y values.
@@ -6591,8 +6309,7 @@ declare module egret {
          * @version Egret 2.4
          * @platform Web,Native
          */
-        equals(toCompare:Point):boolean;
-
+        equals(toCompare: Point): boolean;
         /**
          * @language en_US
          * Returns the distance between pt1 and pt2.
@@ -6611,8 +6328,7 @@ declare module egret {
          * @version Egret 2.4
          * @platform Web,Native
          */
-        static distance(p1:Point, p2:Point):number;
-
+        static distance(p1: Point, p2: Point): number;
         /**
          * @language en_US
          * Copies all of the point data from the source Point object into the calling Point object.
@@ -6627,8 +6343,7 @@ declare module egret {
          * @version Egret 2.4
          * @platform Web,Native
          */
-        copyFrom(sourcePoint:Point):void;
-
+        copyFrom(sourcePoint: Point): void;
         /**
          * @language en_US
          * Adds the coordinates of another point to the coordinates of this point to create a new point.
@@ -6645,8 +6360,7 @@ declare module egret {
          * @version Egret 2.4
          * @platform Web,Native
          */
-        add(v:Point):Point;
-
+        add(v: Point): Point;
         /**
          * @language en_US
          * Determines a point between two specified points.
@@ -6669,8 +6383,7 @@ declare module egret {
          * @version Egret 2.4
          * @platform Web,Native
          */
-        static interpolate(pt1:Point, pt2:Point, f:number):Point;
-
+        static interpolate(pt1: Point, pt2: Point, f: number): Point;
         /**
          * @language en_US
          * Scales the line segment between (0,0) and the current point to a set length.
@@ -6685,8 +6398,7 @@ declare module egret {
          * @version Egret 2.4
          * @platform Web,Native
          */
-        normalize(thickness:number):void;
-
+        normalize(thickness: number): void;
         /**
          * @language en_US
          * Offsets the Point object by the specified amount. The value of dx is added to the original value of x to create the new x value. The value of dy is added to the original value of y to create the new y value.
@@ -6703,8 +6415,7 @@ declare module egret {
          * @version Egret 2.4
          * @platform Web,Native
          */
-        offset(dx:number, dy:number):void;
-
+        offset(dx: number, dy: number): void;
         /**
          * @language en_US
          * Converts a pair of polar coordinates to a Cartesian point coordinate.
@@ -6721,8 +6432,7 @@ declare module egret {
          * @version Egret 2.4
          * @platform Web,Native
          */
-        static polar(len:number, angle:number):Point;
-
+        static polar(len: number, angle: number): Point;
         /**
          * @language en_US
          * Subtracts the coordinates of another point from the coordinates of this point to create a new point.
@@ -6739,8 +6449,7 @@ declare module egret {
          * @version Egret 2.4
          * @platform Web,Native
          */
-        subtract(v:Point):Point;
-
+        subtract(v: Point): Point;
         /**
          * @language en_US
          * Returns a string that contains the values of the x and y coordinates. The string has the form "(x=x, y=y)", so calling the toString() method for a point at 23,17 would return "(x=23, y=17)".
@@ -6755,13 +6464,13 @@ declare module egret {
          * @version Egret 2.4
          * @platform Web,Native
          */
-        toString():string;
+        toString(): string;
     }
     /**
      * @private
      * 仅供框架内复用，要防止暴露引用到外部。
      */
-    var $TempPoint:Point;
+    var $TempPoint: Point;
 }
 declare module egret {
     /**
@@ -6806,7 +6515,7 @@ declare module egret {
          * @version Egret 2.4
          * @platform Web,Native
          */
-        static TOUCH_MOVE:string;
+        static TOUCH_MOVE: string;
         /**
          * @language en_US
          * Dispatched when the user first contacts a touch-enabled device (such as touches a finger to a mobile phone or tablet with a touch screen).
@@ -6819,7 +6528,7 @@ declare module egret {
          * @version Egret 2.4
          * @platform Web,Native
          */
-        static TOUCH_BEGIN:string;
+        static TOUCH_BEGIN: string;
         /**
          * @language en_US
          * Dispatched when the user removes contact with a touch-enabled device (such as lifts a finger off a mobile phone
@@ -6833,7 +6542,7 @@ declare module egret {
          * @version Egret 2.4
          * @platform Web,Native
          */
-        static TOUCH_END:string;
+        static TOUCH_END: string;
         /**
          * @language en_US
          * Dispatched when an event of some kind occurred that canceled the touch.
@@ -6847,7 +6556,7 @@ declare module egret {
          * @version Egret 3.0.1
          * @platform Web,Native
          */
-        static TOUCH_CANCEL:string;
+        static TOUCH_CANCEL: string;
         /**
          * @language en_US
          * Dispatched when the user lifts the point of contact over the same DisplayObject instance on which the contact
@@ -6861,7 +6570,7 @@ declare module egret {
          * @version Egret 2.4
          * @platform Web,Native
          */
-        static TOUCH_TAP:string;
+        static TOUCH_TAP: string;
         /**
          * @language en_US
          * Dispatched when the user lifts the point of contact over the different DisplayObject instance on which the contact
@@ -6876,19 +6585,19 @@ declare module egret {
          * @version Egret 2.4
          * @platform Web,Native
          */
-        static TOUCH_RELEASE_OUTSIDE:string;
+        static TOUCH_RELEASE_OUTSIDE: string;
         /**
          * @deprecated
          * @version Egret 2.4
          * @platform Web,Native
          */
-        static TOUCH_ROLL_OUT:string;
+        static TOUCH_ROLL_OUT: string;
         /**
          * @deprecated
          * @version Egret 2.4
          * @platform Web,Native
          */
-        static TOUCH_ROLL_OVER:string;
+        static TOUCH_ROLL_OVER: string;
         /**
          * @language en_US
          * Creates an Event object that contains information about touch events.
@@ -6913,17 +6622,15 @@ declare module egret {
          * @version Egret 2.4
          * @platform Web,Native
          */
-        constructor(type:string, bubbles?:boolean, cancelable?:boolean, stageX?:number, stageY?:number, touchPointID?:number);
-
+        constructor(type: string, bubbles?: boolean, cancelable?: boolean, stageX?: number, stageY?: number, touchPointID?: number);
         /**
          * @private
          */
-        $initTo(stageX:number, stageY:number, touchPointID:number):void;
-
+        $initTo(stageX: number, stageY: number, touchPointID: number): void;
         /**
          * @private
          */
-        $stageX:number;
+        $stageX: number;
         /**
          * @language en_US
          * The horizontal coordinate at which the event occurred in global Stage coordinates.
@@ -6936,11 +6643,11 @@ declare module egret {
          * @version Egret 2.4
          * @platform Web,Native
          */
-        stageX:number;
+        stageX: number;
         /**
          * @private
          */
-        $stageY:number;
+        $stageY: number;
         /**
          * @language en_US
          * The vertical coordinate at which the event occurred in global Stage coordinates.
@@ -6953,7 +6660,7 @@ declare module egret {
          * @version Egret 2.4
          * @platform Web,Native
          */
-        stageY:number;
+        stageY: number;
         private _localX;
         /**
          * @language en_US
@@ -6967,7 +6674,7 @@ declare module egret {
          * @version Egret 2.4
          * @platform Web,Native
          */
-        localX:number;
+        localX: number;
         private _localY;
         /**
          * @language en_US
@@ -6981,16 +6688,13 @@ declare module egret {
          * @version Egret 2.4
          * @platform Web,Native
          */
-        localY:number;
+        localY: number;
         private targetChanged;
-
         /**
          * @private
          */
         private getLocalXY();
-
-        $setTarget(target:any):boolean;
-
+        $setTarget(target: any): boolean;
         /**
          * @language en_US
          * A unique identification number assigned to the touch point.
@@ -7003,7 +6707,7 @@ declare module egret {
          * @version Egret 2.4
          * @platform Web,Native
          */
-        touchPointID:number;
+        touchPointID: number;
         /**
          * @language en_US
          * Instructs Egret runtime to render after processing of this event completes, if the display list has been modified.
@@ -7016,8 +6720,7 @@ declare module egret {
          * @version Egret 2.4
          * @platform Web,Native
          */
-        updateAfterEvent():void;
-
+        updateAfterEvent(): void;
         /**
          * @language en_US
          * Whether the touch is pressed (true) or not pressed (false).
@@ -7030,7 +6733,7 @@ declare module egret {
          * @version Egret 2.4
          * @platform Web,Native
          */
-        touchDown:boolean;
+        touchDown: boolean;
         /**
          * @language en_US
          * uses a specified target to dispatchEvent an event. Using this method can reduce the number of
@@ -7066,7 +6769,7 @@ declare module egret {
          * @version Egret 2.4
          * @platform Web,Native
          */
-        static dispatchTouchEvent(target:IEventDispatcher, type:string, bubbles?:boolean, cancelable?:boolean, stageX?:number, stageY?:number, touchPointID?:number, touchDown?:boolean):boolean;
+        static dispatchTouchEvent(target: IEventDispatcher, type: string, bubbles?: boolean, cancelable?: boolean, stageX?: number, stageY?: number, touchPointID?: number, touchDown?: boolean): boolean;
     }
 }
 declare module egret {
@@ -7088,7 +6791,7 @@ declare module egret {
      */
     interface ExternalInterface {
     }
-    var ExternalInterface:{
+    var ExternalInterface: {
         /**
          * @language en_US
          * Call functionName, and the value passed to the native.
@@ -7101,7 +6804,7 @@ declare module egret {
          * @version Egret 2.4
          * @platform Web,Native
          */
-        call(functionName:string, value:string): void;
+        call(functionName: string, value: string): void;
         /**
          * @language en_US
          * FunctionName callback listener, you need to have to call functionName this field in native rather than such a call.
@@ -7114,7 +6817,7 @@ declare module egret {
          * @version Egret 2.4
          * @platform Web,Native
          */
-        addCallback(functionName:string, listener:(value) => void): void;
+        addCallback(functionName: string, listener: (value) => void): void;
     };
 }
 declare module egret {
@@ -7158,7 +6861,7 @@ declare module egret {
          * @version Egret 2.4
          * @platform Web,Native
          */
-        type:string;
+        type: string;
     }
 }
 declare module egret {
@@ -7168,14 +6871,13 @@ declare module egret {
      * @platform Web,Native
      */
     class BlurFilter extends Filter {
-        blurX:number;
-        blurY:number;
-
+        blurX: number;
+        blurY: number;
         /**
          * @version Egret 2.4
          * @platform Web,Native
          */
-        constructor(blurX:number, blurY:number);
+        constructor(blurX: number, blurY: number);
     }
 }
 declare module egret {
@@ -7188,24 +6890,21 @@ declare module egret {
         /**
          * @private
          */
-        $matrix:Array<number>;
+        $matrix: Array<number>;
         /**
          * @private
          */
         private matrix2;
-
         /**
          * @version Egret 2.4
          * @platform Web,Native
          */
-        constructor(matrix?:Array<number>);
-
+        constructor(matrix?: Array<number>);
         /**
          * @version Egret 2.4
          * @platform Web,Native
          */
-        matrix:Array<number>;
-
+        matrix: Array<number>;
         /**
          * @private
          *
@@ -7225,27 +6924,26 @@ declare module egret {
      * @platform Web,Native
      */
     class GlowFilter extends Filter {
-        color:number;
-        alpha:number;
-        blurX:number;
-        blurY:number;
-        strength:number;
-        quality:number;
-        inner:boolean;
-        knockout:boolean;
+        color: number;
+        alpha: number;
+        blurX: number;
+        blurY: number;
+        strength: number;
+        quality: number;
+        inner: boolean;
+        knockout: boolean;
         /**
          * @private
          */
-        $red:number;
+        $red: number;
         /**
          * @private
          */
-        $green:number;
+        $green: number;
         /**
          * @private
          */
-        $blue:number;
-
+        $blue: number;
         /**
          * 初始化 GlowFilter 对象
          * @method egret.GlowFilter#constructor
@@ -7260,7 +6958,7 @@ declare module egret {
          * @version Egret 2.4
          * @platform Web,Native
          */
-        constructor(color?:number, alpha?:number, blurX?:number, blurY?:number, strength?:number, quality?:number, inner?:boolean, knockout?:boolean);
+        constructor(color?: number, alpha?: number, blurX?: number, blurY?: number, strength?: number, quality?: number, inner?: boolean, knockout?: boolean);
     }
 }
 declare module egret {
@@ -7274,9 +6972,8 @@ declare module egret {
      * @platform Web,Native
      */
     class DropShadowFilter extends GlowFilter {
-        distance:number;
-        angle:number;
-
+        distance: number;
+        angle: number;
         /**
          * 初始化 DropShadowFilter 对象
          * @method egret.GlowFilter#constructor
@@ -7293,7 +6990,7 @@ declare module egret {
          * @version Egret 2.4
          * @platform Web,Native
          */
-        constructor(distance?:number, angle?:number, color?:number, alpha?:number, blurX?:number, blurY?:number, strength?:number, quality?:number, inner?:boolean, knockout?:boolean, hideObject?:boolean);
+        constructor(distance?: number, angle?: number, color?: number, alpha?: number, blurX?: number, blurY?: number, strength?: number, quality?: number, inner?: boolean, knockout?: boolean, hideObject?: boolean);
     }
 }
 declare module egret {
@@ -7331,8 +7028,7 @@ declare module egret {
          * @version Egret 2.4
          * @platform Web,Native
          */
-        static release(matrix:Matrix):void;
-
+        static release(matrix: Matrix): void;
         /**
          * @language en_US
          * get a matrix instance from the object pool or create a new one.
@@ -7345,8 +7041,7 @@ declare module egret {
          * @version Egret 2.4
          * @platform Web,Native
          */
-        static create():Matrix;
-
+        static create(): Matrix;
         /**
          * @language en_US
          * Creates a new Matrix object with the specified parameters.
@@ -7371,8 +7066,7 @@ declare module egret {
          * @version Egret 2.4
          * @platform Web,Native
          */
-        constructor(a?:number, b?:number, c?:number, d?:number, tx?:number, ty?:number);
-
+        constructor(a?: number, b?: number, c?: number, d?: number, tx?: number, ty?: number);
         /**
          * @language en_US
          * The value that affects the positioning of pixels along the x axis when scaling or rotating an image.
@@ -7387,7 +7081,7 @@ declare module egret {
          * @version Egret 2.4
          * @platform Web,Native
          */
-        a:number;
+        a: number;
         /**
          * @language en_US
          * The value that affects the positioning of pixels along the y axis when rotating or skewing an image.
@@ -7402,7 +7096,7 @@ declare module egret {
          * @version Egret 2.4
          * @platform Web,Native
          */
-        b:number;
+        b: number;
         /**
          * @language en_US
          * The value that affects the positioning of pixels along the x axis when rotating or skewing an image.
@@ -7417,7 +7111,7 @@ declare module egret {
          * @version Egret 2.4
          * @platform Web,Native
          */
-        c:number;
+        c: number;
         /**
          * @language en_US
          * The value that affects the positioning of pixels along the y axis when scaling or rotating an image.
@@ -7432,7 +7126,7 @@ declare module egret {
          * @version Egret 2.4
          * @platform Web,Native
          */
-        d:number;
+        d: number;
         /**
          * @language en_US
          * The distance by which to translate each point along the x axis.
@@ -7447,7 +7141,7 @@ declare module egret {
          * @version Egret 2.4
          * @platform Web,Native
          */
-        tx:number;
+        tx: number;
         /**
          * @language en_US
          * The distance by which to translate each point along the y axis.
@@ -7462,7 +7156,7 @@ declare module egret {
          * @version Egret 2.4
          * @platform Web,Native
          */
-        ty:number;
+        ty: number;
         /**
          * @language en_US
          * Returns a new Matrix object that is a clone of this matrix, with an exact copy of the contained object.
@@ -7475,8 +7169,7 @@ declare module egret {
          * @version Egret 2.4
          * @platform Web,Native
          */
-        clone():Matrix;
-
+        clone(): Matrix;
         /**
          * @language en_US
          * Concatenates a matrix with the current matrix, effectively combining the geometric effects of the two. In mathematical
@@ -7492,8 +7185,7 @@ declare module egret {
          * @version Egret 2.4
          * @platform Web,Native
          */
-        concat(other:Matrix):void;
-
+        concat(other: Matrix): void;
         /**
          * @language en_US
          * Copies all of the matrix data from the source Point object into the calling Matrix object.
@@ -7508,8 +7200,7 @@ declare module egret {
          * @version Egret 2.4
          * @platform Web,Native
          */
-        copyFrom(other:Matrix):Matrix;
-
+        copyFrom(other: Matrix): Matrix;
         /**
          * @language en_US
          * Sets each matrix property to a value that causes a null transformation. An object transformed by applying an
@@ -7525,8 +7216,7 @@ declare module egret {
          * @version Egret 2.4
          * @platform Web,Native
          */
-        identity():void;
-
+        identity(): void;
         /**
          * @language en_US
          * Performs the opposite transformation of the original matrix. You can apply an inverted matrix to an object to
@@ -7541,13 +7231,11 @@ declare module egret {
          * @version Egret 2.4
          * @platform Web,Native
          */
-        invert():void;
-
+        invert(): void;
         /**
          * @private
          */
-        $invertInto(target:Matrix):void;
-
+        $invertInto(target: Matrix): void;
         /**
          * @language en_US
          * Applies a rotation transformation to the Matrix object.
@@ -7564,8 +7252,7 @@ declare module egret {
          * @version Egret 2.4
          * @platform Web,Native
          */
-        rotate(angle:number):void;
-
+        rotate(angle: number): void;
         /**
          * @language en_US
          * Applies a scaling transformation to the matrix. The x axis is multiplied by sx, and the y axis it is multiplied by sy.
@@ -7584,8 +7271,7 @@ declare module egret {
          * @version Egret 2.4
          * @platform Web,Native
          */
-        scale(sx:number, sy:number):void;
-
+        scale(sx: number, sy: number): void;
         /**
          * @language en_US
          * Sets the members of Matrix to the specified values
@@ -7610,8 +7296,7 @@ declare module egret {
          * @version Egret 2.4
          * @platform Web,Native
          */
-        setTo(a:number, b:number, c:number, d:number, tx:number, ty:number):Matrix;
-
+        setTo(a: number, b: number, c: number, d: number, tx: number, ty: number): Matrix;
         /**
          * @language en_US
          * Returns the result of applying the geometric transformation represented by the Matrix object to the specified point.
@@ -7633,8 +7318,7 @@ declare module egret {
          * @version Egret 2.4
          * @platform Web,Native
          */
-        transformPoint(pointX:number, pointY:number, resultPoint?:Point):Point;
-
+        transformPoint(pointX: number, pointY: number, resultPoint?: Point): Point;
         /**
          * @language en_US
          * Translates the matrix along the x and y axes, as specified by the dx and dy parameters.
@@ -7651,8 +7335,7 @@ declare module egret {
          * @version Egret 2.4
          * @platform Web,Native
          */
-        translate(dx:number, dy:number):void;
-
+        translate(dx: number, dy: number): void;
         /**
          * @language en_US
          * Determines whether two matrixes are equal.
@@ -7669,8 +7352,7 @@ declare module egret {
          * @version Egret 2.4
          * @platform Web,Native
          */
-        equals(other:Matrix):boolean;
-
+        equals(other: Matrix): boolean;
         /**
          * @language en_US
          * prepend matrix
@@ -7697,8 +7379,7 @@ declare module egret {
          * @version Egret 2.4
          * @platform Web,Native
          */
-        prepend(a:number, b:number, c:number, d:number, tx:number, ty:number):Matrix;
-
+        prepend(a: number, b: number, c: number, d: number, tx: number, ty: number): Matrix;
         /**
          * @language en_US
          * append matrix
@@ -7725,8 +7406,7 @@ declare module egret {
          * @version Egret 2.4
          * @platform Web,Native
          */
-        append(a:number, b:number, c:number, d:number, tx:number, ty:number):Matrix;
-
+        append(a: number, b: number, c: number, d: number, tx: number, ty: number): Matrix;
         /**
          * @language en_US
          * Given a point in the pretransform coordinate space, returns the coordinates of that point after the transformation occurs.
@@ -7745,8 +7425,7 @@ declare module egret {
          * @version Egret 2.4
          * @platform Web,Native
          */
-        deltaTransformPoint(point:Point):Point;
-
+        deltaTransformPoint(point: Point): Point;
         /**
          * @language en_US
          * Returns a text value listing the properties of the Matrix object.
@@ -7761,8 +7440,7 @@ declare module egret {
          * @version Egret 2.4
          * @platform Web,Native
          */
-        toString():string;
-
+        toString(): string;
         /**
          * @language en_US
          * Includes parameters for scaling, rotation, and translation. When applied to a matrix it sets the matrix's values based on those parameters.
@@ -7785,8 +7463,7 @@ declare module egret {
          * @version Egret 2.4
          * @platform Web,Native
          */
-        createBox(scaleX:number, scaleY:number, rotation?:number, tx?:number, ty?:number):void;
-
+        createBox(scaleX: number, scaleY: number, rotation?: number, tx?: number, ty?: number): void;
         /**
          * @language en_US
          * Creates the specific style of matrix expected by the beginGradientFill() and lineGradientStyle() methods of the Graphics class.
@@ -7811,54 +7488,46 @@ declare module egret {
          * @version Egret 2.4
          * @platform Web,Native
          */
-        createGradientBox(width:number, height:number, rotation?:number, tx?:number, ty?:number):void;
-
+        createGradientBox(width: number, height: number, rotation?: number, tx?: number, ty?: number): void;
         /**
          * @private
          */
-        $transformBounds(bounds:Rectangle):void;
-
+        $transformBounds(bounds: Rectangle): void;
         /**
          * @private
          */
         private getDeterminant();
-
         /**
          * @private
          */
-        $getScaleX():number;
-
+        $getScaleX(): number;
         /**
          * @private
          */
-        $getScaleY():number;
-
+        $getScaleY(): number;
         /**
          * @private
          */
-        $getSkewX():number;
-
+        $getSkewX(): number;
         /**
          * @private
          */
-        $getSkewY():number;
-
+        $getSkewY(): number;
         /**
          * @private
          */
-        $updateScaleAndRotation(scaleX:number, scaleY:number, skewX:number, skewY:number):void;
-
+        $updateScaleAndRotation(scaleX: number, scaleY: number, skewX: number, skewY: number): void;
         /**
          * @private
          * target = other * this
          */
-        $preMultiplyInto(other:Matrix, target:Matrix):void;
+        $preMultiplyInto(other: Matrix, target: Matrix): void;
     }
     /**
      * @private
      * 仅供框架内复用，要防止暴露引用到外部。
      */
-    var $TempMatrix:Matrix;
+    var $TempMatrix: Matrix;
 }
 declare module egret {
     /**
@@ -7896,8 +7565,7 @@ declare module egret {
          * @version Egret 2.4
          * @platform Web,Native
          */
-        static release(rect:Rectangle):void;
-
+        static release(rect: Rectangle): void;
         /**
          * @language en_US
          * get a rectangle instance from the object pool or create a new one.
@@ -7910,8 +7578,7 @@ declare module egret {
          * @version Egret 2.4
          * @platform Web,Native
          */
-        static create():Rectangle;
-
+        static create(): Rectangle;
         /**
          * @language en_US
          * Creates a new Rectangle object with the top-left corner specified by the x and y parameters and with the specified
@@ -7933,8 +7600,7 @@ declare module egret {
          * @version Egret 2.4
          * @platform Web,Native
          */
-        constructor(x?:number, y?:number, width?:number, height?:number);
-
+        constructor(x?: number, y?: number, width?: number, height?: number);
         /**
          * @language en_US
          * The x coordinate of the top-left corner of the rectangle.
@@ -7949,7 +7615,7 @@ declare module egret {
          * @version Egret 2.4
          * @platform Web,Native
          */
-        x:number;
+        x: number;
         /**
          * @language en_US
          * The y coordinate of the top-left corner of the rectangle.
@@ -7964,7 +7630,7 @@ declare module egret {
          * @version Egret 2.4
          * @platform Web,Native
          */
-        y:number;
+        y: number;
         /**
          * @language en_US
          * The width of the rectangle, in pixels.
@@ -7979,7 +7645,7 @@ declare module egret {
          * @version Egret 2.4
          * @platform Web,Native
          */
-        width:number;
+        width: number;
         /**
          * @language en_US
          * 矩形的高度（以像素为单位）。
@@ -7994,7 +7660,7 @@ declare module egret {
          * @version Egret 2.4
          * @platform Web,Native
          */
-        height:number;
+        height: number;
         /**
          * @language en_US
          * The sum of the x and width properties.
@@ -8007,7 +7673,7 @@ declare module egret {
          * @version Egret 2.4
          * @platform Web,Native
          */
-        right:number;
+        right: number;
         /**
          * @language en_US
          * The sum of the y and height properties.
@@ -8020,7 +7686,7 @@ declare module egret {
          * @version Egret 2.4
          * @platform Web,Native
          */
-        bottom:number;
+        bottom: number;
         /**
          * @language en_US
          * The x coordinate of the top-left corner of the rectangle. Changing the left property of a Rectangle object has
@@ -8037,7 +7703,7 @@ declare module egret {
          * @version Egret 2.4
          * @platform Web,Native
          */
-        left:number;
+        left: number;
         /**
          * @language en_US
          * The y coordinate of the top-left corner of the rectangle. Changing the top property of a Rectangle object has
@@ -8054,7 +7720,7 @@ declare module egret {
          * @version Egret 2.4
          * @platform Web,Native
          */
-        top:number;
+        top: number;
         /**
          * @language en_US
          * The location of the Rectangle object's top-left corner, determined by the x and y coordinates of the point.
@@ -8067,7 +7733,7 @@ declare module egret {
          * @version Egret 2.4
          * @platform Web,Native
          */
-        topLeft:Point;
+        topLeft: Point;
         /**
          * @language en_US
          * The location of the Rectangle object's bottom-right corner, determined by the values of the right and bottom properties.
@@ -8080,7 +7746,7 @@ declare module egret {
          * @version Egret 2.4
          * @platform Web,Native
          */
-        bottomRight:Point;
+        bottomRight: Point;
         /**
          * @language en_US
          * Copies all of rectangle data from the source Rectangle object into the calling Rectangle object.
@@ -8095,8 +7761,7 @@ declare module egret {
          * @version Egret 2.4
          * @platform Web,Native
          */
-        copyFrom(sourceRect:Rectangle):Rectangle;
-
+        copyFrom(sourceRect: Rectangle): Rectangle;
         /**
          * @language en_US
          * Sets the members of Rectangle to the specified values
@@ -8117,8 +7782,7 @@ declare module egret {
          * @version Egret 2.4
          * @platform Web,Native
          */
-        setTo(x:number, y:number, width:number, height:number):Rectangle;
-
+        setTo(x: number, y: number, width: number, height: number): Rectangle;
         /**
          * @language en_US
          * Determines whether the specified point is contained within the rectangular region defined by this Rectangle object.
@@ -8137,8 +7801,7 @@ declare module egret {
          * @version Egret 2.4
          * @platform Web,Native
          */
-        contains(x:number, y:number):boolean;
-
+        contains(x: number, y: number): boolean;
         /**
          * @language en_US
          * If the Rectangle object specified in the toIntersect parameter intersects with this Rectangle object, returns
@@ -8160,8 +7823,7 @@ declare module egret {
          * @version Egret 2.4
          * @platform Web,Native
          */
-        intersection(toIntersect:Rectangle):Rectangle;
-
+        intersection(toIntersect: Rectangle): Rectangle;
         /**
          * @language en_US
          * Increases the size of the Rectangle object by the specified amounts, in pixels.
@@ -8180,13 +7842,11 @@ declare module egret {
          * @version Egret 2.4
          * @platform Web,Native
          */
-        inflate(dx:number, dy:number):void;
-
+        inflate(dx: number, dy: number): void;
         /**
          * @private
          */
-        $intersectInPlace(clipRect:Rectangle):Rectangle;
-
+        $intersectInPlace(clipRect: Rectangle): Rectangle;
         /**
          * @language en_US
          * Determines whether the object specified in the toIntersect parameter intersects with this Rectangle object.
@@ -8206,8 +7866,7 @@ declare module egret {
          * @version Egret 2.4
          * @platform Web,Native
          */
-        intersects(toIntersect:Rectangle):boolean;
-
+        intersects(toIntersect: Rectangle): boolean;
         /**
          * @language en_US
          * Determines whether or not this Rectangle object is empty.
@@ -8222,8 +7881,7 @@ declare module egret {
          * @version Egret 2.4
          * @platform Web,Native
          */
-        isEmpty():boolean;
-
+        isEmpty(): boolean;
         /**
          * @language en_US
          * Sets all of the Rectangle object's properties to 0. A Rectangle object is empty if its width or height is less than or equal to 0.
@@ -8236,8 +7894,7 @@ declare module egret {
          * @version Egret 2.4
          * @platform Web,Native
          */
-        setEmpty():void;
-
+        setEmpty(): void;
         /**
          * @language en_US
          * Returns a new Rectangle object with the same values for the x, y, width, and height properties as the original Rectangle object.
@@ -8252,8 +7909,7 @@ declare module egret {
          * @version Egret 2.4
          * @platform Web,Native
          */
-        clone():Rectangle;
-
+        clone(): Rectangle;
         /**
          * @language en_US
          * Determines whether the specified point is contained within the rectangular region defined by this Rectangle object.
@@ -8272,8 +7928,7 @@ declare module egret {
          * @version Egret 2.4
          * @platform Web,Native
          */
-        containsPoint(point:Point):boolean;
-
+        containsPoint(point: Point): boolean;
         /**
          * @language en_US
          * Determines whether the Rectangle object specified by the rect parameter is contained within this Rectangle object.
@@ -8292,8 +7947,7 @@ declare module egret {
          * @version Egret 2.4
          * @platform Web,Native
          */
-        containsRect(rect:egret.Rectangle):boolean;
-
+        containsRect(rect: egret.Rectangle): boolean;
         /**
          * @language en_US
          * Determines whether the object specified in the toCompare parameter is equal to this Rectangle object.
@@ -8312,8 +7966,7 @@ declare module egret {
          * @version Egret 2.4
          * @platform Web,Native
          */
-        equals(toCompare:Rectangle):boolean;
-
+        equals(toCompare: Rectangle): boolean;
         /**
          * @language en_US
          * Increases the size of the Rectangle object. This method is similar to the Rectangle.inflate() method except it takes a Point object as a parameter.
@@ -8328,8 +7981,7 @@ declare module egret {
          * @version Egret 2.4
          * @platform Web,Native
          */
-        inflatePoint(point:Point):void;
-
+        inflatePoint(point: Point): void;
         /**
          * @language en_US
          * Adjusts the location of the Rectangle object, as determined by its top-left corner, by the specified amounts.
@@ -8346,8 +7998,7 @@ declare module egret {
          * @version Egret 2.4
          * @platform Web,Native
          */
-        offset(dx:number, dy:number):void;
-
+        offset(dx: number, dy: number): void;
         /**
          * @language en_US
          * Adjusts the location of the Rectangle object using a Point object as a parameter. This method is similar to the Rectangle.offset() method, except that it takes a Point object as a parameter.
@@ -8362,8 +8013,7 @@ declare module egret {
          * @version Egret 2.4
          * @platform Web,Native
          */
-        offsetPoint(point:Point):void;
-
+        offsetPoint(point: Point): void;
         /**
          * @language en_US
          * Builds and returns a string that lists the horizontal and vertical positions and the width and height of the Rectangle object.
@@ -8378,8 +8028,7 @@ declare module egret {
          * @version Egret 2.4
          * @platform Web,Native
          */
-        toString():string;
-
+        toString(): string;
         /**
          * @language en_US
          * Adds two rectangles together to create a new Rectangle object, by filling in the horizontal and vertical space between the two rectangles.
@@ -8396,23 +8045,21 @@ declare module egret {
          * @version Egret 2.4
          * @platform Web,Native
          */
-        union(toUnion:Rectangle):Rectangle;
-
+        union(toUnion: Rectangle): Rectangle;
         /**
          * @private
          */
-        $getBaseWidth(angle:number):number;
-
+        $getBaseWidth(angle: number): number;
         /**
          * @private
          */
-        $getBaseHeight(angle:number):number;
+        $getBaseHeight(angle: number): number;
     }
     /**
      * @private
      * 仅供框架内复用，要防止暴露引用到外部。
      */
-    var $TempRectangle:Rectangle;
+    var $TempRectangle: Rectangle;
 }
 declare module egret {
 }
@@ -8420,11 +8067,11 @@ declare module egret {
     /**
      * @private
      */
-    var $locale_strings:any;
+    var $locale_strings: any;
     /**
      * @private
      */
-    var $language:string;
+    var $language: string;
 }
 declare module egret.sys {
     /**
@@ -8434,7 +8081,7 @@ declare module egret.sys {
      * @param args 替换字符串中{0}标志的参数列表
      * @returns 返回拼接后的字符串
      */
-    function tr(code:number, ...args:any[]):string;
+    function tr(code: number, ...args: any[]): string;
 }
 declare module egret {
 }
@@ -8458,7 +8105,7 @@ declare module egret.localStorage {
      * @version Egret 2.4
      * @platform Web,Native
      */
-    var getItem:(key:string) => string;
+    var getItem: (key: string) => string;
     /**
      * @language en_US
      * Save data
@@ -8477,7 +8124,7 @@ declare module egret.localStorage {
      * @version Egret 2.4
      * @platform Web,Native
      */
-    var setItem:(key:string, value:string) => boolean;
+    var setItem: (key: string, value: string) => boolean;
     /**
      * @language en_US
      * Delete data
@@ -8492,7 +8139,7 @@ declare module egret.localStorage {
      * @version Egret 2.4
      * @platform Web,Native
      */
-    var removeItem:(key:string) => void;
+    var removeItem: (key: string) => void;
     /**
      * @language en_US
      * Clear all data
@@ -8505,20 +8152,19 @@ declare module egret.localStorage {
      * @version Egret 2.4
      * @platform Web,Native
      */
-    var clear:() => void;
+    var clear: () => void;
 }
 declare module egret.sys {
     /**
      * @private
      * @param channel
      */
-    function $pushSoundChannel(channel:SoundChannel):void;
-
+    function $pushSoundChannel(channel: SoundChannel): void;
     /**
      * @private
      * @param channel
      */
-    function $popSoundChannel(channel:SoundChannel):boolean;
+    function $popSoundChannel(channel: SoundChannel): boolean;
 }
 declare module egret {
     /**
@@ -8560,7 +8206,7 @@ declare module egret {
          * @version Egret 2.4
          * @platform Web,Native
          */
-        load(url:string): void;
+        load(url: string): void;
         /**
          * @language en_US
          * Generates a new SoundChannel object to play back the sound.
@@ -8577,7 +8223,7 @@ declare module egret {
          * @version Egret 2.4
          * @platform Web,Native
          */
-        play(startTime?:number, loops?:number): SoundChannel;
+        play(startTime?: number, loops?: number): SoundChannel;
         /**
          * @language en_US
          * Closes the stream, causing any download of data to cease
@@ -8605,12 +8251,12 @@ declare module egret {
          * @version Egret 2.4
          * @platform Web,Native
          */
-            type: string;
+        type: string;
     }
     /**
      * @copy egret.Sound
      */
-    var Sound:{
+    var Sound: {
         /**
          * @language en_US
          * Create Sound object, load an external audio file and play
@@ -8669,7 +8315,7 @@ declare module egret {
      * @includeExample egret/media/Sound.ts
      */
     /**
-     * @language zh_CN
+    * @language zh_CN
      * SoundChannel 类控制应用程序中的声音。每个声音均分配给一个声道，而且应用程序可以具有混合在一起的多个声道。
      * SoundChannel 类包含 stop() 方法、用于设置音量和监视播放进度的属性。
      *
@@ -8677,7 +8323,7 @@ declare module egret {
      * @version Egret 2.4
      * @platform Web,Native
      * @includeExample egret/media/Sound.ts
-     */
+    */
     interface SoundChannel extends IEventDispatcher {
         /**
          * @language en_US
@@ -8769,7 +8415,7 @@ declare module egret {
          * @version Egret 2.4
          * @platform Web
          */
-        load(url:string): void;
+        load(url: string): void;
         /**
          * @language en_US
          * Play back the video.
@@ -8788,7 +8434,7 @@ declare module egret {
          * @version Egret 2.4
          * @platform Web
          */
-        play(startTime?:number, loop?:boolean): any;
+        play(startTime?: number, loop?: boolean): any;
         /**
          * @language en_US
          * Closes the stream, causing any download of data to cease
@@ -8918,310 +8564,193 @@ declare module egret {
     /**
      * @copy egret.Video
      */
-    var Video:{
+    var Video: {
         new (): Video;
     };
 }
 declare module egret_native {
-    var nativeType:string;
-
+    var nativeType: string;
     /**
      * 游戏启动
      * @private
      */
-    function startGame():void;
-
-    function loglevel(logType:any):void;
-
-    function callRender():void;
-
-    function getVersion():any;
-
-    function setScreenCanvas(canvas:Canvas):void;
-
-    function setFrameRate(frameRate:number):void;
-
-    function onTouchesBegin(num:number, ids:Array<any>, xs_array:Array<any>, ys_array:Array<any>):any;
-
-    function onTouchesMove(num:number, ids:Array<any>, xs_array:Array<any>, ys_array:Array<any>):any;
-
-    function onTouchesEnd(num:number, ids:Array<any>, xs_array:Array<any>, ys_array:Array<any>):any;
-
-    function onTouchesCancel(num:number, ids:Array<any>, xs_array:Array<any>, ys_array:Array<any>):any;
-
+    function startGame(): void;
+    function loglevel(logType: any): void;
+    function callRender(): void;
+    function getVersion(): any;
+    function setScreenCanvas(canvas: Canvas): void;
+    function setFrameRate(frameRate: number): void;
+    function onTouchesBegin(num: number, ids: Array<any>, xs_array: Array<any>, ys_array: Array<any>): any;
+    function onTouchesMove(num: number, ids: Array<any>, xs_array: Array<any>, ys_array: Array<any>): any;
+    function onTouchesEnd(num: number, ids: Array<any>, xs_array: Array<any>, ys_array: Array<any>): any;
+    function onTouchesCancel(num: number, ids: Array<any>, xs_array: Array<any>, ys_array: Array<any>): any;
     /**
      * 启动主循环
      * @param callback 主循环回调函数
      * @param thisObject
      */
-    function executeMainLoop(callback:Function, thisObject:any):void;
-
-    function pauseApp():void;
-
-    function resumeApp():void;
-
-    function readXML(filepath:string):any;
-
-    function xmlStr2JsonStr(text:string):any;
-
-    function isFileExists(filepath:string):boolean;
-
-    function isRecordExists(filepath:string):boolean;
-
-    function readFileSync(filepath:string, type?:string):any;
-
-    function readResourceFileSync(filepath:string):any;
-
-    function readUpdateFileSync(filepath:string):any;
-
-    function deleteUpdateFile(filepath:string):void;
-
-    function readFileAsync(filepath:string, promise:egret.PromiseObject, type?:string):any;
-
-    function writeFileSync(filepath:string, fileContent:string):any;
-
-    function requireHttpSync(url:string, callback:Function):void;
-
-    function requireHttp(url:string, param:any, callback:Function):void;
-
-    function sendInfoToPlugin(info:string):void;
-
-    function receivedPluginInfo(info:string):void;
-
-    function loadRecord(filepath:string):string;
-
-    function saveRecord(filepath:string, fileContent:string):void;
-
-    function getOption(type:string):string;
-
+    function executeMainLoop(callback: Function, thisObject: any): void;
+    function pauseApp(): void;
+    function resumeApp(): void;
+    function readXML(filepath: string): any;
+    function xmlStr2JsonStr(text: string): any;
+    function isFileExists(filepath: string): boolean;
+    function isRecordExists(filepath: string): boolean;
+    function readFileSync(filepath: string, type?: string): any;
+    function readResourceFileSync(filepath: string): any;
+    function readUpdateFileSync(filepath: string): any;
+    function deleteUpdateFile(filepath: string): void;
+    function readFileAsync(filepath: string, promise: egret.PromiseObject, type?: string): any;
+    function writeFileSync(filepath: string, fileContent: string): any;
+    function requireHttpSync(url: string, callback: Function): void;
+    function requireHttp(url: string, param: any, callback: Function): void;
+    function sendInfoToPlugin(info: string): void;
+    function receivedPluginInfo(info: string): void;
+    function loadRecord(filepath: string): string;
+    function saveRecord(filepath: string, fileContent: string): void;
+    function getOption(type: string): string;
     module Audio {
-        function preloadBackgroundMusic(path:string):void;
-
-        function playBackgroundMusic(path:string, loop:boolean):void;
-
-        function setBackgroundMusicVolume(value:number):void;
-
-        function setEffectsVolume(value:number):void;
-
-        function getBackgroundMusicVolume():number;
-
-        function getEffectsVolume():number;
-
-        function stopBackgroundMusic(isRelease:boolean):void;
-
-        function preloadEffect(path:string):void;
-
-        function preloadEffectAsync(path:string, promise:egret.PromiseObject):void;
-
-        function playEffect(path:string, loop:boolean):void;
-
-        function unloadEffect(path:string):void;
-
-        function stopEffect(effectId:number):void;
-
-        function pauseBackgroundMusic():void;
-
-        function pauseAllEffects():void;
-
-        function resumeBackgroundMusic():void;
-
-        function resumeAllEffects():void;
+        function preloadBackgroundMusic(path: string): void;
+        function playBackgroundMusic(path: string, loop: boolean): void;
+        function setBackgroundMusicVolume(value: number): void;
+        function setEffectsVolume(value: number): void;
+        function getBackgroundMusicVolume(): number;
+        function getEffectsVolume(): number;
+        function stopBackgroundMusic(isRelease: boolean): void;
+        function preloadEffect(path: string): void;
+        function preloadEffectAsync(path: string, promise: egret.PromiseObject): void;
+        function playEffect(path: string, loop: boolean): void;
+        function unloadEffect(path: string): void;
+        function stopEffect(effectId: number): void;
+        function pauseBackgroundMusic(): void;
+        function pauseAllEffects(): void;
+        function resumeBackgroundMusic(): void;
+        function resumeAllEffects(): void;
     }
-    function download(url:string, savePath:string, promise:any):void;
-
+    function download(url: string, savePath: string, promise: any): void;
     module Graphics {
-        function clearScreen(r:number, g:number, b:number):void;
-
-        function drawImage(texture:any, sourceX:any, sourceY:any, sourceWidth:any, sourceHeight:any, destX:any, destY:any, destWidth:any, destHeight:any):void;
-
-        function drawImageScale9(texture:any, sourceX:any, sourceY:any, sourceWidth:any, sourceHeight:any, destX:any, destY:any, destWidth:any, destHeight:any, x:any, y:any, width:any, height:any):boolean;
-
-        function setTransform(a:number, b:number, c:number, d:number, tx:number, ty:number):void;
-
-        function setGlobalAlpha(alpha:number):void;
-
-        function pushClip(x:number, y:number, w:number, h:number):void;
-
-        function popClip():void;
-
-        function setGlobalColorTransform(colorTransformMatrix:Array<number>):void;
-
-        function setGlobalColorTransformEnabled(bool:boolean):void;
-
-        function setGlobalShader(filterData:any):void;
-
-        function lineStyle(thickness:number, color:number):void;
-
-        function lineTo(x:number, y:number):void;
-
-        function moveTo(x:number, y:number):void;
-
-        function beginFill(color:number, alpha:number):void;
-
-        function endFill():void;
-
-        function setBlendArg(src:number, des:number):void;
-
-        function setTextureScaleFactor(value:number):void;
+        function clearScreen(r: number, g: number, b: number): void;
+        function drawImage(texture: any, sourceX: any, sourceY: any, sourceWidth: any, sourceHeight: any, destX: any, destY: any, destWidth: any, destHeight: any): void;
+        function drawImageScale9(texture: any, sourceX: any, sourceY: any, sourceWidth: any, sourceHeight: any, destX: any, destY: any, destWidth: any, destHeight: any, x: any, y: any, width: any, height: any): boolean;
+        function setTransform(a: number, b: number, c: number, d: number, tx: number, ty: number): void;
+        function setGlobalAlpha(alpha: number): void;
+        function pushClip(x: number, y: number, w: number, h: number): void;
+        function popClip(): void;
+        function setGlobalColorTransform(colorTransformMatrix: Array<number>): void;
+        function setGlobalColorTransformEnabled(bool: boolean): void;
+        function setGlobalShader(filterData: any): void;
+        function lineStyle(thickness: number, color: number): void;
+        function lineTo(x: number, y: number): void;
+        function moveTo(x: number, y: number): void;
+        function beginFill(color: number, alpha: number): void;
+        function endFill(): void;
+        function setBlendArg(src: number, des: number): void;
+        function setTextureScaleFactor(value: number): void;
     }
     module Label {
-        function createLabel(font:string, size:number, defaultString:string, defaultStroke:number):void;
-
-        function setTextColor(color:number):void;
-
-        function setStrokeColor(color:number):void;
-
-        function drawText(text:string, x:number, y:number):void;
-
-        function setTextAlignment(type:string):void;
-
-        function getTextSize(text:string):Array<number>;
+        function createLabel(font: string, size: number, defaultString: string, defaultStroke: number): void;
+        function setTextColor(color: number): void;
+        function setStrokeColor(color: number): void;
+        function drawText(text: string, x: number, y: number): void;
+        function setTextAlignment(type: string): void;
+        function getTextSize(text: string): Array<number>;
     }
     module EGTXML {
-        function readXML(filepath:string):void;
+        function readXML(filepath: string): void;
     }
     module Texture {
-        function create(filePath:string):any;
-
-        function addTexture(filePath:string):any;
-
-        function addTextureAsyn(filePath:string, promise:any):any;
-
-        function addTextureUnsyn(filePath:string, promise:any):any;
-
-        function removeTexture(filePath:string):void;
+        function create(filePath: string): any;
+        function addTexture(filePath: string): any;
+        function addTextureAsyn(filePath: string, promise: any): any;
+        function addTextureUnsyn(filePath: string, promise: any): any;
+        function removeTexture(filePath: string): void;
     }
     module TextInputOp {
-        function setKeybordOpen(isOpen:boolean, jsonConfig?:Object):void;
-
-        function isFullScreenKeyBoard():boolean;
-
-        function setInputTextMaxLenght(value:number):void;
+        function setKeybordOpen(isOpen: boolean, jsonConfig?: Object): void;
+        function isFullScreenKeyBoard(): boolean;
+        function setInputTextMaxLenght(value: number): void;
     }
-    function EGT_TextInput(text:string):void;
-
-    function EGT_keyboardFinish():void;
-
-    function EGT_deleteBackward():void;
-
-    function EGT_keyboardDidHide():void;
-
-    function EGT_keyboardDidShow():void;
-
-    function EGT_getTextEditerContentText():string;
-
+    function EGT_TextInput(text: string): void;
+    function EGT_keyboardFinish(): void;
+    function EGT_deleteBackward(): void;
+    function EGT_keyboardDidHide(): void;
+    function EGT_keyboardDidShow(): void;
+    function EGT_getTextEditerContentText(): string;
     module EGTView {
-        function getFrameWidth():number;
-
-        function getFrameHeight():number;
-
-        function setVisibleRect(x:number, y:number, w:number, h:number):number;
-
-        function setDesignSize(w:number, h:number):number;
+        function getFrameWidth(): number;
+        function getFrameHeight(): number;
+        function setVisibleRect(x: number, y: number, w: number, h: number): number;
+        function setDesignSize(w: number, h: number): number;
     }
     /**
      * @private
      */
     class RenderTexture {
-        constructor(width:number, height:number);
-
-        begin():any;
-
-        end():any;
-
-        dispose():any;
-
-        toDataURL(type:any):any;
-
-        saveToFile(type:string, filePath:string):any;
+        constructor(width: number, height: number);
+        begin(): any;
+        end(): any;
+        dispose(): any;
+        toDataURL(type: any): any;
+        saveToFile(type: string, filePath: string): any;
     }
     module rastergl {
-        function arc(x:number, y:number, radius:number, startAngle:number, endAngle:number, anticlockwise?:boolean):void;
-
-        function quadraticCurveTo(cpx:number, cpy:number, x:number, y:number):void;
-
-        function lineTo(x:number, y:number):void;
-
-        function fill(fillRule?:string):void;
-
-        function closePath():void;
-
-        function rect(x:number, y:number, w:number, h:number):void;
-
-        function moveTo(x:number, y:number):void;
-
-        function fillRect(x:number, y:number, w:number, h:number):void;
-
-        function bezierCurveTo(cp1x:number, cp1y:number, cp2x:number, cp2y:number, x:number, y:number):void;
-
-        function stroke():void;
-
-        function strokeRect(x:number, y:number, w:number, h:number):void;
-
-        function beginPath():void;
-
-        function arcTo(x1:number, y1:number, x2:number, y2:number, radius:number):void;
-
-        function transform(m11:number, m12:number, m21:number, m22:number, dx:number, dy:number):void;
-
-        function translate(x:number, y:number):void;
-
-        function scale(x:number, y:number):void;
-
-        function rotate(angle:number):void;
-
-        function save():void;
-
-        function restore():void;
-
-        function createLinearGradient(x0:number, y0:number, x1:number, y1:number):CanvasGradient;
-
-        function createRadialGradient(x0:number, y0:number, r0:number, x1:number, y1:number, r1:number):CanvasGradient;
-
+        function arc(x: number, y: number, radius: number, startAngle: number, endAngle: number, anticlockwise?: boolean): void;
+        function quadraticCurveTo(cpx: number, cpy: number, x: number, y: number): void;
+        function lineTo(x: number, y: number): void;
+        function fill(fillRule?: string): void;
+        function closePath(): void;
+        function rect(x: number, y: number, w: number, h: number): void;
+        function moveTo(x: number, y: number): void;
+        function fillRect(x: number, y: number, w: number, h: number): void;
+        function bezierCurveTo(cp1x: number, cp1y: number, cp2x: number, cp2y: number, x: number, y: number): void;
+        function stroke(): void;
+        function strokeRect(x: number, y: number, w: number, h: number): void;
+        function beginPath(): void;
+        function arcTo(x1: number, y1: number, x2: number, y2: number, radius: number): void;
+        function transform(m11: number, m12: number, m21: number, m22: number, dx: number, dy: number): void;
+        function translate(x: number, y: number): void;
+        function scale(x: number, y: number): void;
+        function rotate(angle: number): void;
+        function save(): void;
+        function restore(): void;
+        function createLinearGradient(x0: number, y0: number, x1: number, y1: number): CanvasGradient;
+        function createRadialGradient(x0: number, y0: number, r0: number, x1: number, y1: number, r1: number): CanvasGradient;
         /**
          * @private
          */
-        var lineWidth:number;
+        var lineWidth: number;
         /**
          * @private
          */
-        var strokeStyle:any;
+        var strokeStyle: any;
         /**
          * @private
          */
-        var fillStyle:any;
+        var fillStyle: any;
     }
     module Game {
-        function listResource(root:any, promise:any):any;
-
-        function listUpdate(root:any, promise:any):any;
+        function listResource(root: any, promise: any): any;
+        function listUpdate(root: any, promise: any): any;
     }
     /**
      * @private
      */
     class RenderContext {
-        clearScreen(r:number, g:number, b:number):void;
-
-        drawImage(texture:any, sourceX:any, sourceY:any, sourceWidth:any, sourceHeight:any, destX:any, destY:any, destWidth:any, destHeight:any):void;
-
-        setTransform(a:number, b:number, c:number, d:number, tx:number, ty:number):void;
-
-        setGlobalAlpha(alpha:number):void;
-
-        pushClip(x:number, y:number, w:number, h:number):void;
-
-        popClip():void;
+        clearScreen(r: number, g: number, b: number): void;
+        drawImage(texture: any, sourceX: any, sourceY: any, sourceWidth: any, sourceHeight: any, destX: any, destY: any, destWidth: any, destHeight: any): void;
+        setTransform(a: number, b: number, c: number, d: number, tx: number, ty: number): void;
+        setGlobalAlpha(alpha: number): void;
+        pushClip(x: number, y: number, w: number, h: number): void;
+        popClip(): void;
     }
     /**
      * @private
      */
     class Canvas {
-        constructor(width:number, height:number);
-
-        width:number;
-        height:number;
-
-        getContext(type:string):RenderContext;
+        constructor(width: number, height: number);
+        width: number;
+        height: number;
+        getContext(type: string): RenderContext;
     }
 }
 declare module egret {
@@ -9239,84 +8768,77 @@ declare module egret {
          * @version Egret 2.4
          * @platform Web,Native
          */
-        onSuccessFunc:Function;
+        onSuccessFunc: Function;
         /**
          * @version Egret 2.4
          * @platform Web,Native
          */
-        onSuccessThisObject:any;
+        onSuccessThisObject: any;
         /**
          * @version Egret 2.4
          * @platform Web,Native
          */
-        onErrorFunc:Function;
+        onErrorFunc: Function;
         /**
          * @version Egret 2.4
          * @platform Web,Native
          */
-        onErrorThisObject:any;
+        onErrorThisObject: any;
         /**
          * @version Egret 2.4
          * @platform Web,Native
          */
-        downloadingSizeFunc:Function;
+        downloadingSizeFunc: Function;
         /**
          * @version Egret 2.4
          * @platform Web,Native
          */
-        downloadingSizeThisObject:any;
+        downloadingSizeThisObject: any;
         /**
          * @version Egret 2.4
          * @platform Web,Native
          */
-        onResponseHeaderFunc:Function;
+        onResponseHeaderFunc: Function;
         /**
          * @version Egret 2.4
          * @platform Web,Native
          */
-        onResponseHeaderThisObject:any;
-
+        onResponseHeaderThisObject: any;
         /**
          * @version Egret 2.4
          * @platform Web,Native
          */
         constructor();
-
         /**
          *
          * @version Egret 2.4
          * @platform Web,Native
          */
-        static create():any;
-
+        static create(): any;
         /**
          * @private
          *
          * @param args
          */
         private onSuccess(...args);
-
         /**
          * @private
          *
          * @param args
          */
         private onError(...args);
-
         /**
          * @private
          *
          * @param args
          */
         private downloadingSize(...args);
-
         /**
          * @private
          *
          * @param args
          */
         private onResponseHeader(...args);
-
         /**
          * @private
          *
@@ -9354,7 +8876,7 @@ declare module egret {
          * @version Egret 2.4
          * @platform Web,Native
          */
-        static GET:string;
+        static GET: string;
         /**
          * @language en_US
          * Specifies that the HttpRequest object is a POST.
@@ -9367,7 +8889,7 @@ declare module egret {
          * @version Egret 2.4
          * @platform Web,Native
          */
-        static POST:string;
+        static POST: string;
     }
 }
 declare module egret {
@@ -9471,7 +8993,7 @@ declare module egret {
          * @version Egret 2.4
          * @platform Web,Native
          */
-        open(url:string, method?:string): void;
+        open(url: string, method?: string): void;
         /**
          * @language en_US
          * Sends the request.
@@ -9486,7 +9008,7 @@ declare module egret {
          * @version Egret 2.4
          * @platform Web,Native
          */
-        send(data?:any): void;
+        send(data?: any): void;
         /**
          * @language en_US
          * Aborts the request if it has already been sent.
@@ -9529,7 +9051,7 @@ declare module egret {
          * @version Egret 2.4
          * @platform Web,Native
          */
-        setRequestHeader(header:string, value:string): void;
+        setRequestHeader(header: string, value: string): void;
         /**
          * @language en_US
          * Returns the string containing the text of the specified header, or null if either the response has not yet been
@@ -9545,7 +9067,7 @@ declare module egret {
          * @version Egret 2.4
          * @platform Web,Native
          */
-        getResponseHeader(header:string): string;
+        getResponseHeader(header: string): string;
     }
     /**
      * @language en_US
@@ -9559,7 +9081,7 @@ declare module egret {
      * @version Egret 2.4
      * @platform Web,Native
      */
-    var HttpRequest:{
+    var HttpRequest: {
         new (): HttpRequest;
     };
 }
@@ -9591,7 +9113,7 @@ declare module egret {
          * @version Egret 2.4
          * @platform Web,Native
          */
-        static TEXT:string;
+        static TEXT: string;
         /**
          * @language en_US
          * Specifies that downloaded data is received as raw binary data.
@@ -9604,7 +9126,7 @@ declare module egret {
          * @version Egret 2.4
          * @platform Web,Native
          */
-        static ARRAY_BUFFER:string;
+        static ARRAY_BUFFER: string;
     }
 }
 declare module egret {
@@ -9678,7 +9200,7 @@ declare module egret {
          * @version Egret 2.4
          * @platform Web,Native
          */
-        load(url:string): void;
+        load(url: string): void;
     }
     /**
      * @language en_US
@@ -9692,7 +9214,7 @@ declare module egret {
      * @version Egret 2.4
      * @platform Web,Native
      */
-    var ImageLoader:{
+    var ImageLoader: {
         /**
          * @language en_US
          * constructor
@@ -9727,7 +9249,7 @@ declare module egret.sys {
      * 脏矩形计算工具类
      */
     class DirtyRegion {
-        displayList:DisplayList;
+        displayList: DisplayList;
         /**
          * @private
          */
@@ -9752,39 +9274,32 @@ declare module egret.sys {
          * @private
          */
         private clipRectChanged;
-
         /**
          * @private
          * 设置剪裁边界，超过边界的节点将跳过绘制。
          */
-        setClipRect(width:number, height:number):void;
-
+        setClipRect(width: number, height: number): void;
         /**
          * @private
          * 添加一个脏矩形区域，返回是否添加成功，当矩形为空或者在屏幕之外时返回false。
          */
-        addRegion(target:Region):boolean;
-
+        addRegion(target: Region): boolean;
         /**
          * @private
          */
-        clear():void;
-
+        clear(): void;
         /**
          * @private
          * 获取最终的脏矩形列表
          */
-        getDirtyRegions():Region[];
-
+        getDirtyRegions(): Region[];
         /**
          * @private
          * 合并脏矩形列表
          */
         private mergeDirtyList(dirtyList);
-
         private $dirtyRegionPolicy;
-
-        setDirtyRegionPolicy(policy:string):void;
+        setDirtyRegionPolicy(policy: string): void;
     }
 }
 declare module egret {
@@ -9813,7 +9328,7 @@ declare module egret {
          * @version Egret 2.5
          * @platform Web,Native
          */
-        static OFF:string;
+        static OFF: string;
         /**
          * @language en_US
          * Open automatic detection of dirty region
@@ -9826,7 +9341,7 @@ declare module egret {
          * @version Egret 2.5
          * @platform Web,Native
          */
-        static ON:string;
+        static ON: string;
     }
 }
 declare module egret.sys {
@@ -9839,81 +9354,74 @@ declare module egret.sys {
          * @private
          * 释放一个DisplayList实例到对象池
          */
-        static release(displayList:DisplayList):void;
-
+        static release(displayList: DisplayList): void;
         /**
          * @private
          * 从对象池中取出或创建一个新的DisplayList对象。
          */
-        static create(target:DisplayObject):DisplayList;
-
+        static create(target: DisplayObject): DisplayList;
         /**
          * @private
          * 创建一个DisplayList对象
          */
-        constructor(root:DisplayObject);
-
+        constructor(root: DisplayObject);
         /**
          * @private
          * 是否需要重绘
          */
-        $isDirty:boolean;
+        $isDirty: boolean;
         /**
          * @private
          * 在舞台上的透明度
          */
-        $renderAlpha:number;
+        $renderAlpha: number;
         /**
          * @private
          * 相对于显示列表根节点或位图缓存根节点的矩阵对象
          */
-        $renderMatrix:Matrix;
-        $ratioMatrix:Matrix;
-        $ratioChanged:boolean;
-        $pixelRatio:number;
+        $renderMatrix: Matrix;
+        $ratioMatrix: Matrix;
+        $ratioChanged: boolean;
+        $pixelRatio: number;
         /**
          * @private
          * 在显示列表根节点或位图缓存根节点上的显示区域
          */
-        $renderRegion:Region;
-
+        $renderRegion: Region;
         /**
          * @private
          * 更新对象在舞台上的显示区域和透明度,返回显示区域是否发生改变。
          */
-        $update():boolean;
-
+        $update(): boolean;
         /**
          * @private
          * 呈现绘制结果的目标画布
          */
-        surface:Surface;
+        surface: Surface;
         /**
          * @private
          */
-        offsetX:number;
+        offsetX: number;
         /**
          * @private
          */
-        offsetY:number;
-
+        offsetY: number;
         /**
          * @private
          *
          * @param context
          */
-        $render(context:RenderContext):void;
-
+        $render(context: RenderContext): void;
         /**
          * @private
          * 显示列表根节点
          */
-        root:DisplayObject;
+        root: DisplayObject;
         /**
          * @private
          */
-        needRedraw:boolean;
-        needUpdateRegions:boolean;
+        needRedraw: boolean;
+        needUpdateRegions: boolean;
         /**
          * @private
          */
@@ -9922,14 +9430,12 @@ declare module egret.sys {
          * @private
          * 绘图上下文
          */
-        renderContext:RenderContext;
-
+        renderContext: RenderContext;
         /**
          * @private
          * 设置剪裁边界，不再绘制完整目标对象，画布尺寸由外部决定，超过边界的节点将跳过绘制。
          */
-        setClipRect(width:number, height:number):void;
-
+        setClipRect(width: number, height: number): void;
         /**
          * @private
          * 显示对象的渲染节点发生改变时，把自身的IRenderable对象注册到此列表上。
@@ -9939,13 +9445,11 @@ declare module egret.sys {
          * @private
          */
         private dirtyNodeList;
-
         /**
          * @private
          * 标记一个节点需要重新渲染
          */
-        markDirty(node:Renderable):void;
-
+        markDirty(node: Renderable): void;
         /**
          * @private
          */
@@ -9954,54 +9458,44 @@ declare module egret.sys {
          * @private
          */
         private dirtyRegion;
-
         /**
          * @private
          * 更新节点属性并返回脏矩形列表。
          */
-        updateDirtyRegions():Region[];
-
+        updateDirtyRegions(): Region[];
         /**
          * @private
          * 绘制根节点显示对象到目标画布，返回draw的次数。
          */
-        drawToSurface():number;
-
+        drawToSurface(): number;
         /**
          * @private
          * 绘制一个显示对象
          */
         private drawDisplayObject(displayObject, context, dirtyList, rootMatrix, displayList, clipRegion);
-
         /**
          * @private
          */
         private drawWithClip(displayObject, context, dirtyList, rootMatrix, clipRegion);
-
         /**
          * @private
          */
         private drawWithScrollRect(displayObject, context, dirtyList, rootMatrix, clipRegion);
-
         /**
          * @private
          */
         private createRenderContext(width, height);
-
         /**
          * @private
          */
         private sizeChanged;
-
         /**
          * @private
          * 改变画布的尺寸，由于画布尺寸修改会清空原始画布。所以这里将原始画布绘制到一个新画布上，再与原始画布交换。
          */
-        changeSurfaceSize():void;
-
-        setDevicePixelRatio(ratio?:number):void;
-
-        setDirtyRegionPolicy(policy:string):void;
+        changeSurfaceSize(): void;
+        setDevicePixelRatio(ratio?: number): void;
+        setDirtyRegionPolicy(policy: string): void;
     }
 }
 declare module egret {
@@ -10013,8 +9507,7 @@ declare module egret {
      * @language zh_CN
      * egret工程入口函数
      */
-    function runEgret():void;
-
+    function runEgret(): void;
     /**
      * @language en_US
      * Refresh the screen display
@@ -10023,7 +9516,7 @@ declare module egret {
      * @language zh_CN
      * 刷新屏幕显示
      */
-    function updateAllScreens():void;
+    function updateAllScreens(): void;
 }
 declare module egret.sys {
     /**
@@ -10040,7 +9533,7 @@ declare module egret.sys {
          * @param contentWidth 初始化内容宽度
          * @param contentHeight 初始化内容高度
          */
-        calculateStageSize(scaleMode:string, screenWidth:number, screenHeight:number, contentWidth:number, contentHeight:number): StageDisplaySize;
+        calculateStageSize(scaleMode: string, screenWidth: number, screenHeight: number, contentWidth: number, contentHeight: number): StageDisplaySize;
     }
     /**
      * @private
@@ -10079,26 +9572,26 @@ declare module egret {
          * @private
          * 适配屏幕
          */
-        static AUTO:string;
+        static AUTO: string;
         /**
          * @private
          * 默认竖屏
          */
-        static PORTRAIT:string;
+        static PORTRAIT: string;
         /**
          * @private
          * 默认横屏，舞台顺时针旋转90度
          */
-        static LANDSCAPE:string;
+        static LANDSCAPE: string;
         /**
          * @private
          * 默认横屏，舞台逆时针旋转90度
          */
-        static LANDSCAPE_FLIPPED:string;
+        static LANDSCAPE_FLIPPED: string;
     }
 }
 declare module egret.sys {
-    var $TempStage:egret.Stage;
+    var $TempStage: egret.Stage;
     /**
      * @private
      * Egret播放器
@@ -10108,13 +9601,11 @@ declare module egret.sys {
          * @private
          * 实例化一个播放器对象。
          */
-        constructor(context:RenderContext, stage:Stage, entryClassName:string);
-
+        constructor(context: RenderContext, stage: Stage, entryClassName: string);
         /**
          * @private
          */
         private createDisplayList(stage, context);
-
         /**
          * @private
          */
@@ -10128,7 +9619,7 @@ declare module egret.sys {
          * @private
          * 舞台引用
          */
-        stage:Stage;
+        stage: Stage;
         /**
          * @private
          * 入口类实例
@@ -10138,62 +9629,53 @@ declare module egret.sys {
          * @private
          */
         private isPlaying;
-
         /**
          * @private
          * 启动播放器
          */
-        start():void;
-
+        start(): void;
         /**
          * @private
          *
          */
         private initialize();
-
         /**
          * @private
          * 停止播放器，停止后将不能重新启动。
          */
-        stop():void;
-
+        stop(): void;
         /**
          * @private
          * 暂停播放器，后续可以通过调用start()重新启动播放器。
          */
-        pause():void;
-
+        pause(): void;
         /**
          * @private
          * 渲染屏幕
          */
-        $render(triggerByFrame:boolean, costTicker:number):void;
-
+        $render(triggerByFrame: boolean, costTicker: number): void;
         /**
          * @private
          *
          */
         private callLaters();
-
         /**
          * @private
          *
          */
         private callLaterAsyncs();
-
         /**
          * @private
          * 更新舞台尺寸
          * @param stageWidth 舞台宽度（以像素为单位）
          * @param stageHeight 舞台高度（以像素为单位）
          */
-        updateStageSize(stageWidth:number, stageHeight:number, pixelRatio?:number):void;
-
+        updateStageSize(stageWidth: number, stageHeight: number, pixelRatio?: number): void;
         /**
          * @private
          * 显示FPS。
          */
-        displayFPS:(showFPS:boolean, showLog:boolean, logFilter:string, fpsStyles:Object) => void;
+        displayFPS: (showFPS: boolean, showLog: boolean, logFilter: string, fpsStyles: Object) => void;
         /**
          * @private
          */
@@ -10210,7 +9692,7 @@ declare module egret.sys {
          * @private
          * 是否显示脏矩形重绘区。
          */
-        showPaintRect:(value:boolean) => void;
+        showPaintRect: (value: boolean) => void;
         /**
          * @private
          */
@@ -10235,7 +9717,7 @@ declare module egret.sys {
     /**
      * @private
      */
-    var $logToFPS:(info:string) => void;
+    var $logToFPS: (info: string) => void;
 }
 /**
  * @private
@@ -10303,92 +9785,82 @@ declare module egret.sys {
          * @private
          * 释放一个Region实例到对象池
          */
-        static release(region:Region):void;
-
+        static release(region: Region): void;
         /**
          * @private
          * 从对象池中取出或创建一个新的Region对象。
          * 建议对于一次性使用的对象，均使用此方法创建，而不是直接new一个。
          * 使用完后调用对应的release()静态方法回收对象，能有效减少对象创建数量造成的性能开销。
          */
-        static create():Region;
-
+        static create(): Region;
         /**
          * @private
          */
-        minX:number;
+        minX: number;
         /**
          * @private
          */
-        minY:number;
+        minY: number;
         /**
          * @private
          */
-        maxX:number;
+        maxX: number;
         /**
          * @private
          */
-        maxY:number;
+        maxY: number;
         /**
          * @private
          */
-        width:number;
+        width: number;
         /**
          * @private
          */
-        height:number;
+        height: number;
         /**
          * @private
          */
-        area:number;
+        area: number;
         /**
          * @private
          * 是否发生移动
          */
-        moved:boolean;
-
+        moved: boolean;
         /**
          * @private
          */
-        setTo(minX:number, minY:number, maxX:number, maxY:number):Region;
-
+        setTo(minX: number, minY: number, maxX: number, maxY: number): Region;
         /**
          * @private
          */
-        updateArea():void;
-
+        updateArea(): void;
         /**
          * @private
          * 注意！由于性能优化，此方法不判断自身是否为空，必须在外部确认自身和目标区域都不为空再调用合并。否则结果始终从0，0点开始。
          */
-        union(target:Region):void;
-
+        union(target: Region): void;
         /**
          * @private
          * 注意！由于性能优化，此方法不判断自身是否为空，必须在外部确认自身和目标区域都不为空再调用合并。否则结果始终从0，0点开始。
          */
-        intersect(target:Region):void;
-
+        intersect(target: Region): void;
         /**
          * @private
          */
         private setEmpty();
-
         /**
          * @private
          * 确定此 Region 对象是否为空。
          */
-        isEmpty():boolean;
-
+        isEmpty(): boolean;
         /**
          * @private
          */
-        intersects(target:Region):boolean;
-
+        intersects(target: Region): boolean;
         /**
          * @private
          */
-        updateRegion(bounds:Rectangle, matrix:Matrix):void;
+        updateRegion(bounds: Rectangle, matrix: Matrix): void;
     }
 }
 declare module egret.sys {
@@ -10425,7 +9897,7 @@ declare module egret.sys {
          * @private
          * 执行绘制
          */
-        $render(context:RenderContext): void;
+        $render(context: RenderContext): void;
     }
 }
 declare module egret.sys {
@@ -10541,7 +10013,7 @@ declare module egret.sys {
          * @param y
          * @param maxWidth
          */
-        strokeText(text:any, x:any, y:any, maxWidth:any): any;
+        strokeText(text: any, x: any, y: any, maxWidth: any): any;
         /**
          * @private
          * 绘制一段圆弧路径。圆弧路径的圆心在 (x, y) 位置，半径为 r ，根据anticlockwise （默认为顺时针）指定的方向从 startAngle 开始绘制，到 endAngle 结束。
@@ -10552,7 +10024,7 @@ declare module egret.sys {
          * @param endAngle 圆弧的重点， 单位以弧度表示。
          * @param anticlockwise 如果为 true，逆时针绘制圆弧，反之，顺时针绘制。
          */
-        arc(x:number, y:number, radius:number, startAngle:number, endAngle:number, anticlockwise?:boolean): void;
+        arc(x: number, y: number, radius: number, startAngle: number, endAngle: number, anticlockwise?: boolean): void;
         /**
          * @private
          * 绘制一段二次贝塞尔曲线路径。它需要2个点。 第一个点是控制点，第二个点是终点。 起始点是当前路径最新的点，当创建二次贝赛尔曲线之前，可以使用 moveTo() 方法进行改变。
@@ -10561,14 +10033,14 @@ declare module egret.sys {
          * @param x 终点的 x 轴坐标。
          * @param y 终点的 y 轴坐标。
          */
-        quadraticCurveTo(cpx:number, cpy:number, x:number, y:number): void;
+        quadraticCurveTo(cpx: number, cpy: number, x: number, y: number): void;
         /**
          * @private
          * 使用直线连接子路径的终点到x，y坐标。
          * @param x 直线终点的 x 轴坐标。
          * @param y 直线终点的 y 轴坐标。
          */
-        lineTo(x:number, y:number): void;
+        lineTo(x: number, y: number): void;
         /**
          * @private
          * 根据当前的填充样式，填充当前或已存在的路径的方法。采取非零环绕或者奇偶环绕规则。
@@ -10576,7 +10048,7 @@ declare module egret.sys {
          * "nonzero": 非零环绕规则， 默认的规则。
          * "evenodd": 奇偶环绕规则。
          */
-        fill(fillRule?:string): void;
+        fill(fillRule?: string): void;
         /**
          * @private
          * 使笔点返回到当前子路径的起始点。它尝试从当前点到起始点绘制一条直线。如果图形已经是封闭的或者只有一个点，那么此方法不会做任何操作。
@@ -10590,14 +10062,14 @@ declare module egret.sys {
          * @param width 矩形的宽度。
          * @param height 矩形的高度。
          */
-        rect(x:number, y:number, w:number, h:number): void;
+        rect(x: number, y: number, w: number, h: number): void;
         /**
          * @private
          * 将一个新的子路径的起始点移动到(x，y)坐标
          * @param x 点的 x 轴
          * @param y 点的 y 轴
          */
-        moveTo(x:number, y:number): void;
+        moveTo(x: number, y: number): void;
         /**
          * @private
          * 绘制一个填充矩形。矩形的起点在 (x, y) 位置，矩形的尺寸是 width 和 height ，fillStyle 属性决定矩形的样式。
@@ -10606,7 +10078,7 @@ declare module egret.sys {
          * @param width 矩形的宽度。
          * @param height 矩形的高度。
          */
-        fillRect(x:number, y:number, w:number, h:number): void;
+        fillRect(x: number, y: number, w: number, h: number): void;
         /**
          * @private
          * 绘制一段三次贝赛尔曲线路径。该方法需要三个点。 第一、第二个点是控制点，第三个点是结束点。起始点是当前路径的最后一个点，
@@ -10618,7 +10090,7 @@ declare module egret.sys {
          * @param x 结束点的 x 轴坐标。
          * @param y 结束点的 y 轴坐标。
          */
-        bezierCurveTo(cp1x:number, cp1y:number, cp2x:number, cp2y:number, x:number, y:number): void;
+        bezierCurveTo(cp1x: number, cp1y: number, cp2x: number, cp2y: number, x: number, y: number): void;
         /**
          * @private
          * 根据当前的画线样式，绘制当前或已经存在的路径的方法。
@@ -10632,7 +10104,7 @@ declare module egret.sys {
          * @param width 矩形的宽度。
          * @param height 矩形的高度。
          */
-        strokeRect(x:number, y:number, w:number, h:number): void;
+        strokeRect(x: number, y: number, w: number, h: number): void;
         /**
          * @private
          * 清空子路径列表开始一个新路径。 当你想创建一个新的路径时，调用此方法。
@@ -10647,7 +10119,7 @@ declare module egret.sys {
          * @param y2 第二个控制点的 y 轴坐标。
          * @param radius 圆弧的半径。
          */
-        arcTo(x1:number, y1:number, x2:number, y2:number, radius:number): void;
+        arcTo(x1: number, y1: number, x2: number, y2: number, radius: number): void;
         /**
          * @private
          * 使用方法参数描述的矩阵多次叠加当前的变换矩阵。
@@ -10658,27 +10130,27 @@ declare module egret.sys {
          * @param tx 水平移动。
          * @param ty 垂直移动。
          */
-        transform(a:number, b:number, c:number, d:number, tx:number, ty:number): void;
+        transform(a: number, b: number, c: number, d: number, tx: number, ty: number): void;
         /**
          * @private
          * 通过在网格中移动 surface 和 surface 原点 x 水平方向、原点 y 垂直方向，添加平移变换
          * @param x 水平移动。
          * @param y 垂直移动。
          */
-        translate(x:number, y:number): void;
+        translate(x: number, y: number): void;
         /**
          * @private
          * 根据 x 水平方向和 y 垂直方向，为 surface 单位添加缩放变换。
          * @param x 水平方向的缩放因子。
          * @param y 垂直方向的缩放因子。
          */
-        scale(x:number, y:number): void;
+        scale(x: number, y: number): void;
         /**
          * @private
          * 在变换矩阵中增加旋转，角度变量表示一个顺时针旋转角度并且用弧度表示。
          * @param angle 顺时针旋转的弧度。
          */
-        rotate(angle:number): void;
+        rotate(angle: number): void;
         /**
          * @private
          * 恢复到最近的绘制样式状态，此状态是通过 save() 保存到”状态栈“中最新的元素。
@@ -10693,7 +10165,7 @@ declare module egret.sys {
          * @private
          * 从当前路径创建一个剪切路径。在  clip() 调用之后，绘制的所有信息只会出现在剪切路径内部。
          */
-        clip(fillRule?:string): void;
+        clip(fillRule?: string): void;
         /**
          * @private
          * 设置指定矩形区域内（以 点 (x, y) 为起点，范围是(width, height) ）所有像素变成透明，并擦除之前绘制的所有内容。
@@ -10702,7 +10174,7 @@ declare module egret.sys {
          * @param width 矩形的宽度。
          * @param height 矩形的高度。
          */
-        clearRect(x:number, y:number, width:number, height:number): void;
+        clearRect(x: number, y: number, width: number, height: number): void;
         /**
          * @private
          * 重新设置当前的变换为单位矩阵，并使用同样的变量调用 transform() 方法。
@@ -10713,7 +10185,7 @@ declare module egret.sys {
          * @param tx 水平移动。
          * @param ty 垂直移动。
          */
-        setTransform(a:number, b:number, c:number, d:number, tx:number, ty:number): void;
+        setTransform(a: number, b: number, c: number, d: number, tx: number, ty: number): void;
         /**
          * @private
          * 创建一个沿参数坐标指定的直线的渐变。该方法返回一个线性的 GraphicsGradient 对象。
@@ -10722,7 +10194,7 @@ declare module egret.sys {
          * @param x1 终点的 x 轴坐标。
          * @param y1 终点的 y 轴坐标。
          */
-        createLinearGradient(x0:number, y0:number, x1:number, y1:number): GraphicsGradient;
+        createLinearGradient(x0: number, y0: number, x1: number, y1: number): GraphicsGradient;
         /**
          * @private
          * 根据参数确定的两个圆的坐标，创建一个放射性渐变。该方法返回一个放射性的 GraphicsGradient。
@@ -10733,23 +10205,23 @@ declare module egret.sys {
          * @param y1 结束圆形的 y 轴坐标。
          * @param r1 结束圆形的半径。
          */
-        createRadialGradient(x0:number, y0:number, r0:number, x1:number, y1:number, r1:number): GraphicsGradient;
+        createRadialGradient(x0: number, y0: number, r0: number, x1: number, y1: number, r1: number): GraphicsGradient;
         /**
          * @private
          * 在(x,y)位置绘制（填充）文本。
          */
-        fillText(text:string, x:number, y:number, maxWidth?:number): void;
+        fillText(text: string, x: number, y: number, maxWidth?: number): void;
         /**
          * @private
          * 测量指定文本宽度，返回 TextMetrics 对象。
          */
-        measureText(text:string): TextMetrics;
+        measureText(text: string): TextMetrics;
         /**
          * @private
          * 注意：如果要对绘制的图片进行缩放，出于性能优化考虑，系统不会主动去每次重置imageSmoothingEnabled属性，因此您在调用drawImage()方法前请务必
          * 确保 imageSmoothingEnabled 已被重置为正常的值，否则有可能沿用上个显示对象绘制过程留下的值。
          */
-        drawImage(image:BitmapData, offsetX:number, offsetY:number, width?:number, height?:number, surfaceOffsetX?:number, surfaceOffsetY?:number, surfaceImageWidth?:number, surfaceImageHeight?:number): void;
+        drawImage(image: BitmapData, offsetX: number, offsetY: number, width?: number, height?: number, surfaceOffsetX?: number, surfaceOffsetY?: number, surfaceImageWidth?: number, surfaceImageHeight?: number): void;
         /**
          * @private
          * 基于指定的源图象(BitmapData)创建一个模板，通过repetition参数指定源图像在什么方向上进行重复，返回一个GraphicsPattern对象。
@@ -10757,12 +10229,12 @@ declare module egret.sys {
          * @param repetition 指定如何重复图像。
          * 可能的值有："repeat" (两个方向重复),"repeat-x" (仅水平方向重复),"repeat-y" (仅垂直方向重复),"no-repeat" (不重复).
          */
-        createPattern(image:BitmapData, repetition:string): GraphicsPattern;
+        createPattern(image: BitmapData, repetition: string): GraphicsPattern;
         /**
          * @private
          * 返回一个 ImageData 对象，用来描述canvas区域隐含的像素数据，这个区域通过矩形表示，起始点为(sx, sy)、宽为sw、高为sh。
          */
-        getImageData(sx:number, sy:number, sw:number, sh:number): ImageData;
+        getImageData(sx: number, sy: number, sw: number, sh: number): ImageData;
     }
     /**
      * @private
@@ -10811,7 +10283,7 @@ declare module egret.sys {
          * @private
          * 设置分辨率尺寸
          */
-        setContentSize(width:number, height:number): any;
+        setContentSize(width: number, height: number): any;
     }
 }
 declare module egret.sys {
@@ -10819,7 +10291,7 @@ declare module egret.sys {
      * @private
      * 屏幕适配器实例，开发者可以通过给这个变量赋值实现了IScreenAdapter接口的实例，从而注入自定义的屏幕适配器。
      */
-    var screenAdapter:IScreenAdapter;
+    var screenAdapter: IScreenAdapter;
     /**
      * @private
      * 屏幕适配器默认实现，开发者可以实现自定义规则的屏幕适配器。并在初始化加载时将适配器的实例赋值给egret.sys.screenAdapter上，从而替换掉默认适配器。
@@ -10829,7 +10301,6 @@ declare module egret.sys {
          * @private
          */
         constructor();
-
         /**
          * @private
          * 计算舞台显示尺寸
@@ -10839,7 +10310,7 @@ declare module egret.sys {
          * @param contentWidth 初始化内容宽度
          * @param contentHeight 初始化内容高度
          */
-        calculateStageSize(scaleMode:string, screenWidth:number, screenHeight:number, contentWidth:number, contentHeight:number):StageDisplaySize;
+        calculateStageSize(scaleMode: string, screenWidth: number, screenHeight: number, contentWidth: number, contentHeight: number): StageDisplaySize;
     }
 }
 declare module egret {
@@ -10868,7 +10339,7 @@ declare module egret {
          * 不缩放应用程序内容。即使在更改播放器视口大小时，它仍然保持不变。如果播放器视口比内容小，则可能进行一些裁切。<br/>
          * 在此模式下，舞台尺寸（Stage.stageWidth,Stage.stageHeight）始终跟播放器视口大小保持一致。
          */
-        static NO_SCALE:string;
+        static NO_SCALE: string;
         /**
          * @language en_US
          * Keep the original aspect ratio scaling application content, after scaling a wide directions application content to fill the viewport players on both sides in the other direction may not be wide enough and left black bars.<br/>
@@ -10879,7 +10350,7 @@ declare module egret {
          * 保持原始宽高比缩放应用程序内容，缩放后应用程序内容的较宽方向填满播放器视口，另一个方向的两侧可能会不够宽而留有黑边。<br/>
          * 在此模式下，舞台尺寸(Stage.stageWidth,Stage.stageHeight)始终等于初始化时外部传入的应用程序内容尺寸。
          */
-        static SHOW_ALL:string;
+        static SHOW_ALL: string;
         /**
          * @language en_US
          * Keep the original aspect ratio scaling application content, after scaling a narrow direction of application content to fill the viewport players on both sides in the other direction may exceed the viewport and the player is cut.<br/>
@@ -10890,7 +10361,7 @@ declare module egret {
          * 保持原始宽高比缩放应用程序内容，缩放后应用程序内容的较窄方向填满播放器视口，另一个方向的两侧可能会超出播放器视口而被裁切。<br/>
          * 在此模式下，舞台尺寸(Stage.stageWidth,Stage.stageHeight)始终等于初始化时外部传入的应用程序内容尺寸。
          */
-        static NO_BORDER:string;
+        static NO_BORDER: string;
         /**
          * @language en_US
          * Do not keep the original aspect ratio scaling application content, after scaling application content just fill the player viewport.<br/>
@@ -10901,7 +10372,7 @@ declare module egret {
          * 不保持原始宽高比缩放应用程序内容，缩放后应用程序内容正好填满播放器视口。<br/>
          * 在此模式下，舞台尺寸(Stage.stageWidth,Stage.stageHeight)始终等于初始化时外部传入的应用程序内容尺寸。
          */
-        static EXACT_FIT:string;
+        static EXACT_FIT: string;
         /**
          * @language en_US
          * Keep the original aspect ratio scaling application content, after scaling application content in the horizontal and vertical directions to fill the viewport player, but only to keep the contents of the original application constant width, height may change.<br/>
@@ -10912,7 +10383,7 @@ declare module egret {
          * 保持原始宽高比缩放应用程序内容，缩放后应用程序内容在水平和垂直方向都填满播放器视口，但只保持应用程序内容的原始宽度不变，高度可能会改变。<br/>
          * 在此模式下，舞台宽度(Stage.stageWidth)始终等于初始化时外部传入的应用程序内容宽度。舞台高度(Stage.stageHeight)由当前的缩放比例与播放器视口高度决定。
          */
-        static FIXED_WIDTH:string;
+        static FIXED_WIDTH: string;
         /**
          * @language en_US
          * Keep the original aspect ratio scaling application content, after scaling application content in the horizontal and vertical directions to fill the viewport player, but only to keep the contents of the original application constant height, width may change.<br/>
@@ -10923,7 +10394,7 @@ declare module egret {
          * 保持原始宽高比缩放应用程序内容，缩放后应用程序内容在水平和垂直方向都填满播放器视口，但只保持应用程序内容的原始高度不变，宽度可能会改变。<br/>
          * 在此模式下，舞台高度(Stage.stageHeight)始终等于初始化时外部传入的应用程序内容高度。舞台宽度(Stage.stageWidth)由当前的缩放比例与播放器视口宽度决定。
          */
-        static FIXED_HEIGHT:string;
+        static FIXED_HEIGHT: string;
         /**
          * @language en_US
          * Keep the original aspect ratio scaling application content, after scaling application content in the horizontal and vertical directions to fill the viewport player,a narrow direction may not be wide enough and fill.<br/>
@@ -10934,7 +10405,7 @@ declare module egret {
          * 保持原始宽高比缩放应用程序内容，缩放后应用程序内容在水平和垂直方向都填满播放器视口，应用程序内容的较窄方向可能会不够宽而填充。<br/>
          * 在此模式下，舞台高度(Stage.stageHeight)和舞台宽度(Stage.stageWidth)由当前的缩放比例与播放器视口宽高决定。
          */
-        static FIXED_NARROW:string;
+        static FIXED_NARROW: string;
         /**
          * @language en_US
          * Keep the original aspect ratio scaling application content, after scaling application content in the horizontal and vertical directions to fill the viewport player, a wide direction may exceed the viewport and the player is cut.<br/>
@@ -10945,7 +10416,7 @@ declare module egret {
          * 保持原始宽高比缩放应用程序内容，缩放后应用程序内容在水平和垂直方向都填满播放器视口，应用程序内容的较宽方向的两侧可能会超出播放器视口而被裁切。<br/>
          * 在此模式下，舞台高度(Stage.stageHeight)和舞台宽度(Stage.stageWidth)由当前的缩放比例与播放器视口宽高决定。
          */
-        static FIXED_WIDE:string;
+        static FIXED_WIDE: string;
     }
 }
 declare module egret.sys {
@@ -10959,7 +10430,7 @@ declare module egret.sys {
          * 绘图上下文
          */
         renderContext: RenderContext;
-        toDataURL(type?:string, ...args:any[]): string;
+        toDataURL(type?: string, ...args: any[]): string;
     }
 }
 declare module egret.sys {
@@ -10967,17 +10438,17 @@ declare module egret.sys {
      * @private
      * 全局共享的RenderContext。通常用于交换缓存，测量文本或创建填充对象。
      */
-    var sharedRenderContext:sys.RenderContext;
+    var sharedRenderContext: sys.RenderContext;
     /**
      * @private
      * 全局共享的供精确像素检测使用的RenderContext。
      */
-    var hitTestRenderContext:sys.RenderContext;
+    var hitTestRenderContext: sys.RenderContext;
     /**
      * @private
      * surfaceFactory实例
      */
-    var surfaceFactory:SurfaceFactory;
+    var surfaceFactory: SurfaceFactory;
     /**
      * @private
      */
@@ -10987,30 +10458,30 @@ declare module egret.sys {
          * 从对象池取出或创建一个新的Surface实例
          * @param useOnce 表示对取出实例的使用是一次性的，用完后立即会释放。
          */
-        create(useOnce?:boolean): Surface;
+        create(useOnce?: boolean): Surface;
         /**
          * @private
          * 释放一个Surface实例
          * @param surface 要释放的Surface实例
          */
-        release(surface:Surface): void;
+        release(surface: Surface): void;
     }
 }
 declare module egret.sys {
     /**
      * @private
      */
-    var $START_TIME:number;
+    var $START_TIME: number;
     /**
      * @private
      * 是否要广播Event.RENDER事件的标志。
      */
-    var $invalidateRenderFlag:boolean;
+    var $invalidateRenderFlag: boolean;
     /**
      * @private
      * 需要立即刷新屏幕的标志
      */
-    var $requestRenderingFlag:boolean;
+    var $requestRenderingFlag: boolean;
     /**
      * @private
      * Egret心跳计时器
@@ -11020,24 +10491,20 @@ declare module egret.sys {
          * @private
          */
         constructor();
-
         /**
          * @private
          */
         private playerList;
-
         /**
          * @private
          * 注册一个播放器实例并运行
          */
-        $addPlayer(player:Player):void;
-
+        $addPlayer(player: Player): void;
         /**
          * @private
          * 停止一个播放器实例的运行。
          */
-        $removePlayer(player:Player):void;
-
+        $removePlayer(player: Player): void;
         /**
          * @private
          */
@@ -11046,44 +10513,37 @@ declare module egret.sys {
          * @private
          */
         private thisObjectList;
-
         /**
          * @private
          */
-        $startTick(callBack:(timeStamp:number) => boolean, thisObject:any):void;
-
+        $startTick(callBack: (timeStamp: number) => boolean, thisObject: any): void;
         /**
          * @private
          */
-        $stopTick(callBack:(timeStamp:number) => boolean, thisObject:any):void;
-
+        $stopTick(callBack: (timeStamp: number) => boolean, thisObject: any): void;
         /**
          * @private
          */
         private getTickIndex(callBack, thisObject);
-
         /**
          * @private
          *
          */
         private concatTick();
-
         /**
          * @private
          * 全局帧率
          */
-        $frameRate:number;
+        $frameRate: number;
         /**
          * @private
          */
         private frameInterval;
-
         /**
          * @private
          * 设置全局帧率
          */
-        $setFrameRate(value:number):boolean;
-
+        $setFrameRate(value: number): boolean;
         /**
          * @private
          */
@@ -11093,25 +10553,21 @@ declare module egret.sys {
          * ticker 花销的时间
          */
         private costEnterFrame;
-
         /**
          * @private
          * 执行一次刷新
          */
-        update():void;
-
+        update(): void;
         /**
          * @private
          * 执行一次屏幕渲染
          */
         private render(triggerByFrame, costTicker);
-
         /**
          * @private
          * 广播EnterFrame事件。
          */
         private broadcastEnterFrame();
-
         /**
          * @private
          * 广播Render事件。
@@ -11122,7 +10578,7 @@ declare module egret.sys {
      * @private
      * 心跳计时器单例
      */
-    var $ticker:SystemTicker;
+    var $ticker: SystemTicker;
 }
 declare module egret.sys {
     /**
@@ -11132,18 +10588,15 @@ declare module egret.sys {
     class TouchHandler extends HashObject {
         private maxTouches;
         private useTouchesCount;
-
         /**
          * @private
          */
-        constructor(stage:Stage);
-
+        constructor(stage: Stage);
         /**
          * @private
          * 设置同时触摸数量
          */
-        $initMaxTouches():void;
-
+        $initMaxTouches(): void;
         /**
          * @private
          */
@@ -11152,7 +10605,6 @@ declare module egret.sys {
          * @private
          */
         private touchDownTarget;
-
         /**
          * @private
          * 触摸开始（按下）
@@ -11160,8 +10612,7 @@ declare module egret.sys {
          * @param y 事件发生处相对于舞台的坐标y
          * @param touchPointID 分配给触摸点的唯一标识号
          */
-        onTouchBegin(x:number, y:number, touchPointID:number):void;
-
+        onTouchBegin(x: number, y: number, touchPointID: number): void;
         /**
          * @private
          */
@@ -11170,7 +10621,6 @@ declare module egret.sys {
          * @private
          */
         private lastTouchY;
-
         /**
          * @private
          * 触摸移动
@@ -11178,8 +10628,7 @@ declare module egret.sys {
          * @param y 事件发生处相对于舞台的坐标y
          * @param touchPointID 分配给触摸点的唯一标识号
          */
-        onTouchMove(x:number, y:number, touchPointID:number):void;
-
+        onTouchMove(x: number, y: number, touchPointID: number): void;
         /**
          * @private
          * 触摸结束（弹起）
@@ -11187,8 +10636,7 @@ declare module egret.sys {
          * @param y 事件发生处相对于舞台的坐标y
          * @param touchPointID 分配给触摸点的唯一标识号
          */
-        onTouchEnd(x:number, y:number, touchPointID:number):void;
-
+        onTouchEnd(x: number, y: number, touchPointID: number): void;
         /**
          * @private
          * 获取舞台坐标下的触摸对象
@@ -11245,7 +10693,7 @@ declare module egret {
     /**
      * @copy egret.Orientation
      */
-    var DeviceOrientation:{
+    var DeviceOrientation: {
         new (): DeviceOrientation;
     };
 }
@@ -11310,7 +10758,7 @@ declare module egret {
     /**
      * @copy egret.Geolocation
      */
-    var Geolocation:{
+    var Geolocation: {
         /**
          * @language en_US
          * constructor
@@ -11330,7 +10778,7 @@ declare module egret {
     /**
      * @copy egret.Motion
      */
-    var Motion:{
+    var Motion: {
         new (): Motion;
     };
     /**
@@ -11519,7 +10967,7 @@ declare module egret {
          * @version Egret 2.4
          * @platform Web,Native
          */
-        static WEB:string;
+        static WEB: string;
         /**
          * @language en_US
          * Running on NATIVE
@@ -11532,7 +10980,7 @@ declare module egret {
          * @version Egret 2.4
          * @platform Web,Native
          */
-        static NATIVE:string;
+        static NATIVE: string;
     }
     /**
      * @language en_US
@@ -11552,7 +11000,7 @@ declare module egret {
         /**
          * @private
          */
-        static $language:string;
+        static $language: string;
         /**
          * @language en_US
          * Specifies the language code of the system on which the content is running. The language is specified as a lowercase
@@ -11584,11 +11032,11 @@ declare module egret {
          * @version Egret 2.4
          * @platform Web,Native
          */
-        static language:string;
+        static language: string;
         /**
          * @private
          */
-        static $isMobile:boolean;
+        static $isMobile: boolean;
         /**
          * @language en_US
          * Specifies whether the system is running in a mobile device.(such as a mobile phone or tablet)
@@ -11601,11 +11049,11 @@ declare module egret {
          * @version Egret 2.4
          * @platform Web,Native
          */
-        static isMobile:boolean;
+        static isMobile: boolean;
         /**
          * @private
          */
-        static $os:string;
+        static $os: string;
         /**
          * @language en_US
          * Specifies the current operating system. The os property can return the following strings:
@@ -11634,11 +11082,11 @@ declare module egret {
          * @version Egret 2.4
          * @platform Web,Native
          */
-        static os:string;
+        static os: string;
         /**
          * @private
          */
-        static $runtimeType:string;
+        static $runtimeType: string;
         /**
          * @language en_US
          * It indicates the current type of operation. runtimeType property returns the following string:
@@ -11659,7 +11107,7 @@ declare module egret {
          * @version Egret 2.4
          * @platform Web,Native
          */
-        static runtimeType:string;
+        static runtimeType: string;
         /***
          * @language en_US
          * version of the native support
@@ -11674,16 +11122,15 @@ declare module egret {
          * @version Egret 2.5
          * @platform Web,Native
          */
-        static supportVersion:string;
-
+        static supportVersion: string;
         /**
          * 设置系统信息
          */
-        static $setNativeCapabilities(value:string):void;
+        static $setNativeCapabilities(value: string): void;
     }
 }
-declare var testDeviceType:() => boolean;
-declare var testRuntimeType:() => boolean;
+declare var testDeviceType: () => boolean;
+declare var testRuntimeType: () => boolean;
 declare module egret {
     /**
      * @language en_US
@@ -11699,8 +11146,7 @@ declare module egret {
      * @param message 要输出到控制台的信息
      * @param optionalParams 要输出到控制台的额外可选信息
      */
-    function assert(assertion?:boolean, message?:string, ...optionalParams:any[]):void;
-
+    function assert(assertion?: boolean, message?: string, ...optionalParams: any[]): void;
     /**
      * @language en_US
      * Writes a warning message to the console.
@@ -11713,8 +11159,7 @@ declare module egret {
      * @param message 要输出到控制台的信息
      * @param optionalParams 要输出到控制台的额外信息
      */
-    function warn(message?:any, ...optionalParams:any[]):void;
-
+    function warn(message?: any, ...optionalParams: any[]): void;
     /**
      * @language en_US
      * Writes an error message to the console.
@@ -11727,8 +11172,7 @@ declare module egret {
      * @param message 要输出到控制台的信息
      * @param optionalParams 要输出到控制台的额外信息
      */
-    function error(message?:any, ...optionalParams:any[]):void;
-
+    function error(message?: any, ...optionalParams: any[]): void;
     /**
      * @language en_US
      * Writes an message to the console.
@@ -11741,7 +11185,7 @@ declare module egret {
      * @param message 要输出到控制台的信息
      * @param optionalParams 要输出到控制台的额外信息
      */
-    function log(message?:any, ...optionalParams:any[]):void;
+    function log(message?: any, ...optionalParams: any[]): void;
 }
 declare module egret {
     /**
@@ -11779,8 +11223,7 @@ declare module egret {
          * @version Egret 2.4
          * @platform Web,Native
          */
-        constructor(texture:Texture, config:any);
-
+        constructor(texture: Texture, config: any);
         /**
          * @private
          */
@@ -11801,20 +11244,17 @@ declare module egret {
          * @version Egret 2.4
          * @platform Web,Native
          */
-        getTexture(name:string):Texture;
-
+        getTexture(name: string): Texture;
         /**
          * @private
          */
         private firstCharHeight;
-
         /**
          * @private
          *
          * @returns
          */
-        _getFirstCharHeight():number;
-
+        _getFirstCharHeight(): number;
         /**
          * @private
          *
@@ -11822,7 +11262,6 @@ declare module egret {
          * @returns
          */
         private parseConfig(fntText);
-
         /**
          * @private
          *
@@ -11921,7 +11360,6 @@ declare module egret {
          * @platform Web,Native
          */
         constructor();
-
         /**
          * @language en_US
          * Whether or not is smoothed when scaled.
@@ -11936,11 +11374,11 @@ declare module egret {
          * @version Egret 3.0
          * @platform Web
          */
-        smoothing:boolean;
+        smoothing: boolean;
         /**
          * @private
          */
-        $BitmapText:Object;
+        $BitmapText: Object;
         /**
          * @language en_US
          * A string to display in the text field.
@@ -11953,38 +11391,31 @@ declare module egret {
          * @version Egret 2.4
          * @platform Web,Native
          */
-        text:string;
-
+        text: string;
         /**
          * @private
          */
-        $setText(value:string):boolean;
-
+        $setText(value: string): boolean;
         /**
          * @private
          */
-        $getWidth():number;
-
+        $getWidth(): number;
         /**
          * @private
          */
-        $setWidth(value:number):boolean;
-
+        $setWidth(value: number): boolean;
         /**
          * @private
          */
-        $invalidateContentBounds():void;
-
+        $invalidateContentBounds(): void;
         /**
          * @private
          */
-        $getHeight():number;
-
+        $getHeight(): number;
         /**
          * @private
          */
-        $setHeight(value:number):boolean;
-
+        $setHeight(value: number): boolean;
         /**
          * @language en_US
          * The name of the font to use, or a comma-separated list of font names, the type of value must be BitmapFont.
@@ -11999,10 +11430,8 @@ declare module egret {
          * @version Egret 2.4
          * @platform Web,Native
          */
-        font:Object;
-
-        $setFont(value:any):boolean;
-
+        font: Object;
+        $setFont(value: any): boolean;
         /**
          /**
          * @language en_US
@@ -12018,10 +11447,8 @@ declare module egret {
          * @version Egret 2.4
          * @platform Web,Native
          */
-        lineSpacing:number;
-
-        $setLineSpacing(value:number):boolean;
-
+        lineSpacing: number;
+        $setLineSpacing(value: number): boolean;
         /**
          * @language en_US
          * An integer representing the amount of distance between characters.
@@ -12036,10 +11463,8 @@ declare module egret {
          * @version Egret 2.4
          * @platform Web,Native
          */
-        letterSpacing:number;
-
-        $setLetterSpacing(value:number):boolean;
-
+        letterSpacing: number;
+        $setLetterSpacing(value: number): boolean;
         /**
          * @language en_US
          * Horizontal alignment of text.
@@ -12054,10 +11479,8 @@ declare module egret {
          * @version Egret 2.5.6
          * @platform Web,Native
          */
-        textAlign:string;
-
-        $setTextAlign(value:string):boolean;
-
+        textAlign: string;
+        $setTextAlign(value: string): boolean;
         /**
          * @language en_US
          * Vertical alignment of text.
@@ -12072,10 +11495,8 @@ declare module egret {
          * @version Egret 2.5.6
          * @platform Web,Native
          */
-        verticalAlign:string;
-
-        $setVerticalAlign(value:string):boolean;
-
+        verticalAlign: string;
+        $setVerticalAlign(value: string): boolean;
         /**
          * @language en_US
          * A ratio of the width of the space character. This value is multiplied by the height of the first character is the space character width.
@@ -12090,18 +11511,15 @@ declare module egret {
          * @version Egret 2.4
          * @platform Web,Native
          */
-        static EMPTY_FACTOR:number;
-
+        static EMPTY_FACTOR: number;
         /**
          * @private
          */
-        $render(context:sys.RenderContext):void;
-
+        $render(context: sys.RenderContext): void;
         /**
          * @private
          */
-        $measureContentBounds(bounds:Rectangle):void;
-
+        $measureContentBounds(bounds: Rectangle): void;
         /**
          * @language en_US
          * Get the BitmapText measured width
@@ -12114,7 +11532,7 @@ declare module egret {
          * @version Egret 2.4
          * @platform Web,Native
          */
-        textWidth:number;
+        textWidth: number;
         /**
          * @language en_US
          * Get Text BitmapText height
@@ -12127,7 +11545,7 @@ declare module egret {
          * @version Egret 2.4
          * @platform Web,Native
          */
-        textHeight:number;
+        textHeight: number;
         /**
          * @private
          */
@@ -12155,14 +11573,13 @@ declare module egret {
         /**
          * @private
          */
-        $lineHeights:Array<number>;
-
+        $lineHeights: Array<number>;
         /**
          * @private
          *
          * @returns
          */
-        $getTextLines():Array<string>;
+        $getTextLines(): Array<string>;
     }
 }
 declare module egret {
@@ -12193,7 +11610,7 @@ declare module egret {
          * @version Egret 2.4
          * @platform Web,Native
          */
-        static LEFT:string;
+        static LEFT: string;
         /**
          * @language en_US
          * Horizontally align content to the right of the container.
@@ -12206,7 +11623,7 @@ declare module egret {
          * @version Egret 2.4
          * @platform Web,Native
          */
-        static RIGHT:string;
+        static RIGHT: string;
         /**
          * @language en_US
          * Horizontally align content in the center of the container.
@@ -12219,7 +11636,7 @@ declare module egret {
          * @version Egret 2.4
          * @platform Web,Native
          */
-        static CENTER:string;
+        static CENTER: string;
         /**
          * @language en_US
          * Horizontal alignment with both edges
@@ -12236,7 +11653,7 @@ declare module egret {
          * @version Egret 2.4
          * @platform Web,Native
          */
-        static JUSTIFY:string;
+        static JUSTIFY: string;
         /**
          * @language en_US
          * Align the content of the child items, relative to the container. This operation will adjust uniformly the size of all the child items to be the Content Width \" of the container \".
@@ -12255,7 +11672,7 @@ declare module egret {
          * @version Egret 2.4
          * @platform Web,Native
          */
-        static CONTENT_JUSTIFY:string;
+        static CONTENT_JUSTIFY: string;
     }
 }
 declare module egret {
@@ -12281,11 +11698,8 @@ declare module egret {
          * @platform Web,Native
          */
         constructor();
-
         private replaceArr;
-
         private initReplaceArr();
-
         /**
          * @private
          *
@@ -12293,7 +11707,6 @@ declare module egret {
          * @returns
          */
         private replaceSpecial(value);
-
         /**
          * @private
          */
@@ -12314,24 +11727,20 @@ declare module egret {
          * @version Egret 2.4
          * @platform Web,Native
          */
-        parser(htmltext:string):Array<egret.ITextElement>;
-
+        parser(htmltext: string): Array<egret.ITextElement>;
         /**
          * @private
          *
          * @param value
          */
         private addToResultArr(value);
-
         private changeStringToObject(str);
-
         /**
          * @private
          *
          * @returns
          */
         private getHeadReg();
-
         /**
          * @private
          *
@@ -12340,12 +11749,10 @@ declare module egret {
          * @param value
          */
         private addProperty(info, head, value);
-
         /**
          * @private
          */
         private stackArray;
-
         /**
          * @private
          *
@@ -12373,102 +11780,85 @@ declare module egret {
          * @private
          */
         private _isFocus;
-
         /**
          * @version Egret 2.4
          * @platform Web,Native
          */
         constructor();
-
         /**
          *
          * @param text
          * @version Egret 2.4
          * @platform Web,Native
          */
-        init(text:TextField):void;
-
+        init(text: TextField): void;
         /**
          * @private
          *
          */
-        _addStageText():void;
-
+        _addStageText(): void;
         /**
          * @private
          *
          */
-        _removeStageText():void;
-
+        _removeStageText(): void;
         /**
          * @private
          *
          * @returns
          */
-        _getText():string;
-
+        _getText(): string;
         /**
          * @private
          *
          * @param value
          */
-        _setText(value:string):void;
-
+        _setText(value: string): void;
         /**
          * @private
          */
-        _setColor(value:number):void;
-
+        _setColor(value: number): void;
         /**
          * @private
          *
          * @param event
          */
         private focusHandler(event);
-
         /**
          * @private
          *
          * @param event
          */
         private blurHandler(event);
-
         private tempStage;
-
         private onMouseDownHandler(event);
-
         private onStageDownHandler(event);
-
         /**
          * @private
          *
          * @param event
          */
         private updateTextHandler(event);
-
         /**
          * @private
          *
          */
         private resetText();
-
         /**
          * @private
          *
          */
-        _hideInput():void;
-
+        _hideInput(): void;
         /**
          * @private
          *
          */
         private updateInput();
-
         /**
          * @private
          *
          */
-        _updateProperties():void;
+        _updateProperties(): void;
     }
 }
 declare module egret {
@@ -12742,7 +12132,7 @@ declare module egret {
          *
          * @param textfield
          */
-        $setTextField(textfield:egret.TextField): boolean;
+        $setTextField(textfield: egret.TextField): boolean;
         /**
          * @private
          *
@@ -12759,13 +12149,13 @@ declare module egret {
          *
          * @param value
          */
-        $setText(value:string): boolean;
+        $setText(value: string): boolean;
         /**
          * @private
          *
          * @param value
          */
-        $setColor(value:number): boolean;
+        $setColor(value: number): boolean;
         /**
          * @private
          *
@@ -12796,7 +12186,7 @@ declare module egret {
      * @version Egret 2.4
      * @platform Web,Native
      */
-    var StageText:{
+    var StageText: {
         new (): StageText;
     };
 }
@@ -12995,30 +12385,24 @@ declare module egret {
          * @version Egret 2.4
          * @platform Web,Native
          */
-        static default_fontFamily:string;
-
+        static default_fontFamily: string;
         /**
          * @version Egret 2.4
          * @platform Web,Native
          */
         constructor();
-
         /**
          * @private
          */
-        $TextField:Object;
-
+        $TextField: Object;
         /**
          * @private
          *
          * @returns
          */
         private isInput();
-
-        $inputEnabled:boolean;
-
-        $setTouchEnabled(value:boolean):boolean;
-
+        $inputEnabled: boolean;
+        $setTouchEnabled(value: boolean): boolean;
         /**
          * @language en_US
          * The name of the font to use, or a comma-separated list of font names.
@@ -13033,10 +12417,8 @@ declare module egret {
          * @version Egret 2.4
          * @platform Web,Native
          */
-        fontFamily:string;
-
-        $setFontFamily(value:string):boolean;
-
+        fontFamily: string;
+        $setFontFamily(value: string): boolean;
         /**
          * @language en_US
          * The size in pixels of text
@@ -13051,10 +12433,8 @@ declare module egret {
          * @version Egret 2.4
          * @platform Web,Native
          */
-        size:number;
-
-        $setSize(value:number):boolean;
-
+        size: number;
+        $setSize(value: number): boolean;
         /**
          * @language en_US
          * Specifies whether the text is boldface.
@@ -13069,10 +12449,8 @@ declare module egret {
          * @version Egret 2.4
          * @platform Web,Native
          */
-        bold:boolean;
-
-        $setBold(value:boolean):boolean;
-
+        bold: boolean;
+        $setBold(value: boolean): boolean;
         /**
          * @language en_US
          * Determines whether the text is italic font.
@@ -13087,22 +12465,18 @@ declare module egret {
          * @version Egret 2.4
          * @platform Web,Native
          */
-        italic:boolean;
-
-        $setItalic(value:boolean):boolean;
-
+        italic: boolean;
+        $setItalic(value: boolean): boolean;
         /**
          * @private
          *
          */
         private invalidateFontString();
-
         /**
          * @private
          * 获取字体信息的字符串形式。
          */
         private getFontString();
-
         /**
          * @language en_US
          * Horizontal alignment of text.
@@ -13117,10 +12491,8 @@ declare module egret {
          * @version Egret 2.4
          * @platform Web,Native
          */
-        textAlign:string;
-
-        $setTextAlign(value:string):boolean;
-
+        textAlign: string;
+        $setTextAlign(value: string): boolean;
         /**
          * @language en_US
          * Vertical alignment of text.
@@ -13135,10 +12507,8 @@ declare module egret {
          * @version Egret 2.4
          * @platform Web,Native
          */
-        verticalAlign:string;
-
-        $setVerticalAlign(value:string):boolean;
-
+        verticalAlign: string;
+        $setVerticalAlign(value: string): boolean;
         /**
          * @language en_US
          * An integer representing the amount of vertical space between lines.
@@ -13153,10 +12523,8 @@ declare module egret {
          * @version Egret 2.4
          * @platform Web,Native
          */
-        lineSpacing:number;
-
-        $setLineSpacing(value:number):boolean;
-
+        lineSpacing: number;
+        $setLineSpacing(value: number): boolean;
         /**
          * @language en_US
          * Color of the text.
@@ -13171,10 +12539,8 @@ declare module egret {
          * @version Egret 2.4
          * @platform Web,Native
          */
-        textColor:number;
-
-        $setTextColor(value:number):boolean;
-
+        textColor: number;
+        $setTextColor(value: number): boolean;
         /**
          * @language en_US
          * A Boolean value that indicates whether the text field has word wrap. If the value of wordWrap is true, the text
@@ -13191,7 +12557,7 @@ declare module egret {
          * @version Egret 2.4
          * @platform Web,Native
          */
-        wordWrap:boolean;
+        wordWrap: boolean;
         /**
          * @private
          */
@@ -13212,15 +12578,13 @@ declare module egret {
          * 以下 TextFieldType 常量中的任一个：TextFieldType.DYNAMIC（指定用户无法编辑的动态文本字段），或 TextFieldType.INPUT（指定用户可以编辑的输入文本字段）。
          * @default egret.TextFieldType.DYNAMIC
          */
-        type:string;
-
+        type: string;
         /**
          * @private
          *
          * @param value
          */
-        $setType(value:string):boolean;
-
+        $setType(value: string): boolean;
         /**
          * @version Egret 2.4
          * @platform Web,Native
@@ -13233,29 +12597,25 @@ declare module egret {
          * @language zh_CN
          * 作为文本字段中当前文本的字符串
          */
-        text:string;
-
+        text: string;
         /**
          * @private
          *
          * @returns
          */
-        $getText():string;
-
+        $getText(): string;
         /**
          * @private
          *
          * @param value
          */
-        $setBaseText(value:string):boolean;
-
+        $setBaseText(value: string): boolean;
         /**
          * @private
          *
          * @param value
          */
-        $setText(value:string):boolean;
-
+        $setText(value: string): boolean;
         /**
          * @language en_US
          * Specify whether the text field is a password text field.
@@ -13268,15 +12628,13 @@ declare module egret {
          * 如果此属性的值为 true，则文本字段被视为密码文本字段，并使用星号而不是实际字符来隐藏输入的字符。如果为 false，则不会将文本字段视为密码文本字段。
          * @default false
          */
-        displayAsPassword:boolean;
-
+        displayAsPassword: boolean;
         /**
          * @private
          *
          * @param value
          */
-        $setDisplayAsPassword(value:boolean):boolean;
-
+        $setDisplayAsPassword(value: boolean): boolean;
         /**
          * @version Egret 2.4
          * @platform Web,Native
@@ -13293,15 +12651,13 @@ declare module egret {
          * 包含三个 8 位 RGB 颜色成分的数字；例如，0xFF0000 为红色，0x00FF00 为绿色。
          * @default 0x000000
          */
-        strokeColor:number;
-
+        strokeColor: number;
         /**
          * @private
          *
          * @param value
          */
-        $setStrokeColor(value:number):boolean;
-
+        $setStrokeColor(value: number): boolean;
         /**
          * @version Egret 2.4
          * @platform Web,Native
@@ -13318,15 +12674,13 @@ declare module egret {
          * 0为没有描边。
          * @default 0
          */
-        stroke:number;
-
+        stroke: number;
         /**
          * @private
          *
          * @param value
          */
-        $setStroke(value:number):boolean;
-
+        $setStroke(value: number): boolean;
         /**
          * @language en_US
          * The maximum number of characters that the text field can contain, as entered by a user. \n A script can insert more text than maxChars allows; the maxChars property indicates only how much text a user can enter. If the value of this property is 0, a user can enter an unlimited amount of text.
@@ -13339,15 +12693,13 @@ declare module egret {
          * 脚本可以插入比 maxChars 允许的字符数更多的文本；maxChars 属性仅表示用户可以输入多少文本。如果此属性的值为 0，则用户可以输入无限数量的文本。
          * @default 0
          */
-        maxChars:number;
-
+        maxChars: number;
         /**
          * @private
          *
          * @param value
          */
-        $setMaxChars(value:number):boolean;
-
+        $setMaxChars(value: number): boolean;
         /**
          * @version Egret 2.4
          * @platform Web,Native
@@ -13364,7 +12716,7 @@ declare module egret {
          * 垂直滚动的单位是行，而水平滚动的单位是像素。
          * 如果显示的第一行是文本字段中的第一行，则 scrollV 设置为 1（而非 0）。
          */
-        scrollV:number;
+        scrollV: number;
         /**
          * @language en_US
          * The maximum value of scrollV
@@ -13377,41 +12729,38 @@ declare module egret {
          * @version Egret 2.4
          * @platform Web,Native
          */
-        maxScrollV:number;
+        maxScrollV: number;
         /**
          * @private
          * @version Egret 2.4
          * @platform Web,Native
          */
-        selectionBeginIndex:number;
+        selectionBeginIndex: number;
         /**
          * @private
          * @version Egret 2.4
          * @platform Web,Native
          */
-        selectionEndIndex:number;
+        selectionEndIndex: number;
         /**
          * @private
          * @version Egret 2.4
          * @platform Web,Native
          */
-        caretIndex:number;
-
+        caretIndex: number;
         /**
          * @private
          *
          * @param beginIndex
          * @param endIndex
          */
-        $setSelection(beginIndex:number, endIndex:number):boolean;
-
+        $setSelection(beginIndex: number, endIndex: number): boolean;
         /**
          * @private
          *
          * @returns
          */
-        $getLineHeight():number;
-
+        $getLineHeight(): number;
         /**
          * @language en_US
          * Number of lines of text.
@@ -13424,7 +12773,7 @@ declare module egret {
          * @version Egret 2.4
          * @platform Web,Native
          */
-        numLines:number;
+        numLines: number;
         /**
          * @language en_US
          * Indicate whether field is a multiline text field. Note that this property is valid only when the type is TextFieldType.INPUT.
@@ -13437,15 +12786,13 @@ declare module egret {
          * 如果值为 true，则文本字段为多行文本字段；如果值为 false，则文本字段为单行文本字段。在类型为 TextFieldType.INPUT 的字段中，multiline 值将确定 Enter 键是否创建新行（如果值为 false，则将忽略 Enter 键）。
          * @default false
          */
-        multiline:boolean;
-
+        multiline: boolean;
         /**
          * @private
          *
          * @param value
          */
-        $setMultiline(value:boolean):boolean;
-
+        $setMultiline(value: boolean): boolean;
         /**
          * @language en_US
          * Indicates a user can enter into the text field character set. If you restrict property is null, you can enter any character. If you restrict property is an empty string, you can not enter any character. If you restrict property is a string of characters, you can enter only characters in the string in the text field. The string is scanned from left to right. You can use a hyphen (-) to specify a range. Only restricts user interaction; a script may put any text into the text field. <br/>
@@ -13476,34 +12823,29 @@ declare module egret {
          * @platform Web,Native
          * @default null
          */
-        restrict:string;
-
+        restrict: string;
         /**
          * @private
          *
          * @param value
          */
-        $setWidth(value:number):boolean;
-
+        $setWidth(value: number): boolean;
         /**
          * @private
          *
          * @param value
          */
-        $setHeight(value:number):boolean;
-
+        $setHeight(value: number): boolean;
         /**
          * @private
          * 获取显示宽度
          */
-        $getWidth():number;
-
+        $getWidth(): number;
         /**
          * @private
          * 获取显示宽度
          */
-        $getHeight():number;
-
+        $getHeight(): number;
         /**
          * @private
          */
@@ -13526,7 +12868,7 @@ declare module egret {
          * 使用 borderColor 属性来设置边框颜色。
          * @default false
          */
-        border:boolean;
+        border: boolean;
         /**
          * @version Egret 2.4
          * @platform Web,Native
@@ -13543,7 +12885,7 @@ declare module egret {
          * 即使当前没有边框，也可检索或设置此属性，但只有当文本字段已将 border 属性设置为 true 时，才可以看到颜色。
          * @default 0x000000
          */
-        borderColor:number;
+        borderColor: number;
         /**
          * @version Egret 2.4
          * @platform Web,Native
@@ -13562,7 +12904,7 @@ declare module egret {
          * 使用 backgroundColor 属性来设置文本字段的背景颜色。
          * @default false
          */
-        background:boolean;
+        background: boolean;
         /**
          * @version Egret 2.4
          * @platform Web,Native
@@ -13579,54 +12921,45 @@ declare module egret {
          * 即使当前没有背景，也可检索或设置此属性，但只有当文本字段已将 background 属性设置为 true 时，才可以看到颜色。
          * @default 0xFFFFFF
          */
-        backgroundColor:number;
-
+        backgroundColor: number;
         /**
          * @private
          *
          */
         private fillBackground();
-
         /**
          * @private
          * @version Egret 2.4
          * @platform Web,Native
          */
-        setFocus():void;
-
+        setFocus(): void;
         /**
          * @private
          *
          */
-        $onRemoveFromStage():void;
-
+        $onRemoveFromStage(): void;
         /**
          * @private
          *
          * @param stage
          * @param nestLevel
          */
-        $onAddToStage(stage:Stage, nestLevel:number):void;
-
+        $onAddToStage(stage: Stage, nestLevel: number): void;
         /**
          * 不能重写$invalidateContentBounds，因为内部graphics调用clear时会触发$invalidateContentBounds这狗方法，从而导致死循环。
          */
-        $invalidateTextField():void;
-
-        $update(bounds?:Rectangle):boolean;
-
+        $invalidateTextField(): void;
+        $update(bounds?: Rectangle): boolean;
         /**
          * @private
          */
-        $measureContentBounds(bounds:Rectangle):void;
-
+        $measureContentBounds(bounds: Rectangle): void;
         /**
          * @private
          * @see egret.DisplayObject._render
          * @param renderContext
          */
-        $render(renderContext:sys.RenderContext):void;
-
+        $render(renderContext: sys.RenderContext): void;
         /**
          * @private
          */
@@ -13644,8 +12977,7 @@ declare module egret {
          * 设置富文本
          * @see http://edn.egret.com/cn/index.php/article/index/id/146
          */
-        textFlow:Array<egret.ITextElement>;
-
+        textFlow: Array<egret.ITextElement>;
         /**
          * @private
          *
@@ -13653,19 +12985,16 @@ declare module egret {
          * @returns
          */
         private changeToPassText(text);
-
         /**
          * @private
          */
         private textArr;
-
         /**
          * @private
          *
          * @param textArr
          */
         private setMiddleStyle(textArr);
-
         /**
          * @language en_US
          * Get the text measured width
@@ -13678,7 +13007,7 @@ declare module egret {
          * @version Egret 2.4
          * @platform Web,Native
          */
-        textWidth:number;
+        textWidth: number;
         /**
          * @language en_US
          * Get Text measuring height
@@ -13691,53 +13020,44 @@ declare module egret {
          * @version Egret 2.4
          * @platform Web,Native
          */
-        textHeight:number;
-
+        textHeight: number;
         /**
          * @private
          * @param text
          * @version Egret 2.4
          * @platform Web,Native
          */
-        appendText(text:string):void;
-
+        appendText(text: string): void;
         /**
          * @private
          * @param element
          * @version Egret 2.4
          * @platform Web,Native
          */
-        appendElement(element:egret.ITextElement):void;
-
+        appendElement(element: egret.ITextElement): void;
         /**
          * @private
          */
         private linesArr;
-
         /**
          * @private
          *
          * @returns
          */
-        $getLinesArr():Array<egret.ILineElement>;
-
+        $getLinesArr(): Array<egret.ILineElement>;
         /**
          * @private
          */
-        $isTyping:boolean;
+        $isTyping: boolean;
         private drawTempArray;
-
         /**
          * @private
          * @param renderContext
          * @returns {Rectangle}
          */
         private drawText(renderContext);
-
         private addEvent();
-
         private removeEvent();
-
         private onTapHandler(e);
     }
 }
@@ -13746,12 +13066,12 @@ declare module egret.sys {
      * @private
      * 返回格式化的字体样式文本
      */
-    function toFontString(style:{
+    function toFontString(style: {
         fontFamily?: string;
         fontSize?: number;
         bold?: boolean;
         italic?: boolean;
-    }):string;
+    }): string;
 }
 declare module egret {
     /**
@@ -13779,7 +13099,7 @@ declare module egret {
          * @version Egret 2.4
          * @platform Web,Native
          */
-        static DYNAMIC:string;
+        static DYNAMIC: string;
         /**
          * @language en_US
          * Used to specify the input text
@@ -13792,7 +13112,7 @@ declare module egret {
          * @version Egret 2.4
          * @platform Web,Native
          */
-        static INPUT:string;
+        static INPUT: string;
     }
 }
 declare module egret {
@@ -13808,32 +13128,28 @@ declare module egret {
          * @returns {number} 行数，从0开始
          * @private
          */
-        static $getStartLine(textfield:egret.TextField):number;
-
+        static $getStartLine(textfield: egret.TextField): number;
         /**
          * 获取水平比例
          * @param textfield 文本
          * @returns {number} 水平比例
          * @private
          */
-        static $getHalign(textfield:egret.TextField):number;
-
+        static $getHalign(textfield: egret.TextField): number;
         /**
          * @private
          *
          * @param textfield
          * @returns
          */
-        static $getTextHeight(textfield:egret.TextField):number;
-
+        static $getTextHeight(textfield: egret.TextField): number;
         /**
          * 获取垂直比例
          * @param textfield 文本
          * @returns {number} 垂直比例
          * @private
          */
-        static $getValign(textfield:egret.TextField):number;
-
+        static $getValign(textfield: egret.TextField): number;
         /**
          * 根据x、y获取文本项
          * @param textfield 文本
@@ -13842,8 +13158,7 @@ declare module egret {
          * @returns 文本单项
          * @private
          */
-        static $getTextElement(textfield:egret.TextField, x:number, y:number):ITextElement;
-
+        static $getTextElement(textfield: egret.TextField, x: number, y: number): ITextElement;
         /**
          * 获取文本点击块
          * @param textfield 文本
@@ -13852,15 +13167,14 @@ declare module egret {
          * @returns 文本点击块
          * @private
          */
-        static $getHit(textfield:egret.TextField, x:number, y:number):IHitTextElement;
-
+        static $getHit(textfield: egret.TextField, x: number, y: number): IHitTextElement;
         /**
          * 获取当前显示多少行
          * @param textfield 文本
          * @returns {number} 显示的行数
          * @private
          */
-        static $getScrollNum(textfield:egret.TextField):number;
+        static $getScrollNum(textfield: egret.TextField): number;
     }
 }
 declare module egret {
@@ -13891,7 +13205,7 @@ declare module egret {
          * @version Egret 2.4
          * @platform Web,Native
          */
-        static TOP:string;
+        static TOP: string;
         /**
          * @language en_US
          * Vertically align content to the bottom of the container.
@@ -13904,7 +13218,7 @@ declare module egret {
          * @version Egret 2.4
          * @platform Web,Native
          */
-        static BOTTOM:string;
+        static BOTTOM: string;
         /**
          * @language en_US
          * Vertically align content in the middle of the container.
@@ -13917,7 +13231,7 @@ declare module egret {
          * @version Egret 2.4
          * @platform Web,Native
          */
-        static MIDDLE:string;
+        static MIDDLE: string;
         /**
          * @language en_US
          * Vertical alignment with both edges
@@ -13932,7 +13246,7 @@ declare module egret {
          * @version Egret 2.4
          * @platform Web,Native
          */
-        static JUSTIFY:string;
+        static JUSTIFY: string;
         /**
          * @language en_US
          * Align the content of the child items, relative to the container. This operation will adjust uniformly the size of all the child items to be the Content Height \" of the container \".
@@ -13949,7 +13263,7 @@ declare module egret {
          * @version Egret 2.4
          * @platform Web,Native
          */
-        static CONTENT_JUSTIFY:string;
+        static CONTENT_JUSTIFY: string;
     }
 }
 declare module egret {
@@ -13982,7 +13296,7 @@ declare module egret {
          * @version Egret 2.4
          * @platform Web,Native
          */
-        static LITTLE_ENDIAN:string;
+        static LITTLE_ENDIAN: string;
         /**
          * @language en_US
          * Indicates the most significant byte of the multibyte number appears first in the sequence of bytes.
@@ -13997,7 +13311,7 @@ declare module egret {
          * @version Egret 2.4
          * @platform Web,Native
          */
-        static BIG_ENDIAN:string;
+        static BIG_ENDIAN: string;
     }
     /**
      * @language en_US
@@ -14079,31 +13393,27 @@ declare module egret {
          * @version Egret 2.4
          * @platform Web,Native
          */
-        endian:string;
-
+        endian: string;
         /**
          * @version Egret 2.4
          * @platform Web,Native
          */
-        constructor(buffer?:ArrayBuffer);
-
+        constructor(buffer?: ArrayBuffer);
         /**
          * @private
          * @param buffer
          */
         private _setArrayBuffer(buffer);
-
         /**
          * @deprecated
          * @version Egret 2.4
          * @platform Web,Native
          */
-        setArrayBuffer(buffer:ArrayBuffer):void;
-
+        setArrayBuffer(buffer: ArrayBuffer): void;
         /**
          * @private
          */
-        buffer:ArrayBuffer;
+        buffer: ArrayBuffer;
         /**
          * @private
          * @version Egret 2.4
@@ -14112,11 +13422,11 @@ declare module egret {
         /**
          * @private
          */
-        dataView:DataView;
+        dataView: DataView;
         /**
          * @private
          */
-        bufferOffset:number;
+        bufferOffset: number;
         /**
          * @language en_US
          * The current position of the file pointer (in bytes) to move or return to the ByteArray object. The next time you start reading reading method call in this position, or will start writing in this position next time call a write method.
@@ -14129,12 +13439,12 @@ declare module egret {
          * @version Egret 2.4
          * @platform Web,Native
          */
-        position:number;
+        position: number;
         /**
          * @language en_US
          * The length of the ByteArray object (in bytes).
-         * If the length is set to be larger than the current length, the right-side zero padding byte array.
-         * If the length is set smaller than the current length, the byte array is truncated.
+                  * If the length is set to be larger than the current length, the right-side zero padding byte array.
+                  * If the length is set smaller than the current length, the byte array is truncated.
          * @version Egret 2.4
          * @platform Web,Native
          */
@@ -14146,7 +13456,7 @@ declare module egret {
          * @version Egret 2.4
          * @platform Web,Native
          */
-        length:number;
+        length: number;
         /**
          * @language en_US
          * The number of bytes that can be read from the current position of the byte array to the end of the array data.
@@ -14161,7 +13471,7 @@ declare module egret {
          * @version Egret 2.4
          * @platform Web,Native
          */
-        bytesAvailable:number;
+        bytesAvailable: number;
         /**
          * @language en_US
          * Clears the contents of the byte array and resets the length and position properties to 0.
@@ -14175,8 +13485,7 @@ declare module egret {
          * @version Egret 2.4
          * @platform Web,Native
          */
-        clear():void;
-
+        clear(): void;
         /**
          * @language en_US
          * Read a Boolean value from the byte stream. Read a simple byte. If the byte is non-zero, it returns true; otherwise, it returns false.
@@ -14191,8 +13500,7 @@ declare module egret {
          * @version Egret 2.4
          * @platform Web,Native
          */
-        readBoolean():boolean;
-
+        readBoolean(): boolean;
         /**
          * @language en_US
          * Read signed bytes from the byte stream.
@@ -14207,8 +13515,7 @@ declare module egret {
          * @version Egret 2.4
          * @platform Web,Native
          */
-        readByte():number;
-
+        readByte(): number;
         /**
          * @language en_US
          * Read data byte number specified by the length parameter from the byte stream. Starting from the position specified by offset, read bytes into the ByteArray object specified by the bytes parameter, and write bytes into the target ByteArray
@@ -14227,8 +13534,7 @@ declare module egret {
          * @version Egret 2.4
          * @platform Web,Native
          */
-        readBytes(bytes:ByteArray, offset?:number, length?:number):void;
-
+        readBytes(bytes: ByteArray, offset?: number, length?: number): void;
         /**
          * @language en_US
          * Read an IEEE 754 double-precision (64 bit) floating point number from the byte stream
@@ -14243,8 +13549,7 @@ declare module egret {
          * @version Egret 2.4
          * @platform Web,Native
          */
-        readDouble():number;
-
+        readDouble(): number;
         /**
          * @language en_US
          * Read an IEEE 754 single-precision (32 bit) floating point number from the byte stream
@@ -14259,8 +13564,7 @@ declare module egret {
          * @version Egret 2.4
          * @platform Web,Native
          */
-        readFloat():number;
-
+        readFloat(): number;
         /**
          * @language en_US
          * Read a 32-bit signed integer from the byte stream.
@@ -14275,8 +13579,7 @@ declare module egret {
          * @version Egret 2.4
          * @platform Web,Native
          */
-        readInt():number;
-
+        readInt(): number;
         /**
          * @language en_US
          * Read a 16-bit signed integer from the byte stream.
@@ -14291,8 +13594,7 @@ declare module egret {
          * @version Egret 2.4
          * @platform Web,Native
          */
-        readShort():number;
-
+        readShort(): number;
         /**
          * @language en_US
          * Read unsigned bytes from the byte stream.
@@ -14307,8 +13609,7 @@ declare module egret {
          * @version Egret 2.4
          * @platform Web,Native
          */
-        readUnsignedByte():number;
-
+        readUnsignedByte(): number;
         /**
          * @language en_US
          * Read a 32-bit unsigned integer from the byte stream.
@@ -14323,8 +13624,7 @@ declare module egret {
          * @version Egret 2.4
          * @platform Web,Native
          */
-        readUnsignedInt():number;
-
+        readUnsignedInt(): number;
         /**
          * @language en_US
          * Read a 16-bit unsigned integer from the byte stream.
@@ -14339,8 +13639,7 @@ declare module egret {
          * @version Egret 2.4
          * @platform Web,Native
          */
-        readUnsignedShort():number;
-
+        readUnsignedShort(): number;
         /**
          * @language en_US
          * Read a UTF-8 character string from the byte stream Assume that the prefix of the character string is a short unsigned integer (use byte to express length)
@@ -14355,8 +13654,7 @@ declare module egret {
          * @version Egret 2.4
          * @platform Web,Native
          */
-        readUTF():string;
-
+        readUTF(): string;
         /**
          * @language en_US
          * Read a UTF-8 byte sequence specified by the length parameter from the byte stream, and then return a character string
@@ -14373,8 +13671,7 @@ declare module egret {
          * @version Egret 2.4
          * @platform Web,Native
          */
-        readUTFBytes(length:number):string;
-
+        readUTFBytes(length: number): string;
         /**
          * @language en_US
          * Write a Boolean value. A single byte is written according to the value parameter. If the value is true, write 1; if the value is false, write 0.
@@ -14389,8 +13686,7 @@ declare module egret {
          * @version Egret 2.4
          * @platform Web,Native
          */
-        writeBoolean(value:boolean):void;
-
+        writeBoolean(value: boolean): void;
         /**
          * @language en_US
          * Write a byte into the byte stream
@@ -14407,8 +13703,7 @@ declare module egret {
          * @version Egret 2.4
          * @platform Web,Native
          */
-        writeByte(value:number):void;
-
+        writeByte(value: number): void;
         /**
          * @language en_US
          * Write the byte sequence that includes length bytes in the specified byte array, bytes, (starting at the byte specified by offset, using a zero-based index), into the byte stream
@@ -14431,8 +13726,7 @@ declare module egret {
          * @version Egret 2.4
          * @platform Web,Native
          */
-        writeBytes(bytes:ByteArray, offset?:number, length?:number):void;
-
+        writeBytes(bytes: ByteArray, offset?: number, length?: number): void;
         /**
          * @language en_US
          * Write an IEEE 754 double-precision (64 bit) floating point number into the byte stream
@@ -14447,8 +13741,7 @@ declare module egret {
          * @version Egret 2.4
          * @platform Web,Native
          */
-        writeDouble(value:number):void;
-
+        writeDouble(value: number): void;
         /**
          * @language en_US
          * Write an IEEE 754 single-precision (32 bit) floating point number into the byte stream
@@ -14463,8 +13756,7 @@ declare module egret {
          * @version Egret 2.4
          * @platform Web,Native
          */
-        writeFloat(value:number):void;
-
+        writeFloat(value: number): void;
         /**
          * @language en_US
          * Write a 32-bit signed integer into the byte stream
@@ -14479,8 +13771,7 @@ declare module egret {
          * @version Egret 2.4
          * @platform Web,Native
          */
-        writeInt(value:number):void;
-
+        writeInt(value: number): void;
         /**
          * @language en_US
          * Write a 16-bit integer into the byte stream. The low 16 bits of the parameter are used. The high 16 bits are ignored.
@@ -14495,8 +13786,7 @@ declare module egret {
          * @version Egret 2.4
          * @platform Web,Native
          */
-        writeShort(value:number):void;
-
+        writeShort(value: number): void;
         /**
          * @language en_US
          * Write a 32-bit unsigned integer into the byte stream
@@ -14511,8 +13801,7 @@ declare module egret {
          * @version Egret 2.4
          * @platform Web,Native
          */
-        writeUnsignedInt(value:number):void;
-
+        writeUnsignedInt(value: number): void;
         /**
          * @language en_US
          * Write a 16-bit unsigned integer into the byte stream
@@ -14527,8 +13816,7 @@ declare module egret {
          * @version Egret 2.5
          * @platform Web,Native
          */
-        writeUnsignedShort(value:number):void;
-
+        writeUnsignedShort(value: number): void;
         /**
          * @language en_US
          * Write a UTF-8 string into the byte stream. The length of the UTF-8 string in bytes is written first, as a 16-bit integer, followed by the bytes representing the characters of the string
@@ -14543,8 +13831,7 @@ declare module egret {
          * @version Egret 2.4
          * @platform Web,Native
          */
-        writeUTF(value:string):void;
-
+        writeUTF(value: string): void;
         /**
          * @language en_US
          * Write a UTF-8 string into the byte stream. Similar to the writeUTF() method, but the writeUTFBytes() method does not prefix the string with a 16-bit length word
@@ -14559,24 +13846,21 @@ declare module egret {
          * @version Egret 2.4
          * @platform Web,Native
          */
-        writeUTFBytes(value:string):void;
-
+        writeUTFBytes(value: string): void;
         /**
          *
          * @returns
          * @version Egret 2.4
          * @platform Web,Native
          */
-        toString():string;
-
+        toString(): string;
         /**
          * @private
          * 将 Uint8Array 写入字节流
          * @param bytes 要写入的Uint8Array
          * @param validateBuffer
          */
-        _writeUint8Array(bytes:Uint8Array, validateBuffer?:boolean):void;
-
+        _writeUint8Array(bytes: Uint8Array, validateBuffer?: boolean): void;
         /**
          * @param len
          * @returns
@@ -14584,8 +13868,7 @@ declare module egret {
          * @platform Web,Native
          * @private
          */
-        validate(len:number):boolean;
-
+        validate(len: number): boolean;
         /**********************/
         /**********************/
         /**
@@ -14594,13 +13877,11 @@ declare module egret {
          * @param needReplace
          */
         private validateBuffer(len, needReplace?);
-
         /**
          * @private
          * UTF-8 Encoding/Decoding
          */
         private encodeUTF8(str);
-
         /**
          * @private
          *
@@ -14608,14 +13889,12 @@ declare module egret {
          * @returns
          */
         private decodeUTF8(data);
-
         /**
          * @private
          *
          * @param code_point
          */
         private encoderError(code_point);
-
         /**
          * @private
          *
@@ -14624,7 +13903,6 @@ declare module egret {
          * @returns
          */
         private decoderError(fatal, opt_code_point?);
-
         /**
          * @private
          */
@@ -14633,7 +13911,6 @@ declare module egret {
          * @private
          */
         private EOF_code_point;
-
         /**
          * @private
          *
@@ -14642,7 +13919,6 @@ declare module egret {
          * @param max
          */
         private inRange(a, min, max);
-
         /**
          * @private
          *
@@ -14650,7 +13926,6 @@ declare module egret {
          * @param d
          */
         private div(n, d);
-
         /**
          * @private
          *
@@ -14663,15 +13938,15 @@ declare module egret {
     /**
      * @private
      */
-    var $callLaterFunctionList:Array<any>;
+    var $callLaterFunctionList: Array<any>;
     /**
      * @private
      */
-    var $callLaterThisList:Array<any>;
+    var $callLaterThisList: Array<any>;
     /**
      * @private
      */
-    var $callLaterArgsList:Array<any>;
+    var $callLaterArgsList: Array<any>;
     /**
      * @language en_US
      * Delay the function to run unless screen is redrawn.
@@ -14692,21 +13967,19 @@ declare module egret {
      * @platform Web,Native
      * @includeExample egret/utils/callLater.ts
      */
-    function callLater(method:Function, thisObject:any, ...args:any[]):void;
-
+    function callLater(method: Function, thisObject: any, ...args: any[]): void;
     /**
      * @private
      */
-    var $callAsyncFunctionList:Array<any>;
+    var $callAsyncFunctionList: Array<any>;
     /**
      * @private
      */
-    var $callAsyncThisList:Array<any>;
+    var $callAsyncThisList: Array<any>;
     /**
      * @private
      */
-    var $callAsyncArgsList:Array<any>;
-
+    var $callAsyncArgsList: Array<any>;
     /**
      * 异步调用函数
      * @param method {Function} 要异步调用的函数
@@ -14714,7 +13987,7 @@ declare module egret {
      * @param ...args {any} 函数参数列表
      * @private
      */
-    function $callAsync(method:Function, thisObject:any, ...args:any[]):void;
+    function $callAsync(method: Function, thisObject: any, ...args: any[]): void;
 }
 declare module egret {
     /**
@@ -14737,8 +14010,7 @@ declare module egret {
      *
      * @exmaple egret.superSetter(egret.Sprite, this, "alpha", 1);
      */
-    function superSetter(currentClass:any, thisObj:any, type:string, ...values:any[]):any;
-
+    function superSetter(currentClass: any, thisObj: any, type: string, ...values: any[]): any;
     /**
      * @language en_US
      * Get getter property value of the parent class. Instead of writing in other languages, such as super.alpha;
@@ -14759,7 +14031,7 @@ declare module egret {
      *
      * @exmaple egret.superGetter(egret.Sprite, this, "alpha");
      */
-    function superGetter(currentClass:any, thisObj:any, type:string):any;
+    function superGetter(currentClass: any, thisObj: any, type: string): any;
 }
 declare module egret {
     /**
@@ -14778,9 +14050,9 @@ declare module egret {
      * @platform Web,Native
      * @includeExample egret/utils/getDefinitionByName.ts
      */
-    function getDefinitionByName(name:string):any;
+    function getDefinitionByName(name: string): any;
 }
-declare var __global:any;
+declare var __global: any;
 declare module egret {
     /**
      * @language en_US
@@ -14800,7 +14072,7 @@ declare module egret {
      * @version Egret 2.4
      * @platform Web,Native
      */
-    var getOption:(key:string) => string;
+    var getOption: (key: string) => string;
 }
 declare module egret {
     /**
@@ -14831,7 +14103,7 @@ declare module egret {
      * @platform Web,Native
      * @includeExample egret/utils/getQualifiedClassName.ts
      */
-    function getQualifiedClassName(value:any):string;
+    function getQualifiedClassName(value: any): string;
 }
 declare module egret {
     /** @language en_US
@@ -14860,7 +14132,7 @@ declare module egret {
      * @platform Web,Native
      * @includeExample egret/utils/getQualifiedSuperclassName.ts
      */
-    function getQualifiedSuperclassName(value:any):string;
+    function getQualifiedSuperclassName(value: any): string;
 }
 declare module egret {
     /**
@@ -14879,7 +14151,7 @@ declare module egret {
      * @platform Web,Native
      * @includeExample egret/utils/getTimer.ts
      */
-    function getTimer():number;
+    function getTimer(): number;
 }
 declare module egret {
     /**
@@ -14904,7 +14176,7 @@ declare module egret {
      * @platform Web,Native
      * @includeExample egret/utils/hasDefinition.ts
      */
-    function hasDefinition(name:string):boolean;
+    function hasDefinition(name: string): boolean;
 }
 declare module egret {
     /**
@@ -14942,7 +14214,7 @@ declare module egret {
      * @version Egret 2.4
      * @platform Web,Native
      */
-    function is(instance:any, typeName:string):boolean;
+    function is(instance: any, typeName: string): boolean;
 }
 declare module egret {
     /**
@@ -14970,7 +14242,7 @@ declare module egret {
          * @version Egret 2.4
          * @platform Web,Native
          */
-        static ALL:string;
+        static ALL: string;
         /**
          * @language en_US
          * level: DEBUG
@@ -14983,7 +14255,7 @@ declare module egret {
          * @version Egret 2.4
          * @platform Web,Native
          */
-        static DEBUG:string;
+        static DEBUG: string;
         /**
          * @language en_US
          * level: INFO
@@ -14996,7 +14268,7 @@ declare module egret {
          * @version Egret 2.4
          * @platform Web,Native
          */
-        static INFO:string;
+        static INFO: string;
         /**
          * @language en_US
          * level: WARN
@@ -15009,7 +14281,7 @@ declare module egret {
          * @version Egret 2.4
          * @platform Web,Native
          */
-        static WARN:string;
+        static WARN: string;
         /**
          * @language en_US
          * level: ERROR
@@ -15022,7 +14294,7 @@ declare module egret {
          * @version Egret 2.4
          * @platform Web,Native
          */
-        static ERROR:string;
+        static ERROR: string;
         /**
          * @language en_US
          * close all
@@ -15035,7 +14307,7 @@ declare module egret {
          * @version Egret 2.4
          * @platform Web,Native
          */
-        static OFF:string;
+        static OFF: string;
         /**
          * @language en_US
          * Set the current need to open the log level. Grade level are: ALL <DEBUG <INFO <WARN <ERROR <OFF<br/>
@@ -15068,7 +14340,7 @@ declare module egret {
          * @version Egret 2.4
          * @platform Web,Native
          */
-        static logLevel:string;
+        static logLevel: string;
     }
 }
 declare module egret {
@@ -15093,8 +14365,7 @@ declare module egret {
          * @version Egret 2.4
          * @platform Web,Native
          */
-        static isNumber(value:any):boolean;
-
+        static isNumber(value: any): boolean;
         /**
          * @language en_US
          * Obtain the approximate sin value of the corresponding angle value
@@ -15111,8 +14382,7 @@ declare module egret {
          * @version Egret 2.4
          * @platform Web,Native
          */
-        static sin(value:number):number;
-
+        static sin(value: number): number;
         /**
          * @private
          *
@@ -15120,7 +14390,6 @@ declare module egret {
          * @returns
          */
         private static sinInt(value);
-
         /**
          * @language en_US
          * Obtain the approximate cos value of the corresponding angle value
@@ -15137,8 +14406,7 @@ declare module egret {
          * @version Egret 2.4
          * @platform Web,Native
          */
-        static cos(value:number):number;
-
+        static cos(value: number): number;
         /**
          * @private
          *
@@ -15148,9 +14416,9 @@ declare module egret {
         private static cosInt(value);
     }
 }
-declare var egret_sin_map:{};
-declare var egret_cos_map:{};
-declare var DEG_TO_RAD:number;
+declare var egret_sin_map: {};
+declare var egret_cos_map: {};
+declare var DEG_TO_RAD: number;
 declare module egret {
     /**
      * @language en_US
@@ -15172,7 +14440,7 @@ declare module egret {
      * @version Egret 2.4
      * @platform Web,Native
      */
-    function startTick(callBack:(timeStamp:number) => boolean, thisObject:any):void;
+    function startTick(callBack: (timeStamp: number) => boolean, thisObject: any): void;
 }
 declare module egret {
     /**
@@ -15194,7 +14462,7 @@ declare module egret {
      * @version Egret 2.4
      * @platform Web,Native
      */
-    function stopTick(callBack:(timeStamp:number) => boolean, thisObject:any):void;
+    function stopTick(callBack: (timeStamp: number) => boolean, thisObject: any): void;
 }
 declare module egret {
     /**
@@ -15239,8 +14507,7 @@ declare module egret {
          * @version Egret 2.4
          * @platform Web,Native
          */
-        constructor(delay:number, repeatCount?:number);
-
+        constructor(delay: number, repeatCount?: number);
         /**
          * @private
          */
@@ -15259,7 +14526,7 @@ declare module egret {
          * @version Egret 2.4
          * @platform Web,Native
          */
-        delay:number;
+        delay: number;
         /**
          * @language en_US
          * The total number of times the timer is set to run. If the repeat count is set to 0, the timer continues indefinitely,
@@ -15275,7 +14542,7 @@ declare module egret {
          * @version Egret 2.4
          * @platform Web,Native
          */
-        repeatCount:number;
+        repeatCount: number;
         /**
          * @private
          */
@@ -15292,7 +14559,7 @@ declare module egret {
          * @version Egret 2.4
          * @platform Web,Native
          */
-        currentCount:number;
+        currentCount: number;
         /**
          * @private
          */
@@ -15309,7 +14576,7 @@ declare module egret {
          * @version Egret 2.4
          * @platform Web,Native
          */
-        running:boolean;
+        running: boolean;
         /**
          * @language en_US
          * Stops the timer, if it is running, and sets the currentCount property back to 0, like the reset button of a stopwatch.
@@ -15323,8 +14590,7 @@ declare module egret {
          * @version Egret 2.4
          * @platform Web,Native
          */
-        reset():void;
-
+        reset(): void;
         /**
          * @language en_US
          * Starts the timer, if it is not already running.
@@ -15337,8 +14603,7 @@ declare module egret {
          * @version Egret 2.4
          * @platform Web,Native
          */
-        start():void;
-
+        start(): void;
         /**
          * @language en_US
          * Stops the timer. When start() is called after stop(), the timer instance runs for the remaining number of
@@ -15352,8 +14617,7 @@ declare module egret {
          * @version Egret 2.4
          * @platform Web,Native
          */
-        stop():void;
-
+        stop(): void;
         /**
          * @private
          */
@@ -15362,12 +14626,11 @@ declare module egret {
          * @private
          */
         private lastCount;
-
         /**
          * @private
          * Ticker以60FPS频率刷新此方法
          */
-        $update(timeStamp:number):boolean;
+        $update(timeStamp: number): boolean;
     }
 }
 declare module egret {
@@ -15385,7 +14648,7 @@ declare module egret {
      * @version Egret 2.4
      * @platform Web,Native
      */
-    function $toBitmapData(data:any):BitmapData;
+    function $toBitmapData(data: any): BitmapData;
 }
 declare module egret {
     /**
@@ -15406,7 +14669,7 @@ declare module egret {
      * @platform Web,Native
      * @includeExample egret/utils/toColorString.ts
      */
-    function toColorString(value:number):string;
+    function toColorString(value: number): string;
 }
 declare module egret {
     /**
@@ -15541,7 +14804,7 @@ declare module egret {
          * @version Egret 2.4
          * @platform Web,Native
          */
-            namespace: string;
+        namespace: string;
     }
     /**
      * @language en_US
@@ -15582,7 +14845,7 @@ declare module egret {
      * @version Egret 2.4
      * @platform Web,Native
      */
-    var XML:{
+    var XML: {
         /**
          * @language en_US
          * parses a text to XML instance.
@@ -15593,6 +14856,6 @@ declare module egret {
          * 解析字符串为XML对象
          * @param text 要解析的XML对象。
          */
-        parse(text:string): XML;
+        parse(text: string): XML;
     };
 }

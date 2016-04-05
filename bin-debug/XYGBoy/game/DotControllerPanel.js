@@ -15,8 +15,7 @@ var XYGBoy;
             this.gameMap = gameMap;
             this.initBtn();
         }
-
-        var d = __define, c = DotControllerPanel, p = c.prototype;
+        var d = __define,c=DotControllerPanel,p=c.prototype;
         p.initBtn = function () {
             this.initBtnA();
             this.initBtnB();
@@ -95,5 +94,5 @@ var XYGBoy;
         return DotControllerPanel;
     })(egret.DisplayObjectContainer);
     XYGBoy.DotControllerPanel = DotControllerPanel;
-    egret.registerClass(DotControllerPanel, 'XYGBoy.DotControllerPanel');
+    egret.registerClass(DotControllerPanel,'XYGBoy.DotControllerPanel');
 })(XYGBoy || (XYGBoy = {}));

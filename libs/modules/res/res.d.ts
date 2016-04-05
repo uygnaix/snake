@@ -24,7 +24,7 @@ declare module RES {
          * @version Egret 2.4
          * @platform Web,Native
          */
-        static TYPE_XML:string;
+        static TYPE_XML: string;
         /**
          * @language en_US
          * Picture file.
@@ -37,7 +37,7 @@ declare module RES {
          * @version Egret 2.4
          * @platform Web,Native
          */
-        static TYPE_IMAGE:string;
+        static TYPE_IMAGE: string;
         /**
          * @language en_US
          * Binary file.
@@ -50,7 +50,7 @@ declare module RES {
          * @version Egret 2.4
          * @platform Web
          */
-        static TYPE_BIN:string;
+        static TYPE_BIN: string;
         /**
          * @language en_US
          * Text file.
@@ -63,7 +63,7 @@ declare module RES {
          * @version Egret 2.4
          * @platform Web,Native
          */
-        static TYPE_TEXT:string;
+        static TYPE_TEXT: string;
         /**
          * @language en_US
          * JSON file.
@@ -76,7 +76,7 @@ declare module RES {
          * @version Egret 2.4
          * @platform Web,Native
          */
-        static TYPE_JSON:string;
+        static TYPE_JSON: string;
         /**
          * @language en_US
          * SpriteSheet file.
@@ -89,7 +89,7 @@ declare module RES {
          * @version Egret 2.4
          * @platform Web,Native
          */
-        static TYPE_SHEET:string;
+        static TYPE_SHEET: string;
         /**
          * @language en_US
          * BitmapTextSpriteSheet file.
@@ -102,7 +102,7 @@ declare module RES {
          * @version Egret 2.4
          * @platform Web,Native
          */
-        static TYPE_FONT:string;
+        static TYPE_FONT: string;
         /**
          * @language en_US
          * Sound file.
@@ -115,7 +115,7 @@ declare module RES {
          * @version Egret 2.4
          * @platform Web,Native
          */
-        static TYPE_SOUND:string;
+        static TYPE_SOUND: string;
         /**
          * @language en_US
          * Constructor.
@@ -134,8 +134,7 @@ declare module RES {
          * @version Egret 2.4
          * @platform Web,Native
          */
-        constructor(name:string, url:string, type:string);
-
+        constructor(name: string, url: string, type: string);
         /**
          * @language en_US
          * Name of resource term.
@@ -148,7 +147,7 @@ declare module RES {
          * @version Egret 2.4
          * @platform Web,Native
          */
-        name:string;
+        name: string;
         /**
          * @language en_US
          * URL of resource term.
@@ -161,7 +160,7 @@ declare module RES {
          * @version Egret 2.4
          * @platform Web,Native
          */
-        url:string;
+        url: string;
         /**
          * @language en_US
          * Type of resource term.
@@ -174,7 +173,7 @@ declare module RES {
          * @version Egret 2.4
          * @platform Web,Native
          */
-        type:string;
+        type: string;
         /**
          * @language en_US
          * Name of the resource term group.
@@ -187,7 +186,7 @@ declare module RES {
          * @version Egret 2.4
          * @platform Web,Native
          */
-        groupName:string;
+        groupName: string;
         /**
          * @language en_US
          * The raw data object to be referenced.
@@ -200,7 +199,7 @@ declare module RES {
          * @version Egret 2.4
          * @platform Web,Native
          */
-        data:any;
+        data: any;
         private _loaded;
         /**
          * @language en_US
@@ -214,7 +213,7 @@ declare module RES {
          * @version Egret 2.4
          * @platform Web,Native
          */
-        loaded:boolean;
+        loaded: boolean;
         /**
          * @language en_US
          * Turn into a string.
@@ -227,7 +226,7 @@ declare module RES {
          * @version Egret 2.4
          * @platform Web,Native
          */
-        toString():string;
+        toString(): string;
     }
 }
 declare module RES {
@@ -238,23 +237,20 @@ declare module RES {
      */
     class ResourceConfig {
         constructor();
-
         /**
          * 根据组名获取组加载项列表
          * @method RES.ResourceConfig#getGroupByName
          * @param name {string} 组名
          * @returns {Array<egret.ResourceItem>}
          */
-        getGroupByName(name:string):Array<ResourceItem>;
-
+        getGroupByName(name: string): Array<ResourceItem>;
         /**
          * 根据组名获取原始的组加载项列表
          * @method RES.ResourceConfig#getRawGroupByName
          * @param name {string} 组名
          * @returns {Array<any>}
          */
-        getRawGroupByName(name:string):Array<any>;
-
+        getRawGroupByName(name: string): Array<any>;
         /**
          * 创建自定义的加载资源组,注意：此方法仅在资源配置文件加载完成后执行才有效。
          * 可以监听ResourceEvent.CONFIG_COMPLETE事件来确认配置加载完成。
@@ -264,8 +260,7 @@ declare module RES {
          * @param override {boolean} 是否覆盖已经存在的同名资源组,默认false。
          * @returns {boolean}
          */
-        createGroup(name:string, keys:Array<string>, override?:boolean):boolean;
-
+        createGroup(name: string, keys: Array<string>, override?: boolean): boolean;
         /**
          * 一级键名字典
          */
@@ -274,54 +269,46 @@ declare module RES {
          * 加载组字典
          */
         private groupDic;
-
         /**
          * 解析一个配置文件
          * @method RES.ResourceConfig#parseConfig
          * @param data {any} 配置文件数据
          * @param folder {string} 加载项的路径前缀。
          */
-        parseConfig(data:any, folder:string):void;
-
+        parseConfig(data: any, folder: string): void;
         /**
          * 添加一个二级键名到配置列表。
          * @method RES.ResourceConfig#addSubkey
          * @param subkey {string} 要添加的二级键名
          * @param name {string} 二级键名所属的资源name属性
          */
-        addSubkey(subkey:string, name:string):void;
-
+        addSubkey(subkey: string, name: string): void;
         /**
          * 添加一个加载项数据到列表
          */
         private addItemToKeyMap(item);
-
         /**
          * 获取加载项的name属性
          * @method RES.ResourceConfig#getType
          * @param key {string} 对应配置文件里的name属性或sbuKeys属性的一项。
          * @returns {string}
          */
-        getName(key:string):string;
-
+        getName(key: string): string;
         /**
          * 获取加载项类型。
          * @method RES.ResourceConfig#getType
          * @param key {string} 对应配置文件里的name属性或sbuKeys属性的一项。
          * @returns {string}
          */
-        getType(key:string):string;
-
-        getRawResourceItem(key:string):any;
-
+        getType(key: string): string;
+        getRawResourceItem(key: string): any;
         /**
          * 获取加载项信息对象
          * @method RES.ResourceConfig#getResourceItem
          * @param key {string} 对应配置文件里的key属性或sbuKeys属性的一项。
          * @returns {egret.ResourceItem}
          */
-        getResourceItem(key:string):ResourceItem;
-
+        getResourceItem(key: string): ResourceItem;
         /**
          * 转换Object数据为ResourceItem对象
          */
@@ -341,11 +328,10 @@ declare module RES {
          * @method RES.ResourceLoader#constructor
          */
         constructor();
-
         /**
          * 最大并发加载数
          */
-        thread:number;
+        thread: number;
         /**
          * 正在加载的线程计数
          */
@@ -354,12 +340,12 @@ declare module RES {
          * 一项加载结束回调函数。无论加载成功或者出错都将执行回调函数。示例：callBack(resItem:ResourceItem):void;
          * @member {Function} RES.ResourceLoader#callBack
          */
-        callBack:Function;
+        callBack: Function;
         /**
          * RES单例的引用
          * @member {any} RES.ResourceLoader#resInstance
          */
-        resInstance:any;
+        resInstance: any;
         /**
          * 当前组加载的项总个数,key为groupName
          */
@@ -377,21 +363,19 @@ declare module RES {
          */
         private groupErrorDic;
         private retryTimesDic;
-        maxRetryTimes:number;
+        maxRetryTimes: number;
         private failedList;
         /**
          * 优先级队列,key为priority，value为groupName列表
          */
         private priorityQueue;
-
         /**
          * 检查指定的组是否正在加载中
          * @method RES.ResourceLoader#isGroupInLoading
          * @param groupName {string}
          * @returns {boolean}
          */
-        isGroupInLoading(groupName:string):boolean;
-
+        isGroupInLoading(groupName: string): boolean;
         /**
          * 开始加载一组文件
          * @method RES.ResourceLoader#loadGroup
@@ -399,45 +383,37 @@ declare module RES {
          * @param groupName {string} 组名
          * @param priority {number} 加载优先级
          */
-        loadGroup(list:Array<ResourceItem>, groupName:string, priority?:number):void;
-
+        loadGroup(list: Array<ResourceItem>, groupName: string, priority?: number): void;
         /**
          * 延迟加载队列
          */
         private lazyLoadList;
-
         /**
          * 加载一个文件
          * @method RES.ResourceLoader#loadItem
          * @param resItem {egret.ResourceItem} 要加载的项
          */
-        loadItem(resItem:ResourceItem):void;
-
+        loadItem(resItem: ResourceItem): void;
         /**
          * 资源解析库字典类
          */
         private analyzerDic;
-
         /**
          * 加载下一项
          */
         private next();
-
         /**
          * 当前应该加载同优先级队列的第几列
          */
         private queueIndex;
-
         /**
          * 获取下一个待加载项
          */
         private getOneResourceItem();
-
         /**
          * 加载结束
          */
         private onItemComplete(resItem);
-
         /**
          * 从优先级队列中移除指定的组名
          */
@@ -470,7 +446,7 @@ declare module RES {
          * @version Egret 2.4
          * @platform Web,Native
          */
-        static ITEM_LOAD_ERROR:string;
+        static ITEM_LOAD_ERROR: string;
         /**
          * @language en_US
          * Configure file to load and parse the completion event. Note: if a configuration file is loaded, it will not be thrown out, and if you want to handle the configuration loading failure, monitor the CONFIG_LOAD_ERROR event.
@@ -483,7 +459,7 @@ declare module RES {
          * @version Egret 2.4
          * @platform Web,Native
          */
-        static CONFIG_COMPLETE:string;
+        static CONFIG_COMPLETE: string;
         /**
          * @language en_US
          * Configuration file failed to load.
@@ -496,7 +472,7 @@ declare module RES {
          * @version Egret 2.4
          * @platform Web,Native
          */
-        static CONFIG_LOAD_ERROR:string;
+        static CONFIG_LOAD_ERROR: string;
         /**
          * @language en_US
          * Delay load group resource loading progress event.
@@ -509,7 +485,7 @@ declare module RES {
          * @version Egret 2.4
          * @platform Web,Native
          */
-        static GROUP_PROGRESS:string;
+        static GROUP_PROGRESS: string;
         /**
          * @language en_US
          * Delay load group resource to complete event. Note: if you have a resource item loading failure, the event will not be thrown, if you want to handle the group load failure, please listen to the GROUP_LOAD_ERROR event.
@@ -522,7 +498,7 @@ declare module RES {
          * @version Egret 2.4
          * @platform Web,Native
          */
-        static GROUP_COMPLETE:string;
+        static GROUP_COMPLETE: string;
         /**
          * @language en_US
          * Delayed load group resource failed event.
@@ -535,7 +511,7 @@ declare module RES {
          * @version Egret 2.4
          * @platform Web,Native
          */
-        static GROUP_LOAD_ERROR:string;
+        static GROUP_LOAD_ERROR: string;
         /**
          * @language en_US
          * Creates an Event object to pass as a parameter to event listeners.
@@ -556,8 +532,7 @@ declare module RES {
          * @platform Web,Native
          * @private
          */
-        constructor(type:string, bubbles?:boolean, cancelable?:boolean);
-
+        constructor(type: string, bubbles?: boolean, cancelable?: boolean);
         /**
          * @language en_US
          * File number that has been loaded.
@@ -570,7 +545,7 @@ declare module RES {
          * @version Egret 2.4
          * @platform Web,Native
          */
-        itemsLoaded:number;
+        itemsLoaded: number;
         /**
          * @language en_US
          * Total file number to load.
@@ -583,7 +558,7 @@ declare module RES {
          * @version Egret 2.4
          * @platform Web,Native
          */
-        itemsTotal:number;
+        itemsTotal: number;
         /**
          * @language en_US
          * Resource group name.
@@ -596,7 +571,7 @@ declare module RES {
          * @version Egret 2.4
          * @platform Web,Native
          */
-        groupName:string;
+        groupName: string;
         /**
          * @language en_US
          * An item of information that is finished by the end of a load.
@@ -609,8 +584,7 @@ declare module RES {
          * @version Egret 2.4
          * @platform Web,Native
          */
-        resItem:ResourceItem;
-
+        resItem: ResourceItem;
         /**
          * 使用指定的EventDispatcher对象来抛出事件对象。抛出的对象将会缓存在对象池上，供下次循环复用。
          * @method RES.ResourceEvent.dispatchResourceEvent
@@ -622,7 +596,7 @@ declare module RES {
          * @param itemsTotal {number}
          * @private
          */
-        static dispatchResourceEvent(target:egret.IEventDispatcher, type:string, groupName?:string, resItem?:ResourceItem, itemsLoaded?:number, itemsTotal?:number):boolean;
+        static dispatchResourceEvent(target: egret.IEventDispatcher, type: string, groupName?: string, resItem?: ResourceItem, itemsLoaded?: number, itemsTotal?: number): boolean;
     }
 }
 declare module RES {
@@ -632,48 +606,41 @@ declare module RES {
      */
     class AnalyzerBase extends egret.HashObject {
         constructor();
-
         private resourceConfig;
-
         /**
          * 添加一个二级键名到配置列表。
          * @method RES.ResourceConfig#addSubkey
          * @param subkey {string} 要添加的二级键名
          * @param name {string} 二级键名所属的资源name属性
          */
-        addSubkey(subkey:string, name:string):void;
-
+        addSubkey(subkey: string, name: string): void;
         /**
          * 加载一个资源文件
          * @param resItem 加载项信息
          * @param compFunc 加载完成回调函数,示例:compFunc(resItem:ResourceItem):void;
          * @param thisObject 加载完成回调函数的this引用
          */
-        loadFile(resItem:ResourceItem, compFunc:Function, thisObject:any):void;
-
+        loadFile(resItem: ResourceItem, compFunc: Function, thisObject: any): void;
         /**
          * 同步方式获取解析完成的数据
          * @param name 对应配置文件里的name属性。
          */
-        getRes(name:string):any;
-
+        getRes(name: string): any;
         /**
          * 销毁某个资源文件的二进制数据,返回是否删除成功。
          * @param name 配置文件中加载项的name属性
          */
-        destroyRes(name:string):boolean;
-
+        destroyRes(name: string): boolean;
         /**
          * 读取一个字符串里第一个点之前的内容。
          * @param name {string} 要读取的字符串
          */
-        static getStringPrefix(name:string):string;
-
+        static getStringPrefix(name: string): string;
         /**
          * 读取一个字符串里第一个点之后的内容。
          * @param name {string} 要读取的字符串
          */
-        static getStringTail(name:string):string;
+        static getStringTail(name: string): string;
     }
 }
 declare module RES {
@@ -685,58 +652,48 @@ declare module RES {
          * 构造函数
          */
         constructor();
-
         /**
          * 字节流数据缓存字典
          */
-        fileDic:any;
+        fileDic: any;
         /**
          * 加载项字典
          */
-        resItemDic:Array<any>;
-
+        resItemDic: Array<any>;
         /**
          * @inheritDoc
          */
-        loadFile(resItem:ResourceItem, compFunc:Function, thisObject:any):void;
-
-        _dataFormat:string;
+        loadFile(resItem: ResourceItem, compFunc: Function, thisObject: any): void;
+        _dataFormat: string;
         /**
          * Loader对象池
          */
-        protected recycler:egret.HttpRequest[];
-
+        protected recycler: egret.HttpRequest[];
         /**
          * 获取一个URLLoader对象
          */
         private getRequest();
-
         /**
          * 一项加载结束
          */
-        onLoadFinish(event:egret.Event):void;
-
+        onLoadFinish(event: egret.Event): void;
         /**
          * 解析并缓存加载成功的数据
          */
-        analyzeData(resItem:ResourceItem, data:any):void;
-
+        analyzeData(resItem: ResourceItem, data: any): void;
         /**
          * @inheritDoc
          */
-        getRes(name:string):any;
-
+        getRes(name: string): any;
         /**
          * @inheritDoc
          */
-        hasRes(name:string):boolean;
-
+        hasRes(name: string): boolean;
         /**
          * @inheritDoc
          */
-        destroyRes(name:string):boolean;
-
-        protected onResourceDestroy(resource:any):void;
+        destroyRes(name: string): boolean;
+        protected onResourceDestroy(resource: any): void;
     }
 }
 declare module RES {
@@ -748,57 +705,47 @@ declare module RES {
          * 构造函数
          */
         constructor();
-
         /**
          * 字节流数据缓存字典
          */
-        protected fileDic:any;
+        protected fileDic: any;
         /**
          * 加载项字典
          */
-        protected resItemDic:Array<any>;
-
+        protected resItemDic: Array<any>;
         /**
          * @inheritDoc
          */
-        loadFile(resItem:ResourceItem, compFunc:Function, thisObject:any):void;
-
+        loadFile(resItem: ResourceItem, compFunc: Function, thisObject: any): void;
         /**
          * Loader对象池
          */
-        protected recycler:egret.ImageLoader[];
-
+        protected recycler: egret.ImageLoader[];
         /**
          * 获取一个Loader对象
          */
         private getLoader();
-
         /**
          * 一项加载结束
          */
-        protected onLoadFinish(event:egret.Event):void;
-
+        protected onLoadFinish(event: egret.Event): void;
         /**
          * 解析并缓存加载成功的数据
          */
-        protected analyzeData(resItem:ResourceItem, texture:egret.Texture):void;
-
+        protected analyzeData(resItem: ResourceItem, texture: egret.Texture): void;
         /**
          * @inheritDoc
          */
-        getRes(name:string):any;
-
+        getRes(name: string): any;
         /**
          * @inheritDoc
          */
-        hasRes(name:string):boolean;
-
+        hasRes(name: string): boolean;
         /**
          * @inheritDoc
          */
-        destroyRes(name:string):boolean;
-
-        protected onResourceDestroy(texture:any):void;
+        destroyRes(name: string): boolean;
+        protected onResourceDestroy(texture: any): void;
     }
 }
 declare module RES {
@@ -815,11 +762,10 @@ declare module RES {
      */
     class JsonAnalyzer extends BinAnalyzer {
         constructor();
-
         /**
          * 解析并缓存加载成功的数据
          */
-        analyzeData(resItem:ResourceItem, data:any):void;
+        analyzeData(resItem: ResourceItem, data: any): void;
     }
 }
 declare module RES {
@@ -829,46 +775,34 @@ declare module RES {
      */
     class SheetAnalyzer extends BinAnalyzer {
         constructor();
-
-        getRes(name:string):any;
-
+        getRes(name: string): any;
         /**
          * 一项加载结束
          */
-        onLoadFinish(event:egret.Event):void;
-
-        sheetMap:any;
+        onLoadFinish(event: egret.Event): void;
+        sheetMap: any;
         private textureMap;
-
         /**
          * 解析并缓存加载成功的配置文件
          */
-        analyzeConfig(resItem:ResourceItem, data:string):string;
-
+        analyzeConfig(resItem: ResourceItem, data: string): string;
         /**
          * 解析并缓存加载成功的位图数据
          */
-        analyzeBitmap(resItem:ResourceItem, texture:egret.Texture):void;
-
+        analyzeBitmap(resItem: ResourceItem, texture: egret.Texture): void;
         /**
          * 获取相对位置
          */
-        getRelativePath(url:string, file:string):string;
-
-        protected parseSpriteSheet(texture:egret.Texture, data:any, name:string):egret.SpriteSheet;
-
-        destroyRes(name:string):boolean;
-
+        getRelativePath(url: string, file: string): string;
+        protected parseSpriteSheet(texture: egret.Texture, data: any, name: string): egret.SpriteSheet;
+        destroyRes(name: string): boolean;
         /**
          * ImageLoader对象池
          */
         private recyclerIamge;
-
         private loadImage(url, data);
-
         private getImageLoader();
-
-        protected onResourceDestroy(texture:any):void;
+        protected onResourceDestroy(texture: any): void;
     }
 }
 declare module RES {
@@ -877,14 +811,10 @@ declare module RES {
      */
     class FontAnalyzer extends SheetAnalyzer {
         constructor();
-
-        analyzeConfig(resItem:ResourceItem, data:string):string;
-
-        analyzeBitmap(resItem:ResourceItem, texture:egret.Texture):void;
-
+        analyzeConfig(resItem: ResourceItem, data: string): string;
+        analyzeBitmap(resItem: ResourceItem, texture: egret.Texture): void;
         private getTexturePath(url, fntText);
-
-        protected onResourceDestroy(font:egret.BitmapFont):void;
+        protected onResourceDestroy(font: egret.BitmapFont): void;
     }
 }
 declare module RES {
@@ -896,45 +826,38 @@ declare module RES {
          * 构造函数
          */
         constructor();
-
         /**
          * 字节流数据缓存字典
          */
-        protected soundDic:any;
+        protected soundDic: any;
         /**
          * 加载项字典
          */
-        protected resItemDic:Array<any>;
-
+        protected resItemDic: Array<any>;
         /**
          * @inheritDoc
          */
-        loadFile(resItem:ResourceItem, callBack:Function, thisObject:any):void;
-
+        loadFile(resItem: ResourceItem, callBack: Function, thisObject: any): void;
         /**
          * 一项加载结束
          */
-        protected onLoadFinish(event:egret.Event):void;
-
+        protected onLoadFinish(event: egret.Event): void;
         /**
          * 解析并缓存加载成功的数据
          */
-        protected analyzeData(resItem:ResourceItem, data:egret.Sound):void;
-
+        protected analyzeData(resItem: ResourceItem, data: egret.Sound): void;
         /**
          * @inheritDoc
          */
-        getRes(name:string):any;
-
+        getRes(name: string): any;
         /**
          * @inheritDoc
          */
-        hasRes(name:string):boolean;
-
+        hasRes(name: string): boolean;
         /**
          * @inheritDoc
          */
-        destroyRes(name:string):boolean;
+        destroyRes(name: string): boolean;
     }
 }
 declare module RES {
@@ -943,11 +866,10 @@ declare module RES {
      */
     class XMLAnalyzer extends BinAnalyzer {
         constructor();
-
         /**
          * 解析并缓存加载成功的数据
          */
-        analyzeData(resItem:ResourceItem, data:any):void;
+        analyzeData(resItem: ResourceItem, data: any): void;
     }
 }
 declare module RES {
@@ -980,7 +902,7 @@ declare module RES {
          * @version Egret 2.4
          * @platform Web,Native
          */
-        fetchVersion(callback:egret.AsyncCallback): void;
+        fetchVersion(callback: egret.AsyncCallback): void;
         /**
          * @language en_US
          * Get all changed files.<br/>
@@ -1021,7 +943,7 @@ declare module RES {
          * @version Egret 2.4
          * @platform Web,Native
          */
-        getVirtualUrl(url:string): string;
+        getVirtualUrl(url: string): string;
     }
     /**
      * @language en_US
@@ -1047,7 +969,7 @@ declare module RES {
      * @version Egret 2.4
      * @platform Web,Native
      */
-    var VersionController:{
+    var VersionController: {
         /**
          * @language en_US
          * Constructor initialization
@@ -1065,21 +987,17 @@ declare module RES.web {
      */
     class Html5VersionController extends egret.EventDispatcher implements VersionController {
         constructor();
-
         private _versionInfo;
-
-        fetchVersion(callback:egret.AsyncCallback):void;
-
+        fetchVersion(callback: egret.AsyncCallback): void;
         /**
          * 获取所有有变化的文件
          * @returns {Array<any>}
          */
-        getChangeList():Array<{
+        getChangeList(): Array<{
             url: string;
             size: number;
         }>;
-
-        getVirtualUrl(url:string):string;
+        getVirtualUrl(url: string): string;
     }
 }
 declare module RES.native {
@@ -1090,24 +1008,18 @@ declare module RES.native {
         private _versionInfo;
         private _versionPath;
         private _localFileArr;
-
         constructor();
-
-        fetchVersion(callback:egret.AsyncCallback):void;
-
+        fetchVersion(callback: egret.AsyncCallback): void;
         private getList(callback, type, root?);
-
         /**
          * 获取所有有变化的文件
          * @returns {Array<any>}
          */
-        getChangeList():Array<{
+        getChangeList(): Array<{
             url: string;
             size: number;
         }>;
-
-        getVirtualUrl(url:string):string;
-
+        getVirtualUrl(url: string): string;
         private getLocalData(filePath);
     }
 }
@@ -1130,8 +1042,7 @@ declare module RES {
      * @platform Web,Native
      * @includeExample extension/resource/Resource.ts
      */
-    function registerAnalyzer(type:string, analyzerClass:any):void;
-
+    function registerAnalyzer(type: string, analyzerClass: any): void;
     /**
      * @language en_US
      * Register the VersionController
@@ -1146,8 +1057,7 @@ declare module RES {
      * @version Egret 2.5
      * @platform Web,Native
      */
-    function registerVersionController(vcs:VersionController):void;
-
+    function registerVersionController(vcs: VersionController): void;
     /**
      * @language en_US
      * Returns the VersionController
@@ -1160,8 +1070,7 @@ declare module RES {
      * @version Egret 2.5
      * @platform Web,Native
      */
-    function getVersionController():VersionController;
-
+    function getVersionController(): VersionController;
     /**
      * @language en_US
      * Load configuration file and parse.
@@ -1182,8 +1091,7 @@ declare module RES {
      * @version Egret 2.4
      * @platform Web,Native
      */
-    function loadConfig(url:string, resourceRoot?:string, type?:string):void;
-
+    function loadConfig(url: string, resourceRoot?: string, type?: string): void;
     /**
      * @language en_US
      * Load a set of resources according to the group name.
@@ -1204,8 +1112,7 @@ declare module RES {
      * @version Egret 2.4
      * @platform Web,Native
      */
-    function loadGroup(name:string, priority?:number):void;
-
+    function loadGroup(name: string, priority?: number): void;
     /**
      * @language en_US
      * Check whether a resource group has been loaded.
@@ -1224,8 +1131,7 @@ declare module RES {
      * @version Egret 2.4
      * @platform Web,Native
      */
-    function isGroupLoaded(name:string):boolean;
-
+    function isGroupLoaded(name: string): boolean;
     /**
      * @language en_US
      * A list of groups of loading is obtained according to the group name.
@@ -1246,8 +1152,7 @@ declare module RES {
      * @version Egret 2.4
      * @platform Web,Native
      */
-    function getGroupByName(name:string):Array<ResourceItem>;
-
+    function getGroupByName(name: string): Array<ResourceItem>;
     /**
      * @language en_US
      * Create a custom load resource group, note that this method is valid only after the resource configuration file is loaded.
@@ -1272,8 +1177,7 @@ declare module RES {
      * @version Egret 2.4
      * @platform Web,Native
      */
-    function createGroup(name:string, keys:Array<string>, override?:boolean):boolean;
-
+    function createGroup(name: string, keys: Array<string>, override?: boolean): boolean;
     /**
      * @language en_US
      * Check whether the configuration file contains the specified resources.
@@ -1290,8 +1194,7 @@ declare module RES {
      * @version Egret 2.4
      * @platform Web,Native
      */
-    function hasRes(key:string):boolean;
-
+    function hasRes(key: string): boolean;
     /**
      * @language en_US
      * Run time dynamic analysis of a configuration file.
@@ -1310,8 +1213,7 @@ declare module RES {
      * @version Egret 2.4
      * @platform Web,Native
      */
-    function parseConfig(data:any, folder?:string):void;
-
+    function parseConfig(data: any, folder?: string): void;
     /**
      * @language en_US
      * The synchronization method for obtaining the cache has been loaded with the success of the resource.
@@ -1351,8 +1253,7 @@ declare module RES {
      * @version Egret 2.4
      * @platform Web,Native
      */
-    function getRes(key:string):any;
-
+    function getRes(key: string): any;
     /**
      * @language en_US
      * Asynchronous mode to get the resources in the configuration. As long as the resources exist in the configuration file, you can get it in an asynchronous way.
@@ -1373,8 +1274,7 @@ declare module RES {
      * @version Egret 2.4
      * @platform Web,Native
      */
-    function getResAsync(key:string, compFunc:Function, thisObject:any):void;
-
+    function getResAsync(key: string, compFunc: Function, thisObject: any): void;
     /**
      * @language en_US
      * Access to external resources through the full URL.
@@ -1397,8 +1297,7 @@ declare module RES {
      * @platform Web,Native
      * @includeExample extension/resource/GetResByUrl.ts
      */
-    function getResByUrl(url:string, compFunc:Function, thisObject:any, type?:string):void;
-
+    function getResByUrl(url: string, compFunc: Function, thisObject: any, type?: string): void;
     /**
      * @language en_US
      * Destroy a single resource file or a set of resources to the cache data, to return whether to delete success.
@@ -1419,8 +1318,7 @@ declare module RES {
      * @version Egret 2.4
      * @platform Web,Native
      */
-    function destroyRes(name:string, force?:boolean):boolean;
-
+    function destroyRes(name: string, force?: boolean): boolean;
     /**
      * @language en_US
      * Sets the maximum number of concurrent load threads, the default value is 2.
@@ -1437,8 +1335,7 @@ declare module RES {
      * @version Egret 2.4
      * @platform Web,Native
      */
-    function setMaxLoadingThread(thread:number):void;
-
+    function setMaxLoadingThread(thread: number): void;
     /**
      * @language en_US
      * Sets the number of retry times when the resource failed to load, and the default value is 3.
@@ -1455,8 +1352,7 @@ declare module RES {
      * @version Egret 2.4
      * @platform Web,Native
      */
-    function setMaxRetryTimes(retry:number):void;
-
+    function setMaxRetryTimes(retry: number): void;
     /**
      * @language en_US
      * Add event listeners, reference ResourceEvent defined constants.
@@ -1492,8 +1388,7 @@ declare module RES {
      * @version Egret 2.4
      * @platform Web,Native
      */
-    function addEventListener(type:string, listener:(event:egret.Event) => void, thisObject:any, useCapture?:boolean, priority?:number):void;
-
+    function addEventListener(type: string, listener: (event: egret.Event) => void, thisObject: any, useCapture?: boolean, priority?: number): void;
     /**
      * @language en_US
      * Remove event listeners, reference ResourceEvent defined constants.
@@ -1514,9 +1409,8 @@ declare module RES {
      * @version Egret 2.4
      * @platform Web,Native
      */
-    function removeEventListener(type:string, listener:(event:egret.Event) => void, thisObject:any, useCapture?:boolean):void;
-
-    function $getVirtualUrl(url:any):any;
+    function removeEventListener(type: string, listener: (event: egret.Event) => void, thisObject: any, useCapture?: boolean): void;
+    function $getVirtualUrl(url: any): any;
 }
 declare module RES {
     /**
@@ -1525,40 +1419,30 @@ declare module RES {
      */
     class AnimationAnalyzer extends BinAnalyzer {
         constructor();
-
         /**
          * 一项加载结束
          */
-        onLoadFinish(event:egret.Event):void;
-
-        sheetMap:any;
-
+        onLoadFinish(event: egret.Event): void;
+        sheetMap: any;
         /**
          * 解析并缓存加载成功的配置文件
          */
-        analyzeConfig(resItem:ResourceItem, data:string):string;
-
+        analyzeConfig(resItem: ResourceItem, data: string): string;
         /**
          * 解析并缓存加载成功的位图数据
          */
-        analyzeBitmap(resItem:ResourceItem, data:egret.BitmapData):void;
-
+        analyzeBitmap(resItem: ResourceItem, data: egret.BitmapData): void;
         /**
          * 获取相对位置
          */
-        getRelativePath(url:string, file:string):string;
-
+        getRelativePath(url: string, file: string): string;
         private parseAnimation(bitmapData, data, name);
-
-        destroyRes(name:string):boolean;
-
+        destroyRes(name: string): boolean;
         /**
          * ImageLoader对象池
          */
         private recyclerIamge;
-
         private loadImage(url, data);
-
         private getImageLoader();
     }
 }
