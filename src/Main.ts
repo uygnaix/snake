@@ -64,7 +64,6 @@ class Main extends egret.DisplayObjectContainer {
         RES.addEventListener(RES.ResourceEvent.ITEM_LOAD_ERROR, this.onItemLoadError, this);
         RES.loadGroup('gboy', 1);
         RES.loadGroup('button',1);
-        RES.loadGroup('preload');
 
     }
 
@@ -73,7 +72,7 @@ class Main extends egret.DisplayObjectContainer {
      * Preload resource group is loaded
      */
     private onResourceLoadComplete(event:RES.ResourceEvent):void {
-        if (event.groupName == "preload") {
+        if (event.groupName == "button") {
             this.stage.removeChild(this.loadingView);
             RES.removeEventListener(RES.ResourceEvent.GROUP_COMPLETE, this.onResourceLoadComplete, this);
             RES.removeEventListener(RES.ResourceEvent.GROUP_LOAD_ERROR, this.onResourceLoadError, this);
@@ -123,64 +122,7 @@ class Main extends egret.DisplayObjectContainer {
         var stageH:number = this.stage.stageHeight;
         var gameScene = new XYGBoy.GameScene(stageW, stageH);
         this.addChild(gameScene);
-//        
-//        this.initMap();
-//
-//        this.map.setCursor(0,0) ? this.map.turnOnDotAtCursor() : 0;
-//
-//        //创建一个计时器对象
-//        var timer: egret.Timer = new egret.Timer(20,0);
-//        //注册事件侦听器
-//        timer.addEventListener(egret.TimerEvent.TIMER,this.movePoint,this);
-////        timer.addEventListener(egret.TimerEvent.TIMER_COMPLETE,this.timerComFunc,this);
-//        //开始计时
-//        timer.start();
     }
-
-    private time;
-    private timer;
-    private map:XYGBoy.DotMap;
-    private boxSize:number = 25;
-
-    private point;
-
-    private initMap() {
-        var stageW:number = this.stage.stageWidth;
-        var stageH:number = this.stage.stageHeight;
-        var col = stageW / this.boxSize;
-        var row = stageH / this.boxSize;
-        this.map = new XYGBoy.DotMap(row, col, this.boxSize);
-        this.map.width = stageW;
-        this.map.height = stageH;
-
-        this.addChild(this.map);
-
-    }
-
-    private movePoint(timeStamp:number):boolean {
-        console.log(timeStamp);
-        var now = timeStamp;
-        var time = this.time;
-        var pass = now - time;
-//        this.map.turnOffDotAtCursor();
-
-        if (this.map.getCursorColumn() + 1 < this.map.getColumn()) {
-            this.map.setCursorColumn(this.map.getCursorColumn() + 1);
-        } else {
-            this.map.setCursorColumn(0);
-            if (this.map.getCursorRow() + 1 < this.map.getRow()) {
-                this.map.setCursorRow(this.map.getCursorRow() + 1);
-            } else {
-                this.map.setCursorRow(0);
-            }
-
-        }
-        console.log(pass, this.point);
-        this.map.turnOnDotAtCursor();
-        this.time = now;
-        return false;
-    }
-
 }
 
 

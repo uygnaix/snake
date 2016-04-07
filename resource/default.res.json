@@ -1,11 +1,7 @@
 {
 	"groups":[
 		{
-			"keys":"bgImage,egretIcon",
-			"name":"preload"
-		},
-		{
-			"keys":"off-l-b_png,off-l_png,off_png,on-l-b_png,on-l_png,on_png",
+			"keys":"off-l-b_png,off-l_png,off_png,on-l-b_png,on-l_png,on_png,bg_png",
 			"name":"gboy"
 		},
 		{
@@ -14,16 +10,6 @@
 		}
 	],
 	"resources":[
-		{
-			"name":"bgImage",
-			"type":"image",
-			"url":"assets/bg.jpg"
-		},
-		{
-			"name":"egretIcon",
-			"type":"image",
-			"url":"assets/egret_icon.png"
-		},
 		{
 			"name":"description",
 			"type":"json",
@@ -88,6 +74,11 @@
 			"name":"btn_up_png",
 			"type":"image",
 			"url":"assets/button/btn_up.png"
+		},
+		{
+			"name":"bg_png",
+			"type":"image",
+			"url":"assets/gboy/bg.png"
 		}
 	]
 }

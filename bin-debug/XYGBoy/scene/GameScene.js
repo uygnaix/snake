@@ -26,9 +26,9 @@ var XYGBoy;
             this.addEventListener(XYGBoy.GameSceneEvent.GAMEOVER, this.showGameOver, this);
             //调整gampanel的位置
             this.gamePanel.x = (this.width - this.gamePanel.width) / 2;
-            this.addChildAt(this.gamePanel, 10);
             this.gameController = new XYGBoy.DotControllerPanel(this.gamePanel, this.width, this.height);
-            this.addChild(this.gameController);
+            this.addChildAt(this.gameController, 0);
+            this.addChildAt(this.gamePanel, 10);
         };
         return GameScene;
     }(egret.DisplayObjectContainer));

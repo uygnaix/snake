@@ -19,11 +19,14 @@ module XYGBoy {
             this.width = width;
             this.height = height;
             this.gameMap = gameMap;
-            this.initBtn();
             this.initBG();
+            this.initBtn();
         }
         private initBG(){
-            
+            var bg = new egret.Bitmap(RES.getRes('bg_png'));
+            bg.width = this.width;
+            bg.height =this.height;
+            this.addChildAt(bg,-1);
         }
 
         private initBtn() {
@@ -37,8 +40,8 @@ module XYGBoy {
 
         private initBtnA() {
             this.btnA = new egret.Bitmap(RES.getRes('btn_a_png'));
-            this.btnA.x = 600;
-            this.btnA.y = 200;
+            this.btnA.x =367;
+            this.btnA.y = 652;
             this.btnA.width = 100;
             this.btnA.height = 100;
             this.btnA.touchEnabled = true;
@@ -52,8 +55,8 @@ module XYGBoy {
 
         private initBtnB() {
             this.btnB = new egret.Bitmap(RES.getRes('btn_b_png'));
-            this.btnB.x = 600;
-            this.btnB.y = 400;
+            this.btnB.x = 297;
+            this.btnB.y = 746;
             this.btnB.width = 100;
             this.btnB.height = 100;
             this.btnB.touchEnabled = true;
@@ -69,7 +72,7 @@ module XYGBoy {
         private initBtnUp() {
             this.btnUp = new egret.Bitmap(RES.getRes('btn_up_png'));
             this.btnUp.x = 100;
-            this.btnUp.y = 100;
+            this.btnUp.y = 652;
             this.btnUp.width = 100;
             this.btnUp.height = 100;
             this.btnUp.touchEnabled = true;
