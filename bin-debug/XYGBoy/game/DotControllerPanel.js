@@ -1,5 +1,6 @@
 var XYGBoy;
 (function (XYGBoy) {
+    var Bitmap = egret.Bitmap;
     /**
      *
      * @author Xiang.y
@@ -48,6 +49,11 @@ var XYGBoy;
             this.gameMap.dispatchEvent(tapBEvent);
         };
         p.initBtnUp = function () {
+            var up = new Bitmap(RES.getRes('up_png'));
+            debugger;
+            up.width = 100;
+            up.height = 100;
+            this.addChild(up);
             this.btnUp = new XYGBoy.DotMap(4, 3, 25);
             this.btnUp.x = 100;
             this.btnUp.y = 100;
