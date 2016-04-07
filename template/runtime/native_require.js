@@ -1,23 +1,24 @@
 var game_file_list = [
     //以下为自动修改，请勿修改
     //----auto game_file_list start----
-    "libs/modules/egret/egret.js",
-    "libs/modules/egret/egret.native.js",
-    "libs/modules/game/game.js",
-    "libs/modules/game/game.native.js",
-    "libs/modules/tween/tween.js",
-    "libs/modules/res/res.js",
-    "bin-debug/LoadingUI.js",
-    "bin-debug/Main.js",
-    "bin-debug/XYGBoy/control/ControllerEvent.js",
-    "bin-debug/XYGBoy/core/Dot.js",
-    "bin-debug/XYGBoy/core/DotMap.js",
-    "bin-debug/XYGBoy/game/DotControllerPanel.js",
-    "bin-debug/XYGBoy/game/DotSnakePanel.js",
-    "bin-debug/XYGBoy/math/MatrixPointer.js",
-    "bin-debug/XYGBoy/scene/GameScene.js",
-    "bin-debug/base/Matrix.js",
-    //----auto game_file_list end----
+	"libs/modules/egret/egret.js",
+	"libs/modules/egret/egret.native.js",
+	"libs/modules/game/game.js",
+	"libs/modules/game/game.native.js",
+	"libs/modules/tween/tween.js",
+	"libs/modules/res/res.js",
+	"bin-debug/LoadingUI.js",
+	"bin-debug/Main.js",
+	"bin-debug/XYGBoy/control/ControllerEvent.js",
+	"bin-debug/XYGBoy/control/GameSceneEvent.js",
+	"bin-debug/XYGBoy/core/Dot.js",
+	"bin-debug/XYGBoy/core/DotMap.js",
+	"bin-debug/XYGBoy/game/DotControllerPanel.js",
+	"bin-debug/XYGBoy/game/DotSnakePanel.js",
+	"bin-debug/XYGBoy/math/MatrixPointer.js",
+	"bin-debug/XYGBoy/scene/GameScene.js",
+	"bin-debug/base/Matrix.js",
+	//----auto game_file_list end----
 ];
 
 var window = this;
@@ -44,19 +45,19 @@ egret_native.egretStart = function () {
     var option = {
         //以下为自动修改，请勿修改
         //----auto option start----
-        entryClassName: "Main",
-        frameRate: 30,
-        scaleMode: "showAll",
-        contentWidth: 800,
-        contentHeight: 600,
-        showPaintRect: false,
-        showFPS: true,
-        fpsStyles: "x:0,y:0,size:30,textColor:0x00c200,bgAlpha:0.1",
-        showLog: true,
-        logFilter: "",
-        maxTouches: 2,
-        textureScaleFactor: 1
-        //----auto option end----
+		entryClassName: "Main",
+		frameRate: 30,
+		scaleMode: "showAll",
+		contentWidth: 800,
+		contentHeight: 600,
+		showPaintRect: false,
+		showFPS: true,
+		fpsStyles: "x:0,y:0,size:30,textColor:0x00c200,bgAlpha:0.1",
+		showLog: true,
+		logFilter: "",
+		maxTouches: 2,
+		textureScaleFactor: 1
+		//----auto option end----
     };
 
     egret.native.NativePlayer.option = option;

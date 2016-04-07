@@ -46,8 +46,7 @@ var egret;
             if (end)
                 this._end = end | 0;
         }
-
-        var d = __define, c = FrameLabel, p = c.prototype;
+        var d = __define,c=FrameLabel,p=c.prototype;
         d(p, "name"
             /**
              * @language en_US
@@ -61,7 +60,7 @@ var egret;
              * @version Egret 2.4
              * @platform Web,Native
              */
-            , function () {
+            ,function () {
                 return this._name;
             }
         );
@@ -78,7 +77,7 @@ var egret;
              * @version Egret 2.4
              * @platform Web,Native
              */
-            , function () {
+            ,function () {
                 return this._frame;
             }
         );
@@ -95,7 +94,7 @@ var egret;
              * @version Egret 2.4
              * @platform Web,Native
              */
-            , function () {
+            ,function () {
                 return this._end;
             }
         );
@@ -115,9 +114,9 @@ var egret;
             return new FrameLabel(this._name, this._frame, this._end);
         };
         return FrameLabel;
-    })(egret.EventDispatcher);
+    }(egret.EventDispatcher));
     egret.FrameLabel = FrameLabel;
-    egret.registerClass(FrameLabel, 'egret.FrameLabel');
+    egret.registerClass(FrameLabel,'egret.FrameLabel');
 })(egret || (egret = {}));
 //////////////////////////////////////////////////////////////////////////////////////
 //
@@ -150,11 +149,11 @@ var egret;
 var egret;
 (function (egret) {
     /**
-     * @language en_US
-     * @version Egret 2.4
-     * @platform Web,Native
-     * @includeExample extension/game/display/MovieClip.ts
-     */
+    * @language en_US
+    * @version Egret 2.4
+    * @platform Web,Native
+    * @includeExample extension/game/display/MovieClip.ts
+    */
     /**
      * @language zh_CN
      * 影片剪辑，可以通过影片剪辑播放序列帧动画。MovieClip 类从以下类继承而来：DisplayObject 和 EventDispatcher。不同于 DisplayObject 对象，MovieClip 对象拥有一个时间轴。
@@ -250,11 +249,10 @@ var egret;
              */
             this.lastTime = 0;
             this.$smoothing = egret.Bitmap.defaultSmoothing;
-            this.$renderRegion = new egret.sys.Region();
+            this.$renderNode = new egret.sys.BitmapNode();
             this.setMovieClipData(movieClipData);
         }
-
-        var d = __define, c = MovieClip, p = c.prototype;
+        var d = __define,c=MovieClip,p=c.prototype;
         d(p, "smoothing"
             /**
              * @language en_US
@@ -268,10 +266,10 @@ var egret;
              * @version Egret 3.0
              * @platform Web
              */
-            , function () {
+            ,function () {
                 return this.$smoothing;
             }
-            , function (value) {
+            ,function (value) {
                 value = !!value;
                 if (value == this.$smoothing) {
                     return;
@@ -324,17 +322,18 @@ var egret;
         /**
          * @private
          */
-        p.$render = function (context) {
+        p.$render = function () {
             var texture = this.$bitmapData;
             if (texture) {
-                context.imageSmoothingEnabled = this.$smoothing;
                 var offsetX = Math.round(this.offsetPoint.x);
                 var offsetY = Math.round(this.offsetPoint.y);
                 var bitmapWidth = texture._bitmapWidth;
                 var bitmapHeight = texture._bitmapHeight;
+                var textureWidth = texture.$getTextureWidth();
+                var textureHeight = texture.$getTextureHeight();
                 var destW = Math.round(texture.$getScaleBitmapWidth());
                 var destH = Math.round(texture.$getScaleBitmapHeight());
-                context.drawImage(texture._bitmapData, texture._bitmapX, texture._bitmapY, bitmapWidth, bitmapHeight, offsetX, offsetY, destW, destH);
+                egret.Bitmap.$drawImage(this.$renderNode, texture._bitmapData, texture._bitmapX, texture._bitmapY, bitmapWidth, bitmapHeight, offsetX, offsetY, textureWidth, textureHeight, destW, destH, null, egret.BitmapFillMode.SCALE, this.$smoothing);
             }
         };
         /**
@@ -382,9 +381,7 @@ var egret;
          * @returns {egret.FrameLabel} FrameLabel对象
          */
         p.getFrameLabelByName = function (labelName, ignoreCase) {
-            if (ignoreCase === void 0) {
-                ignoreCase = false;
-            }
+            if (ignoreCase === void 0) { ignoreCase = false; }
             if (ignoreCase) {
                 labelName = labelName.toLowerCase();
             }
@@ -468,9 +465,7 @@ var egret;
          * @platform Web,Native
          */
         p.play = function (playTimes) {
-            if (playTimes === void 0) {
-                playTimes = 0;
-            }
+            if (playTimes === void 0) { playTimes = 0; }
             this.$isPlaying = true;
             this.setPlayTimes(playTimes);
             if (this.$totalFrames > 1 && this.$stage) {
@@ -510,9 +505,7 @@ var egret;
          * @platform Web,Native
          */
         p.gotoAndPlay = function (frame, playTimes) {
-            if (playTimes === void 0) {
-                playTimes = 0;
-            }
+            if (playTimes === void 0) { playTimes = 0; }
             if (arguments.length == 0 || arguments.length > 2) {
                 egret.$error(1022, "MovieClip.gotoAndPlay()");
             }
@@ -681,7 +674,7 @@ var egret;
              * @version Egret 2.4
              * @platform Web,Native
              */
-            , function () {
+            ,function () {
                 return this.$totalFrames;
             }
         );
@@ -691,7 +684,7 @@ var egret;
              * @version Egret 2.4
              * @platform Web,Native
              */
-            , function () {
+            ,function () {
                 return this.$currentFrameNum;
             }
         );
@@ -701,7 +694,7 @@ var egret;
              * @version Egret 2.4
              * @platform Web,Native
              */
-            , function () {
+            ,function () {
                 var label = this.getFrameLabelByFrame(this.$currentFrameNum);
                 return label && label.name;
             }
@@ -712,7 +705,7 @@ var egret;
              * @version Egret 2.4
              * @platform Web,Native
              */
-            , function () {
+            ,function () {
                 var label = this.getFrameLabelForFrame(this.$currentFrameNum);
                 return label ? label.name : null;
             }
@@ -723,10 +716,10 @@ var egret;
              * @version Egret 2.4
              * @platform Web,Native
              */
-            , function () {
+            ,function () {
                 return this.$movieClipData.frameRate;
             }
-            , function (value) {
+            ,function (value) {
                 if (value == this.$movieClipData.frameRate) {
                     return;
                 }
@@ -740,7 +733,7 @@ var egret;
              * @version Egret 2.4
              * @platform Web,Native
              */
-            , function () {
+            ,function () {
                 return this.$isPlaying;
             }
         );
@@ -749,13 +742,13 @@ var egret;
              * @version Egret 2.4
              * @platform Web,Native
              */
-            , function () {
+            ,function () {
                 return this.$movieClipData;
             }
             /**
              * MovieClip数据源
              */
-            , function (value) {
+            ,function (value) {
                 this.setMovieClipData(value);
             }
         );
@@ -802,9 +795,9 @@ var egret;
             }
         };
         return MovieClip;
-    })(egret.DisplayObject);
+    }(egret.DisplayObject));
     egret.MovieClip = MovieClip;
-    egret.registerClass(MovieClip, 'egret.MovieClip');
+    egret.registerClass(MovieClip,'egret.MovieClip');
 })(egret || (egret = {}));
 //////////////////////////////////////////////////////////////////////////////////////
 //
@@ -899,8 +892,7 @@ var egret;
              */
             this.spriteSheet = null;
         }
-
-        var d = __define, c = MovieClipData, p = c.prototype;
+        var d = __define,c=MovieClipData,p=c.prototype;
         /**
          * @private
          *
@@ -1006,7 +998,7 @@ var egret;
                     if (duration > 1) {
                         keyFramePosition = frames.length;
                         for (var j = 1; j < duration; j++) {
-                            frames.push({"frame": keyFramePosition});
+                            frames.push({ "frame": keyFramePosition });
                         }
                     }
                 }
@@ -1052,13 +1044,13 @@ var egret;
              * @version Egret 2.4
              * @platform Web,Native
              */
-            , function () {
+            ,function () {
                 return this.$mcData;
             }
             /**
              * MovieClip数据源
              */
-            , function (value) {
+            ,function (value) {
                 this.setMCData(value);
             }
         );
@@ -1077,9 +1069,9 @@ var egret;
             }
         };
         return MovieClipData;
-    })(egret.HashObject);
+    }(egret.HashObject));
     egret.MovieClipData = MovieClipData;
-    egret.registerClass(MovieClipData, 'egret.MovieClipData');
+    egret.registerClass(MovieClipData,'egret.MovieClipData');
 })(egret || (egret = {}));
 //////////////////////////////////////////////////////////////////////////////////////
 //
@@ -1141,8 +1133,7 @@ var egret;
             this.$mcDataSet = movieClipDataSet;
             this.setTexture(texture);
         }
-
-        var d = __define, c = MovieClipDataFactory, p = c.prototype;
+        var d = __define,c=MovieClipDataFactory,p=c.prototype;
         /**
          * 清空缓存
          * @version Egret 2.4
@@ -1159,9 +1150,7 @@ var egret;
          * @platform Web,Native
          */
         p.generateMovieClipData = function (movieClipName) {
-            if (movieClipName === void 0) {
-                movieClipName = "";
-            }
+            if (movieClipName === void 0) { movieClipName = ""; }
             if (movieClipName == "") {
                 if (this.$mcDataSet) {
                     for (movieClipName in this.$mcDataSet.mc) {
@@ -1216,18 +1205,18 @@ var egret;
              * @version Egret 2.4
              * @platform Web,Native
              */
-            , function () {
+            ,function () {
                 return this.$mcDataSet;
             }
-            , function (value) {
+            ,function (value) {
                 this.$mcDataSet = value;
             }
         );
-        d(p, "texture", undefined
+        d(p, "texture",undefined
             /**
              * MovieClip需要使用的纹理图
              */
-            , function (value) {
+            ,function (value) {
                 this.setTexture(value);
             }
         );
@@ -1237,7 +1226,7 @@ var egret;
              * @version Egret 2.4
              * @platform Web,Native
              */
-            , function () {
+            ,function () {
                 return this.$spriteSheet;
             }
         );
@@ -1250,9 +1239,9 @@ var egret;
             this.$spriteSheet = value ? new egret.SpriteSheet(value) : null;
         };
         return MovieClipDataFactory;
-    })(egret.EventDispatcher);
+    }(egret.EventDispatcher));
     egret.MovieClipDataFactory = MovieClipDataFactory;
-    egret.registerClass(MovieClipDataFactory, 'egret.MovieClipDataFactory');
+    egret.registerClass(MovieClipDataFactory,'egret.MovieClipDataFactory');
 })(egret || (egret = {}));
 //////////////////////////////////////////////////////////////////////////////////////
 //
@@ -1319,15 +1308,9 @@ var egret;
          * @platform Web,Native
          */
         function MovieClipEvent(type, bubbles, cancelable, frameLabel) {
-            if (bubbles === void 0) {
-                bubbles = false;
-            }
-            if (cancelable === void 0) {
-                cancelable = false;
-            }
-            if (frameLabel === void 0) {
-                frameLabel = null;
-            }
+            if (bubbles === void 0) { bubbles = false; }
+            if (cancelable === void 0) { cancelable = false; }
+            if (frameLabel === void 0) { frameLabel = null; }
             _super.call(this, type, bubbles, cancelable);
             /**
              * @language en_US
@@ -1344,8 +1327,7 @@ var egret;
             this.frameLabel = null;
             this.frameLabel = frameLabel;
         }
-
-        var d = __define, c = MovieClipEvent, p = c.prototype;
+        var d = __define,c=MovieClipEvent,p=c.prototype;
         /**
          * @language en_US
          * EventDispatcher object using the specified event object thrown MovieClipEvent. The objects will be thrown in the object cache pool for the next round robin.
@@ -1365,9 +1347,7 @@ var egret;
          * @platform Web,Native
          */
         MovieClipEvent.dispatchMovieClipEvent = function (target, type, frameLabel) {
-            if (frameLabel === void 0) {
-                frameLabel = null;
-            }
+            if (frameLabel === void 0) { frameLabel = null; }
             var event = egret.Event.create(MovieClipEvent, type);
             event.frameLabel = frameLabel;
             var result = target.dispatchEvent(event);
@@ -1388,9 +1368,9 @@ var egret;
          */
         MovieClipEvent.FRAME_LABEL = "frame_label";
         return MovieClipEvent;
-    })(egret.Event);
+    }(egret.Event));
     egret.MovieClipEvent = MovieClipEvent;
-    egret.registerClass(MovieClipEvent, 'egret.MovieClipEvent');
+    egret.registerClass(MovieClipEvent,'egret.MovieClipEvent');
 })(egret || (egret = {}));
 //////////////////////////////////////////////////////////////////////////////////////
 //
@@ -1433,8 +1413,7 @@ var egret;
         function ScrollEase() {
             egret.$error(1014);
         }
-
-        var d = __define, c = ScrollEase, p = c.prototype;
+        var d = __define,c=ScrollEase,p=c.prototype;
         /**
          *
          * @param amount
@@ -1482,9 +1461,9 @@ var egret;
          */
         ScrollEase.quartOut = ScrollEase.getPowOut(4);
         return ScrollEase;
-    })();
+    }());
     egret.ScrollEase = ScrollEase;
-    egret.registerClass(ScrollEase, 'egret.ScrollEase');
+    egret.registerClass(ScrollEase,'egret.ScrollEase');
     /**
      * @language en_US
      * ScrollTween is the animation easing class of Egret
@@ -1571,8 +1550,7 @@ var egret;
             this.passive = false;
             this.initialize(target, props, pluginData);
         }
-
-        var d = __define, c = ScrollTween, p = c.prototype;
+        var d = __define,c=ScrollTween,p=c.prototype;
         /**
          * @language en_US
          * Activate an object and add a ScrollTween animation to the object
@@ -1594,15 +1572,9 @@ var egret;
          * @platform Web,Native
          */
         ScrollTween.get = function (target, props, pluginData, override) {
-            if (props === void 0) {
-                props = null;
-            }
-            if (pluginData === void 0) {
-                pluginData = null;
-            }
-            if (override === void 0) {
-                override = false;
-            }
+            if (props === void 0) { props = null; }
+            if (pluginData === void 0) { pluginData = null; }
+            if (override === void 0) { override = false; }
             if (override) {
                 ScrollTween.removeTweens(target);
             }
@@ -1642,9 +1614,7 @@ var egret;
          * @param paused
          */
         ScrollTween.tick = function (timeStamp, paused) {
-            if (paused === void 0) {
-                paused = false;
-            }
+            if (paused === void 0) { paused = false; }
             var delta = timeStamp - ScrollTween._lastTime;
             ScrollTween._lastTime = timeStamp;
             var tweens = ScrollTween._tweens.concat();
@@ -1731,9 +1701,7 @@ var egret;
          * @returns
          */
         p.setPosition = function (value, actionsMode) {
-            if (actionsMode === void 0) {
-                actionsMode = 1;
-            }
+            if (actionsMode === void 0) { actionsMode = 1; }
             if (value < 0) {
                 value = 0;
             }
@@ -1800,9 +1768,7 @@ var egret;
          * @param includeStart
          */
         p._runActions = function (startPos, endPos, includeStart) {
-            if (includeStart === void 0) {
-                includeStart = false;
-            }
+            if (includeStart === void 0) { includeStart = false; }
             var sPos = startPos;
             var ePos = endPos;
             var i = -1;
@@ -1998,18 +1964,11 @@ var egret;
          * @platform Web,Native
          */
         p.to = function (props, duration, ease) {
-            if (ease === void 0) {
-                ease = undefined;
-            }
+            if (ease === void 0) { ease = undefined; }
             if (isNaN(duration) || duration < 0) {
                 duration = 0;
             }
-            return this._addStep({
-                d: duration || 0,
-                p0: this._cloneProps(this._curQueueProps),
-                e: ease,
-                p1: this._cloneProps(this._appendQueueProps(props))
-            });
+            return this._addStep({ d: duration || 0, p0: this._cloneProps(this._curQueueProps), e: ease, p1: this._cloneProps(this._appendQueueProps(props)) });
         };
         /**
          * @language en_US
@@ -2032,13 +1991,9 @@ var egret;
          * @platform Web,Native
          */
         p.call = function (callback, thisObj, params) {
-            if (thisObj === void 0) {
-                thisObj = undefined;
-            }
-            if (params === void 0) {
-                params = undefined;
-            }
-            return this._addAction({f: callback, p: params ? params : [], o: thisObj ? thisObj : this._target});
+            if (thisObj === void 0) { thisObj = undefined; }
+            if (params === void 0) { params = undefined; }
+            return this._addAction({ f: callback, p: params ? params : [], o: thisObj ? thisObj : this._target });
         };
         /**
          * @method egret.ScrollTween#tick
@@ -2071,9 +2026,9 @@ var egret;
         ScrollTween._inited = false;
         ScrollTween._lastTime = 0;
         return ScrollTween;
-    })(egret.EventDispatcher);
+    }(egret.EventDispatcher));
     egret.ScrollTween = ScrollTween;
-    egret.registerClass(ScrollTween, 'egret.ScrollTween');
+    egret.registerClass(ScrollTween,'egret.ScrollTween');
 })(egret || (egret = {}));
 //////////////////////////////////////////////////////////////////////////////////////
 //
@@ -2136,9 +2091,7 @@ var egret;
          * @platform Web,Native
          */
         function ScrollView(content) {
-            if (content === void 0) {
-                content = null;
-            }
+            if (content === void 0) { content = null; }
             _super.call(this);
             /**
              * @language en_US
@@ -2186,8 +2139,7 @@ var egret;
                 this.setContent(content);
             }
         }
-
-        var d = __define, c = ScrollView, p = c.prototype;
+        var d = __define,c=ScrollView,p=c.prototype;
         d(p, "bounces"
             /**
              * @language en_US
@@ -2201,10 +2153,10 @@ var egret;
              * @default true
              * @version Egret 2.4
              */
-            , function () {
+            ,function () {
                 return this._ScrV_Props_._bounces;
             }
-            , function (value) {
+            ,function (value) {
                 this._ScrV_Props_._bounces = !!value;
             }
         );
@@ -2264,10 +2216,10 @@ var egret;
              * @version Egret 2.4
              * @platform Web,Native
              */
-            , function () {
+            ,function () {
                 return this._ScrV_Props_._verticalScrollPolicy;
             }
-            , function (value) {
+            ,function (value) {
                 if (value == this._ScrV_Props_._verticalScrollPolicy)
                     return;
                 this._ScrV_Props_._verticalScrollPolicy = value;
@@ -2286,10 +2238,10 @@ var egret;
              * @version Egret 2.4
              * @platform Web,Native
              */
-            , function () {
+            ,function () {
                 return this._ScrV_Props_._horizontalScrollPolicy;
             }
-            , function (value) {
+            ,function (value) {
                 if (value == this._ScrV_Props_._horizontalScrollPolicy)
                     return;
                 this._ScrV_Props_._horizontalScrollPolicy = value;
@@ -2310,10 +2262,10 @@ var egret;
              * @version Egret 2.4
              * @platform Web,Native
              */
-            , function () {
+            ,function () {
                 return this._ScrV_Props_._scrollLeft;
             }
-            , function (value) {
+            ,function (value) {
                 if (value == this._ScrV_Props_._scrollLeft)
                     return;
                 this._ScrV_Props_._scrollLeft = value;
@@ -2336,10 +2288,10 @@ var egret;
              * @version Egret 2.4
              * @platform Web,Native
              */
-            , function () {
+            ,function () {
                 return this._ScrV_Props_._scrollTop;
             }
-            , function (value) {
+            ,function (value) {
                 if (value == this._ScrV_Props_._scrollTop)
                     return;
                 this._ScrV_Props_._scrollTop = value;
@@ -2366,9 +2318,7 @@ var egret;
          * @platform Web,Native
          */
         p.setScrollPosition = function (top, left, isOffset) {
-            if (isOffset === void 0) {
-                isOffset = false;
-            }
+            if (isOffset === void 0) { isOffset = false; }
             if (isOffset && top == 0 && left == 0)
                 return;
             if (!isOffset && this._ScrV_Props_._scrollTop == top
@@ -2411,12 +2361,8 @@ var egret;
          * @param left
          */
         p._validatePosition = function (top, left) {
-            if (top === void 0) {
-                top = false;
-            }
-            if (left === void 0) {
-                left = false;
-            }
+            if (top === void 0) { top = false; }
+            if (left === void 0) { left = false; }
             if (top) {
                 var height = this.height;
                 var contentHeight = this._getContentHeight();
@@ -2784,7 +2730,7 @@ var egret;
         p._moveAfterTouchEnd = function () {
             if (this._ScrV_Props_._velocitys.length == 0)
                 return;
-            var sum = {x: 0, y: 0}, totalW = 0;
+            var sum = { x: 0, y: 0 }, totalW = 0;
             for (var i = 0; i < this._ScrV_Props_._velocitys.length; i++) {
                 var v = this._ScrV_Props_._velocitys[i];
                 var w = ScrollView.weight[i];
@@ -2863,9 +2809,7 @@ var egret;
          * @platform Web,Native
          */
         p.setScrollTop = function (scrollTop, duration) {
-            if (duration === void 0) {
-                duration = 0;
-            }
+            if (duration === void 0) { duration = 0; }
             var finalPosition = Math.min(this.getMaxScrollTop(), Math.max(scrollTop, 0));
             if (duration == 0) {
                 this.scrollTop = finalPosition;
@@ -2873,9 +2817,9 @@ var egret;
             }
             if (this._ScrV_Props_._bounces == false)
                 scrollTop = finalPosition;
-            var vtween = egret.ScrollTween.get(this).to({scrollTop: scrollTop}, duration, egret.ScrollEase.quartOut);
+            var vtween = egret.ScrollTween.get(this).to({ scrollTop: scrollTop }, duration, egret.ScrollEase.quartOut);
             if (finalPosition != scrollTop) {
-                vtween.to({scrollTop: finalPosition}, 300, egret.ScrollEase.quintOut);
+                vtween.to({ scrollTop: finalPosition }, 300, egret.ScrollEase.quintOut);
             }
             this._ScrV_Props_._isVTweenPlaying = true;
             this._ScrV_Props_._vScrollTween = vtween;
@@ -2902,9 +2846,7 @@ var egret;
          * @platform Web,Native
          */
         p.setScrollLeft = function (scrollLeft, duration) {
-            if (duration === void 0) {
-                duration = 0;
-            }
+            if (duration === void 0) { duration = 0; }
             var finalPosition = Math.min(this.getMaxScrollLeft(), Math.max(scrollLeft, 0));
             if (duration == 0) {
                 this.scrollLeft = finalPosition;
@@ -2912,9 +2854,9 @@ var egret;
             }
             if (this._ScrV_Props_._bounces == false)
                 scrollLeft = finalPosition;
-            var htween = egret.ScrollTween.get(this).to({scrollLeft: scrollLeft}, duration, egret.ScrollEase.quartOut);
+            var htween = egret.ScrollTween.get(this).to({ scrollLeft: scrollLeft }, duration, egret.ScrollEase.quartOut);
             if (finalPosition != scrollLeft) {
-                htween.to({scrollLeft: finalPosition}, 300, egret.ScrollEase.quintOut);
+                htween.to({ scrollLeft: finalPosition }, 300, egret.ScrollEase.quintOut);
             }
             this._ScrV_Props_._isHTweenPlaying = true;
             this._ScrV_Props_._hScrollTween = htween;
@@ -3059,9 +3001,9 @@ var egret;
          */
         ScrollView.weight = [1, 1.33, 1.66, 2, 2.33];
         return ScrollView;
-    })(egret.DisplayObjectContainer);
+    }(egret.DisplayObjectContainer));
     egret.ScrollView = ScrollView;
-    egret.registerClass(ScrollView, 'egret.ScrollView');
+    egret.registerClass(ScrollView,'egret.ScrollView');
 })(egret || (egret = {}));
 //////////////////////////////////////////////////////////////////////////////////////
 //
@@ -3169,12 +3111,11 @@ var egret;
              */
             this._bounces = true;
         }
-
-        var d = __define, c = ScrollViewProperties, p = c.prototype;
+        var d = __define,c=ScrollViewProperties,p=c.prototype;
         return ScrollViewProperties;
-    })();
+    }());
     egret.ScrollViewProperties = ScrollViewProperties;
-    egret.registerClass(ScrollViewProperties, 'egret.ScrollViewProperties');
+    egret.registerClass(ScrollViewProperties,'egret.ScrollViewProperties');
 })(egret || (egret = {}));
 //////////////////////////////////////////////////////////////////////////////////////
 //
@@ -3220,7 +3161,6 @@ var egret;
         }
         return url;
     }
-
     egret.$getUrl = $getUrl;
 })(egret || (egret = {}));
 //////////////////////////////////////////////////////////////////////////////////////
@@ -3296,9 +3236,7 @@ var egret;
          * @platform Web,Native
          */
         function URLLoader(request) {
-            if (request === void 0) {
-                request = null;
-            }
+            if (request === void 0) { request = null; }
             _super.call(this);
             /**
              * @language en_US
@@ -3357,8 +3295,7 @@ var egret;
                 this.load(request);
             }
         }
-
-        var d = __define, c = URLLoader, p = c.prototype;
+        var d = __define,c=URLLoader,p=c.prototype;
         /**
          * @language en_US
          * Send and load data from the specified URL. The data can be received as text, raw binary data, or URL-encoded variables, depending on the value you set for the dataFormat property.
@@ -3389,9 +3326,9 @@ var egret;
             this.data = null;
         };
         return URLLoader;
-    })(egret.EventDispatcher);
+    }(egret.EventDispatcher));
     egret.URLLoader = URLLoader;
-    egret.registerClass(URLLoader, 'egret.URLLoader');
+    egret.registerClass(URLLoader,'egret.URLLoader');
 })(egret || (egret = {}));
 //////////////////////////////////////////////////////////////////////////////////////
 //
@@ -3442,8 +3379,7 @@ var egret;
     var URLLoaderDataFormat = (function () {
         function URLLoaderDataFormat() {
         }
-
-        var d = __define, c = URLLoaderDataFormat, p = c.prototype;
+        var d = __define,c=URLLoaderDataFormat,p=c.prototype;
         /**
          * @language en_US
          * Specify that downloaded data is received as raw binary data.
@@ -3510,9 +3446,9 @@ var egret;
          */
         URLLoaderDataFormat.SOUND = "sound";
         return URLLoaderDataFormat;
-    })();
+    }());
     egret.URLLoaderDataFormat = URLLoaderDataFormat;
-    egret.registerClass(URLLoaderDataFormat, 'egret.URLLoaderDataFormat');
+    egret.registerClass(URLLoaderDataFormat,'egret.URLLoaderDataFormat');
 })(egret || (egret = {}));
 //////////////////////////////////////////////////////////////////////////////////////
 //
@@ -3577,9 +3513,7 @@ var egret;
          * @platform Web,Native
          */
         function URLRequest(url) {
-            if (url === void 0) {
-                url = null;
-            }
+            if (url === void 0) { url = null; }
             _super.call(this);
             /**
              * @language en_US
@@ -3651,12 +3585,11 @@ var egret;
             this.requestHeaders = [];
             this.url = url;
         }
-
-        var d = __define, c = URLRequest, p = c.prototype;
+        var d = __define,c=URLRequest,p=c.prototype;
         return URLRequest;
-    })(egret.HashObject);
+    }(egret.HashObject));
     egret.URLRequest = URLRequest;
-    egret.registerClass(URLRequest, 'egret.URLRequest');
+    egret.registerClass(URLRequest,'egret.URLRequest');
 })(egret || (egret = {}));
 //////////////////////////////////////////////////////////////////////////////////////
 //
@@ -3747,12 +3680,11 @@ var egret;
             this.name = name;
             this.value = value;
         }
-
-        var d = __define, c = URLRequestHeader, p = c.prototype;
+        var d = __define,c=URLRequestHeader,p=c.prototype;
         return URLRequestHeader;
-    })();
+    }());
     egret.URLRequestHeader = URLRequestHeader;
-    egret.registerClass(URLRequestHeader, 'egret.URLRequestHeader');
+    egret.registerClass(URLRequestHeader,'egret.URLRequestHeader');
 })(egret || (egret = {}));
 //////////////////////////////////////////////////////////////////////////////////////
 //
@@ -3805,8 +3737,7 @@ var egret;
     var URLRequestMethod = (function () {
         function URLRequestMethod() {
         }
-
-        var d = __define, c = URLRequestMethod, p = c.prototype;
+        var d = __define,c=URLRequestMethod,p=c.prototype;
         /**
          * @language en_US
          * Specify that the URLRequest object is a GET.
@@ -3834,9 +3765,9 @@ var egret;
          */
         URLRequestMethod.POST = "post";
         return URLRequestMethod;
-    })();
+    }());
     egret.URLRequestMethod = URLRequestMethod;
-    egret.registerClass(URLRequestMethod, 'egret.URLRequestMethod');
+    egret.registerClass(URLRequestMethod,'egret.URLRequestMethod');
 })(egret || (egret = {}));
 //////////////////////////////////////////////////////////////////////////////////////
 //
@@ -3903,9 +3834,7 @@ var egret;
          * @platform Web,Native
          */
         function URLVariables(source) {
-            if (source === void 0) {
-                source = null;
-            }
+            if (source === void 0) { source = null; }
             _super.call(this);
             /**
              * @language en_US
@@ -3924,8 +3853,7 @@ var egret;
                 this.decode(source);
             }
         }
-
-        var d = __define, c = URLVariables, p = c.prototype;
+        var d = __define,c=URLVariables,p=c.prototype;
         /**
          * @language en_US
          * Convert the variable string into the property of this URLVariables.variables object.
@@ -4012,14 +3940,12 @@ var egret;
             if (value.length == 0) {
                 return encodeURIComponent(key) + "=";
             }
-            return value.map(function (v) {
-                return encodeURIComponent(key) + "=" + encodeURIComponent(v);
-            }).join("&");
+            return value.map(function (v) { return encodeURIComponent(key) + "=" + encodeURIComponent(v); }).join("&");
         };
         return URLVariables;
-    })(egret.HashObject);
+    }(egret.HashObject));
     egret.URLVariables = URLVariables;
-    egret.registerClass(URLVariables, 'egret.URLVariables');
+    egret.registerClass(URLVariables,'egret.URLVariables');
 })(egret || (egret = {}));
 //////////////////////////////////////////////////////////////////////////////////////
 //
@@ -4052,11 +3978,11 @@ var egret;
 var egret;
 (function (egret) {
     /**
-     * @language en_US
-     * @version Egret 2.4
-     * @platform Web,Native
-     * @includeExample extension/game/player/Ticker.ts
-     */
+    * @language en_US
+    * @version Egret 2.4
+    * @platform Web,Native
+    * @includeExample extension/game/player/Ticker.ts
+    */
     /**
      * @language zh_CN
      * @version Egret 2.4
@@ -4085,8 +4011,7 @@ var egret;
             egret.sys.$ticker.$startTick(this.update, this);
             this._lastTime = egret.getTimer();
         }
-
-        var d = __define, c = Ticker, p = c.prototype;
+        var d = __define,c=Ticker,p=c.prototype;
         p.update = function (timeStamp) {
             var advancedTime = timeStamp - this._lastTime;
             this._lastTime = timeStamp;
@@ -4115,9 +4040,7 @@ var egret;
          * @deprecated
          */
         p.register = function (listener, thisObject, priority) {
-            if (priority === void 0) {
-                priority = 0;
-            }
+            if (priority === void 0) { priority = 0; }
             this.$insertEventBin(this.callBackList, "", listener, thisObject, false, priority, false);
         };
         /**
@@ -4178,9 +4101,9 @@ var egret;
             return Ticker.instance;
         };
         return Ticker;
-    })(egret.EventDispatcher);
+    }(egret.EventDispatcher));
     egret.Ticker = Ticker;
-    egret.registerClass(Ticker, 'egret.Ticker');
+    egret.registerClass(Ticker,'egret.Ticker');
 })(egret || (egret = {}));
 //////////////////////////////////////////////////////////////////////////////////////
 //
@@ -4230,8 +4153,7 @@ var egret;
         function MainContext() {
             _super.call(this);
         }
-
-        var d = __define, c = MainContext, p = c.prototype;
+        var d = __define,c=MainContext,p=c.prototype;
         d(p, "stage"
             /**
              * 渲染Context
@@ -4267,7 +4189,7 @@ var egret;
              * @version Egret 2.4
              * @platform Web,Native
              */
-            , function () {
+            ,function () {
                 return egret.sys.$TempStage;
             }
         );
@@ -4276,7 +4198,7 @@ var egret;
              * @version Egret 2.4
              * @platform Web,Native
              */
-            , function () {
+            ,function () {
                 egret.$warn(1041);
                 return MainContext._runtimeType;
             }
@@ -4296,7 +4218,7 @@ var egret;
              * @version Egret 2.4
              * @platform Web,Native
              */
-            , function () {
+            ,function () {
                 if (MainContext._instance == null) {
                     MainContext._instance = new MainContext();
                 }
@@ -4329,9 +4251,9 @@ var egret;
          */
         MainContext.RUNTIME_NATIVE = "runtimeNative";
         return MainContext;
-    })(egret.EventDispatcher);
+    }(egret.EventDispatcher));
     egret.MainContext = MainContext;
-    egret.registerClass(MainContext, 'egret.MainContext');
+    egret.registerClass(MainContext,'egret.MainContext');
 })(egret || (egret = {}));
 var testDeviceType1 = function () {
     if (!this["navigator"]) {
@@ -4413,9 +4335,7 @@ var egret;
          * @platform Web,Native
          */
         function Recycler(autoDisposeTime) {
-            if (autoDisposeTime === void 0) {
-                autoDisposeTime = 300;
-            }
+            if (autoDisposeTime === void 0) { autoDisposeTime = 300; }
             _super.call(this);
             /**
              * @private
@@ -4430,8 +4350,7 @@ var egret;
             this.autoDisposeTime = autoDisposeTime;
             this.frameCount = 0;
         }
-
-        var d = __define, c = Recycler, p = c.prototype;
+        var d = __define,c=Recycler,p=c.prototype;
         Recycler.$init = function () {
             egret.sys.$ticker.$startTick(Recycler.onUpdate, Recycler);
         };
@@ -4465,7 +4384,7 @@ var egret;
              * @version Egret 2.4
              * @platform Web,Native
              */
-            , function () {
+            ,function () {
                 return this._length;
             }
         );
@@ -4546,9 +4465,9 @@ var egret;
          */
         Recycler._callBackList = [];
         return Recycler;
-    })(egret.HashObject);
+    }(egret.HashObject));
     egret.Recycler = Recycler;
-    egret.registerClass(Recycler, 'egret.Recycler');
+    egret.registerClass(Recycler,'egret.Recycler');
     Recycler.$init();
 })(egret || (egret = {}));
 var egret;
@@ -4586,7 +4505,7 @@ var egret;
         for (var _i = 3; _i < arguments.length; _i++) {
             args[_i - 3] = arguments[_i];
         }
-        var data = {listener: listener, thisObject: thisObject, delay: delay, originDelay: delay, params: args};
+        var data = { listener: listener, thisObject: thisObject, delay: delay, originDelay: delay, params: args };
         setIntervalCount++;
         if (setIntervalCount == 1) {
             lastTime = egret.getTimer();
@@ -4596,7 +4515,6 @@ var egret;
         setIntervalCache[setIntervalIndex] = data;
         return setIntervalIndex;
     }
-
     egret.setInterval = setInterval;
     /**
      * @language en_US
@@ -4623,7 +4541,6 @@ var egret;
             }
         }
     }
-
     egret.clearInterval = clearInterval;
     /**
      * @private
@@ -4707,7 +4624,7 @@ var egret;
         for (var _i = 3; _i < arguments.length; _i++) {
             args[_i - 3] = arguments[_i];
         }
-        var data = {listener: listener, thisObject: thisObject, delay: delay, params: args};
+        var data = { listener: listener, thisObject: thisObject, delay: delay, params: args };
         setTimeoutCount++;
         if (setTimeoutCount == 1 && egret.sys.$ticker) {
             lastTime = egret.getTimer();
@@ -4717,7 +4634,6 @@ var egret;
         setTimeoutCache[setTimeoutIndex] = data;
         return setTimeoutIndex;
     }
-
     egret.setTimeout = setTimeout;
     /**
      * @language en_US
@@ -4742,7 +4658,6 @@ var egret;
             }
         }
     }
-
     egret.clearTimeout = clearTimeout;
     /**
      * @private
@@ -4753,11 +4668,12 @@ var egret;
         var dt = timeStamp - lastTime;
         lastTime = timeStamp;
         for (var key in setTimeoutCache) {
-            var data = setTimeoutCache[key];
+            var key2 = key;
+            var data = setTimeoutCache[key2];
             data.delay -= dt;
             if (data.delay <= 0) {
                 data.listener.apply(data.thisObject, data.params);
-                clearTimeout(key);
+                clearTimeout(key2);
             }
         }
         return false;

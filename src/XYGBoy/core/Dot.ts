@@ -9,6 +9,8 @@ module XYGBoy {
 
         private status:DotStatus;
         private size:number;
+        private timer:egret.Timer;
+        private flickerDelay:number=250;
 
         public constructor(size:number, status = DotStatus.OFF) {
             super();
@@ -18,25 +20,54 @@ module XYGBoy {
             this.size = size;
             this.renderTexture();
         }
-
+        public getStatus():DotStatus{
+            return this.status;
+        }
         private setStatus(status:DotStatus) {
             this.status = status;
             this.renderTexture();
         }
 
         public turnOn() {
+            this.stopFlicker();
             this.setStatus(DotStatus.ON);
+        }
+        
+        public flicker(delay:number = 250){
+            this.setStatus(DotStatus.FLICKER);
+            this.timer = new egret.Timer(delay,0);
+            this.timer.addEventListener(egret.TimerEvent.TIMER,this.doFlicker,this);
+            this.timer.start();
+        }
+        private doFlicker(){
+            if(this.texture == DotTextures.getInstance().TEXTURE_ON){
+                this.texture = DotTextures.getInstance().TEXTURE_OFF;
+            }else{
+                this.texture = DotTextures.getInstance().TEXTURE_ON;
+            }
+        }
+        private stopFlicker(){
+            if(this.timer)
+                this.timer.stop();
         }
 
         public turnOff() {
+            this.stopFlicker();
             this.setStatus(DotStatus.OFF);
         }
 
         private renderTexture() {
-            if (this.status == DotStatus.ON) {
-                this.texture = DotTextures.getInstance().TEXTURE_ON;
-            } else {
-                this.texture = DotTextures.getInstance().TEXTURE_OFF;
+            switch (this.status) {
+                case DotStatus.ON:
+                    this.texture = DotTextures.getInstance().TEXTURE_ON;
+                    break;
+                case DotStatus.OFF:
+                default:
+                    this.texture = DotTextures.getInstance().TEXTURE_OFF;
+                    this.timer = null;
+                    break;
+                case DotStatus.FLICKER:
+                    break;
             }
         }
 
@@ -50,7 +81,7 @@ module XYGBoy {
         }
 
     }
-    export enum DotStatus { OFF, ON }
+    export enum DotStatus { OFF,FLICKER,ON}
     /**
      * 单例模式
      */

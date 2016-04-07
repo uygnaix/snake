@@ -50,8 +50,7 @@ var egret;
         function Ease() {
             egret.$error(1014);
         }
-
-        var d = __define, c = Ease, p = c.prototype;
+        var d = __define,c=Ease,p=c.prototype;
         /**
          * @language en_US
          * get.See example.
@@ -637,9 +636,9 @@ var egret;
          */
         Ease.elasticInOut = Ease.getElasticInOut(1, 0.3 * 1.5);
         return Ease;
-    })();
+    }());
     egret.Ease = Ease;
-    egret.registerClass(Ease, 'egret.Ease');
+    egret.registerClass(Ease,'egret.Ease');
 })(egret || (egret = {}));
 //////////////////////////////////////////////////////////////////////////////////////
 //
@@ -755,8 +754,7 @@ var egret;
             this.passive = false;
             this.initialize(target, props, pluginData);
         }
-
-        var d = __define, c = Tween, p = c.prototype;
+        var d = __define,c=Tween,p=c.prototype;
         /**
          * @language en_US
          * Activate an object and add a Tween animation to the object
@@ -780,15 +778,9 @@ var egret;
          * @platform Web,Native
          */
         Tween.get = function (target, props, pluginData, override) {
-            if (props === void 0) {
-                props = null;
-            }
-            if (pluginData === void 0) {
-                pluginData = null;
-            }
-            if (override === void 0) {
-                override = false;
-            }
+            if (props === void 0) { props = null; }
+            if (pluginData === void 0) { pluginData = null; }
+            if (override === void 0) { override = false; }
             if (override) {
                 Tween.removeTweens(target);
             }
@@ -878,9 +870,7 @@ var egret;
          * @param paused
          */
         Tween.tick = function (timeStamp, paused) {
-            if (paused === void 0) {
-                paused = false;
-            }
+            if (paused === void 0) { paused = false; }
             var delta = timeStamp - Tween._lastTime;
             Tween._lastTime = timeStamp;
             var tweens = Tween._tweens.concat();
@@ -988,9 +978,7 @@ var egret;
          * @returns
          */
         p.setPosition = function (value, actionsMode) {
-            if (actionsMode === void 0) {
-                actionsMode = 1;
-            }
+            if (actionsMode === void 0) { actionsMode = 1; }
             if (value < 0) {
                 value = 0;
             }
@@ -1057,9 +1045,7 @@ var egret;
          * @param includeStart
          */
         p._runActions = function (startPos, endPos, includeStart) {
-            if (includeStart === void 0) {
-                includeStart = false;
-            }
+            if (includeStart === void 0) { includeStart = false; }
             var sPos = startPos;
             var ePos = endPos;
             var i = -1;
@@ -1268,7 +1254,7 @@ var egret;
                 return this;
             }
             var o = this._cloneProps(this._curQueueProps);
-            return this._addStep({d: duration, p0: o, p1: o, v: passive});
+            return this._addStep({ d: duration, p0: o, p1: o, v: passive });
         };
         /**
          * @language en_US
@@ -1291,18 +1277,11 @@ var egret;
          * @platform Web,Native
          */
         p.to = function (props, duration, ease) {
-            if (ease === void 0) {
-                ease = undefined;
-            }
+            if (ease === void 0) { ease = undefined; }
             if (isNaN(duration) || duration < 0) {
                 duration = 0;
             }
-            return this._addStep({
-                d: duration || 0,
-                p0: this._cloneProps(this._curQueueProps),
-                e: ease,
-                p1: this._cloneProps(this._appendQueueProps(props))
-            });
+            return this._addStep({ d: duration || 0, p0: this._cloneProps(this._curQueueProps), e: ease, p1: this._cloneProps(this._appendQueueProps(props)) });
         };
         /**
          * @language en_US
@@ -1339,13 +1318,9 @@ var egret;
          * </pre>
          */
         p.call = function (callback, thisObj, params) {
-            if (thisObj === void 0) {
-                thisObj = undefined;
-            }
-            if (params === void 0) {
-                params = undefined;
-            }
-            return this._addAction({f: callback, p: params ? params : [], o: thisObj ? thisObj : this._target});
+            if (thisObj === void 0) { thisObj = undefined; }
+            if (params === void 0) { params = undefined; }
+            return this._addAction({ f: callback, p: params ? params : [], o: thisObj ? thisObj : this._target });
         };
         /**
          * Now modify the properties of the specified object to the specified value
@@ -1364,10 +1339,8 @@ var egret;
          * @platform Web,Native
          */
         p.set = function (props, target) {
-            if (target === void 0) {
-                target = null;
-            }
-            return this._addAction({f: this._set, o: this, p: [props, target ? target : this._target]});
+            if (target === void 0) { target = null; }
+            return this._addAction({ f: this._set, o: this, p: [props, target ? target : this._target] });
         };
         /**
          * @language en_US
@@ -1462,7 +1435,7 @@ var egret;
         Tween._inited = false;
         Tween._lastTime = 0;
         return Tween;
-    })(egret.EventDispatcher);
+    }(egret.EventDispatcher));
     egret.Tween = Tween;
-    egret.registerClass(Tween, 'egret.Tween');
+    egret.registerClass(Tween,'egret.Tween');
 })(egret || (egret = {}));

@@ -71,6 +71,18 @@ module XYGBoy {
          * @returns true表示未越界，设置游标成功
          */ 
         public setCursor(row:number=0,col:number=0):boolean{
+            if(row>=this.row){
+                row = this.row-1;
+            }
+            if(row<0){
+                row = 0;
+            }
+            if(col>=this.column){
+                col = this.column-1;
+            }
+            if(col<0){
+                col = 0;
+            }
             this.cursor.row = row;
             this.cursor.column = col;
             return true;
@@ -85,7 +97,7 @@ module XYGBoy {
         public getDotAtCursor():Dot{
             return this.getDotAt(this.cursor.row,this.cursor.column);
         }
-        private getDotAt(row:number,col:number):Dot {
+        public getDotAt(row:number,col:number):Dot {
             return this.dotMap[row][col];
         }
         public turnOnDotAtCursor(){
@@ -95,8 +107,8 @@ module XYGBoy {
             this.getDotAt(row,col).turnOn();
         }
         public turnOnDotAtGroup(group:DotMapPointerGroup) {
-            for(var i in group.points) {
-                this.turnOnDotAtPointer(group.getAt(i));
+            for(var j of group.points) {
+                this.turnOnDotAtPointer(j);
             }
         }
         public turnOnDotAtPointer(pointer:DotMapPointer) {
@@ -107,8 +119,8 @@ module XYGBoy {
             this.turnOffDotAt(this.cursor.row,this.cursor.column);
         }
         public turnOffDotAtGroup(group: DotMapPointerGroup) {
-            for(var i in group.points) {
-                this.turnOffDotAtPointer(group.getAt(i));
+            for(var i of group.points) {
+                this.turnOffDotAtPointer(i);
             }
         }
         public turnOffDotAtPointer(pointer:DotMapPointer) {
@@ -125,6 +137,13 @@ module XYGBoy {
                 }
             }
         }
+        public flickerDotAtPointer(pointer:DotMapPointer) {
+            this.setCursorByPointer(pointer);
+            this.flickerDotAtCursor();
+        }
+        public flickerDotAtCursor(){
+            this.getDotAtCursor().flicker();
+        }
     }
     export class DotMapPointer{
         public row;
@@ -133,6 +152,16 @@ module XYGBoy {
         public constructor(row:number=0,col:number=0){
             this.row = row;
             this.column = col;
+        }
+        public equals(pointer:DotMapPointer) :boolean{
+            return pointer&&this.row==pointer.row&&this.column==pointer.column;
+        }
+        public clone():DotMapPointer{
+            return new DotMapPointer(this.row,this.column);
+        }
+        public set(pointer:DotMapPointer){
+            this.row = pointer.row;
+            this.column = pointer.column;
         }
     }
     export class DotMapPointerGroup{
@@ -150,31 +179,50 @@ module XYGBoy {
             return this.points[0];
         }
         public last():DotMapPointer {
-            return this.points[-1];
+            return this.points[this.points.length-1];
+        }
+        public size():number{
+            return this.points.length;
         }
     }
-    export class DotMapDirection{
+    export class DotMapDirector{
         public row;
         public column;
+        private status:DotMapDirection;
         public constructor(row = 0,col = 0){
             this.row = row;
             this.column = col;
         }
+        public getStatus():DotMapDirection{
+            return this.status;
+        }
+        public stop(){
+            this.row=0;
+            this.column=0;
+            this.status = DotMapDirection.STAND;
+        }
         public up(){
             this.row = -1;
             this.column = 0;
+            this.status = DotMapDirection.UP;
         }
         public down(){
             this.row = 1;
             this.column = 0;
+            this.status = DotMapDirection.DOWN;
         }
         public left(){
             this.row = 0;
             this.column = -1;
+            this.status = DotMapDirection.LEFT;
         }
         public right(){
             this.row = 0;
             this.column = 1;
+            this.status = DotMapDirection.RIGHT;
         }
+    }
+    export enum DotMapDirection{
+        STAND,UP,DOWN,LEFT,RIGHT
     }
 }

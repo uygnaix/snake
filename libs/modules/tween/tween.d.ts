@@ -19,7 +19,6 @@ declare module egret {
          * @platform Web,Native
          */
         constructor();
-
         /**
          * @language en_US
          * get.See example.
@@ -32,8 +31,7 @@ declare module egret {
          * @version Egret 2.4
          * @platform Web,Native
          */
-        static get(amount:any):Function;
-
+        static get(amount: any): Function;
         /**
          * @language en_US
          * get pow in.See example.
@@ -46,8 +44,7 @@ declare module egret {
          * @version Egret 2.4
          * @platform Web,Native
          */
-        static getPowIn(pow:any):Function;
-
+        static getPowIn(pow: any): Function;
         /**
          * @language en_US
          * get pow out.See example.
@@ -60,8 +57,7 @@ declare module egret {
          * @version Egret 2.4
          * @platform Web,Native
          */
-        static getPowOut(pow:any):Function;
-
+        static getPowOut(pow: any): Function;
         /**
          * @language en_US
          * get pow in out.See example.
@@ -74,8 +70,7 @@ declare module egret {
          * @version Egret 2.4
          * @platform Web,Native
          */
-        static getPowInOut(pow:any):Function;
-
+        static getPowInOut(pow: any): Function;
         /**
          * @language en_US
          * quad in.See example.
@@ -88,7 +83,7 @@ declare module egret {
          * @version Egret 2.4
          * @platform Web,Native
          */
-        static quadIn:Function;
+        static quadIn: Function;
         /**
          * @language en_US
          * quad out.See example.
@@ -101,7 +96,7 @@ declare module egret {
          * @version Egret 2.4
          * @platform Web,Native
          */
-        static quadOut:Function;
+        static quadOut: Function;
         /**
          * @language en_US
          * quad in out.See example.
@@ -114,7 +109,7 @@ declare module egret {
          * @version Egret 2.4
          * @platform Web,Native
          */
-        static quadInOut:Function;
+        static quadInOut: Function;
         /**
          * @language en_US
          * cubic in.See example.
@@ -127,7 +122,7 @@ declare module egret {
          * @version Egret 2.4
          * @platform Web,Native
          */
-        static cubicIn:Function;
+        static cubicIn: Function;
         /**
          * @language en_US
          * cubic out.See example.
@@ -140,7 +135,7 @@ declare module egret {
          * @version Egret 2.4
          * @platform Web,Native
          */
-        static cubicOut:Function;
+        static cubicOut: Function;
         /**
          * @language en_US
          * cubic in out.See example.
@@ -153,7 +148,7 @@ declare module egret {
          * @version Egret 2.4
          * @platform Web,Native
          */
-        static cubicInOut:Function;
+        static cubicInOut: Function;
         /**
          * @language en_US
          * quart in.See example.
@@ -166,7 +161,7 @@ declare module egret {
          * @version Egret 2.4
          * @platform Web,Native
          */
-        static quartIn:Function;
+        static quartIn: Function;
         /**
          * @language en_US
          * quart out.See example.
@@ -179,7 +174,7 @@ declare module egret {
          * @version Egret 2.4
          * @platform Web,Native
          */
-        static quartOut:Function;
+        static quartOut: Function;
         /**
          * @language en_US
          * quart in out.See example.
@@ -192,7 +187,7 @@ declare module egret {
          * @version Egret 2.4
          * @platform Web,Native
          */
-        static quartInOut:Function;
+        static quartInOut: Function;
         /**
          * @language en_US
          * quint in.See example.
@@ -205,7 +200,7 @@ declare module egret {
          * @version Egret 2.4
          * @platform Web,Native
          */
-        static quintIn:Function;
+        static quintIn: Function;
         /**
          * @language en_US
          * quint out.See example.
@@ -218,7 +213,7 @@ declare module egret {
          * @version Egret 2.4
          * @platform Web,Native
          */
-        static quintOut:Function;
+        static quintOut: Function;
         /**
          * @language en_US
          * quint in out.See example.
@@ -231,7 +226,7 @@ declare module egret {
          * @version Egret 2.4
          * @platform Web,Native
          */
-        static quintInOut:Function;
+        static quintInOut: Function;
         /**
          * @language en_US
          * sine in.See example.
@@ -244,8 +239,7 @@ declare module egret {
          * @version Egret 2.4
          * @platform Web,Native
          */
-        static sineIn(t:any):number;
-
+        static sineIn(t: any): number;
         /**
          * @language en_US
          * sine out.See example.
@@ -258,8 +252,7 @@ declare module egret {
          * @version Egret 2.4
          * @platform Web,Native
          */
-        static sineOut(t:any):number;
-
+        static sineOut(t: any): number;
         /**
          * @language en_US
          * sine in out.See example.
@@ -272,8 +265,7 @@ declare module egret {
          * @version Egret 2.4
          * @platform Web,Native
          */
-        static sineInOut(t:any):number;
-
+        static sineInOut(t: any): number;
         /**
          * @language en_US
          * get back in.See example.
@@ -286,8 +278,7 @@ declare module egret {
          * @version Egret 2.4
          * @platform Web,Native
          */
-        static getBackIn(amount:any):Function;
-
+        static getBackIn(amount: any): Function;
         /**
          * @language en_US
          * back in.See example.
@@ -300,7 +291,7 @@ declare module egret {
          * @version Egret 2.4
          * @platform Web,Native
          */
-        static backIn:Function;
+        static backIn: Function;
         /**
          * @language en_US
          * get back out.See example.
@@ -313,8 +304,7 @@ declare module egret {
          * @version Egret 2.4
          * @platform Web,Native
          */
-        static getBackOut(amount:any):Function;
-
+        static getBackOut(amount: any): Function;
         /**
          * @language en_US
          * back out.See example.
@@ -327,7 +317,7 @@ declare module egret {
          * @version Egret 2.4
          * @platform Web,Native
          */
-        static backOut:Function;
+        static backOut: Function;
         /**
          * @language en_US
          * get back in out.See example.
@@ -340,8 +330,7 @@ declare module egret {
          * @version Egret 2.4
          * @platform Web,Native
          */
-        static getBackInOut(amount:any):Function;
-
+        static getBackInOut(amount: any): Function;
         /**
          * @language en_US
          * back in out.See example.
@@ -354,7 +343,7 @@ declare module egret {
          * @version Egret 2.4
          * @platform Web,Native
          */
-        static backInOut:Function;
+        static backInOut: Function;
         /**
          * @language en_US
          * circ in.See example.
@@ -367,8 +356,7 @@ declare module egret {
          * @version Egret 2.4
          * @platform Web,Native
          */
-        static circIn(t:any):number;
-
+        static circIn(t: any): number;
         /**
          * @language en_US
          * circ out.See example.
@@ -381,8 +369,7 @@ declare module egret {
          * @version Egret 2.4
          * @platform Web,Native
          */
-        static circOut(t:any):number;
-
+        static circOut(t: any): number;
         /**
          * @language en_US
          * circ in out.See example.
@@ -395,8 +382,7 @@ declare module egret {
          * @version Egret 2.4
          * @platform Web,Native
          */
-        static circInOut(t:any):number;
-
+        static circInOut(t: any): number;
         /**
          * @language en_US
          * bounce in.See example.
@@ -409,8 +395,7 @@ declare module egret {
          * @version Egret 2.4
          * @platform Web,Native
          */
-        static bounceIn(t:any):number;
-
+        static bounceIn(t: any): number;
         /**
          * @language en_US
          * bounce out.See example.
@@ -423,8 +408,7 @@ declare module egret {
          * @version Egret 2.4
          * @platform Web,Native
          */
-        static bounceOut(t:any):number;
-
+        static bounceOut(t: any): number;
         /**
          * @language en_US
          * bounce in out.See example.
@@ -437,8 +421,7 @@ declare module egret {
          * @version Egret 2.4
          * @platform Web,Native
          */
-        static bounceInOut(t:any):number;
-
+        static bounceInOut(t: any): number;
         /**
          * @language en_US
          * get elastic in.See example.
@@ -451,8 +434,7 @@ declare module egret {
          * @version Egret 2.4
          * @platform Web,Native
          */
-        static getElasticIn(amplitude:any, period:any):Function;
-
+        static getElasticIn(amplitude: any, period: any): Function;
         /**
          * @language en_US
          * elastic in.See example.
@@ -465,7 +447,7 @@ declare module egret {
          * @version Egret 2.4
          * @platform Web,Native
          */
-        static elasticIn:Function;
+        static elasticIn: Function;
         /**
          * @language en_US
          * get elastic out.See example.
@@ -478,8 +460,7 @@ declare module egret {
          * @version Egret 2.4
          * @platform Web,Native
          */
-        static getElasticOut(amplitude:any, period:any):Function;
-
+        static getElasticOut(amplitude: any, period: any): Function;
         /**
          * @language en_US
          * elastic out.See example.
@@ -492,7 +473,7 @@ declare module egret {
          * @version Egret 2.4
          * @platform Web,Native
          */
-        static elasticOut:Function;
+        static elasticOut: Function;
         /**
          * @language en_US
          * get elastic in out.See example.
@@ -505,8 +486,7 @@ declare module egret {
          * @version Egret 2.4
          * @platform Web,Native
          */
-        static getElasticInOut(amplitude:any, period:any):Function;
-
+        static getElasticInOut(amplitude: any, period: any): Function;
         /**
          * @language en_US
          * elastic in out.See example.
@@ -519,7 +499,7 @@ declare module egret {
          * @version Egret 2.4
          * @platform Web,Native
          */
-        static elasticInOut:Function;
+        static elasticInOut: Function;
     }
 }
 declare module egret {
@@ -660,8 +640,7 @@ declare module egret {
          * @version Egret 2.4
          * @platform Web,Native
          */
-        static get(target:any, props?:any, pluginData?:any, override?:boolean):Tween;
-
+        static get(target: any, props?: any, pluginData?: any, override?: boolean): Tween;
         /**
          * @language en_US
          * Delete all Tween animations from an object
@@ -676,8 +655,7 @@ declare module egret {
          * @version Egret 2.4
          * @platform Web,Native
          */
-        static removeTweens(target:any):void;
-
+        static removeTweens(target: any): void;
         /**
          * @language en_US
          * Pause all Tween animations of a certain object
@@ -692,8 +670,7 @@ declare module egret {
          * @version Egret 2.4
          * @platform Web,Native
          */
-        static pauseTweens(target:any):void;
-
+        static pauseTweens(target: any): void;
         /**
          * @language en_US
          * Resume playing all easing of a certain object
@@ -708,8 +685,7 @@ declare module egret {
          * @version Egret 2.4
          * @platform Web,Native
          */
-        static resumeTweens(target:any):void;
-
+        static resumeTweens(target: any): void;
         /**
          * @private
          *
@@ -717,9 +693,7 @@ declare module egret {
          * @param paused
          */
         private static tick(timeStamp, paused?);
-
         private static _lastTime;
-
         /**
          * @private
          *
@@ -727,7 +701,6 @@ declare module egret {
          * @param value
          */
         private static _register(tween, value);
-
         /**
          * @language en_US
          * Delete all Tween
@@ -740,16 +713,14 @@ declare module egret {
          * @version Egret 2.4
          * @platform Web,Native
          */
-        static removeAllTweens():void;
-
+        static removeAllTweens(): void;
         /**
          * 创建一个 egret.Tween 对象
          * @private
          * @version Egret 2.4
          * @platform Web,Native
          */
-        constructor(target:any, props:any, pluginData:any);
-
+        constructor(target: any, props: any, pluginData: any);
         /**
          * @private
          *
@@ -758,7 +729,6 @@ declare module egret {
          * @param pluginData
          */
         private initialize(target, props, pluginData);
-
         /**
          * @private
          *
@@ -767,7 +737,6 @@ declare module egret {
          * @returns
          */
         private setPosition(value, actionsMode?);
-
         /**
          * @private
          *
@@ -776,7 +745,6 @@ declare module egret {
          * @param includeStart
          */
         private _runActions(startPos, endPos, includeStart?);
-
         /**
          * @private
          *
@@ -784,7 +752,6 @@ declare module egret {
          * @param ratio
          */
         private _updateTargetProps(step, ratio);
-
         /**
          * @language en_US
          * Whether setting is paused
@@ -801,8 +768,7 @@ declare module egret {
          * @version Egret 2.4
          * @platform Web,Native
          */
-        setPaused(value:boolean):Tween;
-
+        setPaused(value: boolean): Tween;
         /**
          * @private
          *
@@ -810,7 +776,6 @@ declare module egret {
          * @returns
          */
         private _cloneProps(props);
-
         /**
          * @private
          *
@@ -818,7 +783,6 @@ declare module egret {
          * @returns
          */
         private _addStep(o);
-
         /**
          * @private
          *
@@ -826,7 +790,6 @@ declare module egret {
          * @returns
          */
         private _appendQueueProps(o);
-
         /**
          * @private
          *
@@ -834,7 +797,6 @@ declare module egret {
          * @returns
          */
         private _addAction(o);
-
         /**
          * @private
          *
@@ -842,7 +804,6 @@ declare module egret {
          * @param o
          */
         private _set(props, o);
-
         /**
          * @language en_US
          * Wait the specified milliseconds before the execution of the next animation
@@ -861,8 +822,7 @@ declare module egret {
          * @version Egret 2.4
          * @platform Web,Native
          */
-        wait(duration:number, passive?:boolean):Tween;
-
+        wait(duration: number, passive?: boolean): Tween;
         /**
          * @language en_US
          * Modify the property of the specified object to a specified value
@@ -883,8 +843,7 @@ declare module egret {
          * @version Egret 2.4
          * @platform Web,Native
          */
-        to(props:any, duration?:number, ease?:Function):Tween;
-
+        to(props: any, duration?: number, ease?: Function): Tween;
         /**
          * @language en_US
          * Execute callback function
@@ -919,8 +878,7 @@ declare module egret {
          *  }, this, [233, "hello"]);
          * </pre>
          */
-        call(callback:Function, thisObj?:any, params?:Array<any>):Tween;
-
+        call(callback: Function, thisObj?: any, params?: Array<any>): Tween;
         /**
          * Now modify the properties of the specified object to the specified value
          * @param props {Object} Property set of an object
@@ -937,8 +895,7 @@ declare module egret {
          * @version Egret 2.4
          * @platform Web,Native
          */
-        set(props:any, target?:any):Tween;
-
+        set(props: any, target?: any): Tween;
         /**
          * @language en_US
          * Execute
@@ -955,8 +912,7 @@ declare module egret {
          * @version Egret 2.4
          * @platform Web,Native
          */
-        play(tween?:Tween):Tween;
-
+        play(tween?: Tween): Tween;
         /**
          * @language en_US
          * Pause
@@ -973,8 +929,7 @@ declare module egret {
          * @version Egret 2.4
          * @platform Web,Native
          */
-        pause(tween?:Tween):Tween;
-
+        pause(tween?: Tween): Tween;
         /**
          * @method egret.Tween#tick
          * @param delta {number}
@@ -982,6 +937,6 @@ declare module egret {
          * @version Egret 2.4
          * @platform Web,Native
          */
-        tick(delta:number):void;
+        tick(delta: number): void;
     }
 }

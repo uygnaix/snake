@@ -7,9 +7,7 @@ var XYGBoy;
      */
     var Matrix = (function () {
         function Matrix(row, col, defaultValue) {
-            if (defaultValue === void 0) {
-                defaultValue = 0;
-            }
+            if (defaultValue === void 0) { defaultValue = 0; }
             this.row = row;
             this.column = col;
             this.matrix = new Array();
@@ -20,12 +18,9 @@ var XYGBoy;
                 }
             }
         }
-
-        var d = __define, c = Matrix, p = c.prototype;
+        var d = __define,c=Matrix,p=c.prototype;
         p.setValue = function (row, col, value) {
-            if (value === void 0) {
-                value = 0;
-            }
+            if (value === void 0) { value = 0; }
             this.matrix[row][col] = value;
         };
         p.getValue = function (row, col) {
@@ -38,7 +33,7 @@ var XYGBoy;
             return this.column;
         };
         return Matrix;
-    })();
+    }());
     XYGBoy.Matrix = Matrix;
-    egret.registerClass(Matrix, 'XYGBoy.Matrix');
+    egret.registerClass(Matrix,'XYGBoy.Matrix');
 })(XYGBoy || (XYGBoy = {}));
