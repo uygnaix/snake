@@ -47,6 +47,36 @@
 					"isFolder":false,
 					"key":"on_png",
 					"name":"on_png"
+				},
+				{
+					"isFolder":false,
+					"key":"btn_a_png",
+					"name":"btn_a_png"
+				},
+				{
+					"isFolder":false,
+					"key":"btn_b_png",
+					"name":"btn_b_png"
+				},
+				{
+					"isFolder":false,
+					"key":"btn_down_png",
+					"name":"btn_down_png"
+				},
+				{
+					"isFolder":false,
+					"key":"btn_left_png",
+					"name":"btn_left_png"
+				},
+				{
+					"isFolder":false,
+					"key":"btn_right_png",
+					"name":"btn_right_png"
+				},
+				{
+					"isFolder":false,
+					"key":"btn_up_png",
+					"name":"btn_up_png"
 				}
 			]
 		}

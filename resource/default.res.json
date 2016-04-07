@@ -5,8 +5,12 @@
 			"name":"preload"
 		},
 		{
-			"keys":"off-l-b_png,off-l_png,off_png,on-l-b_png,on-l_png,on_png,up_png",
+			"keys":"off-l-b_png,off-l_png,off_png,on-l-b_png,on-l_png,on_png",
 			"name":"gboy"
+		},
+		{
+			"keys":"btn_a_png,btn_b_png,btn_down_png,btn_left_png,btn_right_png,btn_up_png",
+			"name":"button"
 		}
 	],
 	"resources":[
@@ -56,9 +60,34 @@
 			"url":"assets/gboy/on.png"
 		},
 		{
-			"name":"up_png",
+			"name":"btn_a_png",
 			"type":"image",
-			"url":"assets/gboy/up.png"
+			"url":"assets/button/btn_a.png"
+		},
+		{
+			"name":"btn_b_png",
+			"type":"image",
+			"url":"assets/button/btn_b.png"
+		},
+		{
+			"name":"btn_down_png",
+			"type":"image",
+			"url":"assets/button/btn_down.png"
+		},
+		{
+			"name":"btn_left_png",
+			"type":"image",
+			"url":"assets/button/btn_left.png"
+		},
+		{
+			"name":"btn_right_png",
+			"type":"image",
+			"url":"assets/button/btn_right.png"
+		},
+		{
+			"name":"btn_up_png",
+			"type":"image",
+			"url":"assets/button/btn_up.png"
 		}
 	]
 }
