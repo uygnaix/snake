@@ -31,6 +31,7 @@ module XYGBoy {
       this.addEventListener(GameSceneEvent.GAMEOVER, this.showGameOver, this);
       //调整gampanel的位置
       this.gamePanel.x = (this.width - this.gamePanel.width) / 2;
+      this.gamePanel.y = 50;
 
       this.gameController = new DotControllerPanel(this.gamePanel, this.width, this.height);
       

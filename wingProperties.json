@@ -10,16 +10,6 @@
 			"children":[
 				{
 					"isFolder":false,
-					"key":"bgImage",
-					"name":"bgImage"
-				},
-				{
-					"isFolder":false,
-					"key":"egretIcon",
-					"name":"egretIcon"
-				},
-				{
-					"isFolder":false,
 					"key":"off-l-b_png",
 					"name":"off-l-b_png"
 				},
@@ -77,6 +67,11 @@
 					"isFolder":false,
 					"key":"btn_up_png",
 					"name":"btn_up_png"
+				},
+				{
+					"isFolder":false,
+					"key":"bg_png",
+					"name":"bg_png"
 				}
 			]
 		}
