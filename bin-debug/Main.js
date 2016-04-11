@@ -104,7 +104,7 @@ var Main = (function (_super) {
     p.createGameScene = function () {
         var stageW = this.stage.stageWidth;
         var stageH = this.stage.stageHeight;
-        var gameScene = new XYGBoy.GameScene(stageW, stageH);
+        var gameScene = new jade.JadeScene(stageW, stageH);
         this.addChild(gameScene);
     };
     return Main;

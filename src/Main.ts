@@ -65,6 +65,7 @@ class Main extends egret.DisplayObjectContainer {
         RES.loadGroup('gboy', 1);
         RES.loadGroup('button',1);
 
+
     }
 
     /**
@@ -120,7 +121,7 @@ class Main extends egret.DisplayObjectContainer {
 
         var stageW:number = this.stage.stageWidth;
         var stageH:number = this.stage.stageHeight;
-        var gameScene = new XYGBoy.GameScene(stageW, stageH);
+        var gameScene = new jade.JadeScene(stageW, stageH);
         this.addChild(gameScene);
     }
 }
