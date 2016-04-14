@@ -3,6 +3,9 @@
  <tileset firstgid="1" name="map_item" tilewidth="48" tileheight="48" tilecount="400" columns="20">
   <image source="map_item.png" width="960" height="960"/>
  </tileset>
+ <imagelayer name="backgroud">
+  <image source="hm/5-1.bmp" width="960" height="960"/>
+ </imagelayer>
  <layer name="tile" width="20" height="20" offsetx="-4.42935" offsety="66.4403">
   <data>
    <tile gid="0"/>
@@ -43,6 +46,7 @@
    <tile gid="0"/>
    <tile gid="0"/>
    <tile gid="0"/>
+   <tile gid="3"/>
    <tile gid="0"/>
    <tile gid="0"/>
    <tile gid="0"/>
@@ -120,6 +124,7 @@
    <tile gid="0"/>
    <tile gid="0"/>
    <tile gid="0"/>
+   <tile gid="3"/>
    <tile gid="0"/>
    <tile gid="0"/>
    <tile gid="0"/>
@@ -136,9 +141,7 @@
    <tile gid="0"/>
    <tile gid="0"/>
    <tile gid="0"/>
-   <tile gid="0"/>
-   <tile gid="0"/>
-   <tile gid="0"/>
+   <tile gid="3"/>
    <tile gid="0"/>
    <tile gid="0"/>
    <tile gid="0"/>
@@ -407,8 +410,5 @@
    <tile gid="0"/>
   </data>
  </layer>
- <imagelayer name="backgroud">
-  <image source="hm/5-1.bmp" width="960" height="960"/>
- </imagelayer>
  <objectgroup name="enemies"/>
 </map>

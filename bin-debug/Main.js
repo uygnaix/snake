@@ -55,6 +55,7 @@ var Main = (function (_super) {
         RES.addEventListener(RES.ResourceEvent.ITEM_LOAD_ERROR, this.onItemLoadError, this);
         RES.loadGroup('gboy', 1);
         RES.loadGroup('button', 1);
+        RES.loadGroup('jade');
     };
     /**
      * preload资源组加载完成

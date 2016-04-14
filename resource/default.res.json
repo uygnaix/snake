@@ -7,6 +7,10 @@
 		{
 			"keys":"btn_a_png,btn_b_png,btn_down_png,btn_left_png,btn_right_png,btn_up_png",
 			"name":"button"
+		},
+		{
+			"keys":"map_item_png,jade_tmx",
+			"name":"jade"
 		}
 	],
 	"resources":[
@@ -79,6 +83,16 @@
 			"name":"bg_png",
 			"type":"image",
 			"url":"assets/gboy/bg.png"
+		},
+		{
+			"name":"map_item_png",
+			"type":"image",
+			"url":"assets/jade/map_item.png"
+		},
+		{
+			"name":"jade_tmx",
+			"type":"bin",
+			"url":"assets/jade/jade.tmx"
 		}
 	]
 }
