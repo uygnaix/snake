@@ -10,6 +10,8 @@ var game_file_list = [
 	"libs/modules/eui/eui.js",
 	"libs/modules/tiled/tiled.js",
 	"libs/modules/socket/socket.js",
+	"bin-debug/base/Matrix.js",
+	"bin-debug/jade/scene/JadeScene.js",
 	"bin-debug/LoadingUI.js",
 	"bin-debug/Main.js",
 	"bin-debug/XYGBoy/control/ControllerEvent.js",
@@ -20,8 +22,6 @@ var game_file_list = [
 	"bin-debug/XYGBoy/game/DotSnakePanel.js",
 	"bin-debug/XYGBoy/math/MatrixPointer.js",
 	"bin-debug/XYGBoy/scene/GameScene.js",
-	"bin-debug/base/Matrix.js",
-	"bin-debug/jade/scene/JadeScene.js",
 	//----auto game_file_list end----
 ];
 

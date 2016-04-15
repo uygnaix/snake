@@ -9,7 +9,7 @@
 			"name":"button"
 		},
 		{
-			"keys":"map_item_png,jade_tmx",
+			"keys":"",
 			"name":"jade"
 		}
 	],
@@ -83,16 +83,6 @@
 			"name":"bg_png",
 			"type":"image",
 			"url":"assets/gboy/bg.png"
-		},
-		{
-			"name":"map_item_png",
-			"type":"image",
-			"url":"assets/jade/map_item.png"
-		},
-		{
-			"name":"jade_tmx",
-			"type":"bin",
-			"url":"assets/jade/jade.tmx"
 		}
 	]
 }
