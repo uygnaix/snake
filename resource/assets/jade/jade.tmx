@@ -6,8 +6,10 @@
  <imagelayer name="backgroud">
   <image source="hm/5-1.bmp" width="960" height="960"/>
  </imagelayer>
- <layer name="tile" width="20" height="20" offsetx="-4.42935" offsety="66.4403">
+ <layer name="tile" width="20" height="20">
   <data>
+   <tile gid="2"/>
+   <tile gid="2"/>
    <tile gid="0"/>
    <tile gid="0"/>
    <tile gid="0"/>
@@ -26,10 +28,8 @@
    <tile gid="0"/>
    <tile gid="0"/>
    <tile gid="0"/>
-   <tile gid="0"/>
-   <tile gid="0"/>
-   <tile gid="0"/>
-   <tile gid="0"/>
+   <tile gid="2"/>
+   <tile gid="2"/>
    <tile gid="0"/>
    <tile gid="0"/>
    <tile gid="0"/>
@@ -48,8 +48,8 @@
    <tile gid="0"/>
    <tile gid="3"/>
    <tile gid="0"/>
-   <tile gid="0"/>
-   <tile gid="0"/>
+   <tile gid="2"/>
+   <tile gid="2"/>
    <tile gid="0"/>
    <tile gid="0"/>
    <tile gid="0"/>
