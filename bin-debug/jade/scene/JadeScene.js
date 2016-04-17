@@ -25,8 +25,16 @@ var jade;
                 var tmxTileMap = new tiled.TMXTilemap(960, 960, data, this);
                 tmxTileMap.render();
                 self.addChild(tmxTileMap);
+                self.enemy();
             }, url);
             urlLoader.load(new egret.URLRequest(url));
+        };
+        p.enemy = function () {
+            var mvDataFactory = new egret.MovieClipDataFactory(RES.getRes('212_json'), RES.getRes('212_png'));
+            var mc = new egret.MovieClip(mvDataFactory.generateMovieClipData('move'));
+            this.addChild(mc);
+            mc.frameRate = 3;
+            mc.gotoAndPlay('down', -1);
         };
         return JadeScene;
     }(egret.DisplayObjectContainer));

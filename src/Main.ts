@@ -62,8 +62,8 @@ class Main extends egret.DisplayObjectContainer {
         RES.addEventListener(RES.ResourceEvent.GROUP_LOAD_ERROR, this.onResourceLoadError, this);
         RES.addEventListener(RES.ResourceEvent.GROUP_PROGRESS, this.onResourceProgress, this);
         RES.addEventListener(RES.ResourceEvent.ITEM_LOAD_ERROR, this.onItemLoadError, this);
-        RES.loadGroup('gboy', 1);
-        RES.loadGroup('button',1);
+        RES.loadGroup('gboy');
+        RES.loadGroup('button');
         RES.loadGroup('jade');
 
 

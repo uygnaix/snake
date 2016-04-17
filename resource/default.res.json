@@ -9,7 +9,7 @@
 			"name":"button"
 		},
 		{
-			"keys":"map_item_png,jade_tmx",
+			"keys":"map_item_png,jade_tmx,212_json,212_png",
 			"name":"jade"
 		}
 	],
@@ -91,8 +91,18 @@
 		},
 		{
 			"name":"jade_tmx",
-			"type":"bin",
+			"type":"text",
 			"url":"assets/jade/jade.tmx"
+		},
+		{
+			"name":"212_json",
+			"type":"json",
+			"url":"design/td/mov/212/212.json"
+		},
+		{
+			"name":"212_png",
+			"type":"image",
+			"url":"design/td/mov/212/212.png"
 		}
 	]
 }
