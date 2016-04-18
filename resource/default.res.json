@@ -1,25 +1,19 @@
 {
 	"groups":[
 		{
-			"keys":"bgImage,egretIcon",
-			"name":"preload"
+			"keys":"off-l-b_png,off-l_png,off_png,on-l-b_png,on-l_png,on_png,bg_png",
+			"name":"gboy"
 		},
 		{
-			"keys":"off-l-b_png,off-l_png,off_png,on-l-b_png,on-l_png,on_png,up_png",
-			"name":"gboy"
+			"keys":"btn_a_png,btn_b_png,btn_down_png,btn_left_png,btn_right_png,btn_up_png",
+			"name":"button"
+		},
+		{
+			"keys":"map_item_png,jade_tmx,212_json,212_png",
+			"name":"jade"
 		}
 	],
 	"resources":[
-		{
-			"name":"bgImage",
-			"type":"image",
-			"url":"assets/bg.jpg"
-		},
-		{
-			"name":"egretIcon",
-			"type":"image",
-			"url":"assets/egret_icon.png"
-		},
 		{
 			"name":"description",
 			"type":"json",
@@ -56,9 +50,59 @@
 			"url":"assets/gboy/on.png"
 		},
 		{
-			"name":"up_png",
+			"name":"btn_a_png",
 			"type":"image",
-			"url":"assets/gboy/up.png"
+			"url":"assets/button/btn_a.png"
+		},
+		{
+			"name":"btn_b_png",
+			"type":"image",
+			"url":"assets/button/btn_b.png"
+		},
+		{
+			"name":"btn_down_png",
+			"type":"image",
+			"url":"assets/button/btn_down.png"
+		},
+		{
+			"name":"btn_left_png",
+			"type":"image",
+			"url":"assets/button/btn_left.png"
+		},
+		{
+			"name":"btn_right_png",
+			"type":"image",
+			"url":"assets/button/btn_right.png"
+		},
+		{
+			"name":"btn_up_png",
+			"type":"image",
+			"url":"assets/button/btn_up.png"
+		},
+		{
+			"name":"bg_png",
+			"type":"image",
+			"url":"assets/gboy/bg.png"
+		},
+		{
+			"name":"map_item_png",
+			"type":"image",
+			"url":"assets/jade/map_item.png"
+		},
+		{
+			"name":"jade_tmx",
+			"type":"text",
+			"url":"assets/jade/jade.tmx"
+		},
+		{
+			"name":"212_json",
+			"type":"json",
+			"url":"design/td/mov/212/212.json"
+		},
+		{
+			"name":"212_png",
+			"type":"image",
+			"url":"design/td/mov/212/212.png"
 		}
 	]
 }

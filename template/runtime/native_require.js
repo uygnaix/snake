@@ -7,7 +7,9 @@ var game_file_list = [
 	"libs/modules/game/game.native.js",
 	"libs/modules/tween/tween.js",
 	"libs/modules/res/res.js",
-	"bin-debug/base/Matrix.js",
+	"libs/modules/eui/eui.js",
+	"libs/modules/tiled/tiled.js",
+	"libs/modules/socket/socket.js",
 	"bin-debug/LoadingUI.js",
 	"bin-debug/Main.js",
 	"bin-debug/XYGBoy/control/ControllerEvent.js",
@@ -18,6 +20,8 @@ var game_file_list = [
 	"bin-debug/XYGBoy/game/DotSnakePanel.js",
 	"bin-debug/XYGBoy/math/MatrixPointer.js",
 	"bin-debug/XYGBoy/scene/GameScene.js",
+	"bin-debug/base/Matrix.js",
+	"bin-debug/jade/scene/JadeScene.js",
 	//----auto game_file_list end----
 ];
 
@@ -48,8 +52,8 @@ egret_native.egretStart = function () {
 		entryClassName: "Main",
 		frameRate: 30,
 		scaleMode: "showAll",
-		contentWidth: 800,
-		contentHeight: 600,
+		contentWidth: 540,
+		contentHeight: 960,
 		showPaintRect: false,
 		showFPS: true,
 		fpsStyles: "x:0,y:0,size:30,textColor:0x00c200,bgAlpha:0.1",

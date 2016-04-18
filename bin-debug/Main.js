@@ -30,7 +30,6 @@ var Main = (function (_super) {
     __extends(Main, _super);
     function Main() {
         _super.call(this);
-        this.boxSize = 25;
         this.addEventListener(egret.Event.ADDED_TO_STAGE, this.onAddToStage, this);
     }
     var d = __define,c=Main,p=c.prototype;
@@ -54,15 +53,16 @@ var Main = (function (_super) {
         RES.addEventListener(RES.ResourceEvent.GROUP_LOAD_ERROR, this.onResourceLoadError, this);
         RES.addEventListener(RES.ResourceEvent.GROUP_PROGRESS, this.onResourceProgress, this);
         RES.addEventListener(RES.ResourceEvent.ITEM_LOAD_ERROR, this.onItemLoadError, this);
-        RES.loadGroup('gboy', 1);
-        RES.loadGroup('preload');
+        RES.loadGroup('gboy');
+        RES.loadGroup('button');
+        RES.loadGroup('jade');
     };
     /**
      * preload资源组加载完成
      * Preload resource group is loaded
      */
     p.onResourceLoadComplete = function (event) {
-        if (event.groupName == "preload") {
+        if (event.groupName == "button") {
             this.stage.removeChild(this.loadingView);
             RES.removeEventListener(RES.ResourceEvent.GROUP_COMPLETE, this.onResourceLoadComplete, this);
             RES.removeEventListener(RES.ResourceEvent.GROUP_LOAD_ERROR, this.onResourceLoadError, this);
@@ -105,53 +105,8 @@ var Main = (function (_super) {
     p.createGameScene = function () {
         var stageW = this.stage.stageWidth;
         var stageH = this.stage.stageHeight;
-        var gameScene = new XYGBoy.GameScene(stageW, stageH);
+        var gameScene = new jade.JadeScene(stageW, stageH);
         this.addChild(gameScene);
-        //        
-        //        this.initMap();
-        //
-        //        this.map.setCursor(0,0) ? this.map.turnOnDotAtCursor() : 0;
-        //
-        //        //创建一个计时器对象
-        //        var timer: egret.Timer = new egret.Timer(20,0);
-        //        //注册事件侦听器
-        //        timer.addEventListener(egret.TimerEvent.TIMER,this.movePoint,this);
-        ////        timer.addEventListener(egret.TimerEvent.TIMER_COMPLETE,this.timerComFunc,this);
-        //        //开始计时
-        //        timer.start();
-    };
-    p.initMap = function () {
-        var stageW = this.stage.stageWidth;
-        var stageH = this.stage.stageHeight;
-        var col = stageW / this.boxSize;
-        var row = stageH / this.boxSize;
-        this.map = new XYGBoy.DotMap(row, col, this.boxSize);
-        this.map.width = stageW;
-        this.map.height = stageH;
-        this.addChild(this.map);
-    };
-    p.movePoint = function (timeStamp) {
-        console.log(timeStamp);
-        var now = timeStamp;
-        var time = this.time;
-        var pass = now - time;
-        //        this.map.turnOffDotAtCursor();
-        if (this.map.getCursorColumn() + 1 < this.map.getColumn()) {
-            this.map.setCursorColumn(this.map.getCursorColumn() + 1);
-        }
-        else {
-            this.map.setCursorColumn(0);
-            if (this.map.getCursorRow() + 1 < this.map.getRow()) {
-                this.map.setCursorRow(this.map.getCursorRow() + 1);
-            }
-            else {
-                this.map.setCursorRow(0);
-            }
-        }
-        console.log(pass, this.point);
-        this.map.turnOnDotAtCursor();
-        this.time = now;
-        return false;
     };
     return Main;
 }(egret.DisplayObjectContainer));
