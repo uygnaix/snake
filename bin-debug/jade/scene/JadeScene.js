@@ -11,23 +11,33 @@ var jade;
             _super.call(this);
             this.width = width;
             this.height = height;
-            this.tiledMap();
+            this.loadTiledMap();
+            this.enemy();
+            this.getLayer();
         }
         var d = __define,c=JadeScene,p=c.prototype;
-        p.tiledMap = function () {
-            var self = this;
+        p.loadTiledMap = function () {
             var url = "resource/assets/jade/jade.tmx";
-            var urlLoader = new egret.URLLoader();
-            urlLoader.dataFormat = egret.URLLoaderDataFormat.TEXT;
-            //load complete
-            urlLoader.addEventListener(egret.Event.COMPLETE, function (event) {
-                var data = egret.XML.parse(event.target.data);
-                var tmxTileMap = new tiled.TMXTilemap(960, 960, data, this);
-                tmxTileMap.render();
-                self.addChild(tmxTileMap);
-                self.enemy();
-            }, url);
-            urlLoader.load(new egret.URLRequest(url));
+            var data = egret.XML.parse(RES.getRes('jade_tmx'));
+            this.tileMap = new tiled.TMXTilemap(960, 960, data, url);
+            this.tileMap.render();
+            // this.tileMap.addEventListener(egret.TouchEvent.TOUCH_TAP,function(event))
+            this.addChild(this.tileMap);
+        };
+        p.getLayer = function () {
+            var layers = this.tileMap.getLayers();
+            for (var _i = 0, layers_1 = layers; _i < layers_1.length; _i++) {
+                var layer = layers_1[_i];
+                console.dir(layer);
+                if (layer instanceof tiled.TMXLayer) {
+                    this.layer = layer;
+                    console.dir(this.layer);
+                    this.layer.touchEnabled = true;
+                    this.layer.addEventListener(egret.TouchEvent.TOUCH_TAP, function (event) {
+                        console.dir(event);
+                    }, this);
+                }
+            }
         };
         p.enemy = function () {
             var mvDataFactory = new egret.MovieClipDataFactory(RES.getRes('212_json'), RES.getRes('212_png'));
