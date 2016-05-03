@@ -11,6 +11,7 @@ module jade {
 
         private tileMap:tiled.TMXTilemap;
         private layer:tiled.TMXLayer;
+
         public constructor(width:number, height:number) {
             super();
             this.width = width;
@@ -23,24 +24,25 @@ module jade {
         private loadTiledMap() {
             var url:string = "resource/assets/jade/jade.tmx";
             var data = egret.XML.parse(RES.getRes('jade_tmx'));
-            this.tileMap = new tiled.TMXTilemap(960,960,data,url);
+            this.tileMap = new tiled.TMXTilemap(960, 960, data, url);
             this.tileMap.render();
-            this.tileMap.x=0;
+            this.tileMap.x = 0;
             // this.tileMap.addEventListener(egret.TouchEvent.TOUCH_TAP,function(event))
             this.addChild(this.tileMap);
         }
-        private getLayer(){
+
+        private getLayer() {
             var layers = this.tileMap.getLayers();
-            for(var layer of layers){
-                if(layer instanceof tiled.TMXLayer){
+            for (var layer of layers) {
+                if (layer instanceof tiled.TMXLayer) {
                     this.layer = layer;
                     this.layer.touchEnabled = true;
                     var map = this.tileMap;
-                    this.layer.addEventListener(egret.TouchEvent.TOUCH_TAP,function(event){
-                        var tile = layer.getTile(event.localX,event.localY);
-                        tile = layer.setTile(tile.tileX,tile.tileY,++tile.gid);
-                        layer.renderer.drawTile(layer.staticContainer,tile.tileX,tile.tileY,tile);
-                    },this);
+                    this.layer.addEventListener(egret.TouchEvent.TOUCH_TAP, function (event) {
+                        var tile = layer.getTile(event.localX, event.localY);
+                        tile = layer.setTile(tile.tileX, tile.tileY, ++tile.gid);
+                        layer.renderer.drawTile(layer.staticContainer, tile.tileX, tile.tileY, tile);
+                    }, this);
                 }
             }
         }
@@ -50,8 +52,18 @@ module jade {
             var mvDataFactory:egret.MovieClipDataFactory = new egret.MovieClipDataFactory(RES.getRes('212_json'), RES.getRes('212_png'));
             var mc:egret.MovieClip = new egret.MovieClip(mvDataFactory.generateMovieClipData('move'));
             this.addChild(mc);
-            mc.frameRate=3;
-            mc.gotoAndPlay('down',-1);
+            mc.frameRate = 3;
+            mc.gotoAndPlay('down', -1);
+            mc.x = 5 * Tile.width;
+            mc.y = 7 * Tile.height;
+
+            var tw:egret.Tween = egret.Tween.get(mc);
+            tw.to({
+                    y: 5 * Tile.height
+                }, Time.second(6))
+                .to({
+                    x: 4 * Tile.width
+                }, Time.second(4));
         }
 
     }

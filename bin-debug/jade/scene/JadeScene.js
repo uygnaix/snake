@@ -47,6 +47,15 @@ var jade;
             this.addChild(mc);
             mc.frameRate = 3;
             mc.gotoAndPlay('down', -1);
+            mc.x = 5 * jade.Tile.width;
+            mc.y = 7 * jade.Tile.height;
+            var tw = egret.Tween.get(mc);
+            tw.to({
+                y: 5 * jade.Tile.height
+            }, jade.Time.second(6))
+                .to({
+                x: 4 * jade.Tile.width
+            }, jade.Time.second(4));
         };
         return JadeScene;
     }(egret.DisplayObjectContainer));

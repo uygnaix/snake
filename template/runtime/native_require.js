@@ -22,6 +22,7 @@ var game_file_list = [
 	"bin-debug/XYGBoy/scene/GameScene.js",
 	"bin-debug/base/Matrix.js",
 	"bin-debug/jade/scene/JadeScene.js",
+	"bin-debug/jade/common/Constants.js",
 	//----auto game_file_list end----
 ];
 
