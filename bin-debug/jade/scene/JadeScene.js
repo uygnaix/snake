@@ -21,6 +21,7 @@ var jade;
             var data = egret.XML.parse(RES.getRes('jade_tmx'));
             this.tileMap = new tiled.TMXTilemap(960, 960, data, url);
             this.tileMap.render();
+            this.tileMap.x = 0;
             // this.tileMap.addEventListener(egret.TouchEvent.TOUCH_TAP,function(event))
             this.addChild(this.tileMap);
         };
@@ -28,13 +29,14 @@ var jade;
             var layers = this.tileMap.getLayers();
             for (var _i = 0, layers_1 = layers; _i < layers_1.length; _i++) {
                 var layer = layers_1[_i];
-                console.dir(layer);
                 if (layer instanceof tiled.TMXLayer) {
                     this.layer = layer;
-                    console.dir(this.layer);
                     this.layer.touchEnabled = true;
+                    var map = this.tileMap;
                     this.layer.addEventListener(egret.TouchEvent.TOUCH_TAP, function (event) {
-                        console.dir(event);
+                        var tile = layer.getTile(event.localX, event.localY);
+                        tile = layer.setTile(tile.tileX, tile.tileY, ++tile.gid);
+                        layer.renderer.drawTile(layer.staticContainer, tile.tileX, tile.tileY, tile);
                     }, this);
                 }
             }
