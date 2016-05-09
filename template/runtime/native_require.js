@@ -21,8 +21,9 @@ var game_file_list = [
 	"bin-debug/XYGBoy/math/MatrixPointer.js",
 	"bin-debug/XYGBoy/scene/GameScene.js",
 	"bin-debug/base/Matrix.js",
-	"bin-debug/jade/scene/JadeScene.js",
 	"bin-debug/jade/common/Constants.js",
+	"bin-debug/jade/scene/JadeScene.js",
+	"bin-debug/jade/scene/layer/GameLayer.js",
 	//----auto game_file_list end----
 ];
 

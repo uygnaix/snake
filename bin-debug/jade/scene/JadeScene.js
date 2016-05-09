@@ -51,7 +51,7 @@ var jade;
             mc.y = 7 * jade.Tile.height;
             var tw = egret.Tween.get(mc);
             tw.to({
-                y: 5 * jade.Tile.height
+                y: 15 * jade.Tile.height
             }, jade.Time.second(6))
                 .to({
                 x: 4 * jade.Tile.width

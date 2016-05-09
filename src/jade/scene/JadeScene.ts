@@ -59,7 +59,7 @@ module jade {
 
             var tw:egret.Tween = egret.Tween.get(mc);
             tw.to({
-                    y: 5 * Tile.height
+                    y: 15 * Tile.height
                 }, Time.second(6))
                 .to({
                     x: 4 * Tile.width
