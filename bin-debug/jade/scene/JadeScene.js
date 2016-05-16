@@ -12,7 +12,6 @@ var jade;
             this.width = width;
             this.height = height;
             this.loadTiledMap();
-            this.enemy();
             this.getLayer();
         }
         var d = __define,c=JadeScene,p=c.prototype;
@@ -41,21 +40,20 @@ var jade;
                 }
             }
         };
-        p.enemy = function () {
-            var mvDataFactory = new egret.MovieClipDataFactory(RES.getRes('212_json'), RES.getRes('212_png'));
-            var mc = new egret.MovieClip(mvDataFactory.generateMovieClipData('move'));
-            this.addChild(mc);
-            mc.frameRate = 3;
-            mc.gotoAndPlay('down', -1);
-            mc.x = 5 * jade.Tile.width;
-            mc.y = 7 * jade.Tile.height;
-            var tw = egret.Tween.get(mc);
-            tw.to({
-                y: 15 * jade.Tile.height
-            }, jade.Time.second(6))
-                .to({
-                x: 4 * jade.Tile.width
-            }, jade.Time.second(4));
+        p.fire = function (x, y) {
+            if (x == null) {
+                x = 100;
+            }
+            if (y == null) {
+                y = 100;
+            }
+            var mvDataFactory = new egret.MovieClipDataFactory(RES.getRes('3-1_json'), RES.getRes('3-1_png'));
+            var mc = new egret.MovieClip(mvDataFactory.generateMovieClipData('fire'));
+            this.parent.addChild(mc);
+            mc.frameRate = 5;
+            mc.gotoAndPlay('call', -1);
+            mc.x = x;
+            mc.y = y;
         };
         return JadeScene;
     }(egret.DisplayObjectContainer));

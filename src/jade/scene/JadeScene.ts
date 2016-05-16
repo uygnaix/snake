@@ -17,7 +17,6 @@ module jade {
             this.width = width;
             this.height = height;
             this.loadTiledMap();
-            this.enemy();
             this.getLayer();
         }
 
@@ -46,24 +45,21 @@ module jade {
                 }
             }
         }
+        private fire(x, y) {
+            if (x == null) {
+                x = 100;
+            }
+            if (y == null) {
+                y = 100;
+            }
+            var mvDataFactory:egret.MovieClipDataFactory = new egret.MovieClipDataFactory(RES.getRes('3-1_json'), RES.getRes('3-1_png'));
+            var mc:egret.MovieClip = new egret.MovieClip(mvDataFactory.generateMovieClipData('fire'));
+            this.parent.addChild(mc);
+            mc.frameRate = 5;
+            mc.gotoAndPlay('call', -1);
+            mc.x = x;
+            mc.y = y;
 
-        private enemy() {
-
-            var mvDataFactory:egret.MovieClipDataFactory = new egret.MovieClipDataFactory(RES.getRes('212_json'), RES.getRes('212_png'));
-            var mc:egret.MovieClip = new egret.MovieClip(mvDataFactory.generateMovieClipData('move'));
-            this.addChild(mc);
-            mc.frameRate = 3;
-            mc.gotoAndPlay('down', -1);
-            mc.x = 5 * Tile.width;
-            mc.y = 7 * Tile.height;
-
-            var tw:egret.Tween = egret.Tween.get(mc);
-            tw.to({
-                    y: 15 * Tile.height
-                }, Time.second(6))
-                .to({
-                    x: 4 * Tile.width
-                }, Time.second(4));
         }
 
     }
