@@ -8,8 +8,10 @@ module jade{
         private json:string;
         private sheet:string;
         private face;
+        private foot;
 
-        private constructor(json:string,sheet:string){
+        public constructor(json:string,sheet:string){
+            super();
             this.json = json;
             this.sheet = sheet;
             this.loadFace();
@@ -20,7 +22,7 @@ module jade{
             var mc:MovieClip = new egret.MovieClip(this.face.generateMovieClipData('move'));
             this.addChild(mc);
             mc.frameRate = 3;
-            mc.gotoAndPlay('move',-1);
+            mc.gotoAndPlay('down',-1);
         }
     }
 }

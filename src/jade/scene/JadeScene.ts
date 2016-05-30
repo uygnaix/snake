@@ -18,6 +18,8 @@ module jade {
             this.height = height;
             this.loadTiledMap();
             this.getLayer();
+            this.loadPlayer();
+            this.loadTower();
         }
 
         private loadTiledMap() {
@@ -28,6 +30,18 @@ module jade {
             this.tileMap.x = 0;
             // this.tileMap.addEventListener(egret.TouchEvent.TOUCH_TAP,function(event))
             this.addChild(this.tileMap);
+        }
+
+        private loadPlayer(){
+            var en:Enemy = new Enemy('212_json','212_png');
+            en.x = Tile.height*5;
+            en.y = Tile.height*5;
+            this.addChild(en);
+
+        }
+        private loadTower(){
+            this.layer.setTile(10,5,25);
+            this.layer.setTile(11,5,1);
         }
 
         private getLayer() {

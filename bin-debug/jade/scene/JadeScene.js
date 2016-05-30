@@ -13,6 +13,8 @@ var jade;
             this.height = height;
             this.loadTiledMap();
             this.getLayer();
+            this.loadPlayer();
+            this.loadTower();
         }
         var d = __define,c=JadeScene,p=c.prototype;
         p.loadTiledMap = function () {
@@ -23,6 +25,16 @@ var jade;
             this.tileMap.x = 0;
             // this.tileMap.addEventListener(egret.TouchEvent.TOUCH_TAP,function(event))
             this.addChild(this.tileMap);
+        };
+        p.loadPlayer = function () {
+            var en = new jade.Enemy('212_json', '212_png');
+            en.x = jade.Tile.height * 5;
+            en.y = jade.Tile.height * 5;
+            this.addChild(en);
+        };
+        p.loadTower = function () {
+            this.layer.setTile(10, 5, 25);
+            this.layer.setTile(11, 5, 1);
         };
         p.getLayer = function () {
             var layers = this.tileMap.getLayers();
