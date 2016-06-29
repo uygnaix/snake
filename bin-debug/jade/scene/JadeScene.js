@@ -7,6 +7,8 @@ var jade;
      */
     var JadeScene = (function (_super) {
         __extends(JadeScene, _super);
+        // private tileMap:tiled.TMXTilemap;
+        // private layer:tiled.TMXLayer;
         function JadeScene(width, height) {
             _super.call(this);
             this.width = width;
@@ -20,11 +22,11 @@ var jade;
         p.loadTiledMap = function () {
             var url = "resource/assets/jade/jade.tmx";
             var data = egret.XML.parse(RES.getRes('jade_tmx'));
-            this.tileMap = new tiled.TMXTilemap(960, 960, data, url);
-            this.tileMap.render();
-            this.tileMap.x = 0;
+            // this.tileMap = new tiled.TMXTilemap(960, 960, data, url);
+            // this.tileMap.render();
+            // this.tileMap.x = 0;
             // this.tileMap.addEventListener(egret.TouchEvent.TOUCH_TAP,function(event))
-            this.addChild(this.tileMap);
+            // this.addChild(this.tileMap);
         };
         p.loadPlayer = function () {
             var en = new jade.Enemy('212_json', '212_png');
@@ -33,24 +35,23 @@ var jade;
             this.addChild(en);
         };
         p.loadTower = function () {
-            this.layer.setTile(10, 5, 25);
-            this.layer.setTile(11, 5, 1);
+            // this.layer.setTile(10,5,25);
+            // this.layer.setTile(11,5,1);
         };
         p.getLayer = function () {
-            var layers = this.tileMap.getLayers();
-            for (var _i = 0, layers_1 = layers; _i < layers_1.length; _i++) {
-                var layer = layers_1[_i];
-                if (layer instanceof tiled.TMXLayer) {
-                    this.layer = layer;
-                    this.layer.touchEnabled = true;
-                    var map = this.tileMap;
-                    this.layer.addEventListener(egret.TouchEvent.TOUCH_TAP, function (event) {
-                        var tile = layer.getTile(event.localX, event.localY);
-                        tile = layer.setTile(tile.tileX, tile.tileY, ++tile.gid);
-                        layer.renderer.drawTile(layer.staticContainer, tile.tileX, tile.tileY, tile);
-                    }, this);
-                }
-            }
+            // var layers = this.tileMap.getLayers();
+            // for (var layer of layers) {
+            //     if (layer instanceof tiled.TMXLayer) {
+            //         this.layer = layer;
+            //         this.layer.touchEnabled = true;
+            //         var map = this.tileMap;
+            //         this.layer.addEventListener(egret.TouchEvent.TOUCH_TAP, function (event) {
+            //             var tile = layer.getTile(event.localX, event.localY);
+            //             tile = layer.setTile(tile.tileX, tile.tileY, ++tile.gid);
+            //             layer.renderer.drawTile(layer.staticContainer, tile.tileX, tile.tileY, tile);
+            //         }, this);
+            //     }
+            // }
         };
         p.fire = function (x, y) {
             if (x == null) {

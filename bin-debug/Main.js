@@ -53,16 +53,17 @@ var Main = (function (_super) {
         RES.addEventListener(RES.ResourceEvent.GROUP_LOAD_ERROR, this.onResourceLoadError, this);
         RES.addEventListener(RES.ResourceEvent.GROUP_PROGRESS, this.onResourceProgress, this);
         RES.addEventListener(RES.ResourceEvent.ITEM_LOAD_ERROR, this.onItemLoadError, this);
-        RES.loadGroup('gboy');
-        RES.loadGroup('button');
-        RES.loadGroup('jade');
+        // RES.loadGroup('gboy');
+        // RES.loadGroup('button');
+        // RES.loadGroup('jade');
+        RES.loadGroup('star');
     };
     /**
      * preload资源组加载完成
      * Preload resource group is loaded
      */
     p.onResourceLoadComplete = function (event) {
-        if (event.groupName == "button") {
+        if (event.groupName == "star") {
             this.stage.removeChild(this.loadingView);
             RES.removeEventListener(RES.ResourceEvent.GROUP_COMPLETE, this.onResourceLoadComplete, this);
             RES.removeEventListener(RES.ResourceEvent.GROUP_LOAD_ERROR, this.onResourceLoadError, this);
@@ -94,7 +95,7 @@ var Main = (function (_super) {
      * Loading process of preload resource group
      */
     p.onResourceProgress = function (event) {
-        if (event.groupName == "preload") {
+        if (event.groupName == "star") {
             this.loadingView.setProgress(event.itemsLoaded, event.itemsTotal);
         }
     };
@@ -105,7 +106,7 @@ var Main = (function (_super) {
     p.createGameScene = function () {
         var stageW = this.stage.stageWidth;
         var stageH = this.stage.stageHeight;
-        var gameScene = new jade.JadeScene(stageW, stageH);
+        var gameScene = new XYStar.MenuScene(stageW, stageH);
         this.addChild(gameScene);
     };
     return Main;
