@@ -41,6 +41,11 @@ class Main extends egret.DisplayObjectContainer {
     }
 
     private onAddToStage(event:egret.Event) {
+        //注入自定义的素材解析器
+        var assetAdapter = new AssetAdapter();
+        this.stage.registerImplementation( "eui.IAssetAdapter", assetAdapter );
+        this.stage.registerImplementation( "eui.IThemeAdapter", new ThemeAdapter() );
+
         //设置加载进度界面
         //Config to load process interface
         this.loadingView = new LoadingUI();
@@ -57,6 +62,7 @@ class Main extends egret.DisplayObjectContainer {
      * configuration file loading is completed, start to pre-load the preload resource group
      */
     private onConfigComplete(event:RES.ResourceEvent):void {
+        var theme = new eui.Theme( "resource/default.thm.json", this.stage );
         RES.removeEventListener(RES.ResourceEvent.CONFIG_COMPLETE, this.onConfigComplete, this);
         RES.addEventListener(RES.ResourceEvent.GROUP_COMPLETE, this.onResourceLoadComplete, this);
         RES.addEventListener(RES.ResourceEvent.GROUP_LOAD_ERROR, this.onResourceLoadError, this);
