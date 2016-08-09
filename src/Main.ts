@@ -103,7 +103,6 @@ class Main extends egret.DisplayObjectContainer {
      *  The resource group loading failed
      */
     private onResourceLoadError(event:RES.ResourceEvent):void {
-        //TODO
         console.warn("Group:" + event.groupName + " has failed to load");
         //忽略加载失败的项目
         //Ignore the loading failed projects

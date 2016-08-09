@@ -18,5 +18,41 @@ module XYStar {
             this.addChild(fb);
             fb.move();
         }
+
+        /**
+         * 飘出关卡信息
+         */
+        public showLevelInfo(){
+
+        }
+
+        /**
+         * 飘出目标分数
+         */
+        public showTargetScore(){
+
+        }
+
+        /**
+         * 显示星星矩阵
+         */
+        public showStarMatrix(){
+
+        }
+
+        /**
+         * 刷新顶部信息
+         */
+        public refreshTopStatus(){
+
+        }
+
+        public update(){
+
+        }
+
+        public gameOver(){
+
+        }
     }
 }

@@ -10,12 +10,6 @@ var game_file_list = [
 	"libs/modules/eui/eui.js",
 	"libs/modules/socket/socket.js",
 	"bin-debug/AssetAdapter.js",
-	"bin-debug/base/Matrix.js",
-	"bin-debug/jade/common/Constants.js",
-	"bin-debug/jade/factory/EnemyFactory.js",
-	"bin-debug/jade/scene/JadeScene.js",
-	"bin-debug/jade/scene/layer/gameLayer.js",
-	"bin-debug/jade/sprite/enemy.js",
 	"bin-debug/LoadingUI.js",
 	"bin-debug/Main.js",
 	"bin-debug/ThemeAdapter.js",
@@ -33,6 +27,12 @@ var game_file_list = [
 	"bin-debug/XYStar/scene/MenuScene.js",
 	"bin-debug/XYStar/widget/FloatingBanner.js",
 	"bin-debug/XYStar/widget/Toast.js",
+	"bin-debug/base/Matrix.js",
+	"bin-debug/jade/common/Constants.js",
+	"bin-debug/jade/factory/EnemyFactory.js",
+	"bin-debug/jade/scene/JadeScene.js",
+	"bin-debug/jade/scene/layer/GameLayer.js",
+	"bin-debug/jade/sprite/enemy.js",
 	//----auto game_file_list end----
 ];
 

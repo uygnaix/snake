@@ -89,7 +89,6 @@ var Main = (function (_super) {
      *  The resource group loading failed
      */
     p.onResourceLoadError = function (event) {
-        //TODO
         console.warn("Group:" + event.groupName + " has failed to load");
         //忽略加载失败的项目
         //Ignore the loading failed projects
