@@ -1,0 +1,88 @@
+{
+  "roles": [
+    {
+      "id": 0,
+      "img": "p_00_0_png",
+      "type": "boss",
+      "width": 2,
+      "height": 2
+    },
+    {
+      "id": 1,
+      "img": "p_02_0_png",
+      "type": "hor",
+      "width": 2,
+      "height": 1
+    },
+    {
+      "id": 2,
+      "img": "p_04_0_png",
+      "type": "hor",
+      "width": 2,
+      "height": 1
+    },
+    {
+      "id": 3,
+      "img": "p_06_0_png",
+      "type": "hor",
+      "width": 2,
+      "height": 1
+    },
+    {
+      "id": 4,
+      "img": "p_08_0_png",
+      "type": "hor",
+      "width": 2,
+      "height": 1
+    },
+    {
+      "id": 5,
+      "img": "p_10_0_png",
+      "type": "hor",
+      "width": 2,
+      "height": 1
+    },
+    {
+      "id": 6,
+      "img": "p_01_0_png",
+      "type": "ver",
+      "width": 1,
+      "height": 2
+    },
+    {
+      "id": 7,
+      "img": "p_03_0_png",
+      "type": "ver",
+      "width": 1,
+      "height": 2
+    },
+    {
+      "id": 8,
+      "img": "p_05_0_png",
+      "type": "ver",
+      "width": 1,
+      "height": 2
+    },
+    {
+      "id": 9,
+      "img": "p_07_0_png",
+      "type": "ver",
+      "width": 1,
+      "height": 2
+    },
+    {
+      "id": 10,
+      "img": "p_09_0_png",
+      "type": "ver",
+      "width": 1,
+      "height": 2
+    },
+    {
+      "id": 11,
+      "img": "p_11_0_png",
+      "type": "soldier",
+      "width": 1,
+      "height": 1
+    }
+  ]
+}

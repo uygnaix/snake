@@ -1037,7 +1037,7 @@ declare module egret {
          * @private
          * 标记矩阵失效
          */
-        private invalidateMatrix();
+        $invalidateMatrix(): void;
         /**
          * @private
          * 标记这个显示对象在父级容器的位置发生了改变。
@@ -2259,6 +2259,19 @@ declare module egret {
 }
 declare module egret {
     /**
+     * @private
+     */
+    interface MapLike<T> {
+        [key: string]: T;
+        [key: number]: T;
+    }
+    /**
+     * @private
+     */
+    function createMap<T>(): MapLike<T>;
+}
+declare module egret {
+    /**
      * @language en_US
      * A BitmapData object contains an array of pixel data. This data can represent either a fully opaque bitmap or a
      * transparent bitmap that contains alpha channel data. Either type of BitmapData object is stored as a buffer of 32-bit
@@ -2269,6 +2282,7 @@ declare module egret {
      * @see egret.Bitmap
      * @version Egret 2.4
      * @platform Web,Native
+     * @private
      */
     /**
      * @language zh_CN
@@ -2279,8 +2293,9 @@ declare module egret {
      * @see egret.Bitmap
      * @version Egret 2.4
      * @platform Web,Native
+     * @private
      */
-    interface BitmapData extends HashObject {
+    class BitmapData extends HashObject {
         /**
          * @language en_US
          * The width of the bitmap image in pixels.
@@ -2311,6 +2326,57 @@ declare module egret {
          * @platform Web,Native
          */
         height: number;
+        /**
+         * @language en_US
+         * Original bitmap image.
+         * @version Egret 2.4
+         * @platform Web,Native
+         */
+        /**
+         * @language zh_CN
+         * 原始位图图像。
+         * @version Egret 2.4
+         * @platform Web,Native
+         */
+        source: any;
+        /**
+         * @language en_US
+         * WebGL texture.
+         * @version Egret 2.4
+         * @platform Web,Native
+         */
+        /**
+         * @language zh_CN
+         * WebGL纹理。
+         * @version Egret 2.4
+         * @platform Web,Native
+         */
+        webGLTexture: any;
+        /**
+         * @language en_US
+         * Texture format.
+         * @version Egret 2.4
+         * @platform Web,Native
+         */
+        /**
+         * @language zh_CN
+         * 纹理格式。
+         * @version Egret 2.4
+         * @platform Web,Native
+         */
+        format: string;
+        /**
+         * @private
+         * webgl纹理生成后，是否删掉原始图像数据
+         */
+        $deleteSource: boolean;
+        constructor(source: any);
+        $dispose(): void;
+        private static _displayList;
+        static $addDisplayObject(displayObject: DisplayObject, bitmapData: BitmapData | Texture): void;
+        static $removeDisplayObject(displayObject: DisplayObject, bitmapData: BitmapData | Texture): void;
+        static $invalidate(bitmapData: BitmapData | Texture): void;
+        static $dispose(bitmapData: BitmapData | Texture): void;
     }
 }
 declare module egret {
@@ -2332,47 +2398,11 @@ declare module egret {
      * @platform Web,Native
      * @includeExample egret/display/BitmapFillMode.ts
      */
-    class BitmapFillMode {
-        /**
-         * @language en_US
-         * Repeat the bitmap to fill area.
-         * @version Egret 2.4
-         * @platform Web
-         */
-        /**
-         * @language zh_CN
-         * 重复位图以填充区域。
-         * @version Egret 2.4
-         * @platform Web
-         */
-        static REPEAT: string;
-        /**
-         * @language en_US
-         * Scale bitmap fill to fill area.
-         * @version Egret 2.4
-         * @platform Web,Native
-         */
-        /**
-         * @language zh_CN
-         * 位图填充拉伸以填充区域。
-         * @version Egret 2.4
-         * @platform Web,Native
-         */
-        static SCALE: string;
-        /**
-         * @language en_US
-         * The bitmap ends at the edge of the region.
-         * @version Egret 2.4
-         * @platform Web,Native
-         */
-        /**
-         * @language zh_CN
-         * 在区域的边缘处截断不显示位图。
-         * @version Egret 2.4
-         * @platform Web,Native
-         */
-        static CLIP: string;
-    }
+    const BitmapFillMode: {
+        REPEAT: string;
+        SCALE: string;
+        CLIP: string;
+    };
 }
 declare module egret {
     /**
@@ -2471,47 +2501,11 @@ declare module egret {
      * @version Egret 2.5
      * @platform Web,Native
      */
-    class CapsStyle {
-        /**
-         * @language en_US
-         * Used to specify no caps in the caps parameter of the egret.Graphics.lineStyle() method.
-         * @version Egret 2.5
-         * @platform Web,Native
-         */
-        /**
-         * @language zh_CN
-         * 用于在 egret.Graphics.lineStyle() 方法的 caps 参数中指定没有端点。
-         * @version Egret 2.5
-         * @platform Web,Native
-         */
-        static NONE: string;
-        /**
-         * @language en_US
-         * Used to specify round caps in the caps parameter of the egret.Graphics.lineStyle() method.
-         * @version Egret 2.5
-         * @platform Web,Native
-         */
-        /**
-         * @language zh_CN
-         * 用于在 egret.Graphics.lineStyle() 方法的 caps 参数中指定圆头端点。
-         * @version Egret 2.5
-         * @platform Web,Native
-         */
-        static ROUND: string;
-        /**
-         * @language en_US
-         * Used to specify square caps in the caps parameter of the egret.Graphics.lineStyle() method.
-         * @version Egret 2.5
-         * @platform Web,Native
-         */
-        /**
-         * @language zh_CN
-         * 用于在 egret.Graphics.lineStyle() 方法的 caps 参数中指定方头端点。
-         * @version Egret 2.5
-         * @platform Web,Native
-         */
-        static SQUARE: string;
-    }
+    const CapsStyle: {
+        NONE: string;
+        ROUND: string;
+        SQUARE: string;
+    };
 }
 declare module egret {
     /**
@@ -2523,37 +2517,13 @@ declare module egret {
     /**
      * @language zh_CN
      * 脏矩形策略常量。
-     * @version Egret 2.5
+     * @version Egret 3.0
      * @platform Web,Native
      */
-    class DirtyRegionPolicy {
-        /**
-         * @language en_US
-         * Close automatic detection of dirty region
-         * @version Egret 2.5
-         * @platform Web,Native
-         */
-        /**
-         * @language zh_CN
-         * 关闭自动脏矩形检测
-         * @version Egret 2.5
-         * @platform Web,Native
-         */
-        static OFF: string;
-        /**
-         * @language en_US
-         * Open automatic detection of dirty region
-         * @version Egret 2.5
-         * @platform Web,Native
-         */
-        /**
-         * @language zh_CN
-         * 开启自动脏矩形检测
-         * @version Egret 2.5
-         * @platform Web,Native
-         */
-        static ON: string;
-    }
+    const DirtyRegionPolicy: {
+        OFF: string;
+        ON: string;
+    };
 }
 declare module egret {
     /**
@@ -3434,6 +3404,10 @@ declare module egret {
          *
          */
         $hitTest(stageX: number, stageY: number): DisplayObject;
+        /**
+         * @private
+         */
+        $onRemoveFromStage(): void;
     }
 }
 declare module egret {
@@ -3452,47 +3426,11 @@ declare module egret {
      * @version Egret 2.5
      * @platform Web,Native
      */
-    class JointStyle {
-        /**
-         * @language en_US
-         * Specifies beveled joints in the joints parameter of the egret.Graphics.lineStyle() method.
-         * @version Egret 2.5
-         * @platform Web,Native
-         */
-        /**
-         * @language zh_CN
-         * 在 egret.Graphics.lineStyle() 方法的 joints 参数中指定斜角连接。
-         * @version Egret 2.5
-         * @platform Web,Native
-         */
-        static BEVEL: string;
-        /**
-         * @language en_US
-         * Specifies mitered joints in the joints parameter of the egret.Graphics.lineStyle() method.
-         * @version Egret 2.5
-         * @platform Web,Native
-         */
-        /**
-         * @language zh_CN
-         * 在 egret.Graphics.lineStyle() 方法的 joints 参数中指定尖角连接。
-         * @version Egret 2.5
-         * @platform Web,Native
-         */
-        static MITER: string;
-        /**
-         * @language en_US
-         * Specifies round joints in the joints parameter of the egret.Graphics.lineStyle() method.
-         * @version Egret 2.5
-         * @platform Web,Native
-         */
-        /**
-         * @language zh_CN
-         * 在 egret.Graphics.lineStyle() 方法的 joints 参数中指定圆角连接。
-         * @version Egret 2.5
-         * @platform Web,Native
-         */
-        static ROUND: string;
-    }
+    const JointStyle: {
+        BEVEL: string;
+        MITER: string;
+        ROUND: string;
+    };
 }
 declare module egret {
     /**
@@ -3653,7 +3591,7 @@ declare module egret {
         /**
          * @private
          */
-        _bitmapData: any;
+        _bitmapData: BitmapData;
         /**
          * @language en_US
          * The BitmapData object being referenced.
@@ -3672,7 +3610,7 @@ declare module egret {
          *
          * @param value
          */
-        _setBitmapData(value: any): void;
+        _setBitmapData(value: BitmapData): void;
         /**
          * @private
          * 设置Texture数据
@@ -3759,11 +3697,6 @@ declare module egret {
          * @platform Web,Native
          */
         dispose(): void;
-        private static _displayList;
-        static $addDisplayObject(displayObject: DisplayObject, bitmapData: BitmapData | Texture): void;
-        static $removeDisplayObject(displayObject: DisplayObject, bitmapData: BitmapData | Texture): void;
-        static $invalidate(bitmapData: BitmapData | Texture): void;
-        static $dispose(bitmapData: BitmapData | Texture): void;
     }
 }
 declare module egret {
@@ -3863,6 +3796,10 @@ declare module egret {
          */
         $measureContentBounds(bounds: Rectangle): void;
         $hitTest(stageX: number, stageY: number): DisplayObject;
+        /**
+         * @private
+         */
+        $onRemoveFromStage(): void;
     }
 }
 declare module egret {
@@ -3916,6 +3853,10 @@ declare module egret {
          * @private
          */
         $measureContentBounds(bounds: Rectangle): void;
+        /**
+         * @private
+         */
+        $onRemoveFromStage(): void;
     }
 }
 declare module egret {
@@ -3978,7 +3919,7 @@ declare module egret {
          * @private
          * 纹理缓存字典
          */
-        _textureMap: Object;
+        _textureMap: MapLike<Texture>;
         /**
          * @language en_US
          * Obtain a cached Texture object according to the specified texture name
@@ -8388,6 +8329,7 @@ declare module egret_native {
     function onTouchesMove(num: number, ids: Array<any>, xs_array: Array<any>, ys_array: Array<any>): any;
     function onTouchesEnd(num: number, ids: Array<any>, xs_array: Array<any>, ys_array: Array<any>): any;
     function onTouchesCancel(num: number, ids: Array<any>, xs_array: Array<any>, ys_array: Array<any>): any;
+    function sendToC(float32Array: Float32Array, arrayBufferLen: number, array: Array<string>): void;
     /**
      * 启动主循环
      * @param callback 主循环回调函数
@@ -9205,6 +9147,7 @@ declare module egret.sys {
          * 绘制根节点显示对象到目标画布，返回draw的次数。
          */
         drawToSurface(): number;
+        private bitmapData;
         /**
          * @private
          */
@@ -9558,7 +9501,8 @@ declare module egret.sys {
     /**
      * 共享的用于碰撞检测的渲染缓冲
      */
-    var hitTestBuffer: sys.RenderBuffer;
+    var customHitTestBuffer: sys.RenderBuffer;
+    var canvasHitTestBuffer: sys.RenderBuffer;
     /**
      * @private
      * 渲染缓冲
@@ -9635,6 +9579,16 @@ declare module egret.sys {
     var RenderBuffer: {
         /**
          * 创建一个RenderTarget。
+         * 注意：若内存不足或创建缓冲区失败，将会抛出错误异常。
+         * @param width 渲染缓冲的初始宽
+         * @param height 渲染缓冲的初始高
+         * @param root 是否为舞台buffer
+         */
+        new (width?: number, height?: number, root?: boolean): RenderBuffer;
+    };
+    var CanvasRenderBuffer: {
+        /**
+         * 创建一个CanvasRenderBuffer。
          * 注意：若内存不足或创建缓冲区失败，将会抛出错误异常。
          * @param width 渲染缓冲的初始宽
          * @param height 渲染缓冲的初始高
@@ -10272,6 +10226,10 @@ declare module egret.sys {
         $texture: any;
         $textureWidth: any;
         $textureHeight: any;
+        /**
+         * 清除非绘制的缓存数据
+         */
+        clean(): void;
     }
 }
 declare module egret.sys {
@@ -10458,6 +10416,10 @@ declare module egret.sys {
         $texture: any;
         $textureWidth: any;
         $textureHeight: any;
+        /**
+         * 清除非绘制的缓存数据
+         */
+        clean(): void;
     }
 }
 declare module egret.sys {
@@ -10501,6 +10463,16 @@ declare module egret.sys {
         $data: number[];
         private commandPosition;
         private dataPosition;
+        /**
+         * 当前移动到的坐标X
+         * 注意：目前只有drawArc之前会被赋值
+         */
+        $lastX: number;
+        /**
+         * 当前移动到的坐标Y
+         * 注意：目前只有drawArc之前会被赋值
+         */
+        $lastY: number;
         /**
          * 将当前绘图位置移动到 (x, y)。如果缺少任何一个参数，则此方法将失败，并且当前绘图位置不改变。
          * @param x 一个表示相对于父显示对象注册点的水平位置的数字（以像素为单位）。
@@ -10683,6 +10655,10 @@ declare module egret {
          * 绘制一个显示对象
          */
         private drawDisplayObject(displayObject, context, dirtyList, matrix, displayList, clipRegion, root);
+        /**
+         * @private
+         */
+        private drawWithFilter(displayObject, context, dirtyList, matrix, clipRegion, root);
         private renderingMask;
         /**
          * @private
@@ -10711,11 +10687,11 @@ declare module egret {
         /**
          * @private
          */
-        private renderText(node, context);
+        renderText(node: sys.TextNode, context: CanvasRenderingContext2D): void;
         /**
          * @private
          */
-        private renderGraphics(node, context, forHitTest?);
+        renderGraphics(node: sys.GraphicsNode, context: CanvasRenderingContext2D, forHitTest?: boolean): void;
         private renderPath(path, context);
         private renderGroup(groupNode, context);
         /**
@@ -12171,6 +12147,10 @@ declare module egret {
         /**
          * @private
          */
+        private stageTextAdded;
+        /**
+         * @private
+         */
         private _text;
         /**
          * @private
@@ -13084,7 +13064,7 @@ declare module egret {
          * @private
          *
          */
-        private fillBackground(lines);
+        private fillBackground(lines?);
         /**
          * @language en_US
          * Enter the text automatically entered into the input state, the input type is text only and may only be invoked in the user interaction.

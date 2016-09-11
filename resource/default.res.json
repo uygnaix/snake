@@ -15,6 +15,10 @@
 		{
 			"keys": "bg_mainscene_jpg,bg_menuscene_jpg,bg_menuscene_yj_png,bg_menuscene_zx_png,bg_menuscene_zx2014_png,blue_png,blue_heart_png,Cancel_png,ChineseWords_xml,click_1_png,click_2_png,CloseNormal_png,CloseSelected_png,coin_add_png,combo_1_png,combo_2_png,combo_3_png,Dialog_bg_png,Dialog_bg2_png,Dialog_Item_png,Dialog_Item2_png,Dialog_Title_png,diamond_png,feedata_xml,fireworks_png,GameOver_png,green_png,green_heart_png,HelloWorld_png,Help_1_png,Help_2_png,Item_pause_png,menu_about_png,menu_CDKEY_png,menu_continue_png,menu_continue2_png,menu_continuegame_png,menu_help_png,menu_lingjiang_png,menu_lingqu_png,menu_money_png,menu_moregame_png,menu_shop_png,menu_sound_off_png,menu_sound_on_png,menu_start_png,menu_Text_png,menu_top_png,MrDu_png,MrDu_choujiang1_png,MrDu_choujiang2_png,beep_ogg,clear_ogg,coin_ogg,coinsin_ogg,combo_1_ogg,combo_2_ogg,combo_3_ogg,fireworks_01_wav,fireworks_02_wav,fireworks_03_wav,landing_ogg,music_ogg,NextGameRound_ogg,pop_ogg,Props_Bomb_ogg,Props_Paint_ogg,Props_Rainbow_ogg,readygo_ogg,new_png,orange_png,orange_heart_png,paint_arrow_png,paint_back_png,paint_bg_png,Pause_png,Props_Bomb_png,Props_Paint_png,Props_Rainbow_png,purple_png,purple_heart_png,red_png,red_heart_png,Shop_Onece_png,sound_on_png,stage_clear_png,star_png,Title_CDKEY_png,Title_choujiang_png,Title_Help_png,Title_OneceShop_png,Title_Pause_png,Title_QuickShop_png,Title_shop_png,zengsong_png",
 			"name": "star"
+		},
+		{
+			"keys": "main_bg0_png,roles_json,levels_json,level_14_png,level_13_png,level_12_png,level_11_png,level_10_png,level_09_png,level_08_png,level_07_png,level_06_png,level_05_png,level_04_png,level_03_png,level_02_png,level_01_png,level_00_png,ispass_1_png,ispass_0_png,icon_png,guide_bg_png,gou_png,exit_png,about_png,menuword_png,num_png,p_00_0_png,p_01_0_png,p_02_0_png,p_03_0_png,p_04_0_png,p_05_0_png,p_06_0_png,p_07_0_png,p_08_0_png,p_09_0_png,p_10_0_png,p_11_0_png,menu_bg_png,level_bg_png,logo_png,rank_bg_png",
+			"name": "huarongdao"
 		}
 	],
 	"resources": [
@@ -697,6 +701,251 @@
 			"url": "assets/ToggleSwitch/on.png",
 			"type": "image",
 			"name": "on_png"
+		},
+		{
+			"url": "assets/huarongdao/about.png",
+			"type": "image",
+			"name": "about_png"
+		},
+		{
+			"url": "assets/huarongdao/exit.png",
+			"type": "image",
+			"name": "exit_png"
+		},
+		{
+			"url": "assets/huarongdao/gou.png",
+			"type": "image",
+			"name": "gou_png"
+		},
+		{
+			"url": "assets/huarongdao/guide_bg.png",
+			"type": "image",
+			"name": "guide_bg_png"
+		},
+		{
+			"url": "assets/huarongdao/icon.png",
+			"type": "image",
+			"name": "icon_png"
+		},
+		{
+			"url": "assets/huarongdao/ispass_0.png",
+			"type": "image",
+			"name": "ispass_0_png"
+		},
+		{
+			"url": "assets/huarongdao/ispass_1.png",
+			"type": "image",
+			"name": "ispass_1_png"
+		},
+		{
+			"url": "assets/huarongdao/level_00.png",
+			"type": "image",
+			"name": "level_00_png"
+		},
+		{
+			"url": "assets/huarongdao/level_01.png",
+			"type": "image",
+			"name": "level_01_png"
+		},
+		{
+			"url": "assets/huarongdao/level_02.png",
+			"type": "image",
+			"name": "level_02_png"
+		},
+		{
+			"url": "assets/huarongdao/level_03.png",
+			"type": "image",
+			"name": "level_03_png"
+		},
+		{
+			"url": "assets/huarongdao/level_04.png",
+			"type": "image",
+			"name": "level_04_png"
+		},
+		{
+			"url": "assets/huarongdao/level_05.png",
+			"type": "image",
+			"name": "level_05_png"
+		},
+		{
+			"url": "assets/huarongdao/level_06.png",
+			"type": "image",
+			"name": "level_06_png"
+		},
+		{
+			"url": "assets/huarongdao/level_07.png",
+			"type": "image",
+			"name": "level_07_png"
+		},
+		{
+			"url": "assets/huarongdao/level_08.png",
+			"type": "image",
+			"name": "level_08_png"
+		},
+		{
+			"url": "assets/huarongdao/level_09.png",
+			"type": "image",
+			"name": "level_09_png"
+		},
+		{
+			"url": "assets/huarongdao/level_10.png",
+			"type": "image",
+			"name": "level_10_png"
+		},
+		{
+			"url": "assets/huarongdao/level_11.png",
+			"type": "image",
+			"name": "level_11_png"
+		},
+		{
+			"url": "assets/huarongdao/level_12.png",
+			"type": "image",
+			"name": "level_12_png"
+		},
+		{
+			"url": "assets/huarongdao/level_13.png",
+			"type": "image",
+			"name": "level_13_png"
+		},
+		{
+			"url": "assets/huarongdao/level_14.png",
+			"type": "image",
+			"name": "level_14_png"
+		},
+		{
+			"url": "assets/huarongdao/level_bg.png",
+			"type": "image",
+			"name": "level_bg_png"
+		},
+		{
+			"url": "assets/huarongdao/logo.png",
+			"type": "image",
+			"name": "logo_png"
+		},
+		{
+			"url": "assets/huarongdao/logo_zhao.png",
+			"type": "image",
+			"name": "logo_zhao_png"
+		},
+		{
+			"url": "assets/huarongdao/main_bg0.png",
+			"type": "image",
+			"name": "main_bg0_png"
+		},
+		{
+			"url": "assets/huarongdao/main_bg1.png",
+			"type": "image",
+			"name": "main_bg1_png"
+		},
+		{
+			"url": "assets/huarongdao/main_menu.png",
+			"type": "image",
+			"name": "main_menu_png"
+		},
+		{
+			"url": "assets/huarongdao/main_menubox.png",
+			"type": "image",
+			"name": "main_menubox_png"
+		},
+		{
+			"url": "assets/huarongdao/menu_bg.png",
+			"type": "image",
+			"name": "menu_bg_png"
+		},
+		{
+			"url": "assets/huarongdao/menu_box.png",
+			"type": "image",
+			"name": "menu_box_png"
+		},
+		{
+			"url": "assets/huarongdao/menuword.png",
+			"type": "image",
+			"name": "menuword_png"
+		},
+		{
+			"url": "assets/huarongdao/num.png",
+			"type": "image",
+			"name": "num_png"
+		},
+		{
+			"url": "assets/huarongdao/p_00_0.png",
+			"type": "image",
+			"name": "p_00_0_png"
+		},
+		{
+			"url": "assets/huarongdao/p_01_0.png",
+			"type": "image",
+			"name": "p_01_0_png"
+		},
+		{
+			"url": "assets/huarongdao/p_02_0.png",
+			"type": "image",
+			"name": "p_02_0_png"
+		},
+		{
+			"url": "assets/huarongdao/p_03_0.png",
+			"type": "image",
+			"name": "p_03_0_png"
+		},
+		{
+			"url": "assets/huarongdao/p_04_0.png",
+			"type": "image",
+			"name": "p_04_0_png"
+		},
+		{
+			"url": "assets/huarongdao/p_05_0.png",
+			"type": "image",
+			"name": "p_05_0_png"
+		},
+		{
+			"url": "assets/huarongdao/p_06_0.png",
+			"type": "image",
+			"name": "p_06_0_png"
+		},
+		{
+			"url": "assets/huarongdao/p_07_0.png",
+			"type": "image",
+			"name": "p_07_0_png"
+		},
+		{
+			"url": "assets/huarongdao/p_08_0.png",
+			"type": "image",
+			"name": "p_08_0_png"
+		},
+		{
+			"url": "assets/huarongdao/p_09_0.png",
+			"type": "image",
+			"name": "p_09_0_png"
+		},
+		{
+			"url": "assets/huarongdao/p_10_0.png",
+			"type": "image",
+			"name": "p_10_0_png"
+		},
+		{
+			"url": "assets/huarongdao/p_11_0.png",
+			"type": "image",
+			"name": "p_11_0_png"
+		},
+		{
+			"url": "assets/huarongdao/rank_bg.png",
+			"type": "image",
+			"name": "rank_bg_png"
+		},
+		{
+			"url": "assets/huarongdao/set_bg.png",
+			"type": "image",
+			"name": "set_bg_png"
+		},
+		{
+			"url": "assets/huarongdao/roles.json",
+			"type": "json",
+			"name": "roles_json"
+		},
+		{
+			"url": "assets/huarongdao/levels.json",
+			"type": "json",
+			"name": "levels_json"
 		}
 	]
 }

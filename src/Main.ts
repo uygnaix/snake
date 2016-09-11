@@ -71,7 +71,8 @@ class Main extends egret.DisplayObjectContainer {
         // RES.loadGroup('gboy');
         // RES.loadGroup('button');
         // RES.loadGroup('jade');
-        RES.loadGroup('star');
+        // RES.loadGroup('star');
+        RES.loadGroup('huarongdao');
 
     }
 
@@ -80,7 +81,7 @@ class Main extends egret.DisplayObjectContainer {
      * Preload resource group is loaded
      */
     private onResourceLoadComplete(event:RES.ResourceEvent):void {
-        if (event.groupName == "star") {
+        if (event.groupName == "huarongdao") {
             this.stage.removeChild(this.loadingView);
             RES.removeEventListener(RES.ResourceEvent.GROUP_COMPLETE, this.onResourceLoadComplete, this);
             RES.removeEventListener(RES.ResourceEvent.GROUP_LOAD_ERROR, this.onResourceLoadError, this);
@@ -114,7 +115,7 @@ class Main extends egret.DisplayObjectContainer {
      * Loading process of preload resource group
      */
     private onResourceProgress(event:RES.ResourceEvent):void {
-        if (event.groupName == "star") {
+        if (event.groupName == "huarongdao") {
             this.loadingView.setProgress(event.itemsLoaded, event.itemsTotal);
         }
     }
@@ -127,7 +128,7 @@ class Main extends egret.DisplayObjectContainer {
 
         var stageW:number = this.stage.stageWidth;
         var stageH:number = this.stage.stageHeight;
-        var gameScene = new XYStar.MenuScene(stageW, stageH);
+        var gameScene = new XYHRD.GameScene(stageW, stageH);
         this.addChild(gameScene);
     }
 }
