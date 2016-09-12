@@ -123,9 +123,9 @@ var egret;
              * @private
              */
             this._connecting = false;
-	        /**
-	         * @private
-	         */
+            /**
+             * @private
+             */
             this._isReadySend = false;
             /**
              * @private
@@ -159,20 +159,20 @@ var egret;
          * @platform Web,Native
          */
         p.connect = function (host, port) {
-	        if (!this._connecting && !this._connected) {
-		        this._connecting = true;
-		        this.socket.connect(host, port);
-	        }
+            if (!this._connecting && !this._connected) {
+                this._connecting = true;
+                this.socket.connect(host, port);
+            }
         };
         /**
          * 根据提供的url连接
          * @param url 全地址。如ws://echo.websocket.org:80
          */
         p.connectByUrl = function (url) {
-	        if (!this._connecting && !this._connected) {
-		        this._connecting = true;
-		        this.socket.connectByUrl(url);
-	        }
+            if (!this._connecting && !this._connected) {
+                this._connecting = true;
+                this.socket.connectByUrl(url);
+            }
         };
         /**
          * @language en_US
@@ -187,18 +187,18 @@ var egret;
          * @platform Web,Native
          */
         p.close = function () {
-	        if (this._connected) {
-		        this.socket.close();
-	        }
+            if (this._connected) {
+                this.socket.close();
+            }
         };
         /**
          * @private
          *
          */
         p.onConnect = function () {
-	        this._connected = true;
-	        this._connecting = false;
-	        this.dispatchEventWith(egret.Event.CONNECT);
+            this._connected = true;
+            this._connecting = false;
+            this.dispatchEventWith(egret.Event.CONNECT);
         };
         /**
          * @private
@@ -213,9 +213,9 @@ var egret;
          *
          */
         p.onError = function () {
-	        if (this._connecting) {
-		        this._connecting = false;
-	        }
+            if (this._connecting) {
+                this._connecting = false;
+            }
             this.dispatchEventWith(egret.IOErrorEvent.IO_ERROR);
         };
         /**

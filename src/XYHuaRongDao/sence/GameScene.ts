@@ -28,12 +28,15 @@ module XYHRD {
          * 载入必须数据
          */
         private loadData() {
+            //载入角色数据
+            Role.load();
             //载入关卡数据
             Level.load();
         }
 
         public start() {
             this.gameLayer = new GameLayer(0);
+            this.addChild(this.gameLayer);
         }
     }
 }

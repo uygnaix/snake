@@ -38,6 +38,7 @@ var game_file_list = [
 	"bin-debug/jade/scene/JadeScene.js",
 	"bin-debug/jade/scene/layer/GameLayer.js",
 	"bin-debug/jade/sprite/enemy.js",
+	"bin-debug/XYHuaRongDao/data/constant.js",
 	//----auto game_file_list end----
 ];
 

@@ -6,10 +6,11 @@ module XYHRD {
 
         private static levels:Level[] = [];
 
-        public index:number;
+        private index:number;
         public roleIds:number[];
         public roleRows:number[];
         public roleCols:number[];
+        public roles:Role[]=[];
 
         /**
          * 资源载入完成后载入数据
@@ -25,8 +26,8 @@ module XYHRD {
             }
         }
 
-        static get(number:number):Level {
-            return Level.levels[number];
+        public static get(index:number):Level {
+            return Level.levels[index];
         }
 
 
@@ -35,6 +36,12 @@ module XYHRD {
             this.roleIds = roleIds;
             this.roleRows = roleRows;
             this.roleCols = roleCols;
+            for(var i=0;i<roleIds.length;i++){
+                var role = Role.get(this.roleIds[i]);
+                this.roles.push(role);
+            }
+
         }
+
     }
 }
