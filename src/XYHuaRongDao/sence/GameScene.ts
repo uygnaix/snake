@@ -36,6 +36,8 @@ module XYHRD {
 
         public start() {
             this.gameLayer = new GameLayer(0);
+            this.gameLayer.x = Constant.PADDING_LEFT;
+            this.gameLayer.y = Constant.PADDING_TOP;
             this.addChild(this.gameLayer);
         }
     }
