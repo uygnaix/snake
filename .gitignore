@@ -4,6 +4,9 @@
 # IntelliJ project files
 .idea
 *.iml
+.wing
+bin-debug
+bin-release
 out
 gen
 # Created by .ignore support plugin (hsz.mobi)
