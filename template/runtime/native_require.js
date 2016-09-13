@@ -21,8 +21,9 @@ var game_file_list = [
 	"bin-debug/XYGBoy/game/DotSnakePanel.js",
 	"bin-debug/XYGBoy/math/MatrixPointer.js",
 	"bin-debug/XYGBoy/scene/GameScene.js",
-	"bin-debug/XYHuaRongDao/data/level.js",
-	"bin-debug/XYHuaRongDao/data/role.js",
+	"bin-debug/XYHuaRongDao/data/Constant.js",
+	"bin-debug/XYHuaRongDao/data/Level.js",
+	"bin-debug/XYHuaRongDao/data/Role.js",
 	"bin-debug/XYHuaRongDao/layer/GameLayer.js",
 	"bin-debug/XYHuaRongDao/sence/GameScene.js",
 	"bin-debug/XYHuaRongDao/sprite/RoleSprite.js",
@@ -38,7 +39,6 @@ var game_file_list = [
 	"bin-debug/jade/scene/JadeScene.js",
 	"bin-debug/jade/scene/layer/GameLayer.js",
 	"bin-debug/jade/sprite/enemy.js",
-	"bin-debug/XYHuaRongDao/data/constant.js",
 	//----auto game_file_list end----
 ];
 
