@@ -8,6 +8,7 @@ module XYHRD {
     import TouchEvent = egret.TouchEvent;
     import Point = egret.Point;
     import DirectionType = XY.DirectionType;
+    import Bitmap = egret.Bitmap;
 
     export class GameLayer extends DisplayObjectContainer {
 
@@ -50,6 +51,7 @@ module XYHRD {
                 var isHit:boolean = role.hitTestPoint(this.touchBeginPoint.x, this.touchBeginPoint.y);
                 if (isHit) {
                     this.target = role;
+                    console.log(this.target);
                     break;
                 }
             }
@@ -70,34 +72,45 @@ module XYHRD {
          * 每个role选两个特征点,1/3处和2/3处
          */
         private canMove(direction:DirectionType):boolean {
-            var x13 = this.target.x + this.target.width / 3;
-            var y13 = this.target.y + this.target.height / 3;
-            var x23 = this.target.x + this.target.width * 2 / 3;
-            var y23 = this.target.y + this.target.height * 2 / 3;
-            debugger;
+
+            var hitX = this.target.column * Constant.GRID_SIZE + this.target.width / 3;
+            var hitY = this.target.row * Constant.GRID_SIZE + this.target.height / 3;
+            var hitX2 = this.target.column * Constant.GRID_SIZE + this.target.width * 2 / 3;
+            var hitY2 = this.target.row * Constant.GRID_SIZE + this.target.height * 2 / 3;
+
+
             switch (direction) {
                 case DirectionType.UP:
-                    y13 = y13 - Constant.GRID_SIZE_HALF;
-                    y23 = y23 - Constant.GRID_SIZE_HALF;
+                    hitY = hitY - Constant.GRID_SIZE;
+                    hitY2 = hitY2 - Constant.GRID_SIZE * this.target.gridHeight;
                     break;
                 case DirectionType.DOWN:
-                    y13 = y13 + Constant.GRID_SIZE_HALF;
-                    y23 = y23 + Constant.GRID_SIZE_HALF;
+                    hitY = hitY + Constant.GRID_SIZE * this.target.gridHeight;
+                    hitY2 = hitY2 + Constant.GRID_SIZE;
                     break;
                 case DirectionType.LEFT:
-                    x13 = x13 - Constant.GRID_SIZE_HALF;
-                    x23 = x23 - Constant.GRID_SIZE_HALF;
+                    hitX = hitX - Constant.GRID_SIZE;
+                    hitX2 = hitX2 - Constant.GRID_SIZE * this.target.gridWidth;
                     break;
                 case DirectionType.RIGHT:
-                    x13 = x13 + Constant.GRID_SIZE_HALF;
-                    x23 = x23 + Constant.GRID_SIZE_HALF;
+                    hitX = hitX + Constant.GRID_SIZE * this.target.gridWidth;
+                    hitX2 = hitX2 + Constant.GRID_SIZE;
                     break;
             }
+
+            //是否出界
+            if (hitY < 0 || hitY > 5 * Constant.GRID_SIZE || hitX < 0 || hitX > 4 * Constant.GRID_SIZE
+                || hitY2 < 0 || hitY2 > 5 * Constant.GRID_SIZE || hitX2 < 0 || hitX2 > 4 * Constant.GRID_SIZE) {
+                console.log('移动方向出界:' + direction);
+                return false;
+            }
+
             //判断是否碰撞
             var canMove:boolean = true;
             for (var i = 0; i < this.roles.length; i++) {
                 var role:RoleSprite = this.roles[i];
-                if (role.hitTestPoint(x13, y13) && role.hitTestPoint(x23, y23)) {
+                if (role.hitTestPoint(hitX, hitY) || role.hitTestPoint(hitX2, hitY2)) {
+                    console.log('移动方向有障碍物:' + direction, role);
                     canMove = false;
                 }
             }
@@ -105,25 +118,24 @@ module XYHRD {
         }
 
         private move(direction:DirectionType) {
-            var targetX:number = this.target.x;
-            var targetY:number = this.target.y;
 
             switch (direction) {
                 case DirectionType.UP:
-                    targetY = targetY - Constant.GRID_SIZE;
+                    this.target.row--;
                     break;
                 case DirectionType.DOWN:
-                    targetY = targetY + Constant.GRID_SIZE;
+                    this.target.row++;
                     break;
                 case DirectionType.LEFT:
-                    targetX = targetX - Constant.GRID_SIZE;
+                    this.target.column--;
                     break;
                 case DirectionType.RIGHT:
-                    targetX = targetX + Constant.GRID_SIZE;
+                    this.target.column++;
                     break;
             }
-
-            var tw = egret.Tween.get(this.target).to({x: targetX, y: targetY}, 1000);
+            var targetX = this.target.column * Constant.GRID_SIZE;
+            var targetY = this.target.row * Constant.GRID_SIZE;
+            egret.Tween.get(this.target).to({x: targetX, y: targetY}, 1000);
 
         }
 
