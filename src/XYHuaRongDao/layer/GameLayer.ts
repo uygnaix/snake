@@ -9,6 +9,7 @@ module XYHRD {
     import Point = egret.Point;
     import DirectionType = XY.DirectionType;
     import Bitmap = egret.Bitmap;
+    import DisplayObject = egret.DisplayObject;
 
     export class GameLayer extends DisplayObjectContainer {
 
@@ -21,6 +22,7 @@ module XYHRD {
 
         constructor(levelIndex:number) {
             super();
+            this.loadBG();
             this.level = Level.get(levelIndex);
             for (var i = 0; i < this.level.roles.length; i++) {
                 var role = new RoleSprite(this.level.roles[i],
@@ -28,6 +30,14 @@ module XYHRD {
                 this.roles.push(role);
             }
             this.init();
+        }
+
+        private loadBG(){
+            var bg = new Bitmap(RES.getRes('controller_bg_png'));
+            bg.width = 320;
+            bg.height = 480;
+            bg.alpha = 0;
+            this.addChild(bg);
         }
 
         private init() {
@@ -51,7 +61,6 @@ module XYHRD {
                 var isHit:boolean = role.hitTestPoint(this.touchBeginPoint.x, this.touchBeginPoint.y);
                 if (isHit) {
                     this.target = role;
-                    console.log(this.target);
                     break;
                 }
             }
@@ -65,6 +74,7 @@ module XYHRD {
             if (this.canMove(direction)) {
                 this.move(direction);
             }
+            this.target = null;
         }
 
         /**
@@ -72,7 +82,9 @@ module XYHRD {
          * 每个role选两个特征点,1/3处和2/3处
          */
         private canMove(direction:DirectionType):boolean {
-
+            if(this.target==null){
+                return false;
+            }
             var hitX = this.target.column * Constant.GRID_SIZE + this.target.width / 3;
             var hitY = this.target.row * Constant.GRID_SIZE + this.target.height / 3;
             var hitX2 = this.target.column * Constant.GRID_SIZE + this.target.width * 2 / 3;
@@ -109,7 +121,7 @@ module XYHRD {
             var canMove:boolean = true;
             for (var i = 0; i < this.roles.length; i++) {
                 var role:RoleSprite = this.roles[i];
-                if (role.hitTestPoint(hitX, hitY) || role.hitTestPoint(hitX2, hitY2)) {
+                if (this.hitTest(role,hitX, hitY) || this.hitTest(role,hitX2, hitY2)) {
                     console.log('移动方向有障碍物:' + direction, role);
                     canMove = false;
                 }
@@ -139,6 +151,14 @@ module XYHRD {
 
         }
 
+        private hitTest(role:DisplayObject,x,y):boolean{
+            return role.hitTestPoint(x+Constant.PADDING_LEFT,y+Constant.PADDING_TOP);
+        }
+        private change2ScenePoint(point:Point):Point{
+            point.x += Constant.PADDING_LEFT;
+            point.y += Constant.PADDING_TOP;
+            return point;
+        }
 
     }
 }

@@ -5,7 +5,7 @@
 			"name": "gboy"
 		},
 		{
-			"keys": "btn_a_png,btn_b_png,btn_down_png,btn_left_png,btn_right_png,btn_up_png",
+			"keys": "btn_a_png,btn_b_png,btn_down_png,btn_left_png,btn_right_png,btn_up_png,controller_bg_png",
 			"name": "button"
 		},
 		{
@@ -946,6 +946,16 @@
 			"url": "assets/huarongdao/levels.json",
 			"type": "json",
 			"name": "levels_json"
+		},
+		{
+			"url": "default.res.json",
+			"type": "json",
+			"name": "default.res_json"
+		},
+		{
+			"url": "assets/controller_bg.png",
+			"type": "image",
+			"name": "controller_bg_png"
 		}
 	]
 }
