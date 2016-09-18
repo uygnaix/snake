@@ -11,6 +11,8 @@ module XYHRD {
         public roleRows:number[];
         public roleCols:number[];
         public roles:Role[]=[];
+        public exitRow:number;
+        public exitCol:number;
 
         /**
          * 资源载入完成后载入数据
@@ -21,7 +23,7 @@ module XYHRD {
             for (var i=0;i<levelData.length;i++) {
                 var levelInfo = levelData[i];
                 var level = new Level(levelInfo['index'], levelInfo['role_id'],
-                    levelInfo['row'], levelInfo['col']);
+                    levelInfo['row'], levelInfo['col'],levelInfo['exit_row'],levelInfo['exit_col']);
                 Level.levels.push(level);
             }
         }
@@ -30,8 +32,8 @@ module XYHRD {
             return Level.levels[index];
         }
 
-
-        constructor(index:number, roleIds:number[], roleRows:number[], roleCols:number[]) {
+        constructor(index:number, roleIds:number[], roleRows:number[], roleCols:number[],
+                    exitRow:number, exitCol:number) {
             this.index = index;
             this.roleIds = roleIds;
             this.roleRows = roleRows;
@@ -40,8 +42,8 @@ module XYHRD {
                 var role = Role.get(this.roleIds[i]);
                 this.roles.push(role);
             }
-
+            this.exitRow = exitRow;
+            this.exitCol = exitCol;
         }
-
     }
 }

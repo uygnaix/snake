@@ -27,10 +27,10 @@ module XYHRD {
             return Role.roles[id];
         }
 
-        constructor(id:number, img:string, type:XYHRD.RoleType, gridWidth:number, gridHeight:number) {
+        constructor(id:number, img:string, type:string, gridWidth:number, gridHeight:number) {
             this.id = id;
             this.img = img;
-            this.type = type;
+            this.type = XYHRD.RoleType[type];
             this.gridWidth = gridWidth;
             this.gridHeight = gridHeight;
         }

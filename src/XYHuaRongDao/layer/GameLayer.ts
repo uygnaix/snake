@@ -10,11 +10,14 @@ module XYHRD {
     import DirectionType = XY.DirectionType;
     import Bitmap = egret.Bitmap;
     import DisplayObject = egret.DisplayObject;
+    import OverStatus = XY.OverStatus;
+    import log = egret.log;
 
     export class GameLayer extends DisplayObjectContainer {
 
         public level:Level;
         public roles:RoleSprite[] = [];
+        private hero:RoleSprite;
 
         private isMoving:boolean;
         private touchBeginPoint:Point;
@@ -28,6 +31,9 @@ module XYHRD {
                 var role = new RoleSprite(this.level.roles[i],
                     this.level.roleRows[i], this.level.roleCols[i]);
                 this.roles.push(role);
+                if(role.role.type == RoleType.hero) {
+                    this.hero = role;
+                }
             }
             this.init();
         }
@@ -73,6 +79,7 @@ module XYHRD {
                 endPoint.x, endPoint.y);
             if (this.canMove(direction)) {
                 this.move(direction);
+                this.over();
             }
             this.target = null;
         }
@@ -154,11 +161,11 @@ module XYHRD {
         private hitTest(role:DisplayObject,x,y):boolean{
             return role.hitTestPoint(x+Constant.PADDING_LEFT,y+Constant.PADDING_TOP);
         }
-        private change2ScenePoint(point:Point):Point{
-            point.x += Constant.PADDING_LEFT;
-            point.y += Constant.PADDING_TOP;
-            return point;
-        }
 
+        private over(){
+            if(this.hero.row == this.level.exitRow && this.hero.column == this.level.exitCol){
+                console.log('WIN!');
+            }
+        }
     }
 }
