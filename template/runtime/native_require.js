@@ -41,19 +41,6 @@ var game_file_list = [
 	"bin-debug/XYStar/scene/MenuScene.js",
 	"bin-debug/XYStar/widget/FloatingBanner.js",
 	"bin-debug/XYStar/widget/Toast.js",
-	"bin-debug/resource/eui_skins/ButtonSkin.g.js",
-	"bin-debug/resource/eui_skins/CheckBoxSkin.g.js",
-	"bin-debug/resource/eui_skins/HScrollBarSkin.g.js",
-	"bin-debug/resource/eui_skins/HSliderSkin.g.js",
-	"bin-debug/resource/eui_skins/ItemRendererSkin.g.js",
-	"bin-debug/resource/eui_skins/PanelSkin.g.js",
-	"bin-debug/resource/eui_skins/ProgressBarSkin.g.js",
-	"bin-debug/resource/eui_skins/RadioButtonSkin.g.js",
-	"bin-debug/resource/eui_skins/ScrollerSkin.g.js",
-	"bin-debug/resource/eui_skins/TextInputSkin.g.js",
-	"bin-debug/resource/eui_skins/ToggleSwitchSkin.g.js",
-	"bin-debug/resource/eui_skins/VScrollBarSkin.g.js",
-	"bin-debug/resource/eui_skins/VSliderSkin.g.js",
 	//----auto game_file_list end----
 ];
 
