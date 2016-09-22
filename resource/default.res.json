@@ -19,6 +19,10 @@
 		{
 			"keys": "main_bg0_png,roles_json,levels_json,level_14_png,level_13_png,level_12_png,level_11_png,level_10_png,level_09_png,level_08_png,level_07_png,level_06_png,level_05_png,level_04_png,level_03_png,level_02_png,level_01_png,level_00_png,ispass_1_png,ispass_0_png,icon_png,guide_bg_png,gou_png,exit_png,about_png,menuword_png,num_png,p_00_0_png,p_01_0_png,p_02_0_png,p_03_0_png,p_04_0_png,p_05_0_png,p_06_0_png,p_07_0_png,p_08_0_png,p_09_0_png,p_10_0_png,p_11_0_png,menu_bg_png,level_bg_png,logo_png,rank_bg_png",
 			"name": "huarongdao"
+		},
+		{
+			"keys": "grid_bg_png",
+			"name": "pirate"
 		}
 	],
 	"resources": [
@@ -588,16 +592,6 @@
 			"name": "zengsong_png"
 		},
 		{
-			"url": "assets/Panel/border.png",
-			"type": "image",
-			"name": "border_png"
-		},
-		{
-			"url": "assets/Panel/header.png",
-			"type": "image",
-			"name": "header_png"
-		},
-		{
 			"url": "assets/button/button_up.png",
 			"type": "image",
 			"name": "button_up_png"
@@ -608,99 +602,9 @@
 			"name": "button_down_png"
 		},
 		{
-			"url": "assets/Slider/thumb.png",
-			"type": "image",
-			"name": "thumb_png"
-		},
-		{
-			"url": "assets/Slider/track.png",
-			"type": "image",
-			"name": "track_png"
-		},
-		{
-			"url": "assets/Slider/tracklight.png",
-			"type": "image",
-			"name": "tracklight_png"
-		},
-		{
-			"url": "assets/CheckBox/checkbox_select_disabled.png",
-			"type": "image",
-			"name": "checkbox_select_disabled_png"
-		},
-		{
-			"url": "assets/CheckBox/checkbox_select_down.png",
-			"type": "image",
-			"name": "checkbox_select_down_png"
-		},
-		{
-			"url": "assets/CheckBox/checkbox_select_up.png",
-			"type": "image",
-			"name": "checkbox_select_up_png"
-		},
-		{
-			"url": "assets/CheckBox/checkbox_unselect.png",
-			"type": "image",
-			"name": "checkbox_unselect_png"
-		},
-		{
-			"url": "assets/ScrollBar/roundthumb.png",
-			"type": "image",
-			"name": "roundthumb_png"
-		},
-		{
-			"url": "assets/ScrollBar/track_sb.png",
-			"type": "image",
-			"name": "track_sb_png"
-		},
-		{
-			"url": "assets/ProgressBar/thumb_pb.png",
-			"type": "image",
-			"name": "thumb_pb_png"
-		},
-		{
-			"url": "assets/ProgressBar/track_pb.png",
-			"type": "image",
-			"name": "track_pb_png"
-		},
-		{
-			"url": "assets/RadioButton/radiobutton_select_disabled.png",
-			"type": "image",
-			"name": "radiobutton_select_disabled_png"
-		},
-		{
-			"url": "assets/RadioButton/radiobutton_select_down.png",
-			"type": "image",
-			"name": "radiobutton_select_down_png"
-		},
-		{
-			"url": "assets/RadioButton/radiobutton_select_up.png",
-			"type": "image",
-			"name": "radiobutton_select_up_png"
-		},
-		{
-			"url": "assets/RadioButton/radiobutton_unselect.png",
-			"type": "image",
-			"name": "radiobutton_unselect_png"
-		},
-		{
 			"url": "assets/ItemRenderer/selected.png",
 			"type": "image",
 			"name": "selected_png"
-		},
-		{
-			"url": "assets/ToggleSwitch/handle.png",
-			"type": "image",
-			"name": "handle_png"
-		},
-		{
-			"url": "assets/ToggleSwitch/off.png",
-			"type": "image",
-			"name": "off_png"
-		},
-		{
-			"url": "assets/ToggleSwitch/on.png",
-			"type": "image",
-			"name": "on_png"
 		},
 		{
 			"url": "assets/huarongdao/about.png",
@@ -956,6 +860,11 @@
 			"url": "assets/controller_bg.png",
 			"type": "image",
 			"name": "controller_bg_png"
+		},
+		{
+			"url": "assets/pirate/grid_bg.png",
+			"type": "image",
+			"name": "grid_bg_png"
 		}
 	]
 }

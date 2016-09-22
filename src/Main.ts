@@ -29,6 +29,8 @@
 
 class Main extends egret.DisplayObjectContainer {
 
+    private firstResGroup:string = 'pirate';
+
     /**
      * 加载进度界面
      * Process interface loading
@@ -72,7 +74,7 @@ class Main extends egret.DisplayObjectContainer {
         RES.loadGroup('button');
         // RES.loadGroup('jade');
         // RES.loadGroup('star');
-        RES.loadGroup('huarongdao');
+        RES.loadGroup(this.firstResGroup);
 
     }
 
@@ -81,7 +83,7 @@ class Main extends egret.DisplayObjectContainer {
      * Preload resource group is loaded
      */
     private onResourceLoadComplete(event:RES.ResourceEvent):void {
-        if (event.groupName == "huarongdao") {
+        if (event.groupName == this.firstResGroup) {
             this.stage.removeChild(this.loadingView);
             RES.removeEventListener(RES.ResourceEvent.GROUP_COMPLETE, this.onResourceLoadComplete, this);
             RES.removeEventListener(RES.ResourceEvent.GROUP_LOAD_ERROR, this.onResourceLoadError, this);
@@ -115,7 +117,7 @@ class Main extends egret.DisplayObjectContainer {
      * Loading process of preload resource group
      */
     private onResourceProgress(event:RES.ResourceEvent):void {
-        if (event.groupName == "huarongdao") {
+        if (event.groupName == this.firstResGroup) {
             this.loadingView.setProgress(event.itemsLoaded, event.itemsTotal);
         }
     }
@@ -128,7 +130,8 @@ class Main extends egret.DisplayObjectContainer {
 
         var stageW:number = this.stage.stageWidth;
         var stageH:number = this.stage.stageHeight;
-        var gameScene = new XYHRD.GameScene(stageW, stageH);
+        // var gameScene = new XYHRD.GameScene(stageW, stageH);
+        var gameScene = new XYPirate.PirateScene(stageW, stageH);
         this.addChild(gameScene);
     }
 }

@@ -35,6 +35,8 @@ var game_file_list = [
 	"bin-debug/XYJade/scene/JadeScene.js",
 	"bin-debug/XYJade/scene/layer/GameLayer.js",
 	"bin-debug/XYJade/sprite/enemy.js",
+	"bin-debug/XYPirate/layer/GridLayer.js",
+	"bin-debug/XYPirate/scene/PirateScene.js",
 	"bin-debug/XYStar/layer/GameLayer.js",
 	"bin-debug/XYStar/layer/MenuLayer.js",
 	"bin-debug/XYStar/scene/GameScene.js",
