@@ -21,7 +21,7 @@
 			"name": "huarongdao"
 		},
 		{
-			"keys": "grid_bg_png",
+			"keys": "grid_bg_png,octagon_png",
 			"name": "pirate"
 		}
 	],
@@ -865,6 +865,11 @@
 			"url": "assets/pirate/grid_bg.png",
 			"type": "image",
 			"name": "grid_bg_png"
+		},
+		{
+			"url": "assets/pirate/octagon.png",
+			"type": "image",
+			"name": "octagon_png"
 		}
 	]
 }
