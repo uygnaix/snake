@@ -43,6 +43,7 @@ var game_file_list = [
 	"bin-debug/XYStar/scene/MenuScene.js",
 	"bin-debug/XYStar/widget/FloatingBanner.js",
 	"bin-debug/XYStar/widget/Toast.js",
+	"bin-debug/XYPirate/layer/ControlLayer.js",
 	//----auto game_file_list end----
 ];
 

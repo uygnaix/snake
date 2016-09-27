@@ -4,25 +4,27 @@
 module XYPirate {
     export class PirateScene extends egret.DisplayObjectContainer{
 
+        private gridLayer:GridLayer;
+        private controlLayer:ControlLayer;
+
         constructor(width:number, height:number) {
             super();
             this.width = width;
             this.height = height;
-            this.loadBG();
+            this.loadGrid();
             this.start();
         }
 
-        private loadBG() {
-            var bg = new egret.Bitmap(RES.getRes('grid_bg_png'));
-            bg.fillMode = egret.BitmapFillMode.REPEAT;
-            bg.width = this.width;
-            bg.height = this.height;
-            this.addChild(bg);
+        private loadGrid(){
+            this.gridLayer = new GridLayer(this.width,this.height);
+            this.addChild(this.gridLayer);
         }
-
+        private loadControl(){
+            this.controlLayer = new ControlLayer();
+            this.addChild(this.controlLayer);
+        }
         public start() {
-            var layer = new GridLayer();
-            this.addChild(layer);
+
         }
     }
 }
