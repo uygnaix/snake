@@ -35,6 +35,7 @@ var game_file_list = [
 	"bin-debug/XYJade/scene/JadeScene.js",
 	"bin-debug/XYJade/scene/layer/GameLayer.js",
 	"bin-debug/XYJade/sprite/enemy.js",
+	"bin-debug/XYPirate/layer/ControlLayer.js",
 	"bin-debug/XYPirate/layer/GridLayer.js",
 	"bin-debug/XYPirate/scene/PirateScene.js",
 	"bin-debug/XYStar/layer/GameLayer.js",
@@ -43,7 +44,7 @@ var game_file_list = [
 	"bin-debug/XYStar/scene/MenuScene.js",
 	"bin-debug/XYStar/widget/FloatingBanner.js",
 	"bin-debug/XYStar/widget/Toast.js",
-	"bin-debug/XYPirate/layer/ControlLayer.js",
+	"bin-debug/XYPirate/core/Neuron.js",
 	//----auto game_file_list end----
 ];
 
