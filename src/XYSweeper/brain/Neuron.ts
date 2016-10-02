@@ -103,7 +103,7 @@ module XYSweeper {
          * 设置所有权重　
          * @param weights
          */
-        public setAllWeights(weights:[number]) {
+        public evolve(weights:[number]) {
 
         }
 

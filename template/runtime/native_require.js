@@ -44,8 +44,11 @@ var game_file_list = [
 	"bin-debug/XYStar/scene/MenuScene.js",
 	"bin-debug/XYStar/widget/FloatingBanner.js",
 	"bin-debug/XYStar/widget/Toast.js",
-	"bin-debug/XYSweeper/brain/Neuron.js",
 	"bin-debug/XYSweeper/brain/Genome.js",
+	"bin-debug/XYSweeper/brain/Neuron.js",
+	"bin-debug/XYSweeper/world/Controller.js",
+	"bin-debug/XYSweeper/world/Environment.js",
+	"bin-debug/XYSweeper/world/Mine.js",
 	"bin-debug/XYSweeper/world/Sweeper.js",
 	//----auto game_file_list end----
 ];

@@ -44,7 +44,9 @@ module XYSweeper {
             return (Math.random() - 0.5) * Genome.MAX_PERTURBATION;
         }
     }
-    export class GenomeHelper {
+    export class GeneticAlgorithm {
+        public epoch(population:[Genome]):[Genome]{
 
+        }
     }
 }
