@@ -11,7 +11,7 @@ module XYSweeper {
         //输入个数
         public inputSize:number;
         //输入权重
-        public weights:[number] = [];
+        public weights:Array<number> = [];
         //偏移量,阈值的权制
         public offsetWeight:number;
 
@@ -24,7 +24,7 @@ module XYSweeper {
             this.offsetWeight = NeuronHelper.randomWeight();
         }
 
-        public compute(input:[number]):number {
+        public compute(input:Array<number>):number {
             var output:number = 0;
             if (input || this.inputSize != input.length) {
                 console.error('神经细胞输入个数与实际不符', this);
@@ -48,8 +48,8 @@ module XYSweeper {
             this.push(new Neuron(perInputSize));
         }
 
-        public compute(inputs:[number]):[number] {
-            var outputs:[number] = [];
+        public compute(inputs:Array<number>):Array<number> {
+            var outputs:Array<number> = [];
             for (var i = 0; i < this.length; i++) {
                 outputs.push(this[i].compute(inputs));
             }
@@ -67,7 +67,7 @@ module XYSweeper {
         private hiddenLayerSize:number = 0;
         //每隐藏层细胞数
         private neuronSizePerLayer:number = 4;
-        public layers:[NeuronLayer] = [];
+        public layers:Array<NeuronHelper> = [];
 
 
         constructor(inputSize:number, outputSize:number,
@@ -88,8 +88,8 @@ module XYSweeper {
         /**
          * 读取所有权重
          */
-        public getAllWeights():[number] {
-
+        public getAllWeights():Array<number> {
+            return [];
         }
 
         /**
@@ -103,13 +103,13 @@ module XYSweeper {
          * 设置所有权重　
          * @param weights
          */
-        public evolve(weights:[number]) {
+        public evolve(weights:Array<number>) {
 
         }
 
-        public update(inputs:[number]):[number] {
+        public update(inputs:Array<number>):Array<number> {
             //保存从每一层产生的输出
-            var outputs:[number] = [];
+            var outputs:Array<number> = [];
             if (inputs || this.inputSize != inputs.length) {
                 return outputs;
             }

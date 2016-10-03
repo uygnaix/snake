@@ -2,13 +2,13 @@
  * Created by xiang on 10/2/16.
  */
 module XYSweeper {
-    export class Sweeper extends egret.DisplayObjectContainer {
+    export class Sweeper extends egret.Sprite {
 
 
 
         public brain:NeuronNet;
         //面对方向,初始方法望向x轴正方向
-        public lookAt:[number]=[1,0];
+        public lookAt:Array<number>=[1,0];
         //转动角度,弧度为单位
         public rotation:number;
         public speed:number;
@@ -31,7 +31,7 @@ module XYSweeper {
          *  进化大脑
          * @param weights
          */
-        public evolve(weights:[number]){
+        public evolve(weights:Array<number>){
             this.brain.evolve(weights);
         }
 
@@ -45,12 +45,12 @@ module XYSweeper {
         /**
          * 利用探测处的地雷更新人工网络
          */
-        public update(mines:[Mine]) {
+        public update(mines:Array<Mine>) {
             //获取输入
-            var inputs:[number] = [];
+            var inputs:Array<number> = [];
             var target:Mine = this.getClosestMine(mines);
-            inputs.push(this.getTargetVector());
-            inputs.push(this.lookAt);
+            inputs.concat(this.getTargetVector());
+            inputs.concat(this.lookAt);
             //计算输出
             var output = this.brain.update(inputs);
             this.leftTrack = output[0];
@@ -91,7 +91,7 @@ module XYSweeper {
         /**
          * 获取目标向量
          */
-        private getTargetVector():[number]{
+        private getTargetVector():Array<number>{
             if(this.closestMine){
                 var x = this.closestMine.x - this.x;
                 var y = this.closestMine.y - this.y;
@@ -103,7 +103,7 @@ module XYSweeper {
         /**
          * 获取最近的地雷
          */
-        public getClosestMine(mines:[Mine]) {
+        public getClosestMine(mines:Array<Mine>) {
             if (mines || mines.length == 0) {
                 return null;
             }
@@ -130,8 +130,8 @@ module XYSweeper {
          * 扫描机是否发现地雷,允许发现多个
          * 与地雷距离平方为一定数值则表示发现
          */
-        public findMine(mines:[Mine]):[Mine]{
-            var found:[Mine] = [];
+        public findMine(mines:Array<Mine>):Array<Mine>{
+            var found:Array<Mine> = [];
             for(var i=0;i<mines.length;i++){
                 if(this.getDistanceSquare(mines[i])<Environment.MAX_FIND_DISTANCE){
                     found.push(mines[i]);
@@ -145,7 +145,7 @@ module XYSweeper {
          */
         private static norm(x,y){
             var length = (x^2+y^2)^0.5;
-            return [x,y]/length;
+            return [x/length,y/length];
         }
 
         /**

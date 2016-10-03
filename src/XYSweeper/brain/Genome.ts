@@ -9,41 +9,41 @@ module XYSweeper {
     export class Genome {
 
         //基因片段由数字构成
-        public segments:[number] = [];
+        public segments:Array<number> = [];
 
         //基因的适应性评分
         public fitness:number;
 
         public clone():Genome{
             var offspring = new Genome();
-            offspring.segments = this.segments.clone();
+            offspring.segments = this.segments;
             return offspring;
         }
 
     }
     export class GeneticAlgorithm {
-        public epoch(population:[Genome]):[Genome] {
+        public epoch(population:Array<Genome>):Array<Genome> {
             var populationSize = population.length;
-            var survives:[Genome] = GeneticAlgorithm.select(population);
-            var offspring:[Genome] = GeneticAlgorithm.mating(survives, populationSize);
+            var survives:Array<Genome> = GeneticAlgorithm.select(population);
+            var offspring:Array<Genome> = GeneticAlgorithm.mating(survives, populationSize);
             return GeneticAlgorithm.mutate(offspring);
         }
 
         /**
          * 选择算法: 锦标赛选择
          */
-        private static select(population:[Genome]):[Genome] {
+        private static select(population:Array<Genome>):Array<Genome> {
             //选取生存比例可以生存
             var survivalSize = population.length * Environment.SURVIVE_RATE;
-            var survives:[Genome] = [];
+            var survives:Array<Genome> = [];
             for (var k = 0; k < survivalSize; k++) {
                 //随机选取n个进行竞争
-                var candidates:[Genome] = [];
+                var candidates:Array<Genome> = [];
                 for (var i = 0; i < Environment.COMPETITION_SIZE; i++) {
                     var index = GeneticAlgorithm.randomInt(population.length);
                     var candidate:Genome = population[index];
                     candidates.push(candidate);
-                    population.remove(index);
+                    population.splice(index,1);
                 }
                 survives.push(GeneticAlgorithm.compete(candidates));
             }
@@ -53,7 +53,7 @@ module XYSweeper {
         /**
          * 锦标赛选择N个比较,竞争选出最大的
          */
-        private static compete(genomes:[Genome]):Genome {
+        private static compete(genomes:Array<Genome>):Genome {
             var bestFitness = genomes[0].fitness;
             var bestGenome = genomes[0];
             for (var i = 1; i < genomes.length; i++) {
@@ -68,22 +68,22 @@ module XYSweeper {
         /**
          * 交配繁衍出Size大小的种群
          */
-        private static mating(genomes:[Genome], size:number):[Genome] {
-            var offspring:[Genome] = [];
-            var birthRate = size / genomes * 2;
+        private static mating(genomes:Array<Genome>, size:number):Array<Genome> {
+            var offspring:Array<Genome> = [];
+            var birthRate = size / genomes.length * 2;
             for (var i = 0; i < genomes.length / 2; i++) {
                 var fatherIndex = GeneticAlgorithm.randomInt(genomes.length);
                 var motherIndex = GeneticAlgorithm.randomInt(genomes.length);
                 var father = genomes[fatherIndex];
                 var mother = genomes[motherIndex];
-                genomes.remove(fatherIndex);
-                genomes.remove(motherIndex);
-                offspring.push(GeneticAlgorithm.matingCouple(father,mother,birthRate));
+                genomes.splice(fatherIndex,1);
+                genomes.splice(motherIndex,1);
+                offspring.concat(GeneticAlgorithm.matingCouple(father,mother,birthRate));
             }
             //随机出去多余的
             for(var i =0;i<offspring.length-size;i++){
                 var deathIndex = GeneticAlgorithm.randomInt(offspring.length);
-                offspring.remove(deathIndex);
+                offspring.splice(deathIndex,1);
             }
             return offspring;
         }
@@ -92,8 +92,8 @@ module XYSweeper {
          * 交配, 基因杂交,单点交叉
          * @param birthRate 需产生后代数
          */
-        private static matingCouple(father:Genome, mother:Genome,birthRate:number):[Genome] {
-            var offspring:[Genome] = [];
+        private static matingCouple(father:Genome, mother:Genome,birthRate:number):Array<Genome> {
+            var offspring:Array<Genome> = [];
             for(var i=0;i<Math.ceil(birthRate);i++){
                 var crossIndex = GeneticAlgorithm.randomInt(father.segments.length);
                 //随机继承父亲或母亲的大部分基因
@@ -113,7 +113,7 @@ module XYSweeper {
         /**
          * 基因突变
          */
-        private static mutate(genomes:[Genome]):[Genome] {
+        private static mutate(genomes:Array<Genome>):Array<Genome> {
             for(var i=0;i<genomes.length;i++){
                 var genome = genomes[i];
                 for (var i = 0; i < genome.segments.length; i++) {

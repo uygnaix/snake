@@ -1,7 +1,7 @@
 /**
  * Created by xiang on 9/22/16.
  */
-module XYPirate {
+module XY {
     export class GridLayer extends egret.DisplayObjectContainer {
 
         constructor(width:number,height:number){

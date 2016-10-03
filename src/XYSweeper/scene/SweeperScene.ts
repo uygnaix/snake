@@ -1,12 +1,12 @@
 /**
- * Created by xiang on 9/22/16.
+ * Created by xiang on 10/3/16.
  */
-module XYPirate {
+module XYSweeper {
     import GridLayer = XY.GridLayer;
-    export class PirateScene extends egret.DisplayObjectContainer{
+    export class SweeperScene extends egret.DisplayObjectContainer{
 
         private gridLayer:GridLayer;
-        private controlLayer:ControlLayer;
+        private controller:Controller;
 
         constructor(width:number, height:number) {
             super();
@@ -20,12 +20,9 @@ module XYPirate {
             this.gridLayer = new GridLayer(this.width,this.height);
             this.addChild(this.gridLayer);
         }
-        private loadControl(){
-            this.controlLayer = new ControlLayer();
-            this.addChild(this.controlLayer);
-        }
-        public start() {
 
+        public start() {
+            
         }
     }
 }
