@@ -28,7 +28,7 @@ module XYSweeper {
 
         constructor(){
             super();
-            this.draw();
+            this.reset();
         }
 
         /**
@@ -43,7 +43,11 @@ module XYSweeper {
          * 重置状态
          */
         public reset(){
-
+            this.draw();
+            //随机位置出现
+            var position = Environment.randomPosition();
+            this.x = position[0];
+            this.y = position[1];
         }
 
         /**
@@ -171,22 +175,22 @@ module XYSweeper {
         }
         private drawLeft(){
             this.leftShape=new Shape();
-            this.leftShape.graphics.beginFill(0xff0000);
+            this.leftShape.graphics.beginFill(0xf70000);
             this.leftShape.graphics.drawRect(0,0,20,4);
             this.leftShape.graphics.endFill();
             this.addChild(this.leftShape);
         }
         private drawRight(){
             this.rightShape=new Shape();
-            this.rightShape.graphics.beginFill(0xff0000);
+            this.rightShape.graphics.beginFill(0xf70000);
             this.rightShape.graphics.drawRect(0,12,20,4);
             this.rightShape.graphics.endFill();
             this.addChild(this.rightShape);
         }
         private drawCore(){
             this.coreShape=new Shape();
-            this.coreShape.graphics.beginFill(0xff0000);
-            this.coreShape.graphics.drawCircle(10,8,4);
+            this.coreShape.graphics.beginFill(0x00ff00);
+            this.coreShape.graphics.drawCircle(4,8,4);
             this.coreShape.graphics.endFill();
             this.addChild(this.coreShape);
         }

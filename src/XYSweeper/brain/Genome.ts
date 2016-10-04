@@ -40,7 +40,7 @@ module XYSweeper {
                 //随机选取n个进行竞争
                 var candidates:Array<Genome> = [];
                 for (var i = 0; i < Environment.COMPETITION_SIZE; i++) {
-                    var index = GeneticAlgorithm.randomInt(population.length);
+                    var index = Environment.randomInt(population.length);
                     var candidate:Genome = population[index];
                     candidates.push(candidate);
                     population.splice(index,1);
@@ -72,8 +72,8 @@ module XYSweeper {
             var offspring:Array<Genome> = [];
             var birthRate = size / genomes.length * 2;
             for (var i = 0; i < genomes.length / 2; i++) {
-                var fatherIndex = GeneticAlgorithm.randomInt(genomes.length);
-                var motherIndex = GeneticAlgorithm.randomInt(genomes.length);
+                var fatherIndex = Environment.randomInt(genomes.length);
+                var motherIndex = Environment.randomInt(genomes.length);
                 var father = genomes[fatherIndex];
                 var mother = genomes[motherIndex];
                 genomes.splice(fatherIndex,1);
@@ -82,7 +82,7 @@ module XYSweeper {
             }
             //随机出去多余的
             for(var i =0;i<offspring.length-size;i++){
-                var deathIndex = GeneticAlgorithm.randomInt(offspring.length);
+                var deathIndex = Environment.randomInt(offspring.length);
                 offspring.splice(deathIndex,1);
             }
             return offspring;
@@ -95,7 +95,7 @@ module XYSweeper {
         private static matingCouple(father:Genome, mother:Genome,birthRate:number):Array<Genome> {
             var offspring:Array<Genome> = [];
             for(var i=0;i<Math.ceil(birthRate);i++){
-                var crossIndex = GeneticAlgorithm.randomInt(father.segments.length);
+                var crossIndex = Environment.randomInt(father.segments.length);
                 //随机继承父亲或母亲的大部分基因
                 var base:Genome = mother;
                 var other:Genome = father;
@@ -140,8 +140,5 @@ module XYSweeper {
             return (Math.random() - 0.5) * Environment.MAX_PERTURBATION;
         }
 
-        private static randomInt(max:number):number{
-            return Math.floor(Math.random() * max)
-        }
     }
 }

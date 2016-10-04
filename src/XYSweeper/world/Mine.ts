@@ -11,11 +11,15 @@ module XYSweeper {
 
         constructor(){
             super();
-            this.draw();
+            this.reset();
         }
 
         public reset(){
-
+            this.draw();
+            //随机位置出现
+            var position = Environment.randomPosition();
+            this.x = position[0];
+            this.y = position[1];
         }
 
         private draw(){

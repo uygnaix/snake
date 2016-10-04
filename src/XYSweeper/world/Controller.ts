@@ -3,45 +3,63 @@
  */
 module XYSweeper {
     export class Controller extends egret.DisplayObjectContainer {
-        constructor(){
+        constructor() {
             super();
+            this.loadSweepers();
+            this.loadMines();
         }
-        public population:Array<Genome>;
-        public sweepers:Array<Sweeper>;
-        public mines:Array<Mine>;
+        public population: Array<Genome>=[];
+        public sweepers: Array<Sweeper>=[];
+        public mines: Array<Mine>=[];
 
-        public genAI:GeneticAlgorithm;
+        public genAI: GeneticAlgorithm;
 
-        public sweeperSize:number;
-        public mineSize:number;
+        public sweeperSize: number;
+        public mineSize: number;
 
-        public weightSum:number;
+        public weightSum: number;
 
         //存放每一代平均适应性分数
-        public avgFitness:Array<number> = [];
+        public avgFitness: Array<number> = [];
         //存放每一代最高适应性分数
-        public bestFitness:Array<number> = [];
+        public bestFitness: Array<number> = [];
         //每一代的帧数
-        public ticks:number;
+        public ticks: number;
         //代数
-        public generationIndex:number;
+        public generationIndex: number;
 
+        private loadSweepers() {
+            for (var i = 0; i < Environment.POPULATION_SIZE; i++) {
+                var sweeper = new Sweeper();
+                this.addChild(sweeper);
+                this.sweepers.push(sweeper);
+            }
+        }
+        private loadMines() {
+            for (var i = 0; i < Environment.MINE_SIZE; i++) {
+                var mine = new Mine();
+                this.addChild(mine);
+                this.mines.push(mine);
+            }
+        }
         //描绘数据
         public drawData() {
 
         }
 
-        public resetMines(mines:Array<Mine>) {
+        public resetMines(mines: Array<Mine>) {
             for (var i = 0; i < mines.length; i++) {
                 mines[i].reset();
             }
         }
 
+        /**
+         * 扫雷机运行总数为CParams::iNumTicks次的循环。在此循环周期中，扫雷机的神经网络
+         * 不断利用它周围特有的环境信息进行更新。而从神经网络得到的输出，使扫雷机实现所需的
+         * 动作。如果扫雷机遇见了一个地雷，则它的适应性将相应地被更新，且同样地更新了它对应
+         * 基因组的适应性。
+         */
         public update() {
-            // 扫雷机运行总数为CParams::iNumTicks次的循环。在此循环周期中，扫雷机的神经网络     
-            // 不断利用它周围特有的环境信息进行更新。而从神经网络得到的输出，使扫雷机实现所需的      
-            // 动作。如果扫雷机遇见了一个地雷，则它的适应性将相应地被更新，且同样地更新了它对应     
-            // 基因组的适应性。
             this.ticks++;
             if (this.ticks < Environment.TICKS_SIZE) {
                 //检查扫描机是否发现地雷
@@ -74,6 +92,5 @@ module XYSweeper {
                 }
             }
         }
-
     }
 }

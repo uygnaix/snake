@@ -10,19 +10,39 @@ module XYSweeper {
 
         public static TICKS_SIZE = 2000;
 
+        //人口数量
+        public static POPULATION_SIZE = 5;
+        //食物数量
+        public static MINE_SIZE = 10;
+
         //最大发现距离平方
         public static MAX_FIND_DISTANCE = 25;
         //一帧最大转动角度
-        public static MAX_TURN_RATE:number = 10;
+        public static MAX_TURN_RATE: number = 10;
 
         //选择比例
         public static SURVIVE_RATE = 0.3;
         public static COMPETITION_SIZE = 2;
 
         //突变率
-        public static MUTATION_RATE:number = 0.1;
+        public static MUTATION_RATE: number = 0.1;
         //最大突变量
-        public static MAX_PERTURBATION:number = 0.5;
+        public static MAX_PERTURBATION: number = 0.5;
+
+        /**
+         * 随机一个正整数
+         */
+        public static randomInt(max: number, min: number = 0): number {
+            return Math.floor(Math.random() * max)
+        }
+        //随机位置
+        public static randomPosition(): Array<number> {
+            var x = Environment.randomInt(Environment.ZONE_RIGHT - Environment.ZONE_LEFT)
+                + Environment.ZONE_LEFT;
+            var y = Environment.randomInt(Environment.ZONE_BOTTOM - Environment.ZONE_TOP)
+                + Environment.ZONE_TOP;
+            return [x, y];
+        }
 
     }
 }

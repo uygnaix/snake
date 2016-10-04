@@ -22,12 +22,8 @@ module XYSweeper {
         }
 
         public start() {
-            var sweeper = new Sweeper();
-            this.addChild(sweeper);
-            var mine = new Mine();
-            this.addChild(mine);
-            mine.x = 100;
-            mine.y = 100;
+            this.controller = new Controller();
+            this.addChild(this.controller);
         }
     }
 }
