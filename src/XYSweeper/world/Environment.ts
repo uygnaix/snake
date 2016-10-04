@@ -3,12 +3,22 @@
  */
 module XYSweeper {
     export class Environment {
+        public static TICKER_SPEED = 0.05;
+
         public static ZONE_LEFT = 20;
         public static ZONE_RIGHT = 460;
         public static ZONE_TOP = 20;
         public static ZONE_BOTTOM = 460;
 
         public static TICKS_SIZE = 2000;
+
+        public static INPUT_SIZE = 2;
+        //隐藏层数
+        public static HIDDEN_LAYER_SIZE = 1;
+        //每隐藏层细胞数
+        public static NEURON_SIZE_PER_LAYER = 4;
+        //基因长度，由隐藏层数和基因编码规则决定
+        public static GENOME_SEGMENT_SIZE = 24;
 
         //人口数量
         public static POPULATION_SIZE = 5;

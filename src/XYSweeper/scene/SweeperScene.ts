@@ -24,6 +24,12 @@ module XYSweeper {
         public start() {
             this.controller = new Controller();
             this.addChild(this.controller);
+            egret.startTick(this.update,this);
+        }
+
+        private update(timeStamp:number):boolean {
+            this.controller.update();
+            return false;
         }
     }
 }

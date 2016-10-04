@@ -5,32 +5,43 @@ module XYSweeper {
     export class Controller extends egret.DisplayObjectContainer {
         constructor() {
             super();
+            this.genAI = new GeneticAlgorithm();
+            this.createPopulation();
             this.loadSweepers();
             this.loadMines();
         }
-        public population: Array<Genome>=[];
-        public sweepers: Array<Sweeper>=[];
-        public mines: Array<Mine>=[];
+        public population: Array<Genome> = [];
+        public sweepers: Array<Sweeper> = [];
+        public mines: Array<Mine> = [];
 
         public genAI: GeneticAlgorithm;
 
-        public sweeperSize: number;
-        public mineSize: number;
-
-        public weightSum: number;
+        public weightSum: number = 0;
 
         //存放每一代平均适应性分数
         public avgFitness: Array<number> = [];
         //存放每一代最高适应性分数
         public bestFitness: Array<number> = [];
         //每一代的帧数
-        public ticks: number;
+        public ticks: number = 0;
         //代数
-        public generationIndex: number;
+        public generationIndex: number = 0;
+
+        private createPopulation() {
+            for (var i = 0; i < Environment.POPULATION_SIZE; i++) {
+                var genome = Genome.newInstance(Environment.GENOME_SEGMENT_SIZE);
+                //随机大脑
+                this.population.push(genome);
+            }
+        }
 
         private loadSweepers() {
             for (var i = 0; i < Environment.POPULATION_SIZE; i++) {
                 var sweeper = new Sweeper();
+                //随机大脑
+                sweeper.brain = new NeuronNet(4, 2,
+                    Environment.HIDDEN_LAYER_SIZE, Environment.NEURON_SIZE_PER_LAYER);
+                sweeper.injectBrain(this.population[i].segments);
                 this.addChild(sweeper);
                 this.sweepers.push(sweeper);
             }
