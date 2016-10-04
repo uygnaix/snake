@@ -27,6 +27,7 @@ module XYSweeper {
         private coreShape:Shape;
 
         constructor(){
+            super();
             this.draw();
         }
 

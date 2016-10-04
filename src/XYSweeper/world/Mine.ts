@@ -10,6 +10,7 @@ module XYSweeper {
         private shape:Shape;
 
         constructor(){
+            super();
             this.draw();
         }
 
