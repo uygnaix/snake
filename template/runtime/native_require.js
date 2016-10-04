@@ -51,6 +51,7 @@ var game_file_list = [
 	"bin-debug/XYSweeper/world/Environment.js",
 	"bin-debug/XYSweeper/world/Mine.js",
 	"bin-debug/XYSweeper/world/Sweeper.js",
+	"bin-debug/XYSweeper/sprite/SweeperSprite.js",
 	//----auto game_file_list end----
 ];
 

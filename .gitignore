@@ -9,4 +9,5 @@ bin-release
 .wing
 out
 gen
+.DS_Store
 # Created by .ignore support plugin (hsz.mobi)

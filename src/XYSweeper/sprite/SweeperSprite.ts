@@ -3,8 +3,7 @@
  */
 module XYSweeper {
     export class SweeperSprite extends egret.Sprite {
-        public soul:Sweeper;
-        
+
         
     }
 }

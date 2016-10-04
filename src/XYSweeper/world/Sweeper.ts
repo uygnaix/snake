@@ -2,9 +2,8 @@
  * Created by xiang on 10/2/16.
  */
 module XYSweeper {
+    import Shape = egret.Shape;
     export class Sweeper extends egret.Sprite {
-
-
 
         public brain:NeuronNet;
         //面对方向,初始方法望向x轴正方向
@@ -23,8 +22,12 @@ module XYSweeper {
         //最近的地雷
         public closestMine:Mine;
 
-        public draw() {
+        private leftShape:Shape;
+        private rightShape:Shape;
+        private coreShape:Shape;
 
+        constructor(){
+            this.draw();
         }
 
         /**
@@ -155,6 +158,36 @@ module XYSweeper {
             force = Math.min(force,max);
             force = Math.max(force,min);
             return force;
+        }
+
+        /**
+         * 绘制扫描仪
+         */
+        public draw() {
+            this.drawLeft();
+            this.drawCore();
+            this.drawRight();
+        }
+        private drawLeft(){
+            this.leftShape=new Shape();
+            this.leftShape.graphics.beginFill(0xff0000);
+            this.leftShape.graphics.drawRect(0,0,20,4);
+            this.leftShape.graphics.endFill();
+            this.addChild(this.leftShape);
+        }
+        private drawRight(){
+            this.rightShape=new Shape();
+            this.rightShape.graphics.beginFill(0xff0000);
+            this.rightShape.graphics.drawRect(0,12,20,4);
+            this.rightShape.graphics.endFill();
+            this.addChild(this.rightShape);
+        }
+        private drawCore(){
+            this.coreShape=new Shape();
+            this.coreShape.graphics.beginFill(0xff0000);
+            this.coreShape.graphics.drawCircle(10,8,4);
+            this.coreShape.graphics.endFill();
+            this.addChild(this.coreShape);
         }
     }
 }
