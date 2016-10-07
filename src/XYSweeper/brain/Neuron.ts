@@ -141,7 +141,7 @@ module XYSweeper {
         public evolve(weights: Array<number>) {
             for (var i = 0; i < this.layers.length; i++) {
                 var weightSize = this.layers[i].getWeights().length;
-                this.layers[i].putWeights(weights.slice(i * weightSize, (i + 1) * weightSize - 1));
+                this.layers[i].putWeights(weights.slice(i * weightSize, (i + 1) * weightSize));
             }
         }
 
@@ -157,6 +157,7 @@ module XYSweeper {
                 outputs = this.layers[i].compute(inputs);
                 inputs = outputs;
             }
+            return outputs;
         }
     }
     export class NeuronHelper {
