@@ -88,7 +88,7 @@ module XYSweeper {
                 var mother = genomes[motherIndex];
                 genomes.splice(fatherIndex, 1);
                 genomes.splice(motherIndex, 1);
-                offspring.concat(GeneticAlgorithm.matingCouple(father, mother, birthRate));
+                offspring = offspring.concat(GeneticAlgorithm.matingCouple(father, mother, birthRate));
             }
             //随机出去多余的
             for (var i = 0; i < offspring.length - size; i++) {

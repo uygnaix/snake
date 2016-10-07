@@ -18,7 +18,7 @@ module XYSweeper {
         //每隐藏层细胞数
         public static NEURON_SIZE_PER_LAYER = 4;
         //基因长度，由隐藏层数和基因编码规则决定
-        public static GENOME_SEGMENT_SIZE = 24;
+        public static GENOME_SEGMENT_SIZE = 28;
 
         //人口数量
         public static POPULATION_SIZE = 5;

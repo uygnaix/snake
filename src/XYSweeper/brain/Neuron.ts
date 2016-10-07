@@ -26,7 +26,7 @@ module XYSweeper {
 
         public compute(input: Array<number>): number {
             var output: number = 0;
-            if (input || this.inputSize != input.length) {
+            if (!input || this.inputSize != input.length) {
                 console.error('神经细胞输入个数与实际不符', this);
                 return output;
             }
@@ -42,13 +42,13 @@ module XYSweeper {
          */
         public getAllWeights(): Array<number> {
             var allWeights = [];
-            allWeights.concat(this.inputWeights);
+            allWeights = allWeights.concat(this.inputWeights);
             allWeights.push(this.offsetWeight);
             return allWeights;
         }
         public putAllWeights(allWeights: Array<number>) {
-            this.inputWeights = allWeights.slice(0, allWeights.length - 2);
-            this.offsetWeight = allWeights[-1];
+            this.inputWeights = allWeights.slice(0, allWeights.length - 1);
+            this.offsetWeight = allWeights[allWeights.length-1];
         }
     }
     /**
@@ -57,8 +57,9 @@ module XYSweeper {
     export class NeuronLayer extends Array<Neuron> {
         constructor(neuronSize: number, perInputSize: number) {
             super(neuronSize);
-
-            this.push(new Neuron(perInputSize));
+            for (var i = 0; i < neuronSize; i++) {
+                this.push(new Neuron(perInputSize));
+            }
         }
 
         public compute(inputs: Array<number>): Array<number> {
@@ -71,14 +72,14 @@ module XYSweeper {
         public getWeights(): Array<number> {
             var weights = [];
             for (var i = 0; i < this.length; i++) {
-                weights.concat(this[i].getAllWeights());
+                weights = weights.concat(this[i].getAllWeights());
             }
             return weights;
         }
         public putWeights(weights: Array<number>) {
             for (var i = 0; i < this.length; i++) {
-                var weightSize = this[i].inputSize+1;
-                this[i].putAllWeights(weights.slice(i*weightSize,(i+1)*weightSize-1));
+                var weightSize = this[i].inputSize + 1;
+                this[i].putAllWeights(weights.slice(i * weightSize, (i + 1) * weightSize));
             }
         }
     }
@@ -102,12 +103,17 @@ module XYSweeper {
             this.outputSize = outputSize;
             if (hiddenLayerSize) this.hiddenLayerSize = hiddenLayerSize;
             if (neuronSizePerLayer) this.neuronSizePerLayer = neuronSizePerLayer;
+            this.createNet(this.hiddenLayerSize);
         }
 
         public createNet(hiddenLayerSize: number) {
+            //第一个隐藏层，输入数为输入变量数，其余的为隐藏层的喜好数
+            this.layers.push(new NeuronLayer(this.neuronSizePerLayer, this.inputSize));
             for (var i = 0; i < hiddenLayerSize - 1; i++) {
                 this.layers.push(new NeuronLayer(this.neuronSizePerLayer, this.neuronSizePerLayer));
             }
+            //输出层
+            this.layers.push(new NeuronLayer(this.outputSize, this.neuronSizePerLayer));
         }
 
         /**
@@ -116,7 +122,7 @@ module XYSweeper {
         public getAllWeights(): Array<number> {
             var weights = [];
             for (var i = 0; i < this.layers.length; i++) {
-                weights.concat(this.layers[i].getWeights());
+                weights = weights.concat(this.layers[i].getWeights());
             }
             return weights;
         }
@@ -135,19 +141,21 @@ module XYSweeper {
         public evolve(weights: Array<number>) {
             for (var i = 0; i < this.layers.length; i++) {
                 var weightSize = this.layers[i].getWeights().length;
-                this.layers[i].putWeights(weights.slice(i*weightSize,(i+1)*weightSize-1));
+                this.layers[i].putWeights(weights.slice(i * weightSize, (i + 1) * weightSize - 1));
             }
         }
 
         public update(inputs: Array<number>): Array<number> {
             //保存从每一层产生的输出
-            var outputs: Array<number> = [];
-            if (inputs || this.inputSize != inputs.length) {
+            var outputs: Array<number> = inputs;
+            if (!inputs || this.inputSize != inputs.length) {
                 return outputs;
             }
             //计算每一层数据
             for (var i = 0; i < this.hiddenLayerSize + 1; i++) {
                 //计算每层的输出
+                outputs = this.layers[i].compute(inputs);
+                inputs = outputs;
             }
         }
     }

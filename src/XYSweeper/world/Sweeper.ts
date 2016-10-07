@@ -52,7 +52,7 @@ module XYSweeper {
         /**
          * 注入大脑权重
          */
-        public injectBrain(weights:Array<number>){
+        public injectBrain(weights: Array<number>) {
             this.brain.evolve(weights);
         }
 
@@ -63,8 +63,8 @@ module XYSweeper {
             //获取输入
             var inputs: Array<number> = [];
             var target: Mine = this.getClosestMine(mines);
-            inputs.concat(this.getTargetVector());
-            inputs.concat(this.lookAt);
+            inputs = inputs.concat(this.getTargetVector());
+            inputs = inputs.concat(this.lookAt);
             //计算输出
             var output = this.brain.update(inputs);
             this.leftTrack = output[0];
@@ -118,7 +118,7 @@ module XYSweeper {
          * 获取最近的地雷
          */
         public getClosestMine(mines: Array<Mine>) {
-            if (mines || mines.length == 0) {
+            if (!mines || mines.length == 0) {
                 return null;
             }
             this.closestMine = mines[0];
