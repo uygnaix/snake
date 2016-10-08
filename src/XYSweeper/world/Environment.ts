@@ -21,12 +21,12 @@ module XYSweeper {
         public static GENOME_SEGMENT_SIZE = 28;
 
         //人口数量
-        public static POPULATION_SIZE = 5;
+        public static POPULATION_SIZE = 2;
         //食物数量
-        public static MINE_SIZE = 10;
+        public static MINE_SIZE = 1;
 
         //最大发现距离平方
-        public static MAX_FIND_DISTANCE = 25;
+        public static MAX_FIND_DISTANCE = 5;
         //一帧最大转动角度
         public static MAX_TURN_RATE: number = 10;
 

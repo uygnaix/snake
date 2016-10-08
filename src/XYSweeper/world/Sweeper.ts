@@ -82,7 +82,7 @@ module XYSweeper {
         private updateLookAt() {
             this.rotation += (this.leftTrack - this.rightTrack);
             //更新视线角度
-            this.lookAt[0] = -Math.sin(this.rotation);
+            this.lookAt[0] = Math.sin(this.rotation);
             this.lookAt[1] = Math.cos(this.rotation);
         }
         private updateSpeed() {
@@ -107,9 +107,9 @@ module XYSweeper {
          */
         private getTargetVector(): Array<number> {
             if (this.closestMine) {
-                var x = this.closestMine.x - this.x;
-                var y = this.closestMine.y - this.y;
-                return Sweeper.norm(x, y);
+                var dx = this.closestMine.x - this.x;
+                var dy = this.closestMine.y - this.y;
+                return Sweeper.norm(dx, dy);
             }
             return [];
         }
@@ -158,7 +158,7 @@ module XYSweeper {
          * 归一化向量
          */
         private static norm(x, y) {
-            var length = (x ^ 2 + y ^ 2) ^ 0.5;
+            var length = Math.pow(Math.pow(x,2) + Math.pow(y,2),0.5);
             return [x / length, y / length];
         }
 
