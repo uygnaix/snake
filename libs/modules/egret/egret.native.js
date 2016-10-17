@@ -1847,10 +1847,12 @@ var egret;
                 this.context.restore();
             };
             /**
-             * 获取指定坐标的像素
+             * 获取指定区域的像素
              */
-            p.getPixel = function (x, y) {
-                return this.context.getImageData(x, y, 1, 1).data;
+            p.getPixels = function (x, y, width, height) {
+                if (width === void 0) { width = 1; }
+                if (height === void 0) { height = 1; }
+                return this.context.getImageData(x, y, width, height).data;
             };
             /**
              * 转换成base64字符串，如果图片（或者包含的图片）跨域，则返回null
@@ -2562,22 +2564,22 @@ var egret;
                     height = image.height;
                 }
                 else {
-                    if (!width) {
+                    if (width == void 0) {
                         width = image.width;
                     }
-                    if (!height) {
+                    if (height == void 0) {
                         height = image.height;
                     }
-                    if (!surfaceOffsetX) {
+                    if (surfaceOffsetX == void 0) {
                         surfaceOffsetX = 0;
                     }
-                    if (!surfaceOffsetY) {
+                    if (surfaceOffsetY == void 0) {
                         surfaceOffsetY = 0;
                     }
-                    if (!surfaceImageWidth) {
+                    if (surfaceImageWidth == void 0) {
                         surfaceImageWidth = width;
                     }
-                    if (!surfaceImageHeight) {
+                    if (surfaceImageHeight == void 0) {
                         surfaceImageHeight = height;
                     }
                 }
@@ -3404,22 +3406,22 @@ var egret;
                     height = image.height;
                 }
                 else {
-                    if (!width) {
+                    if (width == void 0) {
                         width = image.width;
                     }
-                    if (!height) {
+                    if (height == void 0) {
                         height = image.height;
                     }
-                    if (!surfaceOffsetX) {
+                    if (surfaceOffsetX == void 0) {
                         surfaceOffsetX = 0;
                     }
-                    if (!surfaceOffsetY) {
+                    if (surfaceOffsetY == void 0) {
                         surfaceOffsetY = 0;
                     }
-                    if (!surfaceImageWidth) {
+                    if (surfaceImageWidth == void 0) {
                         surfaceImageWidth = width;
                     }
-                    if (!surfaceImageHeight) {
+                    if (surfaceImageHeight == void 0) {
                         surfaceImageHeight = height;
                     }
                 }
@@ -3798,6 +3800,10 @@ var egret;
              * @param useMaxSize 若传入true，则将改变后的尺寸与已有尺寸对比，保留较大的尺寸。
              */
             p.resize = function (width, height, useMaxSize) {
+                //resize 之前要提交下绘制命令
+                if (native.$supportCmdBatch) {
+                    native.$cmdManager.flush();
+                }
                 var surface = this.surface;
                 surface.width = width;
                 surface.height = height;
@@ -3811,6 +3817,10 @@ var egret;
              * @param offsetY 原始图像数据在改变后缓冲区的绘制起始位置y
              */
             p.resizeTo = function (width, height, offsetX, offsetY) {
+                //resize 之前要提交下绘制命令
+                if (native.$supportCmdBatch) {
+                    native.$cmdManager.flush();
+                }
                 if (!sharedCanvas) {
                     sharedCanvas = createCanvas();
                 }
@@ -3858,10 +3868,12 @@ var egret;
                 this.context.restore();
             };
             /**
-             * 获取指定坐标的像素
+             * 获取指定区域的像素
              */
-            p.getPixel = function (x, y) {
-                return this.context.getImageData(x, y, 1, 1).data;
+            p.getPixels = function (x, y, width, height) {
+                if (width === void 0) { width = 1; }
+                if (height === void 0) { height = 1; }
+                return this.context.getImageData(x, y, width, height).data;
             };
             /**
              * 转换成base64字符串，如果图片（或者包含的图片）跨域，则返回null
@@ -3983,9 +3995,14 @@ var egret;
             egret.$error(1035);
             return null;
         }
+        function getPixels(x, y, width, height) {
+            egret.$error(1035);
+            return null;
+        }
         egret.Texture.prototype.toDataURL = toDataURL;
         egret.Texture.prototype.saveToFile = saveToFile;
         egret.Texture.prototype.getPixel32 = getPixel32;
+        egret.Texture.prototype.getPixels = getPixels;
     })(native = egret.native || (egret.native = {}));
 })(egret || (egret = {}));
 //////////////////////////////////////////////////////////////////////////////////////

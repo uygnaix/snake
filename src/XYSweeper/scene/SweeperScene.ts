@@ -3,12 +3,12 @@
  */
 module XYSweeper {
     import GridLayer = XY.GridLayer;
-    export class SweeperScene extends egret.DisplayObjectContainer{
+    export class SweeperScene extends egret.DisplayObjectContainer {
 
-        private gridLayer:GridLayer;
-        private controller:Controller;
+        private gridLayer: GridLayer;
+        private controller: Controller;
 
-        constructor(width:number, height:number) {
+        constructor(width: number, height: number) {
             super();
             this.width = width;
             this.height = height;
@@ -16,19 +16,28 @@ module XYSweeper {
             this.start();
         }
 
-        private loadGrid(){
-            this.gridLayer = new GridLayer(this.width,this.height);
+        private loadGrid() {
+            this.gridLayer = new GridLayer(this.width, this.height);
             this.addChild(this.gridLayer);
         }
-
+        public running: boolean = false;
         public start() {
             this.controller = new Controller();
             this.addChild(this.controller);
-            egret.startTick(this.update,this);
+            egret.startTick(this.update, this);
+            this.touchEnabled = true;
+            this.addEventListener(egret.TouchEvent.TOUCH_BEGIN, function () {
+                this.running = true;
+            }, this);
+            this.addEventListener(egret.TouchEvent.TOUCH_END, function () {
+                this.running = false;
+            }, this);
         }
-
-        private update(timeStamp:number):boolean {
-            this.controller.update();
+        
+        public update(timeStamp: number): boolean {
+            if (this.running) {
+                this.controller.update();
+            }
             return false;
         }
     }

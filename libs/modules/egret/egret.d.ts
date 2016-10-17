@@ -3632,9 +3632,16 @@ declare module egret {
          */
         bitmapData: BitmapData;
         /**
-         * @private
-         *
-         * @param value
+        * @language en_US
+        * Set the BitmapData object.
+        * @version Egret 3.2.1
+        * @platform Web,Native
+        */
+        /**
+         * @language zh_CN
+         * 设置 BitmapData 对象。
+         * @version Egret 3.2.1
+         * @platform Web,Native
          */
         _setBitmapData(value: BitmapData): void;
         /**
@@ -3653,24 +3660,32 @@ declare module egret {
          */
         $initData(bitmapX: number, bitmapY: number, bitmapWidth: number, bitmapHeight: number, offsetX: number, offsetY: number, textureWidth: number, textureHeight: number, sourceWidth: number, sourceHeight: number): void;
         /**
+         * @deprecated
+         */
+        getPixel32(x: number, y: number): number[];
+        /**
          * @language en_US
-         * Obtain the color value of a pixel point
-         * @param x {number} The x coordinate of a pixel point
-         * @param y {number} The y coordinate of a pixel point
-         * @returns {number} Color value of a specified pixel point
-         * @version Egret 2.4
+         * Obtain the color value for the specified pixel region
+         * @param x  The x coordinate of the pixel region
+         * @param y  The y coordinate of the pixel region
+         * @param width  The width of the pixel region
+         * @param height  The height of the pixel region
+         * @returns  Specifies the color value for the pixel region
+         * @version Egret 3.2.1
          * @platform Web,Native
          */
         /**
          * @language zh_CN
-         * 获取某一点像素的颜色值
-         * @param x {number} 像素点的X轴坐标
-         * @param y {number} 像素点的Y轴坐标
-         * @returns {number} 指定像素点的颜色值
-         * @version Egret 2.4
+         * 获取指定像素区域的颜色值
+         * @param x  像素区域的X轴坐标
+         * @param y  像素区域的Y轴坐标
+         * @param width  像素点的Y轴坐标
+         * @param height  像素点的Y轴坐标
+         * @returns  指定像素区域的颜色值
+         * @version Egret 3.2.1
          * @platform Web
          */
-        getPixel32(x: number, y: number): number[];
+        getPixels(x: number, y: number, width?: number, height?: number): number[];
         /**
          * @language en_US
          * Convert base64 string, if the picture (or pictures included) cross-border or null
@@ -3744,7 +3759,7 @@ declare module egret {
      */
     class RenderTexture extends egret.Texture {
         constructor();
-        private renderBuffer;
+        $renderBuffer: sys.RenderBuffer;
         /**
          * @language en_US
          * The specified display object is drawn as a texture
@@ -3764,7 +3779,13 @@ declare module egret {
          * @platform Web,Native
          */
         drawToTexture(displayObject: egret.DisplayObject, clipBounds?: Rectangle, scale?: number): boolean;
+        /**
+         * @inheritDoc
+         */
         getPixel32(x: number, y: number): number[];
+        /**
+         * @inheritDoc
+         */
         dispose(): void;
     }
 }
@@ -4114,42 +4135,11 @@ declare module egret {
          */
         invalidate(): void;
         /**
-         * @private
-         */
-        private implMap;
-        /**
-         * @language en_US
-         * Adds an interface-name-to-implementation-class mapping to the registry.
-         * @param interfaceName the interface name to register. For example："eui.IAssetAdapter","eui.Theme"
-         * @param instance the instance to register.
-         * @version Egret 2.4
-         * @platform Web,Native
-         */
-        /**
-         * @language zh_CN
-         * 注册一个接口实现。
-         * @param interfaceName 注入的接口名称。例如："eui.IAssetAdapter","eui.Theme"
-         * @param instance 实现此接口的实例。
-         * @version Egret 2.4
-         * @platform Web,Native
+         * @deprecated
          */
         registerImplementation(interfaceName: string, instance: any): void;
         /**
-         * @language en_US
-         * Returns the singleton instance of the implementation class that was registered for the specified interface.
-         * This method is usually called by egret framework.
-         * @param interfaceName The interface name to identify. For example："eui.IAssetAdapter","eui.Theme"
-         * @returns the singleton instance of the implementation class
-         * @version Egret 2.4
-         * @platform Web,Native
-         */
-        /**
-         * @language zh_CN
-         * 获取一个接口实现。此方法通常由框架内部调用。获取项目注入的自定义实现实例。
-         * @param interfaceName 要获取的接口名称。例如："eui.IAssetAdapter","eui.Theme"
-         * @returns 返回实现此接口的实例。
-         * @version Egret 2.4
-         * @platform Web,Native
+         * @deprecated
          */
         getImplementation(interfaceName: string): any;
         /**
@@ -9613,9 +9603,9 @@ declare module egret.sys {
          */
         endClip(): void;
         /**
-         * 获取指定坐标的像素
+         * 获取指定区域的像素
          */
-        getPixel(x: number, y: number): number[];
+        getPixels(x: number, y: number, width?: number, height?: number): number[];
         /**
          * 转换成base64字符串，如果图片（或者包含的图片）跨域，则返回null
          * @param type 转换的类型，如: "image/png","image/jpeg"
@@ -11397,6 +11387,44 @@ declare module egret {
     function log(message?: any, ...optionalParams: any[]): void;
 }
 declare module egret {
+    function getI(): void;
+    /**
+     * @language en_US
+     * Adds an interface-name-to-implementation-class mapping to the registry.
+     * @param interfaceName the interface name to register. For example："eui.IAssetAdapter","eui.Theme"
+     * @param instance the instance to register.
+     * @version Egret 2.4
+     * @platform Web,Native
+     */
+    /**
+     * @language zh_CN
+     * 注册一个接口实现。
+     * @param interfaceName 注入的接口名称。例如："eui.IAssetAdapter","eui.Theme"
+     * @param instance 实现此接口的实例。
+     * @version Egret 3.2.1
+     * @platform Web,Native
+     */
+    function registerImplementation(interfaceName: string, instance: any): void;
+    /**
+     * @language en_US
+     * Returns the singleton instance of the implementation class that was registered for the specified interface.
+     * This method is usually called by egret framework.
+     * @param interfaceName The interface name to identify. For example："eui.IAssetAdapter","eui.Theme"
+     * @returns the singleton instance of the implementation class
+     * @version Egret 2.4
+     * @platform Web,Native
+     */
+    /**
+     * @language zh_CN
+     * 获取一个接口实现。此方法通常由框架内部调用。获取项目注入的自定义实现实例。
+     * @param interfaceName 要获取的接口名称。例如："eui.IAssetAdapter","eui.Theme"
+     * @returns 返回实现此接口的实例。
+     * @version Egret 3.2.1
+     * @platform Web,Native
+     */
+    function getImplementation(interfaceName: string): any;
+}
+declare module egret {
     /**
      * @language en_US
      * Bitmap font, texture set of a font. It is generally used as the value of the BitmapText.font attribute.
@@ -12610,6 +12638,32 @@ declare module egret {
          * @platform Web,Native
          */
         static default_fontFamily: string;
+        /**
+         * @language en_US
+         * default size in pixels of text
+         * @version Egret 3.2.1
+         * @platform Web,Native
+         */
+        /**
+         * @language zh_CN
+         * 默认文本字号大小
+         * @version Egret 3.2.1
+         * @platform Web,Native
+         */
+        static default_size: number;
+        /**
+         * @language en_US
+         * default color of the text.
+         * @version Egret 3.2.1
+         * @platform Web,Native
+         */
+        /**
+         * @language zh_CN
+         * 默认文本颜色
+         * @version Egret 3.2.1
+         * @platform Web,Native
+         */
+        static default_textColor: number;
         /**
          * @version Egret 2.4
          * @platform Web,Native

@@ -3243,7 +3243,7 @@ var egret;
                 if (displayList) {
                     var buffer = displayList.renderBuffer;
                     try {
-                        data = buffer.getPixel(localX - displayList.offsetX, localY - displayList.offsetY);
+                        data = buffer.getPixels(localX - displayList.offsetX, localY - displayList.offsetY);
                     }
                     catch (e) {
                         throw new Error(egret.sys.tr(1039));
@@ -3258,7 +3258,7 @@ var egret;
                     egret.sys.systemRenderer.render(this, buffer, matrix, null, true);
                     egret.Matrix.release(matrix);
                     try {
-                        data = buffer.getPixel(1, 1);
+                        data = buffer.getPixels(1, 1);
                     }
                     catch (e) {
                         throw new Error(egret.sys.tr(1039));
@@ -3888,7 +3888,7 @@ var egret;
             if (displayList) {
                 var buffer = displayList.renderBuffer;
                 try {
-                    data = buffer.getPixel(localX - displayList.offsetX, localY - displayList.offsetY);
+                    data = buffer.getPixels(localX - displayList.offsetX, localY - displayList.offsetY);
                 }
                 catch (e) {
                     console.log(this.$Bitmap[0 /* bitmapData */]);
@@ -3905,7 +3905,7 @@ var egret;
                 egret.sys.systemRenderer.drawNodeToBuffer(node, buffer, matrix, true);
                 egret.Matrix.release(matrix);
                 try {
-                    data = buffer.getPixel(1, 1);
+                    data = buffer.getPixels(1, 1);
                 }
                 catch (e) {
                     console.log(this.$Bitmap[0 /* bitmapData */]);
@@ -6182,7 +6182,7 @@ var egret;
             egret.sys.canvasRenderer.drawNodeToBuffer(node, buffer, matrix, true);
             egret.Matrix.release(matrix);
             try {
-                var data = buffer.getPixel(1, 1);
+                var data = buffer.getPixels(1, 1);
             }
             catch (e) {
                 throw new Error(egret.sys.tr(1039));
@@ -6645,11 +6645,21 @@ var egret;
             ,function () {
                 return this._bitmapData;
             }
+            ,function (value) {
+                this._setBitmapData(value);
+            }
         );
         /**
-         * @private
-         *
-         * @param value
+        * @language en_US
+        * Set the BitmapData object.
+        * @version Egret 3.2.1
+        * @platform Web,Native
+        */
+        /**
+         * @language zh_CN
+         * 设置 BitmapData 对象。
+         * @version Egret 3.2.1
+         * @platform Web,Native
          */
         p._setBitmapData = function (value) {
             this._bitmapData = value;
@@ -6688,24 +6698,36 @@ var egret;
             egret.BitmapData.$invalidate(this);
         };
         /**
+         * @deprecated
+         */
+        p.getPixel32 = function (x, y) {
+            throw new Error();
+        };
+        /**
          * @language en_US
-         * Obtain the color value of a pixel point
-         * @param x {number} The x coordinate of a pixel point
-         * @param y {number} The y coordinate of a pixel point
-         * @returns {number} Color value of a specified pixel point
-         * @version Egret 2.4
+         * Obtain the color value for the specified pixel region
+         * @param x  The x coordinate of the pixel region
+         * @param y  The y coordinate of the pixel region
+         * @param width  The width of the pixel region
+         * @param height  The height of the pixel region
+         * @returns  Specifies the color value for the pixel region
+         * @version Egret 3.2.1
          * @platform Web,Native
          */
         /**
          * @language zh_CN
-         * 获取某一点像素的颜色值
-         * @param x {number} 像素点的X轴坐标
-         * @param y {number} 像素点的Y轴坐标
-         * @returns {number} 指定像素点的颜色值
-         * @version Egret 2.4
+         * 获取指定像素区域的颜色值
+         * @param x  像素区域的X轴坐标
+         * @param y  像素区域的Y轴坐标
+         * @param width  像素点的Y轴坐标
+         * @param height  像素点的Y轴坐标
+         * @returns  指定像素区域的颜色值
+         * @version Egret 3.2.1
          * @platform Web
          */
-        p.getPixel32 = function (x, y) {
+        p.getPixels = function (x, y, width, height) {
+            if (width === void 0) { width = 1; }
+            if (height === void 0) { height = 1; }
             throw new Error();
         };
         /**
@@ -6828,8 +6850,8 @@ var egret;
         __extends(RenderTexture, _super);
         function RenderTexture() {
             _super.call(this);
-            this.renderBuffer = new egret.sys.CanvasRenderBuffer();
-            var bitmapData = new egret.BitmapData(this.renderBuffer.surface);
+            this.$renderBuffer = new egret.sys.RenderBuffer();
+            var bitmapData = new egret.BitmapData(this.$renderBuffer.surface);
             bitmapData.$deleteSource = false;
             this._setBitmapData(bitmapData);
         }
@@ -6868,7 +6890,7 @@ var egret;
                 width = bounds.width * scale;
                 height = bounds.height * scale;
             }
-            var renderBuffer = this.renderBuffer;
+            var renderBuffer = this.$renderBuffer;
             if (!renderBuffer) {
                 return false;
             }
@@ -6882,7 +6904,7 @@ var egret;
                 matrix.translate(-clipBounds.x, -clipBounds.y);
             }
             matrix.scale(scale, scale);
-            egret.sys.canvasRenderer.render(displayObject, renderBuffer, matrix, null, true);
+            egret.sys.systemRenderer.render(displayObject, renderBuffer, matrix, null, true);
             egret.Matrix.release(matrix);
             //设置纹理参数
             this.$initData(0, 0, width, height, 0, 0, width, height, width, height);
@@ -6890,19 +6912,25 @@ var egret;
             displayObject.$propagateFlagsDown(128 /* InvalidRenderNodes */);
             return true;
         };
+        /**
+         * @inheritDoc
+         */
         p.getPixel32 = function (x, y) {
             var data;
-            if (this.renderBuffer) {
+            if (this.$renderBuffer) {
                 var scale = egret.$TextureScaleFactor;
                 x = Math.round(x / scale);
                 y = Math.round(y / scale);
-                data = this.renderBuffer.getPixel(x, y);
+                data = this.$renderBuffer.getPixels(x, y, 1, 1);
             }
             return data;
         };
+        /**
+         * @inheritDoc
+         */
         p.dispose = function () {
             _super.prototype.dispose.call(this);
-            this.renderBuffer = null;
+            this.$renderBuffer = null;
         };
         return RenderTexture;
     }(egret.Texture));
@@ -7424,10 +7452,6 @@ var egret;
              * @private
              */
             this.$stageHeight = 0;
-            /**
-             * @private
-             */
-            this.implMap = {};
             this.$scaleMode = egret.StageScaleMode.SHOW_ALL;
             this.$orientation = egret.OrientationMode.AUTO;
             this.$maxTouches = 99;
@@ -7514,43 +7538,16 @@ var egret;
             egret.sys.$invalidateRenderFlag = true;
         };
         /**
-         * @language en_US
-         * Adds an interface-name-to-implementation-class mapping to the registry.
-         * @param interfaceName the interface name to register. For example："eui.IAssetAdapter","eui.Theme"
-         * @param instance the instance to register.
-         * @version Egret 2.4
-         * @platform Web,Native
-         */
-        /**
-         * @language zh_CN
-         * 注册一个接口实现。
-         * @param interfaceName 注入的接口名称。例如："eui.IAssetAdapter","eui.Theme"
-         * @param instance 实现此接口的实例。
-         * @version Egret 2.4
-         * @platform Web,Native
+         * @deprecated
          */
         p.registerImplementation = function (interfaceName, instance) {
-            this.implMap[interfaceName] = instance;
+            egret.registerImplementation(interfaceName, instance);
         };
         /**
-         * @language en_US
-         * Returns the singleton instance of the implementation class that was registered for the specified interface.
-         * This method is usually called by egret framework.
-         * @param interfaceName The interface name to identify. For example："eui.IAssetAdapter","eui.Theme"
-         * @returns the singleton instance of the implementation class
-         * @version Egret 2.4
-         * @platform Web,Native
-         */
-        /**
-         * @language zh_CN
-         * 获取一个接口实现。此方法通常由框架内部调用。获取项目注入的自定义实现实例。
-         * @param interfaceName 要获取的接口名称。例如："eui.IAssetAdapter","eui.Theme"
-         * @returns 返回实现此接口的实例。
-         * @version Egret 2.4
-         * @platform Web,Native
+         * @deprecated
          */
         p.getImplementation = function (interfaceName) {
-            return this.implMap[interfaceName];
+            return egret.getImplementation(interfaceName);
         };
         d(p, "scaleMode"
             /**
@@ -12121,9 +12118,9 @@ var egret;
     locale_strings[1036] = "Sound has stopped, please recall Sound.play () to play the sound!";
     locale_strings[1037] = "Non-load the correct blob!";
     locale_strings[1038] = "XML format error!";
-    locale_strings[1039] = "crossOrigin images can not set pixelHitTest  property!";
+    locale_strings[1039] = "Cross domains pictures can not get pixel information!";
     locale_strings[1040] = "hitTestPoint can not detect crossOrigin images! Please check if the display object has crossOrigin elements.";
-    locale_strings[1041] = "egret.MainContext.runtimeType is deprecated, please use egret.Capabilities.runtimeType replace";
+    locale_strings[1041] = "{0} is deprecated, please use {1} replace";
     locale_strings[1042] = "The parameters passed in the region needs is an integer in drawToTexture method. Otherwise, some browsers will draw abnormal.";
     locale_strings[1043] = "Compile errors in {0}, the attribute name: {1}, the attribute value: {2}.";
     locale_strings[1044] = "The current version of the Runtime does not support video playback, please use the latest version";
@@ -12268,9 +12265,9 @@ var egret;
     locale_strings[1036] = "声音已停止，请重新调用 Sound.play() 来播放声音！";
     locale_strings[1037] = "非正确的blob加载！";
     locale_strings[1038] = "XML 格式错误!";
-    locale_strings[1039] = "跨域图片不能设置 pixelHitTest 属性!";
+    locale_strings[1039] = "跨域图片不能获取像素信息!";
     locale_strings[1040] = "hitTestPoint 不能对跨域图片进行检测! 请检查该显示对象内是否含有跨域元素";
-    locale_strings[1041] = "egret.MainContext.runtimeType 已废弃,请使用egret.Capabilities.runtimeType 代替";
+    locale_strings[1041] = "{0} 已废弃,请使用 {1} 代替";
     locale_strings[1042] = "drawToTexture方法传入的区域各个参数需要为整数,否则某些浏览器绘制会出现异常";
     locale_strings[1043] = "{0} 中存在编译错误，属性名 : {1}，属性值 : {2}";
     locale_strings[1044] = "当前的 runtime 版本不支持视频播放,请使用最新的版本";
@@ -16851,14 +16848,11 @@ var egret;
                     }
                     maskContext.setTransform(1, 0, 0, 1, -region.minX, -region.minY);
                     offsetM = egret.Matrix.create().setTo(1, 0, 0, 1, -region.minX, -region.minY);
-                    var calls = this.drawDisplayObject(mask, maskContext, dirtyList, offsetM, mask.$displayList, region, root);
-                    if (calls > 0) {
-                        drawCalls += calls;
-                        displayContext.globalCompositeOperation = "destination-in";
-                        displayContext.setTransform(1, 0, 0, 1, 0, 0);
-                        displayContext.globalAlpha = 1;
-                        displayContext.drawImage(maskBuffer.surface, 0, 0);
-                    }
+                    drawCalls += this.drawDisplayObject(mask, maskContext, dirtyList, offsetM, mask.$displayList, region, root);
+                    displayContext.globalCompositeOperation = "destination-in";
+                    displayContext.setTransform(1, 0, 0, 1, 0, 0);
+                    displayContext.globalAlpha = 1;
+                    displayContext.drawImage(maskBuffer.surface, 0, 0);
                     renderBufferPool.push(maskBuffer);
                 }
             }
@@ -17059,7 +17053,7 @@ var egret;
             //todo 暂时只考虑绘制一次的情况
             if (filter && length == 8) {
                 if (egret.Capabilities.runtimeType == egret.RuntimeType.NATIVE) {
-                    egret_native.Graphics.setGlobalShader(filter);
+                    egret_native.Graphics.setGlobalShader(filter.$toJson());
                     while (pos < length) {
                         drawCalls++;
                         context.drawImage(image.source, data[pos++], data[pos++], data[pos++], data[pos++], data[pos++], data[pos++], data[pos++], data[pos++]);
@@ -17835,7 +17829,7 @@ var egret;
              * @platform Web,Native
              */
             ,function () {
-                return "3.2.0";
+                return "3.2.1";
             }
         );
         /**
@@ -18000,6 +17994,57 @@ egret.Capabilities.$runtimeType = testRuntimeType() ? egret.RuntimeType.WEB : eg
 //  EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 //
 //////////////////////////////////////////////////////////////////////////////////////
+var egret;
+(function (egret) {
+    function getI() {
+    }
+    egret.getI = getI;
+    /**
+    * @private
+    */
+    var implMap = {};
+    /**
+     * @language en_US
+     * Adds an interface-name-to-implementation-class mapping to the registry.
+     * @param interfaceName the interface name to register. For example："eui.IAssetAdapter","eui.Theme"
+     * @param instance the instance to register.
+     * @version Egret 2.4
+     * @platform Web,Native
+     */
+    /**
+     * @language zh_CN
+     * 注册一个接口实现。
+     * @param interfaceName 注入的接口名称。例如："eui.IAssetAdapter","eui.Theme"
+     * @param instance 实现此接口的实例。
+     * @version Egret 3.2.1
+     * @platform Web,Native
+     */
+    function registerImplementation(interfaceName, instance) {
+        implMap[interfaceName] = instance;
+    }
+    egret.registerImplementation = registerImplementation;
+    /**
+     * @language en_US
+     * Returns the singleton instance of the implementation class that was registered for the specified interface.
+     * This method is usually called by egret framework.
+     * @param interfaceName The interface name to identify. For example："eui.IAssetAdapter","eui.Theme"
+     * @returns the singleton instance of the implementation class
+     * @version Egret 2.4
+     * @platform Web,Native
+     */
+    /**
+     * @language zh_CN
+     * 获取一个接口实现。此方法通常由框架内部调用。获取项目注入的自定义实现实例。
+     * @param interfaceName 要获取的接口名称。例如："eui.IAssetAdapter","eui.Theme"
+     * @returns 返回实现此接口的实例。
+     * @version Egret 3.2.1
+     * @platform Web,Native
+     */
+    function getImplementation(interfaceName) {
+        return implMap[interfaceName];
+    }
+    egret.getImplementation = getImplementation;
+})(egret || (egret = {}));
 //////////////////////////////////////////////////////////////////////////////////////
 //
 //  Copyright (c) 2014-present, Egret Technology.
@@ -19659,9 +19704,9 @@ var egret;
             this.textNode = textNode;
             this.$renderNode = textNode;
             this.$TextField = {
-                0: 30,
+                0: TextField.default_size,
                 1: 0,
-                2: 0xffffff,
+                2: TextField.default_textColor,
                 3: NaN,
                 4: NaN,
                 5: 0,
@@ -21290,6 +21335,32 @@ var egret;
          * @platform Web,Native
          */
         TextField.default_fontFamily = "Arial";
+        /**
+         * @language en_US
+         * default size in pixels of text
+         * @version Egret 3.2.1
+         * @platform Web,Native
+         */
+        /**
+         * @language zh_CN
+         * 默认文本字号大小
+         * @version Egret 3.2.1
+         * @platform Web,Native
+         */
+        TextField.default_size = 30;
+        /**
+         * @language en_US
+         * default color of the text.
+         * @version Egret 3.2.1
+         * @platform Web,Native
+         */
+        /**
+         * @language zh_CN
+         * 默认文本颜色
+         * @version Egret 3.2.1
+         * @platform Web,Native
+         */
+        TextField.default_textColor = 0xffffff;
         return TextField;
     }(egret.DisplayObject));
     egret.TextField = TextField;

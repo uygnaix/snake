@@ -9,7 +9,7 @@ module XYSweeper {
         //面对方向,初始方法望向x轴正方向
         public lookAt: Array<number> = [1, 0];
         //转动角度,弧度为单位
-        public rotation: number;
+        public rotationR: number = 0;
         public speed: number;
 
         //左侧履带速度
@@ -80,10 +80,12 @@ module XYSweeper {
          * 更新视线向量
          */
         private updateLookAt() {
-            this.rotation += (this.leftTrack - this.rightTrack);
+            this.rotationR += (this.rightTrack-this.leftTrack);
             //更新视线角度
-            this.lookAt[0] = Math.sin(this.rotation);
-            this.lookAt[1] = Math.cos(this.rotation);
+            this.lookAt[0] = Math.cos(this.rotationR);
+            this.lookAt[1] = Math.sin(this.rotationR);
+            //更新模型,弧度话角度
+            this.rotation = 180*this.rotationR/Math.PI;
         }
         private updateSpeed() {
             this.speed = this.leftTrack + this.rightTrack;
@@ -99,7 +101,7 @@ module XYSweeper {
             this.x = Math.min(this.x, Environment.ZONE_RIGHT);
             this.x = Math.max(this.x, Environment.ZONE_LEFT);
             this.y = Math.min(this.y, Environment.ZONE_BOTTOM);
-            this.x = Math.max(this.y, Environment.ZONE_TOP);
+            this.y = Math.max(this.y, Environment.ZONE_TOP);
         }
 
         /**

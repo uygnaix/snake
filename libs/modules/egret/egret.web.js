@@ -2882,16 +2882,8 @@ var egret;
                 font += "bold ";
             font += (fontSize || 12) + "px ";
             font += (fontFamily || "Arial");
-            var width = 0;
-            var cache = fontCache[font] || (fontCache[font] = {});
             context.font = font;
-            var length = text.length;
-            for (var i = 0; i < length; i++) {
-                var letter = text.charCodeAt(i);
-                var w = cache[letter] || (cache[letter] = context.measureText(text.charAt(i)).width);
-                width += w;
-            }
-            return width;
+            return context.measureText(text).width;
         }
         /**
          * @private
@@ -3089,10 +3081,12 @@ var egret;
                 this.context.restore();
             };
             /**
-             * 获取指定坐标的像素
+             * 获取指定区域的像素
              */
-            p.getPixel = function (x, y) {
-                return this.context.getImageData(x, y, 1, 1).data;
+            p.getPixels = function (x, y, width, height) {
+                if (width === void 0) { width = 1; }
+                if (height === void 0) { height = 1; }
+                return this.context.getImageData(x, y, width, height).data;
             };
             /**
              * 转换成base64字符串，如果图片（或者包含的图片）跨域，则返回null
@@ -4586,13 +4580,37 @@ var egret;
             surface["style"]["height"] = iHeight + "px";
             sharedCanvas.width = iWidth;
             sharedCanvas.height = iHeight;
-            var bitmapData = texture;
-            var offsetX = Math.round(bitmapData._offsetX);
-            var offsetY = Math.round(bitmapData._offsetY);
-            var bitmapWidth = bitmapData._bitmapWidth;
-            var bitmapHeight = bitmapData._bitmapHeight;
-            sharedContext.drawImage(bitmapData._bitmapData.source, bitmapData._bitmapX + rect.x / egret.$TextureScaleFactor, bitmapData._bitmapY + rect.y / egret.$TextureScaleFactor, bitmapWidth * rect.width / w, bitmapHeight * rect.height / h, offsetX, offsetY, rect.width, rect.height);
-            return surface;
+            if (egret.Capabilities.$renderMode == "webgl") {
+                var renderTexture;
+                //webgl下非RenderTexture纹理先画到RenderTexture
+                if (!texture.$renderBuffer) {
+                    renderTexture = new egret.RenderTexture();
+                    renderTexture.drawToTexture(new egret.Bitmap(texture));
+                }
+                else {
+                    renderTexture = texture;
+                }
+                //从RenderTexture中读取像素数据，填入canvas
+                var pixels = renderTexture.$renderBuffer.getPixels(rect.x, rect.y, iWidth, iHeight);
+                var imageData = new ImageData(iWidth, iHeight);
+                for (var i = 0; i < pixels.length; i++) {
+                    imageData.data[i] = pixels[i];
+                }
+                sharedContext.putImageData(imageData, 0, 0);
+                if (!texture.$renderBuffer) {
+                    renderTexture.dispose();
+                }
+                return surface;
+            }
+            else {
+                var bitmapData = texture;
+                var offsetX = Math.round(bitmapData._offsetX);
+                var offsetY = Math.round(bitmapData._offsetY);
+                var bitmapWidth = bitmapData._bitmapWidth;
+                var bitmapHeight = bitmapData._bitmapHeight;
+                sharedContext.drawImage(bitmapData._bitmapData.source, bitmapData._bitmapX + rect.x / egret.$TextureScaleFactor, bitmapData._bitmapY + rect.y / egret.$TextureScaleFactor, bitmapWidth * rect.width / w, bitmapHeight * rect.height / h, offsetX, offsetY, rect.width, rect.height);
+                return surface;
+            }
         }
         /**
          * @private
@@ -4622,26 +4640,25 @@ var egret;
             aLink.dispatchEvent(evt);
         }
         function getPixel32(x, y) {
-            var buffer = egret.sys.canvasHitTestBuffer;
-            buffer.resize(3, 3);
-            var context = buffer.context;
-            context.translate(1 - x, 1 - y);
-            var width = this._bitmapWidth;
-            var height = this._bitmapHeight;
-            var scale = egret.$TextureScaleFactor;
-            context.drawImage(this._bitmapData.source, this._bitmapX, this._bitmapY, width, this._bitmapHeight, this._offsetX, this._offsetY, width * scale, height * scale);
+            egret.$warn(1041, "getPixel32", "getPixels");
+            return this.getPixels(x, y);
+        }
+        function getPixels(x, y, width, height) {
+            if (width === void 0) { width = 1; }
+            if (height === void 0) { height = 1; }
             try {
-                var data = buffer.getPixel(1, 1);
+                var surface = convertImageToCanvas(this);
+                var result = sharedContext.getImageData(x, y, width, height).data;
+                return result;
             }
             catch (e) {
-                console.log(this);
-                throw new Error(egret.sys.tr(1039));
+                egret.$error(1039);
             }
-            return data;
         }
         egret.Texture.prototype.toDataURL = toDataURL;
         egret.Texture.prototype.saveToFile = saveToFile;
         egret.Texture.prototype.getPixel32 = getPixel32;
+        egret.Texture.prototype.getPixels = getPixels;
     })(web = egret.web || (egret.web = {}));
 })(egret || (egret = {}));
 //////////////////////////////////////////////////////////////////////////////////////
@@ -7620,17 +7637,29 @@ var egret;
                 }
             };
             /**
-             * 获取指定坐标的像素
+             * 获取指定区域的像素
              */
-            p.getPixel = function (x, y) {
-                var pixels = new Uint8Array(4);
+            p.getPixels = function (x, y, width, height) {
+                if (width === void 0) { width = 1; }
+                if (height === void 0) { height = 1; }
+                var pixels = new Uint8Array(4 * width * height);
                 var useFrameBuffer = this.rootRenderTarget.useFrameBuffer;
                 this.rootRenderTarget.useFrameBuffer = true;
                 this.rootRenderTarget.activate();
-                this.context.getPixels(x, y, 1, 1, pixels);
+                this.context.getPixels(x, y, width, height, pixels);
                 this.rootRenderTarget.useFrameBuffer = useFrameBuffer;
                 this.rootRenderTarget.activate();
-                return pixels;
+                //图像反转
+                var result = new Uint8Array(4 * width * height);
+                for (var i = 0; i < height; i++) {
+                    for (var j = 0; j < width; j++) {
+                        result[(width * (height - i - 1) + j) * 4] = pixels[(width * i + j) * 4];
+                        result[(width * (height - i - 1) + j) * 4 + 1] = pixels[(width * i + j) * 4 + 1];
+                        result[(width * (height - i - 1) + j) * 4 + 2] = pixels[(width * i + j) * 4 + 2];
+                        result[(width * (height - i - 1) + j) * 4 + 3] = pixels[(width * i + j) * 4 + 3];
+                    }
+                }
+                return result;
             };
             /**
              * 转换成base64字符串，如果图片（或者包含的图片）跨域，则返回null
@@ -8149,7 +8178,7 @@ var egret;
                     if (hasBlendMode) {
                         buffer.context.setGlobalCompositeOperation(compositeOp);
                     }
-                    drawCalls += this.drawDisplayObject(displayObject, buffer, dirtyList, matrix, displayObject.$displayList, region, null);
+                    drawCalls += this.drawDisplayObject(displayObject, buffer, dirtyList, matrix, displayObject.$displayList, clipRegion, root);
                     if (hasBlendMode) {
                         buffer.context.setGlobalCompositeOperation(defaultCompositeOp);
                     }
@@ -8183,18 +8212,15 @@ var egret;
                         maskBuffer.context.pushBuffer(maskBuffer);
                         maskBuffer.setTransform(1, 0, 0, 1, -region.minX, -region.minY);
                         offsetM = egret.Matrix.create().setTo(1, 0, 0, 1, -region.minX, -region.minY);
-                        var calls = this.drawDisplayObject(mask, maskBuffer, dirtyList, offsetM, mask.$displayList, region, root);
+                        drawCalls += this.drawDisplayObject(mask, maskBuffer, dirtyList, offsetM, mask.$displayList, region, root);
                         maskBuffer.context.popBuffer();
-                        if (calls > 0) {
-                            drawCalls += calls;
-                            displayBuffer.context.setGlobalCompositeOperation("destination-in");
-                            displayBuffer.setTransform(1, 0, 0, -1, 0, maskBuffer.height);
-                            displayBuffer.globalAlpha = 1;
-                            var maskBufferWidth = maskBuffer.rootRenderTarget.width;
-                            var maskBufferHeight = maskBuffer.rootRenderTarget.height;
-                            displayBuffer.context.drawTexture(maskBuffer.rootRenderTarget.texture, 0, 0, maskBufferWidth, maskBufferHeight, 0, 0, maskBufferWidth, maskBufferHeight, maskBufferWidth, maskBufferHeight);
-                            displayBuffer.context.setGlobalCompositeOperation("source-over");
-                        }
+                        displayBuffer.context.setGlobalCompositeOperation("destination-in");
+                        displayBuffer.setTransform(1, 0, 0, -1, 0, maskBuffer.height);
+                        displayBuffer.globalAlpha = 1;
+                        var maskBufferWidth = maskBuffer.rootRenderTarget.width;
+                        var maskBufferHeight = maskBuffer.rootRenderTarget.height;
+                        displayBuffer.context.drawTexture(maskBuffer.rootRenderTarget.texture, 0, 0, maskBufferWidth, maskBufferHeight, 0, 0, maskBufferWidth, maskBufferHeight, maskBufferWidth, maskBufferHeight);
+                        displayBuffer.context.setGlobalCompositeOperation("source-over");
                         renderBufferPool.push(maskBuffer);
                     }
                     egret.Matrix.release(offsetM);
