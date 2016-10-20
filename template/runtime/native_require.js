@@ -47,6 +47,7 @@ var game_file_list = [
 	"bin-debug/XYSweeper/brain/Genome.js",
 	"bin-debug/XYSweeper/brain/Neuron.js",
 	"bin-debug/XYSweeper/scene/SweeperScene.js",
+	"bin-debug/XYSweeper/sprite/Monitor.js",
 	"bin-debug/XYSweeper/sprite/SweeperSprite.js",
 	"bin-debug/XYSweeper/world/Controller.js",
 	"bin-debug/XYSweeper/world/Environment.js",

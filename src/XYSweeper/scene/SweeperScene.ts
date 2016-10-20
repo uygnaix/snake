@@ -14,6 +14,7 @@ module XYSweeper {
             this.height = height;
             this.loadGrid();
             this.start();
+            this.showInfo();
         }
 
         private loadGrid() {
@@ -39,6 +40,19 @@ module XYSweeper {
                 this.controller.update();
             }
             return false;
+        }
+
+        private monitor:Monitor;
+        private showInfo(){
+            //监视器放在右上角
+            var monitor = new Monitor();
+            debugger;
+            monitor.x = 380;
+            monitor.y = 0;
+            monitor.width = 100;
+            monitor.height = 30;
+            monitor.alpha = 1;
+            this.addChild(monitor);
         }
     }
 }
