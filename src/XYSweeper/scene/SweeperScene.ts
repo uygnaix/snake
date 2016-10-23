@@ -7,6 +7,7 @@ module XYSweeper {
 
         private gridLayer: GridLayer;
         private controller: Controller;
+        private monitor: Monitor;
 
         constructor(width: number, height: number) {
             super();
@@ -34,25 +35,21 @@ module XYSweeper {
                 this.running = false;
             }, this);
         }
-        
+
         public update(timeStamp: number): boolean {
             if (this.running) {
                 this.controller.update();
+                this.monitor.setTicks(this.controller.ticks);
+                this.monitor.setGeneration(this.controller.generationIndex);
             }
             return false;
         }
 
-        private monitor:Monitor;
-        private showInfo(){
+        private showInfo() {
             //监视器放在右上角
-            var monitor = new Monitor();
-            debugger;
-            monitor.x = 380;
-            monitor.y = 0;
-            monitor.width = 100;
-            monitor.height = 30;
-            monitor.alpha = 1;
-            this.addChild(monitor);
+            var mw = 200;
+            this.monitor = new Monitor(this.width - mw, 0, mw, 30);
+            this.addChild(this.monitor);
         }
     }
 }

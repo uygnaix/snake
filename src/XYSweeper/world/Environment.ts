@@ -10,7 +10,7 @@ module XYSweeper {
         public static ZONE_TOP = 20;
         public static ZONE_BOTTOM = 460;
 
-        public static TICKS_SIZE = 2000;
+        public static TICKS_SIZE = 200;
 
         public static INPUT_SIZE = 2;
         //隐藏层数
@@ -25,8 +25,8 @@ module XYSweeper {
         //食物数量
         public static MINE_SIZE = 1;
 
-        //最大发现距离平方
-        public static MAX_FIND_DISTANCE = 5;
+        //最大发现距离
+        public static MAX_FIND_DISTANCE = 50;
         //一帧最大转动角度
         public static MAX_TURN_RATE: number = 10;
 

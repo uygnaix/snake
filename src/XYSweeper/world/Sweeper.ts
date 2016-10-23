@@ -3,6 +3,7 @@
  */
 module XYSweeper {
     import Shape = egret.Shape;
+    import TextField = egret.TextField;
     export class Sweeper extends egret.Sprite {
 
         public brain: NeuronNet;
@@ -10,21 +11,22 @@ module XYSweeper {
         public lookAt: Array<number> = [1, 0];
         //转动角度,弧度为单位
         public rotationR: number = 0;
-        public speed: number;
+        public speed: number = 0;
 
         //左侧履带速度
-        public leftTrack: number;
+        public leftTrack: number = 0;
         //右侧履带速度
-        public rightTrack: number;
+        public rightTrack: number = 0;
 
         //适应性分数
-        public fitness: number;
+        public fitness: number = 0;
         //最近的地雷
         public closestMine: Mine;
 
         private leftShape: Shape;
         private rightShape: Shape;
         private coreShape: Shape;
+        private fitnessLabel: TextField;
 
         constructor() {
             super();
@@ -49,6 +51,7 @@ module XYSweeper {
             this.x = position[0];
             this.y = position[1];
         }
+
         /**
          * 注入大脑权重
          */
@@ -80,13 +83,14 @@ module XYSweeper {
          * 更新视线向量
          */
         private updateLookAt() {
-            this.rotationR += (this.rightTrack-this.leftTrack);
+            this.rotationR += (this.rightTrack - this.leftTrack);
             //更新视线角度
             this.lookAt[0] = Math.cos(this.rotationR);
             this.lookAt[1] = Math.sin(this.rotationR);
             //更新模型,弧度话角度
-            this.rotation = 180*this.rotationR/Math.PI;
+            this.rotation = 180 * this.rotationR / Math.PI;
         }
+
         private updateSpeed() {
             this.speed = this.leftTrack + this.rightTrack;
         }
@@ -124,9 +128,9 @@ module XYSweeper {
                 return null;
             }
             this.closestMine = mines[0];
-            var minDistance: number = this.getDistanceSquare(this.closestMine);
+            var minDistance: number = this.getDistance(this.closestMine);
             for (var i = 1; i < mines.length; i++) {
-                var distance = this.getDistanceSquare(mines[i]);
+                var distance = this.getDistance(mines[i]);
                 if (distance < minDistance) {
                     this.closestMine = mines[i];
                     minDistance = distance;
@@ -138,8 +142,8 @@ module XYSweeper {
         /**
          * 获取距离的平方
          */
-        public getDistanceSquare(mine: Mine) {
-            return (mine.x - this.x) ^ 2 + (mine.y - this.y) ^ 2;
+        public getDistance(mine: Mine) {
+            return Math.pow(Math.pow(mine.x - this.x, 2) + Math.pow(mine.y - this.y, 2), 0.5);
         }
 
         /**
@@ -149,7 +153,7 @@ module XYSweeper {
         public findMine(mines: Array<Mine>): Array<Mine> {
             var found: Array<Mine> = [];
             for (var i = 0; i < mines.length; i++) {
-                if (this.getDistanceSquare(mines[i]) < Environment.MAX_FIND_DISTANCE) {
+                if (this.getDistance(mines[i]) < Environment.MAX_FIND_DISTANCE) {
                     found.push(mines[i]);
                 }
             }
@@ -160,7 +164,7 @@ module XYSweeper {
          * 归一化向量
          */
         private static norm(x, y) {
-            var length = Math.pow(Math.pow(x,2) + Math.pow(y,2),0.5);
+            var length = Math.pow(Math.pow(x, 2) + Math.pow(y, 2), 0.5);
             return [x / length, y / length];
         }
 
@@ -173,6 +177,11 @@ module XYSweeper {
             return force;
         }
 
+        setFitness(number: number) {
+            this.fitness = number;
+            this.fitnessLabel.text = this.fitness.toString();
+        }
+
         /**
          * 绘制扫描仪
          */
@@ -180,7 +189,9 @@ module XYSweeper {
             this.drawLeft();
             this.drawCore();
             this.drawRight();
+            this.drawInfo();
         }
+
         private drawLeft() {
             this.leftShape = new Shape();
             this.leftShape.graphics.beginFill(0xf70000);
@@ -188,6 +199,7 @@ module XYSweeper {
             this.leftShape.graphics.endFill();
             this.addChild(this.leftShape);
         }
+
         private drawRight() {
             this.rightShape = new Shape();
             this.rightShape.graphics.beginFill(0xf70000);
@@ -195,6 +207,7 @@ module XYSweeper {
             this.rightShape.graphics.endFill();
             this.addChild(this.rightShape);
         }
+
         private drawCore() {
             this.coreShape = new Shape();
             this.coreShape.graphics.beginFill(0x00ff00);
@@ -202,5 +215,16 @@ module XYSweeper {
             this.coreShape.graphics.endFill();
             this.addChild(this.coreShape);
         }
+
+        private drawInfo() {
+            this.fitnessLabel = new TextField();
+            this.fitnessLabel.text = '0';
+            this.fitnessLabel.size = 10;
+            this.fitnessLabel.y = 4;
+            this.fitnessLabel.textColor = 0x3e3c3d;
+            this.addChild(this.fitnessLabel);
+        }
+
+
     }
 }

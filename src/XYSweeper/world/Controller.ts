@@ -80,7 +80,7 @@ module XYSweeper {
                     var foundMine = this.sweepers[i].findMine(this.mines);
                     if (foundMine.length > 0) {
                         //扫描机已找到地雷,增加扫描机分数,移除被找到的雷,并用新的代替
-                        this.sweepers[i].fitness += foundMine.length;
+                        this.sweepers[i].setFitness(this.sweepers[i].fitness+foundMine.length);
                         this.resetMines(foundMine);
                         //更新基因组的适应性分数
                     }
