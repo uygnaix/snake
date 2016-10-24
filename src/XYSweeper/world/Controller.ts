@@ -10,6 +10,7 @@ module XYSweeper {
             this.loadSweepers();
             this.loadMines();
         }
+
         public population: Array<Genome> = [];
         public sweepers: Array<Sweeper> = [];
         public mines: Array<Mine> = [];
@@ -19,7 +20,7 @@ module XYSweeper {
         public weightSum: number = 0;
 
         //存放每一代平均适应性分数
-        public avgFitness: Array<number> = [];
+        public avgFitness: Array<Array<number>> = [];
         //存放每一代最高适应性分数
         public bestFitness: Array<number> = [];
         //每一代的帧数
@@ -46,6 +47,7 @@ module XYSweeper {
                 this.sweepers.push(sweeper);
             }
         }
+
         private loadMines() {
             for (var i = 0; i < Environment.MINE_SIZE; i++) {
                 var mine = new Mine();
@@ -53,6 +55,7 @@ module XYSweeper {
                 this.mines.push(mine);
             }
         }
+
         //描绘数据
         public drawData() {
 
@@ -62,6 +65,16 @@ module XYSweeper {
             for (var i = 0; i < mines.length; i++) {
                 mines[i].reset();
             }
+        }
+
+        private getBestFitness():number {
+            var best = 0;
+            for (var i = 0; i < this.sweepers.length; i++) {
+                if (this.sweepers[i].fitness > best) {
+                    best = this.sweepers[i].fitness;
+                }
+            }
+            return best;
         }
 
         /**
@@ -80,7 +93,7 @@ module XYSweeper {
                     var foundMine = this.sweepers[i].findMine(this.mines);
                     if (foundMine.length > 0) {
                         //扫描机已找到地雷,增加扫描机分数,移除被找到的雷,并用新的代替
-                        this.sweepers[i].setFitness(this.sweepers[i].fitness+foundMine.length);
+                        this.sweepers[i].setFitness(this.sweepers[i].fitness + foundMine.length);
                         this.resetMines(foundMine);
                         //更新基因组的适应性分数
                     }
@@ -89,8 +102,10 @@ module XYSweeper {
             } else {
                 //一代已经循环完毕
                 //记录上一代适应性情况
-                this.avgFitness.push();
-                this.bestFitness.push();
+                this.avgFitness.push(this.sweepers.map(function (sweeper) {
+                    return sweeper.fitness;
+                }));
+                this.bestFitness.push(this.getBestFitness());
                 this.generationIndex++;
                 //帧计数复位
                 this.ticks = 0;
