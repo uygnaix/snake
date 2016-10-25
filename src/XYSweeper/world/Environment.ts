@@ -21,7 +21,7 @@ module XYSweeper {
         public static GENOME_SEGMENT_SIZE = 28;
 
         //人口数量
-        public static POPULATION_SIZE = 2;
+        public static POPULATION_SIZE = 4;
         //食物数量
         public static MINE_SIZE = 1;
 
