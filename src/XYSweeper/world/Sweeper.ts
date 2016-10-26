@@ -23,10 +23,10 @@ module XYSweeper {
         //最近的地雷
         public closestMine: Mine;
 
-        private leftShape: Shape;
-        private rightShape: Shape;
-        private coreShape: Shape;
-        private fitnessLabel: TextField;
+        private leftShape: Shape = new Shape();
+        private rightShape: Shape = new Shape();
+        private coreShape: Shape = new Shape();
+        private fitnessLabel: TextField = new TextField();
 
         constructor() {
             super();
@@ -46,10 +46,10 @@ module XYSweeper {
          */
         public reset() {
             this.draw();
-            //随机位置出现
-            var position = Environment.randomPosition();
-            this.x = position[0];
-            this.y = position[1];
+            //随机位置出现,固定在地图中间出现
+            // var position = Environment.randomPosition();
+            this.x = 240;
+            this.y = 240;
         }
 
         /**
@@ -193,7 +193,6 @@ module XYSweeper {
         }
 
         private drawLeft() {
-            this.leftShape = new Shape();
             this.leftShape.graphics.beginFill(0xf70000);
             this.leftShape.graphics.drawRect(0, 0, 20, 4);
             this.leftShape.graphics.endFill();
@@ -201,7 +200,6 @@ module XYSweeper {
         }
 
         private drawRight() {
-            this.rightShape = new Shape();
             this.rightShape.graphics.beginFill(0xf70000);
             this.rightShape.graphics.drawRect(0, 12, 20, 4);
             this.rightShape.graphics.endFill();
@@ -209,7 +207,6 @@ module XYSweeper {
         }
 
         private drawCore() {
-            this.coreShape = new Shape();
             this.coreShape.graphics.beginFill(0x00ff00);
             this.coreShape.graphics.drawCircle(4, 8, 4);
             this.coreShape.graphics.endFill();

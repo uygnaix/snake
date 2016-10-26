@@ -26,7 +26,7 @@ module XYSweeper {
 
         public clone(): Genome {
             var offspring = new Genome();
-            for(var i=0;i<this.segments.length;i++){
+            for (var i = 0; i < this.segments.length; i++) {
                 offspring.segments.push(this.segments[i]);
             }
             return offspring;
@@ -84,7 +84,7 @@ module XYSweeper {
             var offspring: Array<Genome> = [];
             //在后代里加入优秀的父辈
             offspring = offspring.concat(genomes);
-            var birthRate = size / genomes.length * 2;
+            var birthRate = size / genomes.length * 3;
             for (var i = 0; i < genomes.length / 2; i++) {
                 //随机提出father
                 var fatherIndex = Environment.randomInt(genomes.length);
@@ -94,7 +94,8 @@ module XYSweeper {
                 offspring = offspring.concat(GeneticAlgorithm.matingCouple(father, mother, birthRate));
             }
             //随机出去多余的
-            for (var i = 0; i < offspring.length - size+1; i++) {
+            var killSize = offspring.length - size + 1;
+            for (var i = 0; i < killSize; i++) {
                 var deathIndex = Environment.randomInt(offspring.length);
                 offspring.splice(deathIndex, 1);
             }
