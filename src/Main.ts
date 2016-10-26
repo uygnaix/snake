@@ -127,7 +127,7 @@ class Main extends egret.DisplayObjectContainer {
      * Create a game scene
      */
     private createGameScene():void {
-
+        // this.stage.dirtyRegionPolicy = "off";
         var stageW:number = this.stage.stageWidth;
         var stageH:number = this.stage.stageHeight;
         // var gameScene = new XYHRD.GameScene(stageW, stageH);
