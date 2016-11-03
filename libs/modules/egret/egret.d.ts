@@ -1,4 +1,28 @@
+/**
+ * @language en_US
+ * Is debug mode.
+ * @version Egret 2.5
+ * @platform Web,Native
+ */
+/**
+ * @language zh_CN
+ * 是否为 debug 模式。
+ * @version Egret 2.5
+ * @platform Web,Native
+ */
 declare var DEBUG: boolean;
+/**
+ * @language en_US
+ * Is release mode.
+ * @version Egret 2.5
+ * @platform Web,Native
+ */
+/**
+ * @language zh_CN
+ * 是否为 release 模式。
+ * @version Egret 2.5
+ * @platform Web,Native
+ */
 declare var RELEASE: boolean;
 declare module egret {
     function $error(code: number, ...params: any[]): void;
@@ -262,6 +286,7 @@ declare module egret {
          * @param bubbles Determines whether the Event object bubbles. Event listeners can access this information through
          * the inherited bubbles property.
          * @param data {any} data
+         * @param cancelable Determines whether the Event object can be canceled. The default values is false.
          * @version Egret 2.4
          * @platform Web,Native
          */
@@ -271,10 +296,11 @@ declare module egret {
          * @param type {string} 事件类型
          * @param bubbles {boolean} 确定 Event 对象是否参与事件流的冒泡阶段。默认值为 false。
          * @param data {any} 事件data
+         * @param cancelable {boolean} 确定是否可以取消 Event 对象。默认值为 false。
          * @version Egret 2.4
          * @platform Web,Native
          */
-        dispatchEventWith(type: string, bubbles?: boolean, data?: any): boolean;
+        dispatchEventWith(type: string, bubbles?: boolean, data?: any, cancelable?: boolean): boolean;
     }
 }
 declare module egret.sys {
@@ -1899,7 +1925,7 @@ declare module egret {
         /**
          * @private
          */
-        $measureFiltersBounds(bounds: Rectangle): Rectangle;
+        $measureFiltersOffset(): any;
         /**
          * @private
          * 获取相对于指定根节点的连接矩阵。
@@ -3606,9 +3632,16 @@ declare module egret {
          */
         bitmapData: BitmapData;
         /**
-         * @private
-         *
-         * @param value
+        * @language en_US
+        * Set the BitmapData object.
+        * @version Egret 3.2.1
+        * @platform Web,Native
+        */
+        /**
+         * @language zh_CN
+         * 设置 BitmapData 对象。
+         * @version Egret 3.2.1
+         * @platform Web,Native
          */
         _setBitmapData(value: BitmapData): void;
         /**
@@ -3627,24 +3660,32 @@ declare module egret {
          */
         $initData(bitmapX: number, bitmapY: number, bitmapWidth: number, bitmapHeight: number, offsetX: number, offsetY: number, textureWidth: number, textureHeight: number, sourceWidth: number, sourceHeight: number): void;
         /**
+         * @deprecated
+         */
+        getPixel32(x: number, y: number): number[];
+        /**
          * @language en_US
-         * Obtain the color value of a pixel point
-         * @param x {number} The x coordinate of a pixel point
-         * @param y {number} The y coordinate of a pixel point
-         * @returns {number} Color value of a specified pixel point
-         * @version Egret 2.4
+         * Obtain the color value for the specified pixel region
+         * @param x  The x coordinate of the pixel region
+         * @param y  The y coordinate of the pixel region
+         * @param width  The width of the pixel region
+         * @param height  The height of the pixel region
+         * @returns  Specifies the color value for the pixel region
+         * @version Egret 3.2.1
          * @platform Web,Native
          */
         /**
          * @language zh_CN
-         * 获取某一点像素的颜色值
-         * @param x {number} 像素点的X轴坐标
-         * @param y {number} 像素点的Y轴坐标
-         * @returns {number} 指定像素点的颜色值
-         * @version Egret 2.4
+         * 获取指定像素区域的颜色值
+         * @param x  像素区域的X轴坐标
+         * @param y  像素区域的Y轴坐标
+         * @param width  像素点的Y轴坐标
+         * @param height  像素点的Y轴坐标
+         * @returns  指定像素区域的颜色值
+         * @version Egret 3.2.1
          * @platform Web
          */
-        getPixel32(x: number, y: number): number[];
+        getPixels(x: number, y: number, width?: number, height?: number): number[];
         /**
          * @language en_US
          * Convert base64 string, if the picture (or pictures included) cross-border or null
@@ -3718,7 +3759,7 @@ declare module egret {
      */
     class RenderTexture extends egret.Texture {
         constructor();
-        private renderBuffer;
+        $renderBuffer: sys.RenderBuffer;
         /**
          * @language en_US
          * The specified display object is drawn as a texture
@@ -3738,7 +3779,13 @@ declare module egret {
          * @platform Web,Native
          */
         drawToTexture(displayObject: egret.DisplayObject, clipBounds?: Rectangle, scale?: number): boolean;
+        /**
+         * @inheritDoc
+         */
         getPixel32(x: number, y: number): number[];
+        /**
+         * @inheritDoc
+         */
         dispose(): void;
     }
 }
@@ -4088,42 +4135,11 @@ declare module egret {
          */
         invalidate(): void;
         /**
-         * @private
-         */
-        private implMap;
-        /**
-         * @language en_US
-         * Adds an interface-name-to-implementation-class mapping to the registry.
-         * @param interfaceName the interface name to register. For example："eui.IAssetAdapter","eui.Theme"
-         * @param instance the instance to register.
-         * @version Egret 2.4
-         * @platform Web,Native
-         */
-        /**
-         * @language zh_CN
-         * 注册一个接口实现。
-         * @param interfaceName 注入的接口名称。例如："eui.IAssetAdapter","eui.Theme"
-         * @param instance 实现此接口的实例。
-         * @version Egret 2.4
-         * @platform Web,Native
+         * @deprecated
          */
         registerImplementation(interfaceName: string, instance: any): void;
         /**
-         * @language en_US
-         * Returns the singleton instance of the implementation class that was registered for the specified interface.
-         * This method is usually called by egret framework.
-         * @param interfaceName The interface name to identify. For example："eui.IAssetAdapter","eui.Theme"
-         * @returns the singleton instance of the implementation class
-         * @version Egret 2.4
-         * @platform Web,Native
-         */
-        /**
-         * @language zh_CN
-         * 获取一个接口实现。此方法通常由框架内部调用。获取项目注入的自定义实现实例。
-         * @param interfaceName 要获取的接口名称。例如："eui.IAssetAdapter","eui.Theme"
-         * @returns 返回实现此接口的实例。
-         * @version Egret 2.4
-         * @platform Web,Native
+         * @deprecated
          */
         getImplementation(interfaceName: string): any;
         /**
@@ -6808,6 +6824,10 @@ declare module egret {
         $addTarget(target: DisplayObject): void;
         $removeTarget(target: DisplayObject): void;
         protected invalidate(): void;
+        /**
+         * @private
+         */
+        $toJson(): string;
     }
 }
 declare module egret {
@@ -6885,6 +6905,10 @@ declare module egret {
          * @private
          */
         $blurY: number;
+        /**
+         * @private
+         */
+        $toJson(): string;
     }
 }
 declare module egret {
@@ -6947,6 +6971,10 @@ declare module egret {
          * @private
          */
         private setMatrix(value);
+        /**
+         * @private
+         */
+        $toJson(): string;
     }
 }
 declare module egret {
@@ -7138,6 +7166,10 @@ declare module egret {
          * @platform Web
          */
         knockout: boolean;
+        /**
+         * @private
+         */
+        $toJson(): string;
     }
 }
 declare module egret {
@@ -7238,6 +7270,10 @@ declare module egret {
          * @platform Web
          */
         hideObject: boolean;
+        /**
+         * @private
+         */
+        $toJson(): string;
     }
 }
 declare module egret {
@@ -8005,12 +8041,14 @@ declare module egret {
         /**
          * @language en_US
          * Background music
+         * @default "music"
          * @version Egret 2.4
          * @platform Web,Native
          */
         /**
          * @language zh_CN
          * 背景音乐
+         * @default "music"
          * @version Egret 2.4
          * @platform Web,Native
          */
@@ -8018,12 +8056,14 @@ declare module egret {
         /**
          * @language en_US
          * EFFECT
+         * @default "effect"
          * @version Egret 2.4
          * @platform Web,Native
          */
         /**
          * @language zh_CN
          * 音效
+         * @default "effect"
          * @version Egret 2.4
          * @platform Web,Native
          */
@@ -8313,6 +8353,9 @@ declare module egret {
         new (url?: string, cache?: boolean): Video;
     };
 }
+/**
+ * @private
+ */
 declare module egret_native {
     var nativeType: string;
     /**
@@ -9499,9 +9542,14 @@ declare module egret.sys {
 }
 declare module egret.sys {
     /**
+     * @private
      * 共享的用于碰撞检测的渲染缓冲
      */
     var customHitTestBuffer: sys.RenderBuffer;
+    /**
+     * @private
+     * 共享的用于canvas碰撞检测的渲染缓冲
+     */
     var canvasHitTestBuffer: sys.RenderBuffer;
     /**
      * @private
@@ -9555,9 +9603,9 @@ declare module egret.sys {
          */
         endClip(): void;
         /**
-         * 获取指定坐标的像素
+         * 获取指定区域的像素
          */
-        getPixel(x: number, y: number): number[];
+        getPixels(x: number, y: number, width?: number, height?: number): number[];
         /**
          * 转换成base64字符串，如果图片（或者包含的图片）跨域，则返回null
          * @param type 转换的类型，如: "image/png","image/jpeg"
@@ -9576,6 +9624,9 @@ declare module egret.sys {
          */
         setDirtyRegionPolicy(state: string): void;
     }
+    /**
+     * @private
+     */
     var RenderBuffer: {
         /**
          * 创建一个RenderTarget。
@@ -9586,6 +9637,9 @@ declare module egret.sys {
          */
         new (width?: number, height?: number, root?: boolean): RenderBuffer;
     };
+    /**
+     * @private
+     */
     var CanvasRenderBuffer: {
         /**
          * 创建一个CanvasRenderBuffer。
@@ -10140,6 +10194,14 @@ declare module egret.sys {
          */
         blendMode: number;
         /**
+         * 相对透明度
+         */
+        alpha: number;
+        /**
+         * 相对透明度
+         */
+        filter: ColorMatrixFilter;
+        /**
          * 绘制一次位图
          */
         drawImage(sourceX: number, sourceY: number, sourceW: number, sourceH: number, drawX: number, drawY: number, drawW: number, drawH: number): void;
@@ -10424,6 +10486,7 @@ declare module egret.sys {
 }
 declare module egret.sys {
     /**
+     * @private
      * 路径类型
      */
     const enum PathType {
@@ -10680,6 +10743,10 @@ declare module egret {
          * @private
          */
         private renderNode(node, context, forHitTest?);
+        /**
+         * render mesh
+         */
+        private renderMesh(node, context);
         /**
          * @private
          */
@@ -11182,6 +11249,21 @@ declare module egret {
          */
         static supportVersion: string;
         static $supportVersion: string;
+        /***
+         * @language en_US
+         * version of Egret.
+         * @type {string}
+         * @version Egret 3.2.0
+         * @platform Web,Native
+         */
+        /***
+         * @language zh_CN
+         * Egret 的版本号。
+         * @type {string}
+         * @version Egret 3.2.0
+         * @platform Web,Native
+         */
+        static engineVersion: string;
         /**
          * 设置系统信息
          */
@@ -11240,7 +11322,13 @@ declare module egret {
         static $boundingClientHeight: number;
     }
 }
+/**
+ * @private
+ */
 declare var testDeviceType: () => boolean;
+/**
+ * @private
+ */
 declare var testRuntimeType: () => boolean;
 declare module egret {
     /**
@@ -11297,6 +11385,44 @@ declare module egret {
      * @param optionalParams 要输出到控制台的额外信息
      */
     function log(message?: any, ...optionalParams: any[]): void;
+}
+declare module egret {
+    function getI(): void;
+    /**
+     * @language en_US
+     * Adds an interface-name-to-implementation-class mapping to the registry.
+     * @param interfaceName the interface name to register. For example："eui.IAssetAdapter","eui.Theme"
+     * @param instance the instance to register.
+     * @version Egret 2.4
+     * @platform Web,Native
+     */
+    /**
+     * @language zh_CN
+     * 注册一个接口实现。
+     * @param interfaceName 注入的接口名称。例如："eui.IAssetAdapter","eui.Theme"
+     * @param instance 实现此接口的实例。
+     * @version Egret 3.2.1
+     * @platform Web,Native
+     */
+    function registerImplementation(interfaceName: string, instance: any): void;
+    /**
+     * @language en_US
+     * Returns the singleton instance of the implementation class that was registered for the specified interface.
+     * This method is usually called by egret framework.
+     * @param interfaceName The interface name to identify. For example："eui.IAssetAdapter","eui.Theme"
+     * @returns the singleton instance of the implementation class
+     * @version Egret 2.4
+     * @platform Web,Native
+     */
+    /**
+     * @language zh_CN
+     * 获取一个接口实现。此方法通常由框架内部调用。获取项目注入的自定义实现实例。
+     * @param interfaceName 要获取的接口名称。例如："eui.IAssetAdapter","eui.Theme"
+     * @returns 返回实现此接口的实例。
+     * @version Egret 3.2.1
+     * @platform Web,Native
+     */
+    function getImplementation(interfaceName: string): any;
 }
 declare module egret {
     /**
@@ -11573,7 +11699,7 @@ declare module egret {
          */
         /**
          * @language zh_CN
-         * 一个整数，表示字符之间的距量。
+         * 一个整数，表示字符之间的距离。
          * @default 0
          * @version Egret 2.4
          * @platform Web,Native
@@ -12513,6 +12639,32 @@ declare module egret {
          */
         static default_fontFamily: string;
         /**
+         * @language en_US
+         * default size in pixels of text
+         * @version Egret 3.2.1
+         * @platform Web,Native
+         */
+        /**
+         * @language zh_CN
+         * 默认文本字号大小
+         * @version Egret 3.2.1
+         * @platform Web,Native
+         */
+        static default_size: number;
+        /**
+         * @language en_US
+         * default color of the text.
+         * @version Egret 3.2.1
+         * @platform Web,Native
+         */
+        /**
+         * @language zh_CN
+         * 默认文本颜色
+         * @version Egret 3.2.1
+         * @platform Web,Native
+         */
+        static default_textColor: number;
+        /**
          * @version Egret 2.4
          * @platform Web,Native
          */
@@ -13364,6 +13516,9 @@ declare module egret {
         static $getScrollNum(textfield: egret.TextField): number;
     }
 }
+/**
+ * @private
+ */
 declare module egret.sys {
     /**
      * 测量文本在指定样式下的宽度。
@@ -14332,8 +14487,17 @@ declare module egret {
         private static cosInt(value);
     }
 }
+/**
+ * @private
+ */
 declare var egret_sin_map: {};
+/**
+ * @private
+ */
 declare var egret_cos_map: {};
+/**
+ * @private
+ */
 declare var DEG_TO_RAD: number;
 declare module egret {
     /**

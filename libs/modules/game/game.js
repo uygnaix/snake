@@ -642,6 +642,14 @@ var egret;
          * @private
          *
          */
+        p.$renderFrame = function () {
+            this.$bitmapData = this.$movieClipData.getTextureByFrame(this.$currentFrameNum);
+            this.$invalidateContentBounds();
+        };
+        /**
+         * @private
+         *
+         */
         p.handlePendingEvent = function () {
             if (this.$eventPool.length != 0) {
                 this.$eventPool.reverse();
@@ -949,6 +957,9 @@ var egret;
          * @returns
          */
         p.getTextureByResName = function (resName) {
+            if (this.spriteSheet == null) {
+                return null;
+            }
             var texture = this.spriteSheet.getTexture(resName);
             if (!texture) {
                 var textureData = this.textureData[resName];
@@ -4190,7 +4201,7 @@ var egret;
              * @platform Web,Native
              */
             ,function () {
-                egret.$warn(1041);
+                egret.$warn(1041, "egret.MainContext.runtimeType", "egret.Capabilities.runtimeType");
                 return MainContext._runtimeType;
             }
         );
@@ -4246,6 +4257,9 @@ var egret;
     egret.MainContext = MainContext;
     egret.registerClass(MainContext,'egret.MainContext');
 })(egret || (egret = {}));
+/**
+ * @private
+ */
 var testDeviceType1 = function () {
     if (!this["navigator"]) {
         return true;
@@ -4253,6 +4267,9 @@ var testDeviceType1 = function () {
     var ua = navigator.userAgent.toLowerCase();
     return (ua.indexOf('mobile') != -1 || ua.indexOf('android') != -1);
 };
+/**
+ * @private
+ */
 var testRuntimeType1 = function () {
     if (this["navigator"]) {
         return true;
