@@ -5,7 +5,6 @@ module XYSweeper {
     export class Controller extends egret.DisplayObjectContainer {
         constructor() {
             super();
-            this.genAI = new GeneticAlgorithm();
             this.createPopulation();
             this.loadSweepers();
             this.loadMines();
@@ -14,8 +13,6 @@ module XYSweeper {
         public population: Array<Genome> = [];
         public sweepers: Array<Sweeper> = [];
         public mines: Array<Mine> = [];
-
-        public genAI: GeneticAlgorithm;
 
         public weightSum: number = 0;
 
@@ -110,7 +107,7 @@ module XYSweeper {
                 //帧计数复位
                 this.ticks = 0;
                 //运行GA创建一个新的群体
-                this.population = this.genAI.epoch(this.population);
+                this.population = GeneticAlgorithm.epoch(this.population);
                 //在各扫雷机中从新插入新的（有希望）被改进的大脑,并将它们的位置进行复位,等
                 for (var i = 0; i < this.sweepers.length; i++) {
                     this.sweepers[i].evolve(this.population[i].segments);

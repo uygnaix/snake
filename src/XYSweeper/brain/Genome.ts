@@ -34,7 +34,7 @@ module XYSweeper {
 
     }
     export class GeneticAlgorithm {
-        public epoch(population: Array<Genome>): Array<Genome> {
+        public static epoch(population: Array<Genome>): Array<Genome> {
             var populationSize = population.length;
             var survives: Array<Genome> = GeneticAlgorithm.select(population);
             var offspring: Array<Genome> = GeneticAlgorithm.mating(survives, populationSize);
@@ -94,7 +94,7 @@ module XYSweeper {
                 offspring = offspring.concat(GeneticAlgorithm.matingCouple(father, mother, birthRate));
             }
             //随机出去多余的
-            var killSize = offspring.length - size + 1;
+            var killSize = offspring.length - size;
             for (var i = 0; i < killSize; i++) {
                 var deathIndex = Environment.randomInt(offspring.length);
                 offspring.splice(deathIndex, 1);
