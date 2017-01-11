@@ -131,7 +131,7 @@ class Main extends egret.DisplayObjectContainer {
         var stageW:number = this.stage.stageWidth;
         var stageH:number = this.stage.stageHeight;
         // var gameScene = new XYHRD.GameScene(stageW, stageH);
-        var gameScene = new XYSweeper.SweeperScene(stageW, stageH);
+        var gameScene = new XYMount.MountScene(stageW, stageH);
         this.addChild(gameScene);
     }
 }
