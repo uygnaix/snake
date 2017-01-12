@@ -40,6 +40,7 @@ var game_file_list = [
 	"bin-debug/XYMount/interface/ICurve.js",
 	"bin-debug/XYMount/layer/CoordinateLayer.js",
 	"bin-debug/XYMount/scene/MountScene.js",
+	"bin-debug/XYMount/world/Cat.js",
 	"bin-debug/XYMount/world/Coordinate.js",
 	"bin-debug/XYMount/world/MountCurve.js",
 	"bin-debug/XYPirate/layer/ControlLayer.js",
