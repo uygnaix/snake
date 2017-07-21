@@ -1,6 +1,8 @@
+
+
 //////////////////////////////////////////////////////////////////////////////////////
 //
-//  Copyright (c) 2014-2015, Egret Technology Inc.
+//  Copyright (c) 2014-present, Egret Technology.
 //  All rights reserved.
 //  Redistribution and use in source and binary forms, with or without
 //  modification, are permitted provided that the following conditions are met:
@@ -26,73 +28,77 @@
 //  EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 //
 //////////////////////////////////////////////////////////////////////////////////////
-
-class Main extends egret.DisplayObjectContainer {
-
-    private firstResGroup:string = 'pirate';
-
+declare function share(msg: string): void;
+class Main extends eui.UILayer {
+    private groupName:string = 'ball';
     /**
      * 加载进度界面
-     * Process interface loading
+     * loading process interface
      */
-    private loadingView:LoadingUI;
-
-    public constructor() {
-        super();
-        this.addEventListener(egret.Event.ADDED_TO_STAGE, this.onAddToStage, this);
-    }
-
-    private onAddToStage(event:egret.Event) {
+    private loadingView: LoadingUI;
+    protected createChildren(): void {
+        super.createChildren();
+        //inject the custom material parser
         //注入自定义的素材解析器
-        var assetAdapter = new AssetAdapter();
-        this.stage.registerImplementation( "eui.IAssetAdapter", assetAdapter );
-        this.stage.registerImplementation( "eui.IThemeAdapter", new ThemeAdapter() );
-
+        let assetAdapter = new AssetAdapter();
+        egret.registerImplementation("eui.IAssetAdapter",assetAdapter);
+        egret.registerImplementation("eui.IThemeAdapter",new ThemeAdapter());
+        //Config loading process interface
         //设置加载进度界面
-        //Config to load process interface
         this.loadingView = new LoadingUI();
         this.stage.addChild(this.loadingView);
-
+        // initialize the Resource loading library
         //初始化Resource资源加载库
-        //initiate Resource loading library
         RES.addEventListener(RES.ResourceEvent.CONFIG_COMPLETE, this.onConfigComplete, this);
         RES.loadConfig("resource/default.res.json", "resource/");
     }
-
     /**
-     * 配置文件加载完成,开始预加载preload资源组。
-     * configuration file loading is completed, start to pre-load the preload resource group
+     * 配置文件加载完成,开始预加载皮肤主题资源和preload资源组。
+     * Loading of configuration file is complete, start to pre-load the theme configuration file and the preload resource group
      */
     private onConfigComplete(event:RES.ResourceEvent):void {
-        var theme = new eui.Theme( "resource/default.thm.json", this.stage );
         RES.removeEventListener(RES.ResourceEvent.CONFIG_COMPLETE, this.onConfigComplete, this);
+        // load skin theme configuration file, you can manually modify the file. And replace the default skin.
+        //加载皮肤主题配置文件,可以手动修改这个文件。替换默认皮肤。
+        let theme = new eui.Theme("resource/default.thm.json", this.stage);
+        theme.addEventListener(eui.UIEvent.COMPLETE, this.onThemeLoadComplete, this);
+
         RES.addEventListener(RES.ResourceEvent.GROUP_COMPLETE, this.onResourceLoadComplete, this);
         RES.addEventListener(RES.ResourceEvent.GROUP_LOAD_ERROR, this.onResourceLoadError, this);
         RES.addEventListener(RES.ResourceEvent.GROUP_PROGRESS, this.onResourceProgress, this);
         RES.addEventListener(RES.ResourceEvent.ITEM_LOAD_ERROR, this.onItemLoadError, this);
-        // RES.loadGroup('gboy');
-        RES.loadGroup('core');
-        // RES.loadGroup('jade');
-        // RES.loadGroup('star');
-        RES.loadGroup(this.firstResGroup);
-
+        RES.loadGroup(this.groupName);
     }
-
+    private isThemeLoadEnd: boolean = false;
+    /**
+     * 主题文件加载完成,开始预加载
+     * Loading of theme configuration file is complete, start to pre-load the 
+     */
+    private onThemeLoadComplete(): void {
+        this.isThemeLoadEnd = true;
+        this.createScene();
+    }
+    private isResourceLoadEnd: boolean = false;
     /**
      * preload资源组加载完成
-     * Preload resource group is loaded
+     * preload resource group is loaded
      */
     private onResourceLoadComplete(event:RES.ResourceEvent):void {
-        if (event.groupName == this.firstResGroup) {
+        if (event.groupName == this.groupName) {
             this.stage.removeChild(this.loadingView);
             RES.removeEventListener(RES.ResourceEvent.GROUP_COMPLETE, this.onResourceLoadComplete, this);
             RES.removeEventListener(RES.ResourceEvent.GROUP_LOAD_ERROR, this.onResourceLoadError, this);
             RES.removeEventListener(RES.ResourceEvent.GROUP_PROGRESS, this.onResourceProgress, this);
             RES.removeEventListener(RES.ResourceEvent.ITEM_LOAD_ERROR, this.onItemLoadError, this);
-            this.createGameScene();
+            this.isResourceLoadEnd = true;
+            this.createScene();
         }
     }
-
+    private createScene(){
+        if(this.isThemeLoadEnd && this.isResourceLoadEnd){
+            this.startCreateScene();
+        }
+    }
     /**
      * 资源组加载出错
      *  The resource group loading failed
@@ -100,40 +106,35 @@ class Main extends egret.DisplayObjectContainer {
     private onItemLoadError(event:RES.ResourceEvent):void {
         console.warn("Url:" + event.resItem.url + " has failed to load");
     }
-
     /**
      * 资源组加载出错
-     *  The resource group loading failed
+     * Resource group loading failed
      */
     private onResourceLoadError(event:RES.ResourceEvent):void {
+        //TODO
         console.warn("Group:" + event.groupName + " has failed to load");
         //忽略加载失败的项目
-        //Ignore the loading failed projects
+        //ignore loading failed projects
         this.onResourceLoadComplete(event);
     }
-
     /**
      * preload资源组加载进度
-     * Loading process of preload resource group
+     * loading process of preload resource
      */
     private onResourceProgress(event:RES.ResourceEvent):void {
-        if (event.groupName == this.firstResGroup) {
+        if (event.groupName == this.groupName) {
             this.loadingView.setProgress(event.itemsLoaded, event.itemsTotal);
         }
     }
-
+    private textfield:egret.TextField;
     /**
-     * 创建游戏场景
-     * Create a game scene
+     * 创建场景界面
+     * Create scene interface
      */
-    private createGameScene():void {
-
-        var stageW:number = this.stage.stageWidth;
-        var stageH:number = this.stage.stageHeight;
-        // var gameScene = new XYHRD.GameScene(stageW, stageH);
-        var gameScene = new XYSweeper.SweeperScene(stageW, stageH);
-        this.addChild(gameScene);
+    protected startCreateScene(): void {
+        LayerManager.init(this.stage);
     }
-}
 
+    
+}
 

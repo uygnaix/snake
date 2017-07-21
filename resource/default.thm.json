@@ -15,5 +15,32 @@
     "eui.ItemRenderer": "resource/eui_skins/ItemRendererSkin.exml"
   },
   "autoGenerateExmlsList": true,
-  "exmls": []
+  "exmls": [
+    "resource/eui_skins/CheckBoxSkin.exml",
+    "resource/eui_skins/HScrollBarSkin.exml",
+    "resource/eui_skins/HSliderSkin.exml",
+    "resource/eui_skins/ItemRendererSkin.exml",
+    "resource/eui_skins/PanelSkin.exml",
+    "resource/eui_skins/ProgressBarSkin.exml",
+    "resource/eui_skins/RadioButtonSkin.exml",
+    "resource/eui_skins/ScrollerSkin.exml",
+    "resource/eui_skins/TextInputSkin.exml",
+    "resource/eui_skins/ToggleSwitchSkin.exml",
+    "resource/eui_skins/VScrollBarSkin.exml",
+    "resource/eui_skins/VSliderSkin.exml",
+    "src/XYBall/gameover/returnHallButton.exml",
+    "src/XYBall/gameover/GameOverPanelSkin.exml",
+    "src/XYBall/welcome/ListButtonSkin.exml",
+    "src/XYBall/welcome/startBtn.exml",
+    "src/XYBall/welcome/nameAreaRightBtn.exml",
+    "src/XYBall/welcome/topList2.exml",
+    "src/XYBall/welcome/buttomList.exml",
+    "src/XYBall/welcome/WelcomePanelSkin.exml",
+    "src/XYBall/welcome/buttomList2.exml",
+    "src/XYBall/welcome/nameAreaLeftBtn.exml",
+    "src/XYBall/welcome/selectAreaBtn1.exml",
+    "src/XYBall/welcome/selectAreaBtn2.exml",
+    "src/XYBall/welcome/selectAreaBtn3.exml",
+    "src/XYBall/welcome/topList.exml"
+  ]
 }

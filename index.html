@@ -1,106 +1,119 @@
 <!DOCTYPE HTML>
 <html>
 <head>
-    <meta charset="utf-8">
-    <title>Egret</title>
-    <meta name="viewport"
-          content="width=device-width,initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no"/>
-    <meta name="apple-mobile-web-app-capable" content="yes"/>
-    <meta name="full-screen" content="true"/>
-    <meta name="screen-orientation" content="portrait"/>
-    <meta name="x5-fullscreen" content="true"/>
-    <meta name="360-fullscreen" content="true"/>
-    <style>
-        html, body {
-            -ms-touch-action: none;
-            background: white;
-            padding: 0;
-            border: 0;
-            margin: 0;
-            height: 100%;
-        }
-    </style>
+	<meta charset="utf-8">
+	<title>Egret</title>
+	<meta name="viewport" content="width=device-width,initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no"/>
+	<meta name="apple-mobile-web-app-capable" content="yes"/>
+	<meta name="full-screen" content="true"/>
+	<meta name="screen-orientation" content="portrait"/>
+	<meta name="x5-fullscreen" content="true"/>
+	<meta name="360-fullscreen" content="true"/>
+	<style>
+		html, body {
+			-ms-touch-action: none;
+			background: #888888;
+			padding: 0;
+			border: 0;
+			margin: 0;
+			height: 100%;
+		}
+	</style>
 
-    <!--这个标签为通过egret提供的第三方库的方式生成的 javascript 文件。删除 modules_files 标签后，库文件加载列表将不会变化，请谨慎操作！-->
-    <!--modules_files_start-->
-	<script egret="lib" src="libs/modules/egret/egret.js" src-release="libs/modules/egret/egret.min.js"></script>
-	<script egret="lib" src="libs/modules/egret/egret.web.js" src-release="libs/modules/egret/egret.web.min.js"></script>
-	<script egret="lib" src="libs/modules/game/game.js" src-release="libs/modules/game/game.min.js"></script>
-	<script egret="lib" src="libs/modules/game/game.web.js" src-release="libs/modules/game/game.web.min.js"></script>
-	<script egret="lib" src="libs/modules/tween/tween.js" src-release="libs/modules/tween/tween.min.js"></script>
-	<script egret="lib" src="libs/modules/res/res.js" src-release="libs/modules/res/res.min.js"></script>
-	<script egret="lib" src="libs/modules/eui/eui.js" src-release="libs/modules/eui/eui.min.js"></script>
-	<script egret="lib" src="libs/modules/socket/socket.js" src-release="libs/modules/socket/socket.min.js"></script>
+	<!--这个标签为通过egret提供的第三方库的方式生成的 javascript 文件。删除 modules_files 标签后，库文件加载列表将不会变化，请谨慎操作！-->
+	<!--modules_files_start-->
+	<script egret="lib" src="libs/modules/egret/egret.js"></script>
+	<script egret="lib" src="libs/modules/egret/egret.web.js"></script>
+	<script egret="lib" src="libs/modules/res/res.js"></script>
+	<script egret="lib" src="libs/modules/eui/eui.js"></script>
+	<script egret="lib" src="libs/modules/tween/tween.js"></script>
+	<script egret="lib" src="promise/promise.js"></script>
 	<!--modules_files_end-->
 
-    <!--这个标签为不通过egret提供的第三方库的方式使用的 javascript 文件，请将这些文件放在libs下，但不要放在modules下面。-->
-    <!--other_libs_files_start-->
-    <!--other_libs_files_end-->
+	<!--这个标签为不通过egret提供的第三方库的方式使用的 javascript 文件，请将这些文件放在libs下，但不要放在modules下面。-->
 
-    <!--这个标签会被替换为项目中所有的 javascript 文件。删除 game_files 标签后，项目文件加载列表将不会变化，请谨慎操作！-->
-    <!--game_files_start-->
-	<script egret="game" src="bin-debug/AssetAdapter.js"></script>
-	<script egret="game" src="bin-debug/LoadingUI.js"></script>
-	<script egret="game" src="bin-debug/Main.js"></script>
-	<script egret="game" src="bin-debug/ThemeAdapter.js"></script>
-	<script egret="game" src="bin-debug/XY/Matrix.js"></script>
-	<script egret="game" src="bin-debug/XY/layer/GridLayer.js"></script>
-	<script egret="game" src="bin-debug/XY/type/Direction.js"></script>
-	<script egret="game" src="bin-debug/XY/type/OverStatus.js"></script>
-	<script egret="game" src="bin-debug/XYGBoy/control/ControllerEvent.js"></script>
-	<script egret="game" src="bin-debug/XYGBoy/control/GameSceneEvent.js"></script>
-	<script egret="game" src="bin-debug/XYGBoy/core/Dot.js"></script>
-	<script egret="game" src="bin-debug/XYGBoy/core/DotMap.js"></script>
-	<script egret="game" src="bin-debug/XYGBoy/game/DotControllerPanel.js"></script>
-	<script egret="game" src="bin-debug/XYGBoy/game/DotSnakePanel.js"></script>
-	<script egret="game" src="bin-debug/XYGBoy/math/MatrixPointer.js"></script>
-	<script egret="game" src="bin-debug/XYGBoy/scene/GameScene.js"></script>
-	<script egret="game" src="bin-debug/XYHuaRongDao/data/Constant.js"></script>
-	<script egret="game" src="bin-debug/XYHuaRongDao/data/Level.js"></script>
-	<script egret="game" src="bin-debug/XYHuaRongDao/data/Role.js"></script>
-	<script egret="game" src="bin-debug/XYHuaRongDao/layer/GameLayer.js"></script>
-	<script egret="game" src="bin-debug/XYHuaRongDao/sence/GameScene.js"></script>
-	<script egret="game" src="bin-debug/XYHuaRongDao/sprite/RoleSprite.js"></script>
-	<script egret="game" src="bin-debug/XYJade/common/Constants.js"></script>
-	<script egret="game" src="bin-debug/XYJade/factory/EnemyFactory.js"></script>
-	<script egret="game" src="bin-debug/XYJade/scene/JadeScene.js"></script>
-	<script egret="game" src="bin-debug/XYJade/scene/layer/GameLayer.js"></script>
-	<script egret="game" src="bin-debug/XYJade/sprite/enemy.js"></script>
-	<script egret="game" src="bin-debug/XYPirate/layer/ControlLayer.js"></script>
-	<script egret="game" src="bin-debug/XYPirate/scene/PirateScene.js"></script>
-	<script egret="game" src="bin-debug/XYStar/layer/GameLayer.js"></script>
-	<script egret="game" src="bin-debug/XYStar/layer/MenuLayer.js"></script>
-	<script egret="game" src="bin-debug/XYStar/scene/GameScene.js"></script>
-	<script egret="game" src="bin-debug/XYStar/scene/MenuScene.js"></script>
-	<script egret="game" src="bin-debug/XYStar/widget/FloatingBanner.js"></script>
-	<script egret="game" src="bin-debug/XYStar/widget/Toast.js"></script>
-	<script egret="game" src="bin-debug/XYSweeper/brain/Genome.js"></script>
-	<script egret="game" src="bin-debug/XYSweeper/brain/Neuron.js"></script>
-	<script egret="game" src="bin-debug/XYSweeper/scene/SweeperScene.js"></script>
-	<script egret="game" src="bin-debug/XYSweeper/sprite/Monitor.js"></script>
-	<script egret="game" src="bin-debug/XYSweeper/sprite/SweeperSprite.js"></script>
-	<script egret="game" src="bin-debug/XYSweeper/world/Controller.js"></script>
-	<script egret="game" src="bin-debug/XYSweeper/world/Environment.js"></script>
-	<script egret="game" src="bin-debug/XYSweeper/world/Mine.js"></script>
-	<script egret="game" src="bin-debug/XYSweeper/world/Sweeper.js"></script>
+
+	<!--这个标签会被替换为项目中所有的 javascript 文件。删除 game_files 标签后，项目文件加载列表将不会变化，请谨慎操作！-->
+	<!--game_files_start-->
+	<script egret="lib" src="bin-debug/XY/layer/GridLayer.js"></script>
+	<script egret="lib" src="bin-debug/XY/type/Direction.js"></script>
+	<script egret="lib" src="bin-debug/XY/type/OverStatus.js"></script>
+	<script egret="lib" src="bin-debug/XYGBoy/game/DotControllerPanel.js"></script>
+	<script egret="lib" src="bin-debug/AssetAdapter.js"></script>
+	<script egret="lib" src="bin-debug/XY/Matrix.js"></script>
+	<script egret="lib" src="bin-debug/Main.js"></script>
+	<script egret="lib" src="bin-debug/ThemeAdapter.js"></script>
+	<script egret="lib" src="bin-debug/XYBall/game/Algea.js"></script>
+	<script egret="lib" src="bin-debug/XYBall/game/Circle.js"></script>
+	<script egret="lib" src="bin-debug/XYBall/game/GameControl.js"></script>
+	<script egret="lib" src="bin-debug/XYBall/game/GamePanel.js"></script>
+	<script egret="lib" src="bin-debug/XYBall/game/GameUtil.js"></script>
+	<script egret="lib" src="bin-debug/XYBall/game/ScaleMap.js"></script>
+	<script egret="lib" src="bin-debug/XYBall/game/Split.js"></script>
+	<script egret="lib" src="bin-debug/XYBall/game/Spore.js"></script>
+	<script egret="lib" src="bin-debug/XYBall/game/Thorn.js"></script>
+	<script egret="lib" src="bin-debug/XYBall/game/ThornSplit.js"></script>
+	<script egret="lib" src="bin-debug/XYBall/gameover/GameOverPanel.js"></script>
+	<script egret="lib" src="bin-debug/XYBall/manager/GameManager.js"></script>
+	<script egret="lib" src="bin-debug/XYBall/manager/LayerManeger.js"></script>
+	<script egret="lib" src="bin-debug/XYBall/welcome/WelcomePanel.js"></script>
+	<script egret="lib" src="bin-debug/XYGBoy/control/ControllerEvent.js"></script>
+	<script egret="lib" src="bin-debug/XYGBoy/control/GameSceneEvent.js"></script>
+	<script egret="lib" src="bin-debug/XYGBoy/core/Dot.js"></script>
+	<script egret="lib" src="bin-debug/XYGBoy/core/DotMap.js"></script>
+	<script egret="lib" src="bin-debug/LoadingUI.js"></script>
+	<script egret="lib" src="bin-debug/XYGBoy/game/DotSnakePanel.js"></script>
+	<script egret="lib" src="bin-debug/XYGBoy/math/MatrixPointer.js"></script>
+	<script egret="lib" src="bin-debug/XYGBoy/scene/GameScene.js"></script>
+	<script egret="lib" src="bin-debug/XYHuaRongDao/data/Constant.js"></script>
+	<script egret="lib" src="bin-debug/XYHuaRongDao/data/Level.js"></script>
+	<script egret="lib" src="bin-debug/XYHuaRongDao/data/Role.js"></script>
+	<script egret="lib" src="bin-debug/XYHuaRongDao/layer/GameLayer.js"></script>
+	<script egret="lib" src="bin-debug/XYHuaRongDao/sence/GameScene.js"></script>
+	<script egret="lib" src="bin-debug/XYHuaRongDao/sprite/RoleSprite.js"></script>
+	<script egret="lib" src="bin-debug/XYPirate/layer/ControlLayer.js"></script>
+	<script egret="lib" src="bin-debug/XYPirate/scene/PirateScene.js"></script>
+	<script egret="lib" src="bin-debug/XYStar/layer/GameLayer.js"></script>
+	<script egret="lib" src="bin-debug/XYStar/layer/MenuLayer.js"></script>
+	<script egret="lib" src="bin-debug/XYStar/scene/GameScene.js"></script>
+	<script egret="lib" src="bin-debug/XYStar/scene/MenuScene.js"></script>
+	<script egret="lib" src="bin-debug/XYStar/widget/FloatingBanner.js"></script>
+	<script egret="lib" src="bin-debug/XYStar/widget/Toast.js"></script>
+	<script egret="lib" src="bin-debug/XYSweeper/brain/Genome.js"></script>
+	<script egret="lib" src="bin-debug/XYSweeper/brain/Neuron.js"></script>
+	<script egret="lib" src="bin-debug/XYSweeper/scene/SweeperScene.js"></script>
+	<script egret="lib" src="bin-debug/XYSweeper/sprite/Monitor.js"></script>
+	<script egret="lib" src="bin-debug/XYSweeper/sprite/SweeperSprite.js"></script>
+	<script egret="lib" src="bin-debug/XYSweeper/world/Controller.js"></script>
+	<script egret="lib" src="bin-debug/XYSweeper/world/Environment.js"></script>
+	<script egret="lib" src="bin-debug/XYSweeper/world/Mine.js"></script>
+	<script egret="lib" src="bin-debug/XYSweeper/world/Sweeper.js"></script>
 	<!--game_files_end-->
 </head>
 <body>
 
 <div style="margin: auto;width: 100%;height: 100%;" class="egret-player"
-     data-entry-class="Main"
-     data-orientation="landscape"
-     data-scale-mode="showAll"
-     data-frame-rate="30"
-     data-content-width="480"
-     data-content-height="480"
-     data-show-paint-rect="true"
-     data-multi-fingered="2"
-     data-show-fps="true" data-show-log="true"
-     data-log-filter="" data-show-fps-style="x:0,y:0,size:30,textColor:0x00c200,bgAlpha:0.1">
+	 data-entry-class="Main"
+	 data-orientation="landscape"
+	 data-scale-mode="showAll"
+	 data-frame-rate="30"
+
+	 data-content-width="800"
+	 data-content-height="480"
+	 data-show-paint-rect="false"
+	 data-multi-fingered="2"
+	 data-show-fps="true" data-show-log="false"
+	 data-show-fps-style="x:0,y:0,size:12,textColor:0xffffff,bgAlpha:0.9">
 </div>
 <script>
-    egret.runEgret();
+    /**
+     * {
+         * "renderMode":, //引擎渲染模式，"canvas" 或者 "webgl"
+         * "audioType": "" //使用的音频类型，0:默认，1:qq audio，2:web audio，3:audio
+         * "antialias": //WebGL模式下是否开启抗锯齿，true:开启，false:关闭，默认为false
+         * }
+     **/
+    egret.runEgret({renderMode:"webgl", audioType:0});
 </script>
 </body>
 </html>
