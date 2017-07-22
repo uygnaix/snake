@@ -7,11 +7,7 @@
 		{
 			"keys":"btn_a_png,btn_b_png,btn_down_png,btn_left_png,btn_right_png,btn_up_png,controller_bg_png",
 			"name":"button"
-		},
-		{
-			"keys":"3-1_png,3-1_json",
-			"name":"jade"
-		},
+		}
 		{
 			"keys":"",
 			"name":"pirate"
